@@ -1,0 +1,116 @@
+/* DCC Döner Catering Club — Apple/Tesla Showroom 3-Theme Design Tokens & Subtle Multi-Color Accents */
+
+:root,
+.theme-obsidian {
+  --bg-main: #090A0F;
+  --bg-card: #12141C;
+  --bg-subtle: #1A1D28;
+  --bg-contrast: #F5F2EB;
+  --text-primary: #F5F5F7;
+  --text-secondary: #C4C8D4;
+  --text-muted: #8E95A8;
+  --brand-primary: #E5A952;
+  --brand-hover: #F2BC6E;
+  --brand-accent: #F06A43;
+  --border-main: #262A38;
+  --badge-bg: #1E1B16;
+  --badge-text: #F2BC6E;
+  --btn-text: #090A0F;
+  --navbar-bg: #090A0FD9;
+  --slider-track: #262A38;
+  --slider-thumb: #E5A952;
+  --receipt-bg: #0F1219;
+  --receipt-text: #F5F5F7;
+  --receipt-accent: #E5A952;
+
+  /* Subtle Apple/Tesla Multi-Color Ambient Accents */
+  --accent-emerald: #34D399;
+  --accent-cyan: #38BDF8;
+  --accent-rose: #FB7185;
+  --accent-violet: #A78BFA;
+  --glow-primary: rgba(229, 169, 82, 0.16);
+  --glow-secondary: rgba(56, 189, 248, 0.11);
+  --glow-tertiary: rgba(52, 211, 153, 0.11);
+  --glass-border: rgba(255, 255, 255, 0.1);
+  --glass-surface: rgba(18, 20, 28, 0.78);
+
+  /* Raw Non-Text Brand Swatches & Motion Physics */
+  --swatch-ember-raw: #C84B27;
+  --swatch-herb-raw: #5D8A66;
+  --ease-expo-out: cubic-bezier(0.16, 1, 0.3, 1);
+  --ease-quint-in-out: cubic-bezier(0.83, 0, 0.17, 1);
+  --ease-exit-snap: cubic-bezier(0.7, 0, 0.84, 0);
+  --stagger-step: 45ms;
+}
+
+.theme-limestone {
+  --bg-main: #F5F5F7;
+  --bg-card: #FFFFFF;
+  --bg-subtle: #EAECEF;
+  --bg-contrast: #090A0F;
+  --text-primary: #111318;
+  --text-secondary: #3C4252;
+  --text-muted: #687082;
+  --brand-primary: #9A5512;
+  --brand-hover: #7D430B;
+  --brand-accent: #C03C1B;
+  --border-main: #D8DCE3;
+  --badge-bg: #F3E8D7;
+  --badge-text: #7A420B;
+  --btn-text: #FFFFFF;
+  --navbar-bg: #F5F5F7E6;
+  --slider-track: #D8DCE3;
+  --slider-thumb: #9A5512;
+  --receipt-bg: #11131A;
+  --receipt-text: #F5F5F7;
+  --receipt-accent: #E5A952;
+
+  --accent-emerald: #059669;
+  --accent-cyan: #0284C7;
+  --accent-rose: #E11D48;
+  --accent-violet: #7C3AED;
+  --glow-primary: rgba(212, 155, 84, 0.18);
+  --glow-secondary: rgba(14, 165, 233, 0.12);
+  --glow-tertiary: rgba(16, 185, 129, 0.12);
+  --glass-border: rgba(17, 19, 24, 0.08);
+  --glass-surface: rgba(255, 255, 255, 0.85);
+}
+
+.theme-emerald-club {
+  --bg-main: #061512;
+  --bg-card: #0B221D;
+  --bg-subtle: #113029;
+  --bg-contrast: #F3ECE0;
+  --text-primary: #F2F7F5;
+  --text-secondary: #C2D8D0;
+  --text-muted: #88ABA0;
+  --brand-primary: #E5A952;
+  --brand-hover: #F2BC6E;
+  --brand-accent: #34D399;
+  --border-main: #1B4238;
+  --badge-bg: #12362C;
+  --badge-text: #F2BC6E;
+  --btn-text: #061512;
+  --navbar-bg: #061512E6;
+  --slider-track: #1B4238;
+  --slider-thumb: #E5A952;
+  --receipt-bg: #05110E;
+  --receipt-text: #F2F7F5;
+  --receipt-accent: #E5A952;
+
+  --accent-emerald: #34D399;
+  --accent-cyan: #38BDF8;
+  --accent-rose: #FB7185;
+  --accent-violet: #A78BFA;
+  --glow-primary: rgba(52, 211, 153, 0.16);
+  --glow-secondary: rgba(229, 169, 82, 0.15);
+  --glow-tertiary: rgba(56, 189, 248, 0.1);
+  --glass-border: rgba(255, 255, 255, 0.1);
+  --glass-surface: rgba(11, 34, 29, 0.8);
+}
+
+@media (prefers-reduced-motion: reduce) {
+  :root {
+    --stagger-step: 0ms;
+  }
+}

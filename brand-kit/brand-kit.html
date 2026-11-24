@@ -1,0 +1,980 @@
+<!DOCTYPE html>
+<html lang="de" class="theme-obsidian">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>DCC Döner Catering Club — Brand Kit & Identity Guidelines (DE / EN / TR)</title>
+  <link rel="icon" type="image/svg+xml" href="../public/favicon.svg" />
+  <style>
+    @font-face {
+      font-family: 'Space Grotesk';
+      src: url('../public/fonts/SpaceGrotesk-Var.ttf') format('truetype');
+      font-weight: 300 700;
+      font-style: normal;
+      font-display: swap;
+    }
+    @font-face {
+      font-family: 'Syne';
+      src: url('../public/fonts/Syne-Var.ttf') format('truetype');
+      font-weight: 400 800;
+      font-style: normal;
+      font-display: swap;
+    }
+    @font-face {
+      font-family: 'Instrument Serif';
+      src: url('../public/fonts/InstrumentSerif-Regular.ttf') format('truetype');
+      font-weight: 400;
+      font-style: normal;
+      font-display: swap;
+    }
+    @font-face {
+      font-family: 'Instrument Serif';
+      src: url('../public/fonts/InstrumentSerif-Italic.ttf') format('truetype');
+      font-weight: 400;
+      font-style: italic;
+      font-display: swap;
+    }
+    @font-face {
+      font-family: 'JetBrains Mono';
+      src: url('../public/fonts/JetBrainsMono-Var.ttf') format('truetype');
+      font-weight: 100 800;
+      font-style: normal;
+      font-display: swap;
+    }
+
+    :root, .theme-obsidian {
+      --bg-main: #0B0A09;
+      --bg-card: #151311;
+      --bg-subtle: #1F1C18;
+      --bg-contrast: #F3ECE0;
+      --text-primary: #F3ECE0;
+      --text-secondary: #D1C7B8;
+      --text-muted: #AAA193;
+      --brand-primary: #D49B54;
+      --brand-hover: #E5AF6B;
+      --brand-accent: #E06440;
+      --border-main: #2E2924;
+      --badge-bg: #261E14;
+      --badge-text: #E5B26B;
+      --btn-text: #0B0A09;
+      --navbar-bg: rgba(11, 10, 9, 0.92);
+      --font-sans: 'Space Grotesk', system-ui, sans-serif;
+      --font-monument: 'Syne', 'Space Grotesk', sans-serif;
+      --font-serif: 'Instrument Serif', Georgia, serif;
+      --font-mono: 'JetBrains Mono', ui-monospace, monospace;
+      --ease-expo-out: cubic-bezier(0.16, 1, 0.3, 1);
+    }
+
+    * { box-sizing: border-box; }
+    html, body {
+      max-width: 100%;
+      overflow-x: clip;
+    }
+    html { scroll-behavior: smooth; }
+    body {
+      margin: 0;
+      background: var(--bg-main);
+      color: var(--text-primary);
+      font-family: var(--font-sans);
+      font-weight: 400;
+      line-height: 1.6;
+      -webkit-font-smoothing: antialiased;
+    }
+    img, svg { max-width: 100%; }
+    code { overflow-wrap: anywhere; word-break: break-word; }
+
+    .tabular-nums {
+      font-variant-numeric: tabular-nums;
+      font-feature-settings: "tnum" 1, "lnum" 1;
+    }
+
+    .mono-label {
+      font-family: var(--font-mono);
+      font-size: 0.72rem;
+      font-weight: 500;
+      letter-spacing: 0.14em;
+      text-transform: uppercase;
+      color: var(--brand-primary);
+    }
+
+    .topbar {
+      position: sticky;
+      top: 0;
+      z-index: 40;
+      backdrop-filter: blur(12px);
+      background: var(--navbar-bg);
+      border-bottom: 1px solid var(--border-main);
+    }
+    .topbar-inner {
+      max-width: 1280px;
+      margin: 0 auto;
+      padding: 14px 24px;
+      display: flex;
+      flex-wrap: wrap;
+      align-items: center;
+      justify-content: space-between;
+      gap: 16px;
+    }
+    .topbar-brand {
+      display: flex;
+      align-items: center;
+      gap: 14px;
+    }
+    .topbar-brand img { height: 34px; width: auto; display: block; }
+    .controls {
+      display: flex;
+      align-items: center;
+      gap: 10px;
+      flex-wrap: wrap;
+    }
+    .segmented {
+      display: inline-flex;
+      border: 1px solid var(--border-main);
+      border-radius: 999px;
+      padding: 3px;
+      background: var(--bg-card);
+    }
+    .seg-btn {
+      border: none;
+      background: transparent;
+      color: var(--text-secondary);
+      font-family: var(--font-mono);
+      font-size: 0.75rem;
+      font-weight: 600;
+      padding: 6px 12px;
+      border-radius: 999px;
+      cursor: pointer;
+      transition: background 220ms var(--ease-expo-out), color 220ms var(--ease-expo-out);
+    }
+    .seg-btn.active {
+      background: var(--brand-primary);
+      color: var(--btn-text);
+    }
+    .print-btn {
+      border: 1px solid var(--brand-primary);
+      background: transparent;
+      color: var(--brand-primary);
+      font-family: var(--font-mono);
+      font-size: 0.75rem;
+      font-weight: 600;
+      padding: 8px 14px;
+      border-radius: 999px;
+      cursor: pointer;
+    }
+    .print-btn:hover { background: var(--brand-primary); color: var(--btn-text); }
+
+    .container {
+      max-width: 1280px;
+      margin: 0 auto;
+      padding: 40px 24px 80px;
+    }
+    section {
+      padding: 44px 0;
+      border-bottom: 1px solid var(--border-main);
+      break-inside: avoid;
+    }
+    .hero-block {
+      padding: 56px 0 48px;
+      display: grid;
+      grid-template-columns: 1.5fr 1fr;
+      gap: 32px;
+      align-items: center;
+    }
+    @media (max-width: 900px) {
+      .hero-block { grid-template-columns: 1fr; }
+    }
+    h1 {
+      font-family: var(--font-sans);
+      font-size: clamp(2.4rem, 5vw, 4.2rem);
+      font-weight: 700;
+      letter-spacing: -0.03em;
+      line-height: 1.04;
+      margin: 12px 0 18px;
+    }
+    h1 em {
+      font-family: var(--font-serif);
+      font-style: italic;
+      font-weight: 400;
+      color: var(--brand-primary);
+    }
+    h2 {
+      font-family: var(--font-sans);
+      font-size: 1.75rem;
+      font-weight: 700;
+      letter-spacing: -0.02em;
+      margin: 8px 0 20px;
+    }
+    h3 {
+      font-family: var(--font-sans);
+      font-size: 1.12rem;
+      font-weight: 600;
+      margin: 0 0 10px;
+    }
+    p { color: var(--text-secondary); margin: 0 0 14px; }
+
+    .grid-2 { display: grid; grid-template-columns: repeat(2, minmax(0, 1fr)); gap: 20px; }
+    .grid-3 { display: grid; grid-template-columns: repeat(3, minmax(0, 1fr)); gap: 20px; }
+    .grid-4 { display: grid; grid-template-columns: repeat(4, minmax(0, 1fr)); gap: 16px; }
+    .hero-block > *, .grid-2 > *, .grid-3 > *, .grid-4 > *, .card, .card-subtle {
+      min-width: 0;
+    }
+    @media (max-width: 960px) {
+      .grid-3, .grid-4 { grid-template-columns: repeat(2, minmax(0, 1fr)); }
+    }
+    @media (max-width: 640px) {
+      .grid-2, .grid-3, .grid-4 { grid-template-columns: 1fr; }
+      .topbar-inner { padding: 12px 16px; gap: 12px; }
+      .topbar-brand { flex-wrap: wrap; gap: 10px; min-width: 0; }
+      .topbar-brand img { height: 28px; }
+      .container { padding: 28px 16px 64px; }
+      .hero-block { padding: 36px 0 32px; }
+      .card { padding: 18px; }
+    }
+
+    .card {
+      background: var(--bg-card);
+      border: 1px solid var(--border-main);
+      border-radius: 14px;
+      padding: 22px;
+    }
+    .card-subtle {
+      background: var(--bg-subtle);
+      border: 1px solid var(--border-main);
+      border-radius: 12px;
+      padding: 18px;
+    }
+
+    .logo-stage {
+      border-radius: 10px;
+      border: 1px solid var(--border-main);
+      min-height: 148px;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      padding: 20px;
+      margin-bottom: 12px;
+      transition: background 240ms var(--ease-expo-out);
+    }
+    .logo-stage img { max-width: 100%; max-height: 104px; width: auto; height: auto; display: block; }
+    .surface-obsidian { background: #0B0A09; }
+    .surface-limestone { background: #FAF6EF; border-color: #DCD2C1; }
+    .surface-emerald { background: #071A14; border-color: #1E4637; }
+
+    .dl-links {
+      display: flex;
+      gap: 8px;
+      flex-wrap: wrap;
+      margin-top: 8px;
+    }
+    .dl-links a {
+      font-family: var(--font-mono);
+      font-size: 0.72rem;
+      color: var(--brand-primary);
+      text-decoration: none;
+      border: 1px solid var(--border-main);
+      padding: 4px 8px;
+      border-radius: 6px;
+    }
+    .dl-links a:hover { background: var(--badge-bg); }
+
+    .swatch-card {
+      background: var(--bg-card);
+      border: 1px solid var(--border-main);
+      border-radius: 12px;
+      overflow: hidden;
+      cursor: pointer;
+      transition: transform 200ms var(--ease-expo-out), border-color 200ms;
+    }
+    .swatch-card:hover { transform: translateY(-2px); border-color: var(--brand-primary); }
+    .swatch-chip { height: 74px; width: 100%; border-bottom: 1px solid var(--border-main); }
+    .swatch-meta { padding: 12px 14px; }
+    .swatch-meta code { font-family: var(--font-mono); font-size: 0.78rem; color: var(--brand-primary); }
+
+    .table-wrap {
+      width: 100%;
+      max-width: 100%;
+      overflow-x: auto;
+      -webkit-overflow-scrolling: touch;
+    }
+    .mono-spec {
+      font-family: var(--font-mono);
+      margin-top: 14px;
+      font-size: clamp(0.68rem, 2.65vw, 1rem);
+      line-height: 1.9;
+      overflow-wrap: anywhere;
+      word-break: break-word;
+      max-width: 100%;
+    }
+    .manifest-list {
+      color: var(--text-secondary);
+      font-family: var(--font-mono);
+      font-size: 0.8rem;
+      line-height: 1.8;
+      padding-left: 18px;
+      overflow-wrap: anywhere;
+      word-break: break-word;
+    }
+    .manifest-list li {
+      overflow-wrap: anywhere;
+      word-break: break-word;
+    }
+    table {
+      width: 100%;
+      border-collapse: collapse;
+      font-size: 0.9rem;
+      margin-top: 16px;
+    }
+    th, td {
+      text-align: left;
+      padding: 11px 12px;
+      border-bottom: 1px solid var(--border-main);
+    }
+    th {
+      font-family: var(--font-mono);
+      font-size: 0.74rem;
+      letter-spacing: 0.1em;
+      text-transform: uppercase;
+      color: var(--text-muted);
+    }
+    .badge-pass {
+      display: inline-block;
+      background: var(--badge-bg);
+      color: var(--badge-text);
+      font-family: var(--font-mono);
+      font-size: 0.74rem;
+      padding: 2px 8px;
+      border-radius: 999px;
+    }
+
+    .plate-card img {
+      width: 100%;
+      height: auto;
+      display: block;
+      border-radius: 10px;
+      border: 1px solid var(--border-main);
+      margin-bottom: 12px;
+    }
+
+    .toast {
+      position: fixed;
+      right: 24px;
+      bottom: 24px;
+      background: var(--brand-primary);
+      color: var(--btn-text);
+      font-family: var(--font-mono);
+      font-size: 0.8rem;
+      font-weight: 600;
+      padding: 10px 16px;
+      border-radius: 999px;
+      opacity: 0;
+      pointer-events: none;
+      transform: translateY(8px);
+      transition: opacity 200ms, transform 200ms;
+      z-index: 60;
+    }
+    .toast.show { opacity: 1; transform: translateY(0); }
+
+    @media print {
+      body { background: #FAF6EF; color: #0B0A09; }
+      .topbar .controls { display: none; }
+      .card, .card-subtle { background: #FFFFFF; border-color: #DCD2C1; color: #0B0A09; }
+      p { color: #2D2823; }
+      section { break-inside: avoid; page-break-inside: avoid; }
+    }
+  </style>
+</head>
+<body>
+  <header class="topbar">
+    <div class="topbar-inner">
+      <div class="topbar-brand">
+        <img src="../public/brand/logo-primary-light.svg" alt="DCC Döner Catering Club" />
+        <span class="mono-label">BRAND KIT v1.0</span>
+      </div>
+      <div class="controls">
+        <div class="segmented" role="group" aria-label="Language switcher">
+          <button class="seg-btn active" data-lang="de" type="button">DE</button>
+          <button class="seg-btn" data-lang="en" type="button">EN</button>
+          <button class="seg-btn" data-lang="tr" type="button">TR</button>
+        </div>
+        <button class="print-btn" type="button" onclick="window.print()" data-i18n="printBtn">PDF / Drucken</button>
+      </div>
+    </div>
+  </header>
+
+  <main class="container">
+    <!-- HERO -->
+    <div class="hero-block">
+      <div>
+        <div class="mono-label" data-i18n="heroKicker">BERLIN · OFFENES FEUER · B2B & VIP CATERING</div>
+        <h1 data-i18n-html="heroHeadline">Feuer. <em>Handwerk.</em> Clubkultur.</h1>
+        <p data-i18n="heroLead">Das komplette A-bis-Z Markenhandbuch für DCC Döner Catering Club — Architektonische Event-Gastronomie mit handgestecktem Yaprak-Handwerk und Berliner Präzision.</p>
+      </div>
+      <div class="card" style="text-align:center;">
+        <img src="../public/brand/logo-seal-ember.svg" alt="DCC Club Seal" style="width:190px;height:190px;margin:0 auto 12px;display:block;" />
+        <div class="mono-label">EMBER-CUT ARCHITECTURAL HOSPITALITY</div>
+      </div>
+    </div>
+
+    <!-- 01 BRAND ESSENCE -->
+    <section id="sec-essence">
+      <div class="mono-label">01 / BRAND ESSENCE &amp; STRATEGY</div>
+      <h2 data-i18n="sec01Title">Markenkern, Manifest &amp; Zielgruppen</h2>
+      <div class="card" style="margin-bottom:20px;">
+        <h3 data-i18n="manifestoTitle">Markenmanifest</h3>
+        <p style="font-size:1.08rem;color:var(--text-primary);" data-i18n="manifestoText"></p>
+      </div>
+      <div class="grid-3">
+        <div class="card">
+          <div class="mono-label">PILLAR 01 · B2B</div>
+          <h3 data-i18n="p1Title"></h3>
+          <p data-i18n="p1Body"></p>
+        </div>
+        <div class="card">
+          <div class="mono-label">PILLAR 02 · VIP</div>
+          <h3 data-i18n="p2Title"></h3>
+          <p data-i18n="p2Body"></p>
+        </div>
+        <div class="card">
+          <div class="mono-label">PILLAR 03 · FESTIVAL</div>
+          <h3 data-i18n="p3Title"></h3>
+          <p data-i18n="p3Body"></p>
+        </div>
+      </div>
+    </section>
+
+    <!-- 02 TONE OF VOICE -->
+    <section id="sec-voice">
+      <div class="mono-label">02 / TONE OF VOICE &amp; BOILERPLATES</div>
+      <h2 data-i18n="sec02Title">Tonalität &amp; Offizielle Pressetexte</h2>
+      <div class="grid-2">
+        <div class="card">
+          <div class="mono-label" data-i18n="bpShortLabel">KURZ-BOILERPLATE (~25 WÖRTER)</div>
+          <p style="margin-top:10px;color:var(--text-primary);" data-i18n="bpShort"></p>
+        </div>
+        <div class="card">
+          <div class="mono-label" data-i18n="bpMedLabel">STANDARD-BOILERPLATE (~55 WÖRTER)</div>
+          <p style="margin-top:10px;color:var(--text-primary);" data-i18n="bpMed"></p>
+        </div>
+      </div>
+    </section>
+
+    <!-- 03 LOGO ARCHITECTURE -->
+    <section id="sec-logos">
+      <div style="display:flex;flex-wrap:wrap;justify-content:space-between;align-items:flex-end;gap:16px;margin-bottom:20px;">
+        <div>
+          <div class="mono-label">03 / LOGO ARCHITECTURE (16 VARIANTS)</div>
+          <h2 style="margin-bottom:4px;" data-i18n="sec03Title">Logo-System &amp; Kontrastvarianten</h2>
+          <p style="margin:0;" data-i18n="sec03Sub">4 Lockups × 4 Colorways (reine SVG-Pfade ohne &lt;text&gt;, plus @1x/@2x PNG &amp; WebP).</p>
+        </div>
+        <div class="segmented" id="surfaceToggle" role="group" aria-label="Surface backdrop toggle">
+          <button class="seg-btn active" data-surface="auto" type="button" data-i18n="surfAuto">Auto</button>
+          <button class="seg-btn" data-surface="obsidian" type="button">Obsidian</button>
+          <button class="seg-btn" data-surface="limestone" type="button">Limestone</button>
+          <button class="seg-btn" data-surface="emerald" type="button">Emerald</button>
+        </div>
+      </div>
+      <div class="grid-4" id="logoGrid"></div>
+    </section>
+
+    <!-- 04 CLEAR SPACE & MIN SIZES -->
+    <section id="sec-clearspace">
+      <div class="mono-label">04 / CLEAR SPACE &amp; MINIMUM SIZES</div>
+      <h2 data-i18n="sec04Title">Schutzraum (1x) &amp; Mindestgrößen</h2>
+      <div class="grid-2">
+        <div class="card">
+          <svg viewBox="0 0 420 150" style="width:100%;height:auto;display:block;background:#0B0A09;border-radius:8px;">
+            <rect x="24" y="16" width="372" height="118" fill="none" stroke="#E06440" stroke-dasharray="5 4" stroke-width="1.2"/>
+            <rect x="56" y="42" width="308" height="66" fill="#151311" stroke="#D49B54" stroke-width="1.2"/>
+            <text x="210" y="72" fill="#F3ECE0" font-family="Syne, sans-serif" font-weight="800" font-size="18" letter-spacing="2" text-anchor="middle">DCC</text>
+            <text x="210" y="92" fill="#D49B54" font-family="JetBrains Mono, monospace" font-weight="500" font-size="10.5" letter-spacing="1.6" text-anchor="middle">CLEAR SPACE 1x</text>
+            <text x="40" y="79" fill="#E06440" font-family="JetBrains Mono, monospace" font-size="11" text-anchor="middle">1x</text>
+            <text x="380" y="79" fill="#E06440" font-family="JetBrains Mono, monospace" font-size="11" text-anchor="middle">1x</text>
+            <text x="210" y="33" fill="#E06440" font-family="JetBrains Mono, monospace" font-size="10" text-anchor="middle">1x</text>
+            <text x="210" y="126" fill="#E06440" font-family="JetBrains Mono, monospace" font-size="10" text-anchor="middle">1x</text>
+          </svg>
+          <p style="margin-top:12px;" data-i18n="clearDesc"></p>
+        </div>
+        <div class="card">
+          <div class="table-wrap">
+            <table>
+              <thead><tr><th data-i18n="thLockup">Lockup</th><th data-i18n="thDigitalMin">Digital Min</th><th data-i18n="thPrintMin">Print Min</th></tr></thead>
+              <tbody>
+                <tr><td><code>logo-primary</code></td><td class="tabular-nums">160 px</td><td class="tabular-nums">38 mm</td></tr>
+                <tr><td><code>logo-stacked</code></td><td class="tabular-nums">110 px</td><td class="tabular-nums">28 mm</td></tr>
+                <tr><td><code>logo-seal</code></td><td class="tabular-nums">48 px</td><td class="tabular-nums">18 mm</td></tr>
+                <tr><td><code>logo-monogram</code></td><td class="tabular-nums" data-i18n="tdMonoMin">28 px (16 px Favicon)</td><td class="tabular-nums">10 mm</td></tr>
+              </tbody>
+            </table>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- 05 DO'S & DON'TS -->
+    <section id="sec-dos">
+      <div class="mono-label">05 / VISUAL DO'S &amp; DON'TS</div>
+      <h2 data-i18n="sec05Title">6 Verbindliche Schutzregeln</h2>
+      <div class="grid-3" id="dosGrid"></div>
+    </section>
+
+    <!-- 06 COLOR & WCAG -->
+    <section id="sec-colors">
+      <div class="mono-label">06 / COLOR SYSTEM &amp; WCAG 2.1 CONTRAST</div>
+      <h2 data-i18n="sec06Title">Farbpalette &amp; Barrierefreiheits-Matrix</h2>
+      <p data-i18n="sec06Sub">Klick auf eine Farbkachel kopiert den Hex-Code sofort in die Zwischenablage.</p>
+      <div class="grid-4" id="swatchGrid" style="margin-bottom:24px;"></div>
+      <div class="card">
+        <h3 data-i18n="wcagHeading">WCAG 2.1 Kontrast-Verifizierung (Alle 3 Themes)</h3>
+        <div class="table-wrap">
+          <table>
+            <thead><tr><th data-i18n="thTokenPair">Token-Paar</th><th>Obsidian</th><th>Limestone</th><th>Emerald Club</th><th data-i18n="thStatus">Status</th></tr></thead>
+            <tbody>
+              <tr><td><code>--text-primary / --bg-main</code></td><td class="tabular-nums">16.85:1</td><td class="tabular-nums">18.36:1</td><td class="tabular-nums">15.33:1</td><td><span class="badge-pass">AAA</span></td></tr>
+              <tr><td><code>--text-muted / --bg-card</code></td><td class="tabular-nums">7.26:1</td><td class="tabular-nums">7.55:1</td><td class="tabular-nums">7.09:1</td><td><span class="badge-pass">AAA</span></td></tr>
+              <tr><td><code>--brand-primary / --bg-main</code></td><td class="tabular-nums">8.12:1</td><td class="tabular-nums">7.12:1</td><td class="tabular-nums">7.38:1</td><td><span class="badge-pass">AAA</span></td></tr>
+              <tr><td><code>--brand-accent / --bg-card</code></td><td class="tabular-nums">5.35:1</td><td class="tabular-nums">6.76:1</td><td class="tabular-nums">6.89:1</td><td><span class="badge-pass">AA</span></td></tr>
+              <tr><td><code>--receipt-text / --receipt-bg</code></td><td class="tabular-nums">15.78:1</td><td class="tabular-nums">15.78:1</td><td class="tabular-nums">16.06:1</td><td><span class="badge-pass">AAA</span></td></tr>
+            </tbody>
+          </table>
+        </div>
+      </div>
+    </section>
+
+    <!-- 07 TYPOGRAPHY -->
+    <section id="sec-type">
+      <div class="mono-label">07 / TYPOGRAPHY &amp; DE/EN/TR DIACRITICS</div>
+      <h2 data-i18n="sec07Title">Schriftenhierarchie &amp; Sonderzeichen-Test</h2>
+      <div class="grid-2">
+        <div class="card">
+          <div class="mono-label">SYNE 800 · SPACE GROTESK 700 · INSTRUMENT SERIF ITALIC</div>
+          <div style="font-family:var(--font-monument);font-weight:800;font-size:2.4rem;margin:12px 0;">DCC BERLIN</div>
+          <div style="font-size:1.9rem;font-weight:700;letter-spacing:-0.03em;">Feuer. <span style="font-family:var(--font-serif);font-style:italic;font-weight:400;color:var(--brand-primary);">Handwerk.</span> Clubkultur.</div>
+          <p style="margin-top:12px;font-family:var(--font-mono);font-size:0.88rem;color:var(--text-primary);overflow-wrap:anywhere;">ğüşiöçİĞÜŞÖÇ äöüßÄÖÜ € % 0123456789</p>
+        </div>
+        <div class="card">
+          <div class="mono-label" data-i18n="monoSpecLabel">JETBRAINS MONO · TABULAR-NUMS-BEISPIEL</div>
+          <div class="tabular-nums mono-spec">
+            <div data-i18n="specRow1">01 · 150 GÄSTE × 21,00 € ...... 3.150,00 €</div>
+            <div data-i18n="specRow2">02 · RABATT (10 %) ............ -315,00 €</div>
+            <div data-i18n="specRow3">03 · LIVE-STATION .............. +250,00 €</div>
+            <div style="color:var(--brand-primary);font-weight:700;" data-i18n="specRow4">04 · GESAMT BRUTTO (19 %) ... 3.671,15 €</div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- 08 GRID & MOTION -->
+    <section id="sec-grid">
+      <div class="mono-label">08 / SWISS GRID, SAFE ZONES &amp; MOTION</div>
+      <h2 data-i18n="sec08Title">12-Spalten-Raster, Safe Zones &amp; Physik</h2>
+      <div class="grid-3">
+        <div class="card">
+          <div class="mono-label" data-i18n="gridLabel">12-SPALTEN-RASTER</div>
+          <p style="margin-top:8px;" data-i18n-html="gridDesc">Max. Breite <code>1280px</code>, Gutter <code>24px</code> Desktop / <code>16px</code> Mobil, Goldener Schnitt <code>φ = 1.618</code>.</p>
+        </div>
+        <div class="card">
+          <div class="mono-label" data-i18n="safeLabel">9:16 &amp; 16:9 SAFE ZONES</div>
+          <p style="margin-top:8px;" data-i18n-html="safeDesc">Hochformat 9:16 hält <code>14%</code> oben &amp; <code>21%</code> unten frei. Querformat 16:9 hält <code>5.5%</code> Rand frei.</p>
+        </div>
+        <div class="card">
+          <div class="mono-label" data-i18n="motionLabel">MOTION EASING</div>
+          <p style="margin-top:8px;" data-i18n-html="motionDesc"><code>expo-out: cubic-bezier(0.16, 1, 0.3, 1)</code> · Stagger <code>45ms</code> · Keine lineare UI-Bewegung.</p>
+        </div>
+      </div>
+    </section>
+
+    <!-- 09 APPLICATIONS -->
+    <section id="sec-apps">
+      <div class="mono-label">09 / BRAND APPLICATIONS (6 PLATES)</div>
+      <h2 data-i18n="sec09Title">Verpackung, Bekleidung, Trailer &amp; Social Templates</h2>
+      <div class="grid-2" id="platesGrid"></div>
+    </section>
+
+    <!-- 10 OG & ASSET MANIFEST -->
+    <section id="sec-manifest">
+      <div class="mono-label">10 / OPENGRAPH &amp; ASSET MANIFEST</div>
+      <h2 data-i18n="sec10Title">Social Share Card &amp; Vollständiges Inventar</h2>
+      <div class="grid-2">
+        <div class="card plate-card">
+          <img src="../public/og-image.png" alt="OpenGraph 1200x630" />
+          <div class="mono-label">PUBLIC/OG-IMAGE.PNG · 1200×630 RGB</div>
+        </div>
+        <div class="card">
+          <h3 data-i18n="manifestHeading">Asset-Inventar</h3>
+          <ul class="manifest-list">
+            <li>../public/brand/logo-{primary,stacked,seal,monogram}-{light,dark,ember,mono}.{svg,png,@2x.png,webp}</li>
+            <li>../public/brand/plate-{wrap-paper,catering-box,chef-apron,trailer-livery,club-booth,social-templates}.png</li>
+            <li>../public/favicon.svg · favicon.ico · apple-touch-icon.png · icon-192.png · icon-512.png · site.webmanifest</li>
+            <li>../public/fonts/{SpaceGrotesk-Var,Syne-Var,InstrumentSerif-Regular,InstrumentSerif-Italic,JetBrainsMono-Var}.ttf</li>
+            <li>../public/media/{14 Blender 5.2 + ModernGL Culinary &amp; Stage Plates}.png</li>
+          </ul>
+        </div>
+      </div>
+    </section>
+  </main>
+
+  <div class="toast" id="toast">Copied!</div>
+
+  <script>
+    const I18N = {
+      de: {
+        printBtn: 'PDF / Drucken',
+        heroKicker: 'BERLIN · OFFENES FEUER · B2B & VIP CATERING',
+        heroHeadline: 'Feuer. <em>Handwerk.</em> Clubkultur.',
+        heroLead: 'Das komplette A-bis-Z Markenhandbuch für DCC Döner Catering Club — Architektonische Event-Gastronomie mit handgestecktem Yaprak-Handwerk und Berliner Präzision.',
+        sec01Title: 'Markenkern, Manifest & Zielgruppen',
+        manifestoTitle: 'Markenmanifest',
+        manifestoText: 'Feuer braucht Disziplin. Gastfreundschaft braucht Architektur. Wir holen den Döner aus der Ecke der Beliebigkeit auf die Bühne moderner Eventkultur. Handgesteckte Yaprak-Schichten, rauchige Glut, gebürsteter Stahl und Berliner Präzision — ob Vorstands-Summit für 40 Personen oder Festival-Nacht für 800 Gäste.',
+        p1Title: 'B2B Corporate Summits',
+        p1Body: 'Skalierbar, steuerkonform (19 % MwSt.), pünktlich. Mengenrabatte von 5–15 % ab 100 bis 800+ Gästen.',
+        p2Title: 'VIP Hochzeiten & Galas',
+        p2Body: 'Mitternachts-Highlight mit Edelstahl-Messing-Station, Meister-Trancheur, Steinofen-Pide & Baklava.',
+        p3Title: 'Festivals & Club Nights',
+        p3Body: 'Autarker mattschwarzer Club-Trailer mit maximalem Durchsatz, Halal- & Vegan-Seitan-Angebot.',
+        sec02Title: 'Tonalität & Offizielle Pressetexte',
+        bpShortLabel: 'KURZ-BOILERPLATE (~25 WÖRTER)',
+        bpShort: 'DCC Döner Catering Club bringt Berliner Clubkultur und handgestecktes Yaprak-Handwerk live zu Corporate Summits, Hochzeiten und Festivals — ab 30 bis 800+ Gästen.',
+        bpMedLabel: 'STANDARD-BOILERPLATE (~55 WÖRTER)',
+        bpMed: 'DCC Döner Catering Club verbindet handgeschichtete Spieße aus eigener Manufaktur mit architektonischen Live-Stationen und autarken Club-Trailern. Unser Sofort-Rechner kalkuliert Netto, 19 % MwSt. und Mengenrabatte in Sekunden — serviert auf höchstem Hygiene- und Halal-Standard.',
+        sec03Title: 'Logo-System & Kontrastvarianten',
+        sec03Sub: '4 Lockups × 4 Colorways (reine SVG-Pfade ohne <text>, plus @1x/@2x PNG & WebP).',
+        surfAuto: 'Auto',
+        sec04Title: 'Schutzraum (1x) & Mindestgrößen',
+        clearDesc: 'Der Schutzraum entspricht mindestens 1x dem Viertel des Emblem-Durchmessers auf allen vier Seiten.',
+        thLockup: 'Lockup',
+        thDigitalMin: 'Digital Min',
+        thPrintMin: 'Druck Min',
+        tdMonoMin: '28 px (16 px Favicon)',
+        sec05Title: '6 Verbindliche Schutzregeln',
+        dos1: 'NICHT VERZERREN',
+        dos2: 'KEIN SCHLAGSCHATTEN',
+        dos3: 'KEINE AI-NEON-VERLÄUFE',
+        dos4: 'SPIESS NICHT DREHEN',
+        dos5: 'POLARITÄT WAHREN',
+        dos6: '1x-SCHUTZRAUM FREIHALTEN',
+        sec06Title: 'Farbpalette & Barrierefreiheits-Matrix',
+        sec06Sub: 'Klick auf eine Farbkachel kopiert den Hex-Code sofort in die Zwischenablage.',
+        wcagHeading: 'WCAG 2.1 Kontrast-Verifizierung (Alle 3 Themes)',
+        thTokenPair: 'Token-Paar',
+        thStatus: 'Status',
+        copiedPrefix: 'Kopiert: ',
+        sec07Title: 'Schriftenhierarchie & Sonderzeichen-Test',
+        monoSpecLabel: 'JETBRAINS MONO · TABULAR-NUMS-BEISPIEL',
+        specRow1: '01 · 150 GÄSTE × 21,00 € ...... 3.150,00 €',
+        specRow2: '02 · RABATT (10 %) ............ -315,00 €',
+        specRow3: '03 · LIVE-STATION .............. +250,00 €',
+        specRow4: '04 · GESAMT BRUTTO (19 %) ... 3.671,15 €',
+        sec08Title: '12-Spalten-Raster, Safe Zones & Physik',
+        gridLabel: '12-SPALTEN-RASTER',
+        gridDesc: 'Max. Breite <code>1280px</code>, Gutter <code>24px</code> Desktop / <code>16px</code> Mobil, Goldener Schnitt <code>φ = 1.618</code>.',
+        safeLabel: '9:16 & 16:9 SAFE ZONES',
+        safeDesc: 'Hochformat 9:16 hält <code>14%</code> oben &amp; <code>21%</code> unten frei. Querformat 16:9 hält <code>5.5%</code> Rand frei.',
+        motionLabel: 'MOTION-PHYSIK & EASING',
+        motionDesc: '<code>expo-out: cubic-bezier(0.16, 1, 0.3, 1)</code> · Stagger <code>45ms</code> · Keine lineare UI-Bewegung.',
+        sec09Title: 'Verpackung, Bekleidung, Trailer & Social Templates',
+        plate1: '01 · FETTDICHTES BUTCHER-PAPIER',
+        plate2: '02 · EXECUTIVE CATERING-BOX',
+        plate3: '03 · GEWACHSTE CANVAS-SCHÜRZE',
+        plate4: '04 · CLUB-TRAILER FLOTTENDESIGN',
+        plate5: '05 · LIVE-STATION & MENÜ-TOTEM',
+        plate6: '06 · IG 1:1 & 9:16 SAFE ZONES',
+        sec10Title: 'Social Share Card & Vollständiges Inventar',
+        manifestHeading: 'Asset-Inventar',
+      },
+      en: {
+        printBtn: 'Print / PDF',
+        heroKicker: 'BERLIN · OPEN-FIRE ROTISSERIE · EVENT CATERING',
+        heroHeadline: 'Fire. <em>Craft.</em> Club Culture.',
+        heroLead: 'The complete A-to-Z brand identity system for DCC Döner Catering Club — architectural live-fire hospitality engineered for corporate summits, VIP galas, and festival courtyards.',
+        sec01Title: 'Brand Essence, Manifesto & Pillars',
+        manifestoTitle: 'Brand Manifesto',
+        manifestoText: 'Fire demands discipline. Hospitality demands architecture. We elevate Berlin’s most iconic street craft into contemporary event culture. Hand-stacked Yaprak layers, open-ember sear, brushed steel stations, and late-night club energy — engineered for 40 to 800+ guests.',
+        p1Title: 'B2B Corporate Summits',
+        p1Body: 'Scalable, invoice-ready (19% VAT breakdown), on the dot. Automated 5–15% volume tiers from 100 to 800+ guests.',
+        p2Title: 'VIP Weddings & Galas',
+        p2Body: 'Midnight culinary centerpiece with brushed steel & brass carving station, master carver, stone-baked pide & baklava.',
+        p3Title: 'Festivals & Club Nights',
+        p3Body: 'Self-contained matte-obsidian Club Trailer built for high-throughput service with certified Halal & Vegan Seitan options.',
+        sec02Title: 'Tone of Voice & Boilerplates',
+        bpShortLabel: 'SHORT BOILERPLATE (~25 WORDS)',
+        bpShort: 'DCC Döner Catering Club brings Berlin club culture and hand-stacked open-fire rotisserie live to corporate summits, weddings, and festivals for 30 to 800+ guests.',
+        bpMedLabel: 'MEDIUM BOILERPLATE (~55 WORDS)',
+        bpMed: 'DCC Döner Catering Club pairs artisan hand-layered spits with architectural live-carving stations and self-contained club trailers. From executive lunches in Berlin-Mitte to 800-guest festival courtyards, our instant calculator prices net totals, 19% VAT, and volume tiers in seconds under certified Halal and IFS standards.',
+        sec03Title: 'Logo Architecture & Colorways',
+        sec03Sub: '4 lockups × 4 colorways (pure SVG path outlines with zero <text>, plus @1x/@2x PNG & WebP).',
+        surfAuto: 'Auto',
+        sec04Title: 'Clear Space (1x) & Minimum Sizes',
+        clearDesc: 'Maintain at least 1x clear space (one-quarter of the emblem outer diameter) unobstructed on all four sides.',
+        thLockup: 'Lockup',
+        thDigitalMin: 'Digital Min',
+        thPrintMin: 'Print Min',
+        tdMonoMin: '28 px (16 px favicon)',
+        sec05Title: '6 Mandatory Protection Rules',
+        dos1: "DON'T STRETCH",
+        dos2: "DON'T ADD DROP SHADOW",
+        dos3: 'NO AI NEON GRADIENTS',
+        dos4: "DON'T ROTATE SPIT",
+        dos5: 'RESPECT POLARITY',
+        dos6: "DON'T INVADE 1x ZONE",
+        sec06Title: 'Color Palette & WCAG 2.1 Matrix',
+        sec06Sub: 'Click any color swatch to copy its hex value to the clipboard.',
+        wcagHeading: 'WCAG 2.1 Contrast Verification (All 3 Themes)',
+        thTokenPair: 'Token Pair',
+        thStatus: 'Status',
+        copiedPrefix: 'Copied ',
+        sec07Title: 'Type Hierarchy & DE/EN/TR Diacritics',
+        monoSpecLabel: 'JETBRAINS MONO · TABULAR-NUMS SPECIMEN',
+        specRow1: '01 · 150 GUESTS × €21.00 ...... €3,150.00',
+        specRow2: '02 · TIER DISCOUNT (10%) ...... -€315.00',
+        specRow3: '03 · LIVE CARVING STATION ..... +€250.00',
+        specRow4: '04 · TOTAL GROSS (19% VAT) .... €3,671.15',
+        sec08Title: '12-Column Grid, Safe Zones & Motion',
+        gridLabel: '12-COLUMN GRID',
+        gridDesc: 'Max width <code>1280px</code>, gutter <code>24px</code> desktop / <code>16px</code> mobile, Golden Ratio <code>φ = 1.618</code>.',
+        safeLabel: '9:16 & 16:9 SAFE ZONES',
+        safeDesc: 'Portrait 9:16 clears <code>14%</code> top &amp; <code>21%</code> bottom. Landscape 16:9 clears <code>5.5%</code> sides.',
+        motionLabel: 'MOTION EASING',
+        motionDesc: '<code>expo-out: cubic-bezier(0.16, 1, 0.3, 1)</code> · Stagger <code>45ms</code> · Zero raw linear UI motion.',
+        sec09Title: 'Packaging, Apparel, Fleet & Social Templates',
+        plate1: '01 · GREASEPROOF BUTCHER WRAP',
+        plate2: '02 · EXECUTIVE CATERING BOX',
+        plate3: '03 · WAXED CANVAS CARVER APRON',
+        plate4: '04 · CLUB-TRAILER FLEET LIVERY',
+        plate5: '05 · LIVE STATION & MENU TOTEM',
+        plate6: '06 · IG 1:1 & 9:16 SAFE ZONES',
+        sec10Title: 'OpenGraph Card & Complete Asset Manifest',
+        manifestHeading: 'Asset Manifest',
+      },
+      tr: {
+        printBtn: 'Yazdır / PDF',
+        heroKicker: 'BERLİN · AÇIK ATEŞ DÖNER · KURUMSAL & VIP',
+        heroHeadline: 'Ateş. <em>Zanaat.</em> Kulüp Kültürü.',
+        heroLead: 'DCC Döner Catering Club için A’dan Z’ye eksiksiz marka kimliği sistemi — el işçiliği yaprak şişler ve mimari canlı kesim istasyonlarıyla Berlin hassasiyeti.',
+        sec01Title: 'Marka Özü, Manifesto ve Hedef Kitle',
+        manifestoTitle: 'Marka Manifestosu',
+        manifestoText: 'Ateş disiplin ister. Misafirperverlik ise mimari. Sokak lezzetinin en ikonik mirasını modern etkinlik ve kulüp kültürünün merkezine taşıyoruz. El işçiliğiyle dizilmiş yaprak katmanları, meşe közü dengesi ve mat paslanmaz istasyonlarla 40 ila 800+ konuğa dakik servis.',
+        p1Title: 'Kurumsal Zirveler & B2B',
+        p1Body: 'Ölçeklenebilir, faturalı (%19 KDV dökümlü), dakik. 100’den 800+ konuğa kadar %5–15 otomatik hacim indirimi.',
+        p2Title: 'VIP Düğün ve Galalar',
+        p2Body: 'Mat çelik ve pirinç canlı kesim istasyonu, usta kesim şefi, taş fırın pide ve Gaziantep baklavasıyla gece yarısı imza lezzeti.',
+        p3Title: 'Festivaller & Kulüp Geceleri',
+        p3Body: 'Yüksek servis kapasiteli otonom Club-Trailer, sertifikalı Helal ve zanaat Vegan Seitan seçenekleriyle açık alanlara hazır.',
+        sec02Title: 'İletişim Dili ve Resmi Metinler',
+        bpShortLabel: 'KISA TANITIM (~25 KELİME)',
+        bpShort: 'DCC Döner Catering Club, Berlin kulüp kültürünü ve el işçiliği açık ateş döner zanaatını 30 ila 800+ konukluk kurumsal zirvelere, düğünlere ve festivallere taşır.',
+        bpMedLabel: 'ORTA TANITIM (~55 KELİME)',
+        bpMed: 'DCC Döner Catering Club, kendi üretimimiz el dizimi yaprak şişleri mimari canlı kesim istasyonları ve tam donanımlı Club-Trailer araçlarıyla buluşturur. Online hesaplayıcımız net toplamı, %19 KDV’yi ve hacim indirimlerini saniyeler içinde çıkarır; Helal ve IFS standartlarında servis edilir.',
+        sec03Title: 'Logo Mimarisi ve Renk Varyantları',
+        sec03Sub: '4 kilit düzeni × 4 renk varyantı (<text> etiketi olmadan saf SVG yolları, @1x/@2x PNG ve WebP).',
+        surfAuto: 'Oto',
+        sec04Title: 'Güvenli Boşluk (1x) ve Minimum Boyutlar',
+        clearDesc: 'Amblem dış çapının dörtte birine eşit 1x güvenli alan her dört kenarda boş bırakılmalıdır.',
+        thLockup: 'Kilit Düzeni',
+        thDigitalMin: 'Dijital Min',
+        thPrintMin: 'Baskı Min',
+        tdMonoMin: '28 px (16 px favicon)',
+        sec05Title: '6 Zorunlu Koruma Kuralı',
+        dos1: 'ESNETMEYİN / GERMEYİN',
+        dos2: 'GÖLGE EKLEMEYİN',
+        dos3: 'NEON GRADYAN KULLANMAYIN',
+        dos4: 'ŞİŞİ DÖNDÜRMEYİN',
+        dos5: 'KONTRAST POLARİTESİNİ KORU',
+        dos6: '1x GÜVENLİ ALANA GİRMEYİN',
+        sec06Title: 'Renk Sistemi ve WCAG 2.1 Kontrast Matrisi',
+        sec06Sub: 'Renk kodunu panoya kopyalamak için herhangi bir renk kartına tıklayın.',
+        wcagHeading: 'WCAG 2.1 Kontrast Doğrulaması (3 Tema)',
+        thTokenPair: 'Token Çifti',
+        thStatus: 'Durum',
+        copiedPrefix: 'Kopyalandı: ',
+        sec07Title: 'Tipografi Hiyerarşisi ve Türkçe/Almanca Testi',
+        monoSpecLabel: 'JETBRAINS MONO · TABULAR-NUMS ÖRNEĞİ',
+        specRow1: '01 · 150 KONUK × 21,00 € ...... 3.150,00 €',
+        specRow2: '02 · HACİM İNDİRİMİ (%10) ..... -315,00 €',
+        specRow3: '03 · CANLI İSTASYON ........... +250,00 €',
+        specRow4: '04 · GENEL TOPLAM (%19 KDV) ... 3.671,15 €',
+        sec08Title: '12 Sütun Izgara, Güvenli Alanlar ve Hareket',
+        gridLabel: '12 SÜTUN IZGARA',
+        gridDesc: 'Maks. genişlik <code>1280px</code>, oluk <code>24px</code> masaüstü / <code>16px</code> mobil, Altın Oran <code>φ = 1.618</code>.',
+        safeLabel: '9:16 & 16:9 GÜVENLİ ALANLAR',
+        safeDesc: 'Dikey 9:16 üstte <code>%14</code> ve altta <code>%21</code> boş bırakır. Yatay 16:9 kenarlardan <code>%5.5</code> boş bırakır.',
+        motionLabel: 'HAREKET FİZİĞİ & EASING',
+        motionDesc: '<code>expo-out: cubic-bezier(0.16, 1, 0.3, 1)</code> · Kademe <code>45ms</code> · Ham lineer geçiş yok.',
+        sec09Title: 'Ambalaj, Kıyafet, Araç Giydirme ve Sosyal Şablonlar',
+        plate1: '01 · YAĞ GEÇİRMEZ AMBALAJ KAĞIDI',
+        plate2: '02 · KURUMSAL CATERING KUTUSU',
+        plate3: '03 · MUMSU KANVAS ŞEF ÖNLÜĞÜ',
+        plate4: '04 · CLUB-TRAILER ARAÇ GİYDİRME',
+        plate5: '05 · CANLI İSTASYON VE MENÜ TOTEMİ',
+        plate6: '06 · IG 1:1 & 9:16 GÜVENLİ ALANLAR',
+        sec10Title: 'OpenGraph Kartı ve Tam Varlık Envanteri',
+        manifestHeading: 'Varlık Envanteri',
+      },
+    };
+
+    const LOCKUPS = ['logo-primary', 'logo-stacked', 'logo-seal', 'logo-monogram'];
+    const COLORWAYS = ['light', 'dark', 'ember', 'mono'];
+    let currentSurface = 'auto';
+    let currentLang = 'de';
+
+    function renderLogos() {
+      const grid = document.getElementById('logoGrid');
+      grid.innerHTML = '';
+      LOCKUPS.forEach(lockup => {
+        COLORWAYS.forEach(cw => {
+          const stem = `${lockup}-${cw}`;
+          let surfClass = 'surface-obsidian';
+          if (currentSurface === 'auto') {
+            surfClass = (cw === 'dark' || cw === 'mono') ? 'surface-limestone' : 'surface-obsidian';
+          } else {
+            surfClass = `surface-${currentSurface}`;
+          }
+          const card = document.createElement('div');
+          card.className = 'card';
+          card.innerHTML = `
+            <div class="logo-stage ${surfClass}">
+              <img src="../public/brand/${stem}.svg" alt="${stem}" />
+            </div>
+            <div class="mono-label">${stem}</div>
+            <div class="dl-links">
+              <a href="../public/brand/${stem}.svg" download>SVG</a>
+              <a href="../public/brand/${stem}.png" download>PNG</a>
+              <a href="../public/brand/${stem}@2x.png" download>@2x</a>
+              <a href="../public/brand/${stem}.webp" download>WEBP</a>
+            </div>
+          `;
+          grid.appendChild(card);
+        });
+      });
+    }
+
+    const SWATCHES = [
+      { name: 'Obsidian', token: '--bg-main', hex: '#0B0A09' },
+      { name: 'Charcoal', token: '--bg-card', hex: '#151311' },
+      { name: 'Warm Bone', token: '--text-primary', hex: '#F3ECE0' },
+      { name: 'Limestone', token: 'limestone --bg-main', hex: '#FAF6EF' },
+      { name: 'Burnished Brass', token: '--brand-primary', hex: '#D49B54' },
+      { name: 'Deep Bronze', token: 'limestone --brand-primary', hex: '#7A4710' },
+      { name: 'Lifted Ember', token: '--brand-accent', hex: '#E06440' },
+      { name: 'Ember Raw', token: '--swatch-ember-raw', hex: '#C84B27' },
+      { name: 'Emerald Club', token: 'emerald --bg-main', hex: '#071A14' },
+      { name: 'Lifted Herb', token: 'emerald --brand-accent', hex: '#7AB887' },
+      { name: 'Halal Herb Raw', token: '--swatch-herb-raw', hex: '#5D8A66' },
+      { name: 'Ash Muted', token: '--text-muted', hex: '#AAA193' },
+    ];
+
+    function renderSwatches() {
+      const grid = document.getElementById('swatchGrid');
+      grid.innerHTML = '';
+      SWATCHES.forEach(sw => {
+        const card = document.createElement('div');
+        card.className = 'swatch-card';
+        card.innerHTML = `
+          <div class="swatch-chip" style="background:${sw.hex};"></div>
+          <div class="swatch-meta">
+            <div style="font-weight:600;">${sw.name}</div>
+            <code>${sw.hex}</code>
+            <div style="font-size:0.75rem;color:var(--text-muted);margin-top:2px;">${sw.token}</div>
+          </div>
+        `;
+        card.addEventListener('click', () => {
+          navigator.clipboard?.writeText(sw.hex).catch(() => {});
+          const toast = document.getElementById('toast');
+          const dict = I18N[currentLang] || I18N.de;
+          toast.textContent = `${dict.copiedPrefix}${sw.hex}`;
+          toast.classList.add('show');
+          setTimeout(() => toast.classList.remove('show'), 1400);
+        });
+        grid.appendChild(card);
+      });
+    }
+
+    const DOS_RULES = [
+      { key: 'dos1', svg: '<rect x="30" y="38" width="160" height="24" rx="4" fill="#261E14" stroke="#E06440"/><text x="110" y="54" fill="#F3ECE0" font-size="13" text-anchor="middle" transform="scale(1.35,0.75) translate(-28,16)">DCC</text>' },
+      { key: 'dos2', svg: '<rect x="55" y="26" width="110" height="48" rx="6" fill="#000" opacity="0.7"/><rect x="50" y="22" width="110" height="48" rx="6" fill="#1F1C18" stroke="#E06440"/><text x="105" y="51" fill="#F3ECE0" font-size="14" text-anchor="middle">DCC</text>' },
+      { key: 'dos3', svg: '<defs><linearGradient id="badg" x1="0" x2="1"><stop offset="0%" stop-color="#8B5CF6"/><stop offset="100%" stop-color="#EC4899"/></linearGradient></defs><rect x="35" y="24" width="150" height="52" rx="8" fill="url(#badg)"/><text x="110" y="55" fill="#FFF" font-size="14" font-weight="700" text-anchor="middle">DCC</text>' },
+      { key: 'dos4', svg: '<g transform="rotate(28 110 50)"><circle cx="110" cy="50" r="26" fill="none" stroke="#E06440" stroke-width="2"/><line x1="110" y1="22" x2="110" y2="78" stroke="#E06440" stroke-width="3"/></g>' },
+      { key: 'dos5', svg: '<rect x="25" y="18" width="170" height="64" rx="8" fill="#FAF6EF"/><text x="110" y="55" fill="#EBE4D8" font-size="15" font-weight="700" text-anchor="middle">LIGHT ON LIGHT</text>' },
+      { key: 'dos6', svg: '<rect x="35" y="20" width="150" height="60" fill="none" stroke="#E06440" stroke-dasharray="4 3"/><text x="110" y="55" fill="#F3ECE0" font-size="14" text-anchor="middle">DCC</text><rect x="28" y="42" width="32" height="16" fill="#E06440"/>' },
+    ];
+
+    function renderDos() {
+      const grid = document.getElementById('dosGrid');
+      const dict = I18N[currentLang] || I18N.de;
+      grid.innerHTML = '';
+      DOS_RULES.forEach((rule, idx) => {
+        const title = dict[rule.key] || rule.key;
+        const card = document.createElement('div');
+        card.className = 'card';
+        card.innerHTML = `
+          <svg viewBox="0 0 220 100" style="width:100%;height:auto;background:#0B0A09;border-radius:8px;border:1px solid #2E2924;">
+            ${rule.svg}
+            <line x1="18" y1="18" x2="202" y2="82" stroke="#E06440" stroke-width="2" opacity="0.8"/>
+          </svg>
+          <div class="mono-label" style="margin-top:10px;color:var(--brand-accent);">0${idx + 1} · ${title}</div>
+        `;
+        grid.appendChild(card);
+      });
+    }
+
+    const PLATES = [
+      { file: 'plate-wrap-paper.png', key: 'plate1' },
+      { file: 'plate-catering-box.png', key: 'plate2' },
+      { file: 'plate-chef-apron.png', key: 'plate3' },
+      { file: 'plate-trailer-livery.png', key: 'plate4' },
+      { file: 'plate-club-booth.png', key: 'plate5' },
+      { file: 'plate-social-templates.png', key: 'plate6' },
+    ];
+
+    function renderPlates() {
+      const grid = document.getElementById('platesGrid');
+      const dict = I18N[currentLang] || I18N.de;
+      grid.innerHTML = '';
+      PLATES.forEach(p => {
+        const label = dict[p.key] || p.key;
+        const card = document.createElement('div');
+        card.className = 'card plate-card';
+        card.innerHTML = `
+          <img src="../public/brand/${p.file}" alt="${label}" />
+          <div class="mono-label">${label}</div>
+        `;
+        grid.appendChild(card);
+      });
+    }
+
+    function applyLang(lang) {
+      currentLang = I18N[lang] ? lang : 'de';
+      document.documentElement.lang = currentLang;
+      const dict = I18N[currentLang];
+      document.querySelectorAll('[data-i18n]').forEach(el => {
+        const k = el.getAttribute('data-i18n');
+        if (dict[k]) el.textContent = dict[k];
+      });
+      document.querySelectorAll('[data-i18n-html]').forEach(el => {
+        const k = el.getAttribute('data-i18n-html');
+        if (dict[k]) el.innerHTML = dict[k];
+      });
+      document.querySelectorAll('[data-lang]').forEach(btn => {
+        btn.classList.toggle('active', btn.getAttribute('data-lang') === currentLang);
+      });
+      renderDos();
+      renderPlates();
+    }
+
+    document.querySelectorAll('[data-lang]').forEach(btn => {
+      btn.addEventListener('click', () => applyLang(btn.getAttribute('data-lang')));
+    });
+
+    document.getElementById('surfaceToggle').addEventListener('click', (e) => {
+      const btn = e.target.closest('[data-surface]');
+      if (!btn) return;
+      currentSurface = btn.getAttribute('data-surface');
+      document.querySelectorAll('#surfaceToggle .seg-btn').forEach(b => b.classList.toggle('active', b === btn));
+      renderLogos();
+    });
+
+    renderLogos();
+    renderSwatches();
+    applyLang('de');
+  </script>
+</body>
+</html>
