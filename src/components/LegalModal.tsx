@@ -41,7 +41,7 @@ export function LegalModal({
 
   return (
     <div
-      className="fixed inset-0 z-50 flex items-center justify-center bg-black/75 p-4 backdrop-blur-sm overflow-y-auto"
+      className="fixed inset-0 z-[48] flex items-center justify-center bg-black/75 p-4 backdrop-blur-sm overflow-y-auto"
       onClick={onClose}
     >
       <div

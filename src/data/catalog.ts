@@ -356,7 +356,7 @@ export const LOGO_CANDIDATES: readonly LogoCandidateItem[] = [
     titles: {
       de: 'Orbit Ring Spit · Titan & Glut',
       en: 'Orbit Ring Spit · Titanium & Ember',
-      tr: 'Yörünge Halkalı Şiş · Titanyum & Kor',
+      tr: 'Yörünge Halkalı Döner · Titanyum & Kor',
     },
     tags: {
       de: '3D Titan · Club-Siegel',
@@ -377,7 +377,7 @@ export const LOGO_CANDIDATES: readonly LogoCandidateItem[] = [
     titles: {
       de: 'Doppel-C Monolith & Spieß',
       en: 'Double-C Monolith & Spit',
-      tr: 'Çift-C Monolit & Orta Şiş',
+      tr: 'Çift-C Monolit & Döner Silueti',
     },
     tags: {
       de: '3D Titan · Zentrierte Achse',
@@ -398,7 +398,7 @@ export const LOGO_CANDIDATES: readonly LogoCandidateItem[] = [
     titles: {
       de: 'D-Rahmen Spieß-Wortmarke',
       en: 'D-Frame Spit Wordmark',
-      tr: 'D-Çerçeve Şiş Tipografi',
+      tr: 'D-Çerçeve Döner Tipografi',
     },
     tags: {
       de: '3D Titan · Integriertes Icon',
@@ -408,7 +408,7 @@ export const LOGO_CANDIDATES: readonly LogoCandidateItem[] = [
     notes: {
       de: 'Der Dönerspieß verschmilzt direkt mit dem „D“ — kompakte Breite für Banner.',
       en: 'The döner spit lives inside the D letterform — compact footprint for headers.',
-      tr: 'Döner şişi doğrudan D harfinin içinde — header ve banner için kompakt oran.',
+      tr: 'Döner silueti doğrudan D harfinin içinde — header ve banner için kompakt oran.',
     },
   },
   {
@@ -429,7 +429,7 @@ export const LOGO_CANDIDATES: readonly LogoCandidateItem[] = [
     notes: {
       de: 'Dynamische S-Flamme im vertikalen Spieß-Schnitt — ideal für App & Intro.',
       en: 'Dynamic flame ribbons wrapping a vertical spit — ideal for app icon & intro.',
-      tr: 'Dikey şişi saran alev şeritleri — uygulama ikonu ve açılış sahnesi için güçlü.',
+      tr: 'Dikey döner kesimini saran alev şeritleri — uygulama ikonu ve açılış sahnesi için güçlü.',
     },
   },
   {
@@ -440,7 +440,7 @@ export const LOGO_CANDIDATES: readonly LogoCandidateItem[] = [
     titles: {
       de: 'Architektur-Spieß in Stahl',
       en: 'Architectural Steel Spit',
-      tr: 'Çelik Mimari Şiş',
+      tr: 'Çelik Mimari Döner',
     },
     tags: {
       de: '3D Titan · Hochkant-Lockup',
@@ -492,7 +492,7 @@ export const LOGO_CANDIDATES: readonly LogoCandidateItem[] = [
     notes: {
       de: 'Goldene Krone auf dem Spießkopf — perfekt für VIP-Hochzeiten und Print-Menüs.',
       en: 'Golden crown finial on layered charcoal & brass slices — ideal for VIP events & print.',
-      tr: 'Şiş tepesinde altın taç detayı — VIP düğünler, davetiyeler ve baskı menüler için ideal.',
+      tr: 'Döner tepesinde altın taç detayı — VIP düğünler, davetiyeler ve baskı menüler için ideal.',
     },
   },
   {
@@ -503,7 +503,7 @@ export const LOGO_CANDIDATES: readonly LogoCandidateItem[] = [
     titles: {
       de: 'Spiral-Band Spieß',
       en: 'Spiral Ribbon Spit',
-      tr: 'Spiral Şeritli Şiş',
+      tr: 'Spiral Şeritli Döner',
     },
     tags: {
       de: 'Minimal · Fine-Line',
@@ -555,7 +555,7 @@ export const LOGO_CANDIDATES: readonly LogoCandidateItem[] = [
     notes: {
       de: 'Geometrisches Drahtmodell mit goldenen Diagonalfugen und moderner Futura-Anmutung.',
       en: 'Geometric line-art cone with delicate gold seams and futuristic DCC letterforms.',
-      tr: 'Altın çapraz çizgili geometrik şiş ve fütüristik DCC harf formu.',
+      tr: 'Altın çapraz çizgili geometrik döner formu ve modern DCC harf dengesi.',
     },
   },
   {

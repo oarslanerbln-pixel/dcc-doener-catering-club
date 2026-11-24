@@ -28,7 +28,7 @@ export function ThemeSwitcher({
       data-testid="theme-switcher"
       role="group"
       aria-label={t.themeSwitcher.ariaLabel}
-      className="fixed bottom-20 md:bottom-4 left-3 z-30 inline-flex items-center gap-1 rounded-full border border-[var(--border-main)] bg-[var(--bg-card)]/95 p-1 shadow-xl backdrop-blur-md max-w-[calc(100vw-24px)]"
+      className="fixed bottom-20 md:bottom-4 left-3 z-30 inline-flex items-center gap-0.5 sm:gap-1 rounded-full border border-[var(--border-main)] bg-[var(--bg-card)]/95 p-1 shadow-xl backdrop-blur-md max-w-[calc(100vw-24px)] overflow-hidden"
     >
       <span className="hidden sm:inline-flex items-center pl-2 pr-1 text-[var(--brand-primary)]">
         <Palette className="h-3.5 w-3.5" />
@@ -45,7 +45,7 @@ export function ThemeSwitcher({
             aria-pressed={active}
             data-active={String(active)}
             onClick={() => onSelectTheme(id)}
-            className={`inline-flex items-center gap-1.5 rounded-full px-2.5 py-1 font-mono text-[11px] font-semibold transition cursor-pointer ${
+            className={`inline-flex items-center gap-1 sm:gap-1.5 rounded-full px-2 sm:px-2.5 py-1 font-mono text-[10px] sm:text-[11px] font-semibold transition cursor-pointer min-w-0 ${
               active
                 ? 'bg-[var(--brand-primary)] text-[var(--btn-text)]'
                 : 'text-[var(--text-secondary)] hover:text-[var(--text-primary)]'
@@ -55,7 +55,7 @@ export function ThemeSwitcher({
               className="h-2.5 w-2.5 rounded-full border border-white/30 shrink-0"
               style={{ backgroundColor: meta.previewHex }}
             />
-            <span className="truncate max-w-[88px] sm:max-w-none">
+            <span className="truncate max-w-[60px] sm:max-w-none">
               {t.themeSwitcher.themes[id]}
             </span>
           </button>
@@ -66,7 +66,7 @@ export function ThemeSwitcher({
         type="button"
         data-testid="replay-intro"
         onClick={onReplayIntro}
-        className="inline-flex items-center gap-1 rounded-full border-l border-[var(--border-main)] pl-2 pr-2.5 py-1 font-mono text-[11px] text-[var(--text-secondary)] transition hover:text-[var(--brand-primary)] cursor-pointer"
+        className="inline-flex items-center gap-1 rounded-full border-l border-[var(--border-main)] pl-2 pr-2 sm:pr-2.5 py-1 font-mono text-[11px] text-[var(--text-secondary)] transition hover:text-[var(--brand-primary)] cursor-pointer shrink-0"
       >
         <Play className="h-3 w-3 shrink-0" />
         <span className="hidden sm:inline">{t.themeSwitcher.replayIntro}</span>

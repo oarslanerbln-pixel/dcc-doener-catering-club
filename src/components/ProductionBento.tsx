@@ -12,14 +12,17 @@ const CARD_META = {
   manufaktur: {
     color: 'var(--brand-primary)',
     metric: '100% YAPRAK',
+    image: '/media/spit-yaprak-beef.png',
   },
   logistics: {
-    color: 'var(--accent-cyan)',
+    color: 'var(--brand-accent)',
     metric: '2–4 °C HACCP',
+    image: '/brand/plate-catering-box.png',
   },
   highspeed: {
     color: 'var(--accent-emerald)',
     metric: '180 / H',
+    image: '/brand/plate-club-booth.png',
   },
 } as const;
 
@@ -52,54 +55,63 @@ export function ProductionBento(): React.ReactElement {
               <article
                 key={card.id}
                 data-testid={`bento-card-${card.id}`}
-                className="apple-card relative flex flex-col justify-between overflow-hidden rounded-3xl p-6 sm:p-8"
+                className="apple-card relative flex flex-col justify-between overflow-hidden rounded-3xl"
               >
-                <div
-                  aria-hidden="true"
-                  className="mb-5 h-1 w-16 rounded-full"
-                  style={{ backgroundColor: meta.color }}
-                />
-
-                <div className="space-y-4">
-                  <div className="flex items-center justify-between gap-2">
-                    <span
-                      className="font-mono text-xs font-semibold uppercase tracking-wider"
-                      style={{ color: meta.color }}
-                    >
-                      {card.tag}
-                    </span>
-                    <span
-                      className="inline-flex h-11 w-11 items-center justify-center rounded-2xl border border-[var(--border-main)] bg-[var(--bg-subtle)]"
-                      style={{ color: meta.color }}
-                    >
-                      <Icon className="h-5 w-5" />
-                    </span>
-                  </div>
-
+                <div className="relative aspect-[16/10] w-full overflow-hidden bg-[var(--bg-subtle)] border-b border-[var(--border-main)]">
+                  <img
+                    src={meta.image}
+                    alt={card.title}
+                    width={640}
+                    height={400}
+                    className="h-full w-full object-cover transition duration-500 hover:scale-105"
+                  />
                   <div
-                    className="font-mono tabular-nums text-2xl sm:text-3xl font-bold"
-                    style={{ color: meta.color }}
+                    aria-hidden="true"
+                    className="pointer-events-none absolute inset-0 bg-gradient-to-t from-black/75 via-transparent to-transparent"
+                  />
+                  <span
+                    className="absolute bottom-3 left-4 font-mono tabular-nums text-lg sm:text-xl font-bold text-[#F3ECE0]"
+                    style={{ textShadow: '0 2px 12px rgba(0,0,0,0.65)' }}
                   >
                     {meta.metric}
-                  </div>
-
-                  <h3 className="font-monument text-xl font-bold text-[var(--text-primary)]">
-                    {card.title}
-                  </h3>
-
-                  <p className="text-sm leading-relaxed text-[var(--text-secondary)]">
-                    {card.description}
-                  </p>
+                  </span>
                 </div>
 
-                <div className="mt-6 pt-4 border-t border-[var(--border-main)]">
-                  <span
-                    className="inline-flex items-center gap-1.5 rounded-full border border-[var(--border-main)] bg-[var(--bg-subtle)] px-3.5 py-1.5 font-mono text-xs font-semibold"
-                    style={{ color: meta.color }}
-                  >
-                    <ShieldCheck className="h-3.5 w-3.5" />
-                    {card.checkBadge}
-                  </span>
+                <div className="flex flex-1 flex-col justify-between p-6 sm:p-7 space-y-5">
+                  <div className="space-y-3">
+                    <div className="flex items-center justify-between gap-2">
+                      <span
+                        className="font-mono text-xs font-semibold uppercase tracking-wider"
+                        style={{ color: meta.color }}
+                      >
+                        {card.tag}
+                      </span>
+                      <span
+                        className="inline-flex h-9 w-9 items-center justify-center rounded-xl border border-[var(--border-main)] bg-[var(--bg-subtle)]"
+                        style={{ color: meta.color }}
+                      >
+                        <Icon className="h-4 w-4" />
+                      </span>
+                    </div>
+
+                    <h3 className="font-monument text-xl font-bold text-[var(--text-primary)]">
+                      {card.title}
+                    </h3>
+
+                    <p className="text-sm leading-relaxed text-[var(--text-secondary)]">
+                      {card.description}
+                    </p>
+                  </div>
+
+                  <div className="pt-4 border-t border-[var(--border-main)]">
+                    <span
+                      className="inline-flex items-center gap-1.5 rounded-full border border-[var(--border-main)] bg-[var(--bg-subtle)] px-3.5 py-1.5 font-mono text-xs font-semibold"
+                      style={{ color: meta.color }}
+                    >
+                      <ShieldCheck className="h-3.5 w-3.5" />
+                      {card.checkBadge}
+                    </span>
+                  </div>
                 </div>
               </article>
             );

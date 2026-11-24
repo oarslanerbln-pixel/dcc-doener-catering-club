@@ -10,10 +10,18 @@ import {
 } from 'lucide-react';
 import { BRAND_ASSETS, BRAND_SWATCHES } from '../data/catalog';
 import { useLocale } from '../i18n';
-import type { LogoColorway, LogoLockup } from '../types/brand';
+import type {
+  LogoCandidateItem,
+  LogoColorway,
+  LogoLockup,
+} from '../types/brand';
+import { LogoStudio } from './LogoStudio';
 
 export interface BrandKitPortalProps {
   onBackToCalculator: () => void;
+  selectedCandidateId?: string | null;
+  onSelectCandidate?: (candidate: LogoCandidateItem | null) => void;
+  onLaunchAnimation?: () => void;
 }
 
 const LOCKUPS: readonly LogoLockup[] = [
@@ -35,6 +43,9 @@ function getSurfaceBg(surface: PreviewSurface, colorway: LogoColorway): string {
 
 export function BrandKitPortal({
   onBackToCalculator,
+  selectedCandidateId = null,
+  onSelectCandidate,
+  onLaunchAnimation,
 }: BrandKitPortalProps): React.ReactElement {
   const { t } = useLocale();
   const [surface, setSurface] = useState<PreviewSurface>('auto');
@@ -176,30 +187,30 @@ export function BrandKitPortal({
               aria-label={t.brandKit.logos.surfaceLabel}
               className="flex flex-wrap items-center gap-1.5 rounded-xl border border-[var(--border-main)] bg-[var(--bg-card)] p-1"
             >
-              {(
-                ['auto', 'obsidian', 'limestone', 'emerald'] as const
-              ).map((surf) => (
-                <div
-                  key={surf}
-                  role="tab"
-                  tabIndex={0}
-                  aria-selected={surface === surf}
-                  onClick={() => setSurface(surf)}
-                  onKeyDown={(e) => {
-                    if (e.key === 'Enter' || e.key === ' ') {
-                      e.preventDefault();
-                      setSurface(surf);
-                    }
-                  }}
-                  className={`rounded-lg px-2.5 py-1.5 font-mono text-xs transition cursor-pointer select-none ${
-                    surface === surf
-                      ? 'bg-[var(--brand-primary)] font-bold text-[var(--btn-text)]'
-                      : 'text-[var(--text-secondary)] hover:text-[var(--text-primary)]'
-                  }`}
-                >
-                  {t.brandKit.logos.surfaces[surf]}
-                </div>
-              ))}
+              {(['auto', 'obsidian', 'limestone', 'emerald'] as const).map(
+                (surf) => (
+                  <div
+                    key={surf}
+                    role="tab"
+                    tabIndex={0}
+                    aria-selected={surface === surf}
+                    onClick={() => setSurface(surf)}
+                    onKeyDown={(e) => {
+                      if (e.key === 'Enter' || e.key === ' ') {
+                        e.preventDefault();
+                        setSurface(surf);
+                      }
+                    }}
+                    className={`rounded-lg px-2.5 py-1.5 font-mono text-xs transition cursor-pointer select-none ${
+                      surface === surf
+                        ? 'bg-[var(--brand-primary)] font-bold text-[var(--btn-text)]'
+                        : 'text-[var(--text-secondary)] hover:text-[var(--text-primary)]'
+                    }`}
+                  >
+                    {t.brandKit.logos.surfaces[surf]}
+                  </div>
+                )
+              )}
             </div>
           </div>
 
@@ -498,6 +509,17 @@ export function BrandKitPortal({
             ))}
           </div>
         </div>
+
+        {/* 08 · Partner Logo Studio (11 Concepts) */}
+        {onSelectCandidate && onLaunchAnimation && (
+          <div className="border-t border-[var(--border-main)] pt-10">
+            <LogoStudio
+              selectedCandidateId={selectedCandidateId}
+              onSelectCandidate={onSelectCandidate}
+              onLaunchAnimation={onLaunchAnimation}
+            />
+          </div>
+        )}
       </div>
     </section>
   );

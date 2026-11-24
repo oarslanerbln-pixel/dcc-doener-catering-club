@@ -40,18 +40,15 @@ export function Header({
       className="sticky top-0 z-30 w-full border-b border-[var(--border-main)]/80 backdrop-blur-2xl"
       style={{ backgroundColor: 'var(--navbar-bg)' }}
     >
-      {/* Tesla Telemetry Top Micro-Strip */}
-      <div className="border-b border-[var(--border-main)]/50 bg-[var(--bg-subtle)]/50">
-        <div className="mx-auto flex max-w-7xl items-center justify-between gap-2 px-3 py-1 sm:px-6 font-mono text-[10px] text-[var(--text-muted)]">
-          <span className="inline-flex items-center gap-2 truncate font-semibold tracking-wider text-[var(--text-secondary)]">
+      {/* Discreet Private Club Heritage Micro-Strip */}
+      <div className="border-b border-[var(--border-main)]/60 bg-[var(--bg-subtle)]/40">
+        <div className="mx-auto flex max-w-7xl items-center justify-between gap-2 px-3 py-1.5 sm:px-6 font-mono text-[10px] tracking-widest text-[var(--text-muted)]">
+          <span className="inline-flex items-center gap-2 truncate uppercase text-[var(--text-secondary)]">
             <span
               className="h-1.5 w-1.5 rounded-full shrink-0"
-              style={{
-                backgroundColor: 'var(--accent-emerald)',
-                boxShadow: '0 0 8px var(--accent-emerald)',
-              }}
+              style={{ backgroundColor: 'var(--brand-primary)' }}
             />
-            <span>DCC · CATERING STUDIO · {t.header.brandSubtitle}</span>
+            <span>DCC · PRIVATE CULINARY CLUB · {t.header.brandSubtitle}</span>
           </span>
           <div className="flex items-center gap-3 shrink-0">
             <a
@@ -88,7 +85,7 @@ export function Header({
         </div>
       </div>
 
-      {/* Main Floating Apple Glass Capsule Dock */}
+      {/* Main Architectural Glass Navigation Bar */}
       <div className="mx-auto flex max-w-7xl items-center justify-between gap-2 px-3 py-2.5 sm:px-6">
         <a
           href="#hero"
@@ -105,10 +102,10 @@ export function Header({
           />
         </a>
 
-        {/* Center Apple Pill Nav */}
+        {/* Clean 4-Section Customer Navigation + Brand Portal */}
         <nav
           aria-label="Primary Navigation"
-          className="hidden lg:flex items-center gap-1 rounded-full border border-[var(--border-main)] bg-[var(--bg-subtle)]/75 p-1 shadow-inner backdrop-blur-xl text-xs font-medium text-[var(--text-secondary)]"
+          className="hidden lg:flex items-center gap-1 rounded-full border border-[var(--border-main)] bg-[var(--bg-subtle)]/70 p-1 backdrop-blur-xl text-xs font-medium text-[var(--text-secondary)]"
         >
           <a
             href="#rechner"
@@ -132,13 +129,6 @@ export function Header({
             {t.header.nav.production}
           </a>
           <a
-            href="#logo-studio"
-            onClick={(e) => handleAnchorClick(e, '#logo-studio')}
-            className="rounded-full px-3.5 py-1.5 transition hover:bg-[var(--bg-card)] hover:text-[var(--brand-primary)]"
-          >
-            Logo Studio
-          </a>
-          <a
             href="#faq"
             onClick={(e) => handleAnchorClick(e, '#faq')}
             className="rounded-full px-3.5 py-1.5 transition hover:bg-[var(--bg-card)] hover:text-[var(--text-primary)]"
@@ -151,7 +141,7 @@ export function Header({
             className={`inline-flex items-center gap-1.5 rounded-full px-3.5 py-1.5 font-mono text-[11px] uppercase tracking-wider transition ${
               activeView === 'brand-kit'
                 ? 'bg-[var(--brand-primary)] text-[var(--btn-text)] font-bold shadow-sm'
-                : 'text-[var(--text-secondary)] hover:bg-[var(--bg-card)] hover:text-[var(--brand-primary)]'
+                : 'text-[var(--text-muted)] hover:bg-[var(--bg-card)] hover:text-[var(--brand-primary)]'
             }`}
           >
             <Sparkles className="h-3 w-3" />

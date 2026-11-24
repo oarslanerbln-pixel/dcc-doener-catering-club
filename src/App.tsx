@@ -3,12 +3,11 @@ import { BrandKitPortal } from './components/BrandKitPortal';
 import { Calculator } from './components/Calculator';
 import { CorporateFaq } from './components/CorporateFaq';
 import { Footer } from './components/Footer';
-import { Gallery } from './components/Gallery';
+import { Gallery, type GalleryPreset } from './components/Gallery';
 import { Header } from './components/Header';
 import { Hero } from './components/Hero';
 import { IntroSplash } from './components/IntroSplash';
 import { LegalModal, type LegalDocId } from './components/LegalModal';
-import { LogoStudio } from './components/LogoStudio';
 import { MobileBottomBar } from './components/MobileBottomBar';
 import { ProductionBento } from './components/ProductionBento';
 import { QuoteModal } from './components/QuoteModal';
@@ -41,7 +40,8 @@ function resolveInitialView(): 'main' | 'brand-kit' {
   try {
     const params = new URLSearchParams(window.location.search);
     if (params.get('view') === 'brand-kit') return 'brand-kit';
-    if (window.location.hash === '#brand-kit') return 'brand-kit';
+    const hash = window.location.hash.toLowerCase();
+    if (hash === '#brand-kit' || hash === '#logo-studio') return 'brand-kit';
   } catch {
     // ignore URL errors
   }
@@ -51,7 +51,7 @@ function resolveInitialView(): 'main' | 'brand-kit' {
 function AppContent(): React.ReactElement {
   const { locale, t } = useLocale();
   const [theme, setTheme] = useState<ThemeId>('obsidian');
-  const [splashOpen, setSplashOpen] = useState<boolean>(true);
+  const [splashOpen, setSplashOpen] = useState<boolean>(false);
   const [activeView, setActiveView] = useState<'main' | 'brand-kit'>(
     resolveInitialView
   );
@@ -103,11 +103,11 @@ function AppContent(): React.ReactElement {
     }
   }, []);
 
-  // Listen to URL hash changes for #brand-kit, #impressum, #datenschutz, #ifs
+  // Listen to URL hash changes for #brand-kit, #logo-studio, #impressum, #datenschutz, #ifs
   useEffect(() => {
     const handleHash = () => {
       const h = window.location.hash.toLowerCase();
-      if (h === '#brand-kit') {
+      if (h === '#brand-kit' || h === '#logo-studio') {
         setActiveView('brand-kit');
       } else if (h === '#impressum') {
         setQuoteModalOpen(false);
@@ -152,6 +152,24 @@ function AppContent(): React.ReactElement {
   const handleOpenLegalModal = useCallback((docId: LegalDocId) => {
     setQuoteModalOpen(false);
     setActiveLegalDoc(docId);
+  }, []);
+
+  const handleApplyGalleryPreset = useCallback((preset: GalleryPreset) => {
+    setCalculatorInput((prev) => ({
+      ...prev,
+      guests: preset.guests,
+      meatId: preset.meatId,
+      setupId: preset.setupId,
+      eventType: preset.eventType,
+      extras: preset.extras,
+      enterprise800Plus: preset.guests > 800,
+    }));
+    if (typeof window !== 'undefined') {
+      const el = document.getElementById('rechner');
+      if (el) {
+        el.scrollIntoView({ behavior: 'smooth' });
+      }
+    }
   }, []);
 
   const handleDirectWhatsApp = useCallback(() => {
@@ -216,10 +234,16 @@ function AppContent(): React.ReactElement {
         {activeView === 'brand-kit' ? (
           <BrandKitPortal
             onBackToCalculator={() => handleSelectView('main', '#rechner')}
+            selectedCandidateId={selectedCandidate?.id ?? null}
+            onSelectCandidate={setSelectedCandidate}
+            onLaunchAnimation={() => setSplashOpen(true)}
           />
         ) : (
           <>
             <Hero
+              input={calculatorInput}
+              result={calculatorResult}
+              onChangeInput={setCalculatorInput}
               onOpenBrandKit={() => handleSelectView('brand-kit', '#brand-kit')}
               selectedCandidate={selectedCandidate}
               onClearCandidate={() => setSelectedCandidate(null)}
@@ -232,14 +256,9 @@ function AppContent(): React.ReactElement {
               onOpenModal={handleOpenQuoteModal}
               onDirectWhatsApp={handleDirectWhatsApp}
             />
-            <Gallery />
+            <Gallery onApplyPreset={handleApplyGalleryPreset} />
             <ProductionBento />
-            <LogoStudio
-              selectedCandidateId={selectedCandidate?.id ?? null}
-              onSelectCandidate={setSelectedCandidate}
-              onLaunchAnimation={() => setSplashOpen(true)}
-            />
-            <CorporateFaq />
+            <CorporateFaq onOpenQuoteModal={handleOpenQuoteModal} />
           </>
         )}
       </main>

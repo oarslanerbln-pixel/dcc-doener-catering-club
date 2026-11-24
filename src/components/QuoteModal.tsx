@@ -3,11 +3,13 @@ import {
   AlertCircle,
   Check,
   Copy,
+  Mail,
   MessageCircle,
   Printer,
   Sparkles,
   X,
 } from 'lucide-react';
+import { BRAND_METADATA } from '../data/catalog';
 import {
   buildQuoteText,
   buildWhatsAppUrl,
@@ -34,6 +36,12 @@ export interface QuoteModalProps {
 }
 
 const EXTRA_KEYS: readonly ExtraId[] = ['bread_salad', 'drinks', 'dessert'];
+
+const EMAIL_ACTION_LABEL = {
+  de: 'Per B2B E-Mail',
+  en: 'Send B2B Email',
+  tr: 'B2B E-Posta',
+} as const;
 
 function getTodayIso(): string {
   const now = new Date();
@@ -154,6 +162,19 @@ export function QuoteModal({
     const text = assembleQuoteText();
     const waUrl = buildWhatsAppUrl(text);
     window.open(waUrl, '_blank', 'noopener,noreferrer');
+  };
+
+  const handleEmailSubmit = () => {
+    const validation = validateQuoteContact(contact, getTodayIso());
+    if (!validation.valid) {
+      setErrors(validation.errors);
+      return;
+    }
+    setErrors({});
+    const text = assembleQuoteText();
+    const subject = `${t.quoteTemplates.header} (${quoteId})`;
+    const mailtoUrl = `mailto:${BRAND_METADATA.email}?subject=${encodeURIComponent(subject)}&body=${encodeURIComponent(text)}`;
+    window.location.href = mailtoUrl;
   };
 
   const handleCopyQuote = async () => {
@@ -457,12 +478,12 @@ export function QuoteModal({
         </div>
 
         {/* Actions */}
-        <div className="mt-6 flex flex-wrap items-center gap-3 border-t border-[var(--border-main)] pt-4">
+        <div className="mt-6 flex flex-wrap items-center gap-2.5 border-t border-[var(--border-main)] pt-4">
           <button
             type="button"
             data-testid="modal-whatsapp"
             onClick={handleWhatsAppSubmit}
-            className="flex-1 min-w-[200px] inline-flex items-center justify-center gap-2 rounded-xl bg-[var(--brand-primary)] px-5 py-3 text-xs sm:text-sm font-semibold uppercase tracking-wider text-[var(--btn-text)] shadow-md transition hover:bg-[var(--brand-hover)] cursor-pointer"
+            className="flex-1 min-w-[180px] inline-flex items-center justify-center gap-2 rounded-xl bg-[var(--brand-primary)] px-4 py-3 text-xs sm:text-sm font-semibold uppercase tracking-wider text-[var(--btn-text)] shadow-md transition hover:bg-[var(--brand-hover)] cursor-pointer"
           >
             <MessageCircle className="h-4 w-4" />
             <span>{t.quoteModal.actions.whatsapp}</span>
@@ -470,9 +491,19 @@ export function QuoteModal({
 
           <button
             type="button"
+            data-testid="modal-email"
+            onClick={handleEmailSubmit}
+            className="inline-flex items-center justify-center gap-1.5 rounded-xl border border-[var(--brand-primary)]/60 bg-[var(--badge-bg)] px-4 py-3 text-xs sm:text-sm font-semibold text-[var(--badge-text)] transition hover:bg-[var(--brand-primary)] hover:text-[var(--btn-text)] cursor-pointer"
+          >
+            <Mail className="h-4 w-4" />
+            <span>{EMAIL_ACTION_LABEL[locale]}</span>
+          </button>
+
+          <button
+            type="button"
             data-testid="modal-copy"
             onClick={handleCopyQuote}
-            className="inline-flex items-center justify-center gap-1.5 rounded-xl border border-[var(--border-main)] bg-[var(--bg-subtle)] px-4 py-3 text-xs sm:text-sm font-semibold text-[var(--text-primary)] transition hover:border-[var(--brand-primary)] cursor-pointer"
+            className="inline-flex items-center justify-center gap-1.5 rounded-xl border border-[var(--border-main)] bg-[var(--bg-subtle)] px-3.5 py-3 text-xs sm:text-sm font-semibold text-[var(--text-primary)] transition hover:border-[var(--brand-primary)] cursor-pointer"
           >
             {copied ? (
               <Check className="h-4 w-4 text-[var(--brand-primary)]" />
@@ -488,7 +519,7 @@ export function QuoteModal({
             type="button"
             data-testid="modal-print"
             onClick={handlePrint}
-            className="inline-flex items-center justify-center gap-1.5 rounded-xl border border-[var(--border-main)] bg-[var(--bg-subtle)] px-4 py-3 text-xs sm:text-sm font-semibold text-[var(--text-primary)] transition hover:border-[var(--brand-primary)] cursor-pointer"
+            className="inline-flex items-center justify-center gap-1.5 rounded-xl border border-[var(--border-main)] bg-[var(--bg-subtle)] px-3.5 py-3 text-xs sm:text-sm font-semibold text-[var(--text-primary)] transition hover:border-[var(--brand-primary)] cursor-pointer"
           >
             <Printer className="h-4 w-4" />
             <span>{t.quoteModal.actions.print}</span>

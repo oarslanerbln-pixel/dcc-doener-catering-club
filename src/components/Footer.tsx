@@ -13,21 +13,27 @@ export interface FooterProps {
   onOpenLegal: (docId: LegalDocId) => void;
 }
 
+const PARTNER_STUDIO_LABEL = {
+  de: 'Partner Logo Studio (11)',
+  en: 'Partner Logo Studio (11)',
+  tr: 'Ortak Logo Stüdyosu (11)',
+} as const;
+
 export function Footer({
   theme,
   activeView,
   onSelectView,
   onOpenLegal,
 }: FooterProps): React.ReactElement {
-  const { t } = useLocale();
+  const { locale, t } = useLocale();
 
   const handleSectionLink = (
     e: React.MouseEvent<HTMLAnchorElement>,
     hash: string
   ) => {
-    if (hash === '#brand-kit') {
+    if (hash === '#brand-kit' || hash === '#logo-studio') {
       e.preventDefault();
-      onSelectView('brand-kit', '#brand-kit');
+      onSelectView('brand-kit', hash);
       return;
     }
     if (activeView !== 'main') {
@@ -127,15 +133,6 @@ export function Footer({
                 </li>
                 <li>
                   <a
-                    href="#logo-studio"
-                    onClick={(e) => handleSectionLink(e, '#logo-studio')}
-                    className="hover:text-[var(--brand-primary)]"
-                  >
-                    Logo Studio (11)
-                  </a>
-                </li>
-                <li>
-                  <a
                     href="#faq"
                     onClick={(e) => handleSectionLink(e, '#faq')}
                     className="hover:text-[var(--brand-primary)]"
@@ -150,6 +147,15 @@ export function Footer({
                     className="hover:text-[var(--brand-primary)] font-semibold text-[var(--text-primary)]"
                   >
                     {t.footer.brandKitLink}
+                  </a>
+                </li>
+                <li>
+                  <a
+                    href="#brand-kit"
+                    onClick={(e) => handleSectionLink(e, '#logo-studio')}
+                    className="hover:text-[var(--brand-primary)] text-xs"
+                  >
+                    {PARTNER_STUDIO_LABEL[locale]}
                   </a>
                 </li>
               </ul>

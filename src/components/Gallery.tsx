@@ -1,17 +1,77 @@
 import React, { useState } from 'react';
-import { CheckCircle2, ChevronLeft, ChevronRight } from 'lucide-react';
+import {
+  ArrowUpRight,
+  CheckCircle2,
+  ChevronLeft,
+  ChevronRight,
+} from 'lucide-react';
 import { GALLERY_SLIDES } from '../data/catalog';
 import { useLocale } from '../i18n';
+import type {
+  EventType,
+  ExtraId,
+  MeatId,
+  SetupId,
+} from '../types/catering';
+
+export interface GalleryPreset {
+  guests: number;
+  meatId: MeatId;
+  setupId: SetupId;
+  eventType: EventType;
+  extras: Record<ExtraId, boolean>;
+}
+
+export interface GalleryProps {
+  onApplyPreset?: (preset: GalleryPreset) => void;
+}
 
 const SLIDE_ACCENTS = [
   'var(--brand-primary)',
-  'var(--accent-rose)',
+  'var(--brand-accent)',
   'var(--accent-emerald)',
-  'var(--accent-cyan)',
+  '#C89D66',
 ] as const;
 
-export function Gallery(): React.ReactElement {
-  const { t } = useLocale();
+const SLIDE_PRESETS: readonly GalleryPreset[] = [
+  {
+    guests: 250,
+    meatId: 'scheiben',
+    setupId: 'station',
+    eventType: 'corporate',
+    extras: { bread_salad: true, drinks: true, dessert: false },
+  },
+  {
+    guests: 140,
+    meatId: 'duo',
+    setupId: 'station',
+    eventType: 'private',
+    extras: { bread_salad: true, drinks: true, dessert: true },
+  },
+  {
+    guests: 500,
+    meatId: 'kalb',
+    setupId: 'truck',
+    eventType: 'festival',
+    extras: { bread_salad: true, drinks: true, dessert: false },
+  },
+  {
+    guests: 80,
+    meatId: 'scheiben',
+    setupId: 'station',
+    eventType: 'corporate',
+    extras: { bread_salad: true, drinks: true, dessert: true },
+  },
+];
+
+const LOAD_PRESET_COPY = {
+  de: 'Paket im Rechner laden',
+  en: 'Load Setup in Calculator',
+  tr: 'Paketi Hesaplayıcıya Yükle',
+} as const;
+
+export function Gallery({ onApplyPreset }: GalleryProps): React.ReactElement {
+  const { locale, t } = useLocale();
   const [activeIndex, setActiveIndex] = useState(0);
   const total = GALLERY_SLIDES.length;
 
@@ -26,6 +86,7 @@ export function Gallery(): React.ReactElement {
   const currentMedia = GALLERY_SLIDES[activeIndex] ?? GALLERY_SLIDES[0];
   const currentCopy = t.gallery.slides[activeIndex] ?? t.gallery.slides[0];
   const accentColor = SLIDE_ACCENTS[activeIndex % SLIDE_ACCENTS.length];
+  const currentPreset = SLIDE_PRESETS[activeIndex] ?? SLIDE_PRESETS[0];
 
   return (
     <section
@@ -74,6 +135,43 @@ export function Gallery(): React.ReactElement {
               <ChevronRight className="h-5 w-5" />
             </button>
           </div>
+        </div>
+
+        {/* 4-Scenario Interactive Strip */}
+        <div className="grid grid-cols-2 gap-3 lg:grid-cols-4">
+          {GALLERY_SLIDES.map((slide, idx) => {
+            const copy = t.gallery.slides[idx] ?? t.gallery.slides[0];
+            const active = idx === activeIndex;
+            return (
+              <button
+                key={slide.id}
+                type="button"
+                data-testid={`gallery-scenario-${slide.id}`}
+                onClick={() => setActiveIndex(idx)}
+                className={`flex items-center gap-3 rounded-2xl border p-2.5 text-left transition cursor-pointer ${
+                  active
+                    ? 'border-[var(--brand-primary)] bg-[var(--bg-card)] ring-1 ring-[var(--brand-primary)] shadow-md'
+                    : 'border-[var(--border-main)] bg-[var(--bg-subtle)]/60 hover:border-[var(--brand-primary)]/60'
+                }`}
+              >
+                <img
+                  src={slide.image}
+                  alt={copy.title}
+                  width={96}
+                  height={64}
+                  className="h-12 w-16 rounded-xl object-cover shrink-0 border border-[var(--border-main)]"
+                />
+                <div className="min-w-0">
+                  <div className="font-mono text-[10px] uppercase tracking-wider text-[var(--brand-primary)] truncate">
+                    {copy.tag}
+                  </div>
+                  <div className="font-monument text-xs font-bold text-[var(--text-primary)] truncate">
+                    {copy.title}
+                  </div>
+                </div>
+              </button>
+            );
+          })}
         </div>
 
         {/* Cinema Split Showcase Card */}
@@ -128,6 +226,20 @@ export function Gallery(): React.ReactElement {
                   </li>
                 ))}
               </ul>
+
+              {onApplyPreset && (
+                <div className="pt-2">
+                  <button
+                    type="button"
+                    data-testid="gallery-apply-preset"
+                    onClick={() => onApplyPreset(currentPreset)}
+                    className="inline-flex items-center gap-2 rounded-full border border-[var(--brand-primary)] bg-[var(--badge-bg)] px-4 py-2 font-mono text-xs font-semibold text-[var(--badge-text)] transition hover:bg-[var(--brand-primary)] hover:text-[var(--btn-text)] cursor-pointer"
+                  >
+                    <span>{LOAD_PRESET_COPY[locale]}</span>
+                    <ArrowUpRight className="h-3.5 w-3.5" />
+                  </button>
+                </div>
+              )}
             </div>
 
             {/* Indicator Dots */}

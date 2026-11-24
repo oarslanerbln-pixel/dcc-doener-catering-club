@@ -4,7 +4,7 @@ export const tr: TranslationSchema = {
   meta: {
     title: 'DCC Döner Catering Club — Canlı Döner Catering & Hesaplayıcı',
     description:
-      'Ember-Cut Architectural Hospitality: Berlin’de 30 ila 800+ konukluk etkinlikler için el dizimi yaprak döner şişleri, canlı kesim istasyonları ve otonom Club-Trailer.',
+      'Ember-Cut Architectural Hospitality: Berlin’de 30 ila 800+ konukluk etkinlikler için el dizimi yaprak dönerler, canlı kesim istasyonları ve otonom Club-Trailer.',
     skipToContent: 'Ana içeriğe geç',
   },
   header: {
@@ -40,7 +40,7 @@ export const tr: TranslationSchema = {
     headlineAccent: 'Zanaat.',
     headlineSuffix: 'Kulüp Kültürü.',
     subtitle:
-      'El işçiliğiyle dizilmiş yaprak et katmanları, köz dengesi ve Berlin hassasiyeti — 30 kişiden başlayan kurumsal zirveler, düğünler ve festival geceleri için şişten canlı kesim.',
+      'El işçiliğiyle dizilmiş yaprak et katmanları, köz dengesi ve Berlin hassasiyeti — 30 kişiden başlayan kurumsal zirveler, düğünler ve festival geceleri için ocak başından canlı döner kesimi.',
     primaryCta: 'Bütçeyi Şimdi Hesapla',
     secondaryCta: 'Etkinlik Galerisini Gör',
     brandKitCta: 'Marka Kiti & Kurallar',
@@ -97,7 +97,7 @@ export const tr: TranslationSchema = {
         enterpriseToggle: '800+ Kurumsal / Büyük Etkinlik',
         enterpriseActiveNote:
           '800+ Kurumsal mod aktif: özet fişi 800 kişilik taban bütçeyi gösterir, teklifiniz tam ölçeği taşır.',
-        tiersLabel: 'Tüm döner şişlerinde otomatik hacim indirimi',
+        tiersLabel: 'Tüm döner çeşitlerinde otomatik hacim indirimi',
         tiers: {
           tier0: '30–99 · Temel tarife',
           tier5: '100–249 · %5 indirim',
@@ -124,9 +124,9 @@ export const tr: TranslationSchema = {
       },
       spits: {
         index: '02',
-        title: 'Üretim Mutfağından Döner Şiş Seçimi',
+        title: 'Üretim Mutfağından Döner Seçimi',
         subtitle:
-          'Her şiş Berlin’de günlük olarak el emeğiyle hazırlanır — %100 yaprak etten özel vegan seitan şişe kadar.',
+          'Her döner Berlin’de günlük olarak el emeğiyle hazırlanır — %100 yaprak etten özel vegan seitan dönere kadar.',
         perGuestSuffix: '/ kişi',
         discountedBadgePrefix: 'dahil',
         duoMinBadge: 'min. 100 kişi',
@@ -156,7 +156,7 @@ export const tr: TranslationSchema = {
           },
           duo: {
             roman: 'IV',
-            badge: 'min. 100 kişi · Çift Şiş',
+            badge: 'min. 100 kişi · Çift Döner',
             title: 'Signature Duo (Dana + Tavuk)',
             spec: 'Büyük şirket etkinlikleri ve düğünler için aynı anda iki ocak ve çift kesim ustasıyla maksimum çeşitlilik.',
             dietaryTag: 'Helal · Çift İstasyon',
@@ -164,8 +164,8 @@ export const tr: TranslationSchema = {
           vegan: {
             roman: 'V',
             badge: '%100 Bitkisel',
-            title: 'Zanaat Vegan Seitan Şiş',
-            spec: 'Ayrı ocakta pişen isli organik seitan dilimleri, taze ot yağı, nar ekşisi dokunuşu ve köz sebzelerle.',
+            title: 'Zanaat Vegan Seitan Döner',
+            spec: 'Ayrı döner ocağında pişen isli organik seitan dilimleri, taze ot yağı, nar ekşisi dokunuşu ve köz sebzelerle.',
             dietaryTag: 'Vegan · Ayrı Ekipman',
           },
         },
@@ -226,7 +226,7 @@ export const tr: TranslationSchema = {
     dateLabel: 'Tarih',
     guestsLabel: 'Misafir Sayısı',
     eventTypeLabel: 'Format',
-    meatLabel: 'Şiş Seçimi',
+    meatLabel: 'Döner Seçimi',
     discountLabel: 'Hacim İndirimi',
     setupLabel: 'Kurulum',
     extrasLabel: 'Ekstralar',
@@ -355,7 +355,7 @@ export const tr: TranslationSchema = {
         bullets: [
           'Mekân mutfağından tamamen bağımsız çalışma',
           'Günlük 800+ porsiyona kadar yüksek kapasite',
-          'Helal sertifikalı etler & ayrı Vegan Seitan şişi',
+          'Helal sertifikalı etler & ayrı Vegan Seitan döneri',
         ],
       },
       {
@@ -376,7 +376,7 @@ export const tr: TranslationSchema = {
     eyebrow: 'ÜRETİM & HİJYEN DİSİPLİNİ',
     title: 'Organizatörler Neden DCC’yi Seçiyor?',
     subtitle:
-      'Berlin’de kendi şiş üretimimiz, kesintisiz soğuk zincir ve deneyimli etkinlik ekibi.',
+      'Berlin’de kendi döner üretimimiz, kesintisiz soğuk zincir ve deneyimli etkinlik ekibi.',
     cards: [
       {
         id: 'manufaktur',
@@ -412,15 +412,15 @@ export const tr: TranslationSchema = {
     items: [
       {
         id: 'halal',
-        question: 'Tüm et şişleriniz %100 Helal (Halal) sertifikalı mı?',
+        question: 'Tüm döner çeşitleriniz %100 Helal (Halal) sertifikalı mı?',
         answer:
-          'Evet. Yaprak dana, klasik dana ve tavuk şişlerimizin tamamı AB (EU) veteriner onaylı ve Helal sertifikalı tesislerden gelir. Talep halinde sertifikalar teklif dosyasına eklenir.',
+          'Evet. Yaprak dana, klasik dana ve tavuk dönerlerimizin tamamı AB (EU) veteriner onaylı ve Helal sertifikalı tesislerden gelir. Talep halinde sertifikalar teklif dosyasına eklenir.',
       },
       {
         id: 'vegan',
-        question: 'Vegan Seitan şiş nasıl pişirilir ve etten nasıl ayrılır?',
+        question: 'Vegan Seitan döner nasıl pişirilir ve etten nasıl ayrılır?',
         answer:
-          'Zanaat Vegan Seitan şişimiz tamamen ayrı bir döner ocağında, ayrı bıçak, maşa ve kesme tahtalarıyla hazırlanarak çapraz bulaşma riskini sıfırlar.',
+          'Zanaat Vegan Seitan dönerimiz tamamen ayrı bir döner ocağında, ayrı bıçak, maşa ve kesme tahtalarıyla hazırlanarak çapraz bulaşma riskini sıfırlar.',
       },
       {
         id: 'logistics',
@@ -432,7 +432,7 @@ export const tr: TranslationSchema = {
         id: 'billing',
         question: 'Hacim indirimleri ve kurumsal KDV faturalandırması nasıl işler?',
         answer:
-          '100+ kişide %5, 250+ kişide %10 ve 500+ kişide %15 indirim şiş fiyatına otomatik uygulanır. Kurumsal müşterilere %19 KDV ve vergi no içeren resmi fatura düzenlenir.',
+          '100+ kişide %5, 250+ kişide %10 ve 500+ kişide %15 indirim döner birim fiyatına otomatik uygulanır. Kurumsal müşterilere %19 KDV ve vergi no içeren resmi fatura düzenlenir.',
       },
       {
         id: 'hygiene',
@@ -485,7 +485,7 @@ export const tr: TranslationSchema = {
           'DCC Döner Catering Club, Berlin kulüp kültürünü ve el işçiliği açık ateş döner zanaatını 30 ila 800+ konukluk kurumsal zirvelere, düğünlere ve festivallere taşır.',
         mediumLabel: 'Orta Tanıtım (~55 Kelime)',
         mediumText:
-          'DCC Döner Catering Club, kendi üretimimiz el dizimi yaprak şişleri mimari canlı kesim istasyonları ve tam donanımlı Club-Trailer araçlarıyla buluşturur. Berlin-Mitte’deki yönetici yemeklerinden 800 kişilik festival avlularına kadar hesaplayıcımız net, %19 KDV ve hacim indirimlerini saniyeler içinde çıkarır.',
+          'DCC Döner Catering Club, kendi üretimimiz el dizimi yaprak dönerleri mimari canlı kesim istasyonları ve tam donanımlı Club-Trailer araçlarıyla buluşturur. Berlin-Mitte’deki yönetici yemeklerinden 800 kişilik festival avlularına kadar hesaplayıcımız net, %19 KDV ve hacim indirimlerini saniyeler içinde çıkarır.',
       },
     },
     logos: {
@@ -657,7 +657,7 @@ export const tr: TranslationSchema = {
           id: 'club-booth',
           file: '/brand/plate-club-booth.png',
           label: '05 · Canlı İstasyon Totemi',
-          caption: 'Aydınlatmalı 5 şiş menülü modüler iç mekân istasyonu.',
+          caption: 'Aydınlatmalı 5 döner menülü modüler iç mekân istasyonu.',
         },
         {
           id: 'social-templates',
@@ -735,19 +735,19 @@ export const tr: TranslationSchema = {
         {
           heading: '1. Kesintisiz Soğuk Zincir & HACCP',
           paragraphs: [
-            'Berlin’deki AB onaylı üretim tesisimizden etkinlik alanına kadar tüm şişler 2 °C – 4 °C aralığında aktif soğutmalı araçlarla ve dijital HACCP kayıtlarıyla taşınır.',
+            'Berlin’deki AB onaylı üretim tesisimizden etkinlik alanına kadar tüm dönerler 2 °C – 4 °C aralığında aktif soğutmalı araçlarla ve dijital HACCP kayıtlarıyla taşınır.',
           ],
         },
         {
           heading: '2. IFS Uyumlu Parti İzlenebilirliği',
           paragraphs: [
-            'Her döner şişi parti numarasıyla etiketlenir ve canlı kesim sırasında 70 °C üzeri iç sıcaklık kontrolünden geçirilir.',
+            'Her döner üretimi parti numarasıyla etiketlenir ve canlı kesim sırasında 70 °C üzeri iç sıcaklık kontrolünden geçirilir.',
           ],
         },
         {
           heading: '3. %100 Helal (Halal) & Ayrı Vegan Hattı',
           paragraphs: [
-            'Dana, süt dana ve tavuk şişlerimizin tamamı Helal sertifikalıdır. Vegan Seitan şişimiz ise tamamen ayrı ocak ve kesim ekipmanlarıyla hazırlanır.',
+            'Dana, süt dana ve tavuk dönerlerimizin tamamı Helal sertifikalıdır. Vegan Seitan dönerimiz ise tamamen ayrı ocak ve kesim ekipmanlarıyla hazırlanır.',
           ],
         },
       ],
@@ -778,7 +778,7 @@ export const tr: TranslationSchema = {
     eventTypeLine: 'Etkinlik Türü',
     guestsLine: 'Misafir Sayısı',
     enterpriseNoteLine: 'Not: 800+ Kurumsal / Büyük Etkinlik Talebi',
-    spitLine: 'Şiş Seçimi',
+    spitLine: 'Döner Seçimi',
     discountLine: 'Hacim İndirimi',
     setupLine: 'Kurulum Türü',
     extrasLine: 'Ekstralar',
