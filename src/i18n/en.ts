@@ -11,7 +11,9 @@ export const en: TranslationSchema = {
     brandSubtitle: 'BERLIN · EST. 2026',
     nav: {
       calculator: 'Calculator',
+      culinary: 'Culinary',
       gallery: 'Gallery',
+      timeline: 'Timeline',
       production: 'Craft & Standards',
       faq: 'FAQ',
       brandKit: 'Brand Kit',
@@ -401,6 +403,161 @@ export const en: TranslationSchema = {
         description:
           'Parallel carving stations and pre-warmed stone-oven bread logistics serve up to 180 fresh portions per hour.',
         checkBadge: '30–800+ Guests · On Time',
+      },
+    ],
+  },
+  culinary: {
+    eyebrow: 'CULINARY ANATOMY',
+    title: 'Stone-Oven Breads, Signature Sauces & Pairings',
+    subtitle:
+      'Three precision-crafted pillars — toggle them directly into your live quote.',
+    includedLabel: 'Included in Extra Package',
+    addExtraCta: 'Add to Quote',
+    addedExtraLabel: 'Active in Calculator',
+    tabs: [
+      {
+        id: 'bread',
+        tabLabel: '01 · Stone-Oven Bread & Salad',
+        extraId: 'bread_salad',
+        headline: 'Crisp Crust Meets Sumac Freshness',
+        description:
+          'Daily Berlin stone-baked sesame pide paired with finely shredded red cabbage, lemon, and cold-pressed olive oil.',
+        image: '/media/setup-buffet.png',
+        items: [
+          {
+            name: 'Berlin Stone-Oven Pide',
+            detail: 'Airy crumb topped with toasted sesame and nigella seeds, warmed live on site.',
+            tag: 'Freshly Baked',
+          },
+          {
+            name: 'Sumac Red Cabbage & Herb Mix',
+            detail: 'Crisp-marinated with pomegranate molasses, flat-leaf parsley, and mint.',
+            tag: '100% Vegan',
+          },
+          {
+            name: 'Charred Market Vegetables',
+            detail: 'Roasted sweet peppers and red onions balancing rich rotisserie slices.',
+            tag: 'Seasonal',
+          },
+        ],
+      },
+      {
+        id: 'sauces',
+        tabLabel: '02 · 3 Signature Sauces',
+        extraId: 'bread_salad',
+        headline: 'Three House Recipes, Zero Industrial Fillers',
+        description:
+          'Finished fresh on event day and served with dedicated spoons for vegan and classic lines.',
+        image: '/media/spit-signature-duo.png',
+        items: [
+          {
+            name: 'Herb Yogurt Crema',
+            detail: 'Strained yogurt with garden dill, mint, and bright lemon zest.',
+            tag: 'Classic',
+          },
+          {
+            name: 'Roasted Garlic & Tahini',
+            detail: 'Silky sesame emulsion with slow-roasted garlic and sea salt.',
+            tag: 'Vegan Friendly',
+          },
+          {
+            name: 'Aleppo Chili & Sumac Ember',
+            detail: 'Fruity heat crafted from Urfa chili, sun-ripened tomato, and olive oil.',
+            tag: '100% Vegan',
+          },
+        ],
+      },
+      {
+        id: 'pairings',
+        tabLabel: '03 · Drinks & Antep Baklava',
+        extraId: 'dessert',
+        headline: 'Berlin Club Sodas & Gaziantep Finale',
+        description:
+          'From house-whipped mint ayran and Club-Mate to crisp pistachio baklava with samovar tea.',
+        image: '/media/gallery-wedding.png',
+        items: [
+          {
+            name: 'House Mint Ayran',
+            detail: 'Whipped cold with fresh garden mint and a clean pinch of sea salt.',
+            tag: 'Chilled',
+          },
+          {
+            name: 'Berlin Craft Drink Bar',
+            detail: 'Club-Mate, Fritz-Kola, Uludağ, and chilled sparkling & still water.',
+            tag: 'Full Service',
+          },
+          {
+            name: 'Gaziantep Pistachio Baklava & Tea',
+            detail: '40-layer crisp filo with Antep pistachios alongside freshly brewed black tea.',
+            tag: 'Patisserie',
+          },
+        ],
+      },
+    ],
+  },
+  timeline: {
+    eyebrow: 'OPERATIONS & TIMING',
+    title: 'Four Disciplined Phases from Briefing to Load-Out',
+    subtitle:
+      'Predictable B2B execution engineered for agencies, hotels, and large courtyards.',
+    steps: [
+      {
+        code: 'T-48H',
+        title: 'Craft Kitchen & Cold Chain',
+        detail: 'Fresh hand-stacking of Yaprak spits in Berlin with logged HACCP temperature control.',
+        metric: '2–4 °C Log',
+      },
+      {
+        code: 'T-90M',
+        title: 'Load-In & Calibration',
+        detail: 'Quiet indoor station assembly or autonomous Club-Trailer positioning on site.',
+        metric: '90 Min Setup',
+      },
+      {
+        code: 'LIVE',
+        title: 'High-Speed Carving',
+        detail: 'Dual carving stations keep queues moving smoothly — up to 180 portions per hour.',
+        metric: '180 / Hr',
+      },
+      {
+        code: 'T+30M',
+        title: 'Clean Strike & B2B Invoice',
+        detail: 'Spotless venue handover and itemized corporate invoicing with 19% VAT.',
+        metric: '19% VAT',
+      },
+    ],
+  },
+  references: {
+    eyebrow: 'TRUST & TRACK RECORD',
+    title: 'Chosen by Demanding Hosts Across Berlin',
+    subtitle:
+      'Selected deployments for tech summits, luxury hotel weddings, and agency festivals.',
+    metrics: [
+      { value: '180 / Hr', label: 'Peak Throughput per Station' },
+      { value: '< 2 Hrs', label: 'Formal Quote Turnaround' },
+      { value: '100%', label: 'On-Time Setup Record' },
+    ],
+    items: [
+      {
+        tag: 'CORPORATE SUMMIT · 380 GUESTS',
+        quote:
+          'Zero lunch bottlenecks and the cleanest architectural catering station we have ever hosted in our atrium.',
+        author: 'Head of Workplace, Berlin Tech Hub',
+        meta: 'Live-Station · Yaprak Beef & Vegan',
+      },
+      {
+        tag: 'VIP WEDDING · 160 GUESTS',
+        quote:
+          'The midnight rotisserie in brushed steel delighted every guest — refined presentation and unforgettable flavor.',
+        author: 'Wedding Planner, Schlosshotel Berlin',
+        meta: 'Signature Duo · Baklava & Tea',
+      },
+      {
+        tag: 'AGENCY FESTIVAL · 550 GUESTS',
+        quote:
+          'Autonomous trailer in the courtyard, seamless VAT invoicing, and an impeccably disciplined crew.',
+        author: 'Executive Producer, Kreuzberg Creative',
+        meta: 'Club-Trailer · Classic Veal',
       },
     ],
   },

@@ -1,5 +1,4 @@
 import React from 'react';
-import { Phone, Sparkles } from 'lucide-react';
 import { SUPPORTED_LOCALES, useLocale } from '../i18n';
 import type { ThemeId } from '../types/brand';
 import { BrandLogo } from './BrandLogo';
@@ -9,7 +8,7 @@ export interface HeaderProps {
   theme: ThemeId;
   activeView: 'main' | 'brand-kit';
   onSelectView: (view: 'main' | 'brand-kit', targetHash?: string) => void;
-  onOpenLegal: (docId: LegalDocId) => void;
+  onOpenLegal?: (docId: LegalDocId) => void;
 }
 
 export function Header({
@@ -37,25 +36,19 @@ export function Header({
 
   return (
     <header
-      className="sticky top-0 z-30 w-full border-b border-[var(--border-main)]/80 backdrop-blur-2xl"
+      className="sticky top-0 z-30 w-full border-b border-[var(--border-main)]/75 backdrop-blur-2xl"
       style={{ backgroundColor: 'var(--navbar-bg)' }}
     >
-      {/* Discreet Private Club Heritage Micro-Strip */}
-      <div className="border-b border-[var(--border-main)]/60 bg-[var(--bg-subtle)]/40">
-        <div className="mx-auto flex max-w-7xl items-center justify-between gap-2 px-3 py-1.5 sm:px-6 font-mono text-[10px] tracking-widest text-[var(--text-muted)]">
-          <span className="inline-flex items-center gap-2 truncate uppercase text-[var(--text-secondary)]">
-            <span
-              className="h-1.5 w-1.5 rounded-full shrink-0"
-              style={{ backgroundColor: 'var(--brand-primary)' }}
-            />
-            <span>DCC · PRIVATE CULINARY CLUB · {t.header.brandSubtitle}</span>
-          </span>
-          <div className="flex items-center gap-3 shrink-0">
+      {/* Ultra-minimalist hairline legal compliance bar (Impressumspflicht) */}
+      <div className="border-b border-[var(--border-main)]/40">
+        <div className="mx-auto flex h-7 max-w-7xl items-center justify-between gap-2 px-3 sm:px-6 font-mono text-[9px] sm:text-[10px] tracking-normal sm:tracking-wider text-[var(--text-muted)]">
+          <span className="hidden md:inline truncate uppercase">DCC · {t.header.brandSubtitle}</span>
+          <div className="flex items-center gap-2 sm:gap-3 whitespace-nowrap">
             <a
               href="#impressum"
               onClick={(e) => {
                 e.preventDefault();
-                onOpenLegal('impressum');
+                onOpenLegal?.('impressum');
               }}
               className="transition hover:text-[var(--brand-primary)]"
             >
@@ -65,7 +58,7 @@ export function Header({
               href="#datenschutz"
               onClick={(e) => {
                 e.preventDefault();
-                onOpenLegal('datenschutz');
+                onOpenLegal?.('datenschutz');
               }}
               className="transition hover:text-[var(--brand-primary)]"
             >
@@ -75,7 +68,7 @@ export function Header({
               href="#ifs"
               onClick={(e) => {
                 e.preventDefault();
-                onOpenLegal('ifs');
+                onOpenLegal?.('ifs');
               }}
               className="transition hover:text-[var(--brand-primary)]"
             >
@@ -85,8 +78,7 @@ export function Header({
         </div>
       </div>
 
-      {/* Main Architectural Glass Navigation Bar */}
-      <div className="mx-auto flex max-w-7xl items-center justify-between gap-2 px-3 py-2.5 sm:px-6">
+      <div className="mx-auto flex h-14 max-w-7xl items-center justify-between gap-4 px-4 sm:px-6">
         <a
           href="#hero"
           onClick={(e) => handleAnchorClick(e, '#hero')}
@@ -96,64 +88,74 @@ export function Header({
           <BrandLogo
             lockup="primary"
             theme={theme}
-            showSubtitle
-            subtitle={t.header.brandSubtitle}
-            imgClassName="h-8 sm:h-9 w-auto object-contain"
+            imgClassName="h-7 sm:h-8 w-auto object-contain"
           />
         </a>
 
-        {/* Clean 4-Section Customer Navigation + Brand Portal */}
         <nav
           aria-label="Primary Navigation"
-          className="hidden lg:flex items-center gap-1 rounded-full border border-[var(--border-main)] bg-[var(--bg-subtle)]/70 p-1 backdrop-blur-xl text-xs font-medium text-[var(--text-secondary)]"
+          className="hidden lg:flex items-center gap-6 text-[13px] font-medium text-[var(--text-secondary)]"
         >
           <a
             href="#rechner"
             onClick={(e) => handleAnchorClick(e, '#rechner')}
-            className="rounded-full px-3.5 py-1.5 transition hover:bg-[var(--bg-card)] hover:text-[var(--text-primary)]"
+            className="transition hover:text-[var(--text-primary)]"
           >
             {t.header.nav.calculator}
           </a>
           <a
+            href="#kulinarik"
+            onClick={(e) => handleAnchorClick(e, '#kulinarik')}
+            className="transition hover:text-[var(--text-primary)]"
+          >
+            {t.header.nav.culinary}
+          </a>
+          <a
             href="#galerie"
             onClick={(e) => handleAnchorClick(e, '#galerie')}
-            className="rounded-full px-3.5 py-1.5 transition hover:bg-[var(--bg-card)] hover:text-[var(--text-primary)]"
+            className="transition hover:text-[var(--text-primary)]"
           >
             {t.header.nav.gallery}
           </a>
           <a
+            href="#ablauf"
+            onClick={(e) => handleAnchorClick(e, '#ablauf')}
+            className="transition hover:text-[var(--text-primary)]"
+          >
+            {t.header.nav.timeline}
+          </a>
+          <a
             href="#produktion"
             onClick={(e) => handleAnchorClick(e, '#produktion')}
-            className="rounded-full px-3.5 py-1.5 transition hover:bg-[var(--bg-card)] hover:text-[var(--text-primary)]"
+            className="transition hover:text-[var(--text-primary)]"
           >
             {t.header.nav.production}
           </a>
           <a
             href="#faq"
             onClick={(e) => handleAnchorClick(e, '#faq')}
-            className="rounded-full px-3.5 py-1.5 transition hover:bg-[var(--bg-card)] hover:text-[var(--text-primary)]"
+            className="transition hover:text-[var(--text-primary)]"
           >
             {t.header.nav.faq}
           </a>
           <a
             href="#brand-kit"
             onClick={(e) => handleAnchorClick(e, '#brand-kit')}
-            className={`inline-flex items-center gap-1.5 rounded-full px-3.5 py-1.5 font-mono text-[11px] uppercase tracking-wider transition ${
+            className={`font-mono text-xs transition ${
               activeView === 'brand-kit'
-                ? 'bg-[var(--brand-primary)] text-[var(--btn-text)] font-bold shadow-sm'
-                : 'text-[var(--text-muted)] hover:bg-[var(--bg-card)] hover:text-[var(--brand-primary)]'
+                ? 'text-[var(--brand-primary)] font-semibold'
+                : 'text-[var(--text-muted)] hover:text-[var(--text-primary)]'
             }`}
           >
-            <Sparkles className="h-3 w-3" />
             {t.header.nav.brandKit}
           </a>
         </nav>
 
-        <div className="flex items-center gap-2 sm:gap-2.5 shrink-0">
+        <div className="flex items-center gap-2.5 shrink-0">
           <div
             role="group"
             aria-label={t.header.langSwitcherAria}
-            className="inline-flex items-center rounded-full border border-[var(--border-main)] bg-[var(--bg-subtle)] p-0.5"
+            className="inline-flex items-center rounded-full border border-[var(--border-main)] bg-[var(--bg-subtle)]/70 p-0.5"
           >
             {SUPPORTED_LOCALES.map((lang) => {
               const active = locale === lang;
@@ -165,9 +167,9 @@ export function Header({
                   aria-pressed={active}
                   data-active={String(active)}
                   onClick={() => setLocale(lang)}
-                  className={`rounded-full px-2.5 py-1 font-mono text-xs font-semibold uppercase transition cursor-pointer ${
+                  className={`rounded-full px-2.5 py-1 font-mono text-[11px] font-semibold uppercase transition cursor-pointer ${
                     active
-                      ? 'bg-[var(--brand-primary)] text-[var(--btn-text)] shadow-sm'
+                      ? 'bg-[var(--brand-primary)] text-[var(--btn-text)]'
                       : 'text-[var(--text-secondary)] hover:text-[var(--text-primary)]'
                   }`}
                 >
@@ -178,17 +180,9 @@ export function Header({
           </div>
 
           <a
-            href={t.header.phoneHref}
-            className="hidden xl:inline-flex items-center gap-1.5 rounded-full border border-[var(--border-main)] bg-[var(--bg-card)] px-3 py-1.5 font-mono text-xs text-[var(--text-secondary)] transition hover:border-[var(--brand-primary)] hover:text-[var(--text-primary)]"
-          >
-            <Phone className="h-3.5 w-3.5 text-[var(--brand-primary)]" />
-            <span>{t.header.phoneLabel}</span>
-          </a>
-
-          <a
             href="#rechner"
             onClick={(e) => handleAnchorClick(e, '#rechner')}
-            className="hidden sm:inline-flex items-center justify-center rounded-full bg-[var(--brand-primary)] px-4 py-2 text-xs font-semibold uppercase tracking-wider text-[var(--btn-text)] shadow-md transition hover:bg-[var(--brand-hover)]"
+            className="hidden sm:inline-flex items-center justify-center rounded-full bg-[var(--brand-primary)] px-4 py-2 text-xs font-semibold tracking-wide text-[var(--btn-text)] transition hover:bg-[var(--brand-hover)]"
           >
             {t.header.cta}
           </a>

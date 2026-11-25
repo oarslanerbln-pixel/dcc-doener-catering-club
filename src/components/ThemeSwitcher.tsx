@@ -28,7 +28,7 @@ export function ThemeSwitcher({
       data-testid="theme-switcher"
       role="group"
       aria-label={t.themeSwitcher.ariaLabel}
-      className="fixed bottom-20 md:bottom-4 left-3 z-30 inline-flex items-center gap-0.5 sm:gap-1 rounded-full border border-[var(--border-main)] bg-[var(--bg-card)]/95 p-1 shadow-xl backdrop-blur-md max-w-[calc(100vw-24px)] overflow-hidden"
+      className="fixed bottom-20 md:bottom-4 right-3 md:right-auto md:left-3 z-30 inline-flex items-center gap-0.5 sm:gap-1 rounded-full border border-[var(--border-main)] bg-[var(--bg-card)]/95 p-1 shadow-xl backdrop-blur-md max-w-[calc(100vw-24px)] overflow-hidden"
     >
       <span className="hidden sm:inline-flex items-center pl-2 pr-1 text-[var(--brand-primary)]">
         <Palette className="h-3.5 w-3.5" />
@@ -55,7 +55,7 @@ export function ThemeSwitcher({
               className="h-2.5 w-2.5 rounded-full border border-white/30 shrink-0"
               style={{ backgroundColor: meta.previewHex }}
             />
-            <span className="truncate max-w-[60px] sm:max-w-none">
+            <span className="hidden sm:inline truncate">
               {t.themeSwitcher.themes[id]}
             </span>
           </button>

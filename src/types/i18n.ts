@@ -54,7 +54,9 @@ export interface TranslationSchema {
     brandSubtitle: string;
     nav: {
       calculator: string;
+      culinary: string;
       gallery: string;
+      timeline: string;
       production: string;
       faq: string;
       brandKit: string;
@@ -266,6 +268,81 @@ export interface TranslationSchema {
     title: string;
     subtitle: string;
     cards: [BentoCardCopy, BentoCardCopy, BentoCardCopy];
+  };
+  culinary: {
+    eyebrow: string;
+    title: string;
+    subtitle: string;
+    includedLabel: string;
+    addExtraCta: string;
+    addedExtraLabel: string;
+    tabs: [
+      {
+        id: 'bread';
+        tabLabel: string;
+        extraId: ExtraId;
+        headline: string;
+        description: string;
+        image: string;
+        items: [
+          { name: string; detail: string; tag: string },
+          { name: string; detail: string; tag: string },
+          { name: string; detail: string; tag: string },
+        ];
+      },
+      {
+        id: 'sauces';
+        tabLabel: string;
+        extraId: ExtraId;
+        headline: string;
+        description: string;
+        image: string;
+        items: [
+          { name: string; detail: string; tag: string },
+          { name: string; detail: string; tag: string },
+          { name: string; detail: string; tag: string },
+        ];
+      },
+      {
+        id: 'pairings';
+        tabLabel: string;
+        extraId: ExtraId;
+        headline: string;
+        description: string;
+        image: string;
+        items: [
+          { name: string; detail: string; tag: string },
+          { name: string; detail: string; tag: string },
+          { name: string; detail: string; tag: string },
+        ];
+      },
+    ];
+  };
+  timeline: {
+    eyebrow: string;
+    title: string;
+    subtitle: string;
+    steps: [
+      { code: string; title: string; detail: string; metric: string },
+      { code: string; title: string; detail: string; metric: string },
+      { code: string; title: string; detail: string; metric: string },
+      { code: string; title: string; detail: string; metric: string },
+    ];
+  };
+  references: {
+    eyebrow: string;
+    title: string;
+    subtitle: string;
+    metrics: [
+      { value: string; label: string },
+      { value: string; label: string },
+      { value: string; label: string },
+    ];
+    items: [
+      { tag: string; quote: string; author: string; meta: string },
+      { tag: string; quote: string; author: string; meta: string },
+      { tag: string; quote: string; author: string; meta: string },
+    ];
   };
   faq: {
     eyebrow: string;

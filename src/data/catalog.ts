@@ -387,7 +387,7 @@ export const LOGO_CANDIDATES: readonly LogoCandidateItem[] = [
     notes: {
       de: 'Symmetrische Markenarchitektur — das erste C umschließt den Spieß wie ein Grill-Ring.',
       en: 'Symmetrical architectural centerpiece with the spit anchored in the central ring.',
-      tr: 'Orta halkaya sabitlenmiş şiş ile tam simetrik ve görkemli kurumsal duruş.',
+      tr: 'Orta halkaya sabitlenmiş döner silueti ile tam simetrik ve görkemli kurumsal duruş.',
     },
   },
   {
@@ -469,9 +469,9 @@ export const LOGO_CANDIDATES: readonly LogoCandidateItem[] = [
       tr: '3D Titanyum · Saf Tipografi',
     },
     notes: {
-      de: 'Pure Automobil-/Tesla-Anmutung mit warmer Glut-Fuge zwischen den Buchstaben.',
-      en: 'Pure Tesla-grade industrial wordmark with subtle ember seam lighting.',
-      tr: 'Harfler arası sıcak kor ışığıyla saf Tesla / lüks otomotiv estetiği.',
+      de: 'Pure architektonische Industriemarke mit warmer Glut-Fuge zwischen den Buchstaben.',
+      en: 'Pure architectural industrial wordmark with subtle ember seam lighting.',
+      tr: 'Harfler arası sıcak kor ışığıyla saf endüstriyel tipografi.',
     },
   },
   {
@@ -545,7 +545,7 @@ export const LOGO_CANDIDATES: readonly LogoCandidateItem[] = [
     titles: {
       de: 'Monoline Geometrie-Spieß',
       en: 'Monoline Geometric Spit',
-      tr: 'Monoline Geometrik Şiş',
+      tr: 'Monoline Geometrik Döner',
     },
     tags: {
       de: 'Minimal · Line-Art',

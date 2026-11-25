@@ -712,6 +712,34 @@ test.describe('Tier 1 — Core Feature Coverage', () => {
       expect(text).toMatch(/DCC|Döner Catering Club/i);
       expect(text).not.toMatch(DEMO_LEAK_RE);
     });
+
+    test('T1-CALC-09: Sticky summary glides with scroll and remains fully in viewport', async ({
+      page,
+    }) => {
+      await page.setViewportSize({ width: 1280, height: 780 });
+      await openApp(page, '/');
+
+      const gridTop = await page.locator('.dcc-configurator-grid').evaluate((el) => {
+        const rect = el.getBoundingClientRect();
+        return rect.top + window.scrollY;
+      });
+
+      for (const offset of [gridTop + 120, gridTop + 520]) {
+        await page.evaluate(
+          (y) => window.scrollTo({ top: y, behavior: 'instant' as ScrollBehavior }),
+          offset
+        );
+        await page.waitForTimeout(100);
+        const box = await page.locator('#rechner-summary').boundingBox();
+        expect(box, `Summary box missing at y=${offset}`).not.toBeNull();
+        expect(box!.y, `Summary top out of sticky range at y=${offset}`).toBeGreaterThanOrEqual(60);
+        expect(box!.y, `Summary did not stick near top at y=${offset}`).toBeLessThanOrEqual(115);
+        expect(
+          box!.y + box!.height,
+          `Summary bottom clipped at y=${offset} (${box!.y + box!.height} > 780)`
+        ).toBeLessThanOrEqual(780);
+      }
+    });
   });
 
   test.describe('Area F: Receipt & Quote Modal', () => {

@@ -55,14 +55,14 @@ export function CorporateFaq({
   return (
     <section
       id="faq"
-      className="border-b border-[var(--border-main)] py-12 sm:py-16 lg:py-24"
+      className="border-b border-[var(--border-main)] py-14 sm:py-20 lg:py-24"
     >
       <div className="mx-auto max-w-7xl px-4 sm:px-6 space-y-10">
-        <div className="max-w-3xl space-y-2.5">
-          <p className="font-mono text-xs font-semibold uppercase tracking-[0.2em] text-[var(--brand-primary)]">
+        <div className="max-w-2xl space-y-2.5">
+          <p className="font-mono text-[11px] font-medium uppercase tracking-[0.22em] text-[var(--brand-primary)]">
             {t.faq.eyebrow}
           </p>
-          <h2 className="font-monument text-2xl sm:text-4xl lg:text-5xl font-bold tracking-tight text-[var(--text-primary)]">
+          <h2 className="font-monument text-3xl sm:text-4xl lg:text-5xl font-semibold tracking-tight text-[var(--text-primary)]">
             {t.faq.title}
           </h2>
           <p className="text-sm sm:text-base text-[var(--text-secondary)]">
@@ -72,12 +72,12 @@ export function CorporateFaq({
 
         <div className="grid grid-cols-1 gap-8 lg:grid-cols-12 items-start">
           {/* Left 4 Columns: B2B & VIP Concierge Desk */}
-          <aside className="lg:col-span-4 apple-card rounded-3xl p-6 sm:p-7 space-y-5">
-            <span className="inline-flex items-center gap-1.5 rounded-full border border-[var(--border-main)] bg-[var(--bg-subtle)] px-3 py-1 font-mono text-[11px] font-semibold uppercase tracking-widest text-[var(--brand-primary)]">
+          <aside className="lg:col-span-4 rounded-2xl border border-[var(--border-main)] bg-[var(--bg-card)] p-6 space-y-5">
+            <span className="font-mono text-[10px] font-semibold uppercase tracking-[0.18em] text-[var(--brand-primary)]">
               {desk.badge}
             </span>
 
-            <h3 className="font-monument text-xl font-bold text-[var(--text-primary)]">
+            <h3 className="font-monument text-xl font-semibold text-[var(--text-primary)]">
               {desk.title}
             </h3>
 

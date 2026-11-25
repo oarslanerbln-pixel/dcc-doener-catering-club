@@ -11,7 +11,9 @@ export const tr: TranslationSchema = {
     brandSubtitle: 'BERLİN · EST. 2026',
     nav: {
       calculator: 'Hesaplayıcı',
+      culinary: 'Lezzetler',
       gallery: 'Galeri',
+      timeline: 'Akış',
       production: 'Üretim & Kalite',
       faq: 'SSS',
       brandKit: 'Marka Kiti',
@@ -401,6 +403,161 @@ export const tr: TranslationSchema = {
         description:
           'Paralel kesim istasyonları ve ön ısıtmalı taş fırın lojistiği saatte 180 taze porsiyona ulaşır.',
         checkBadge: '30–800+ Kişi · Dakik Servis',
+      },
+    ],
+  },
+  culinary: {
+    eyebrow: 'LEZZET MİMARİSİ',
+    title: 'Taş Fırın Pide, İmza Soslar & Antep Finali',
+    subtitle:
+      'Döner deneyimini tamamlayan üç temel bileşen — tek tıkla hesaplayıcıya ekleyin.',
+    includedLabel: 'Ekstra Paket İçeriği',
+    addExtraCta: 'Hesaplayıcıya Ekle',
+    addedExtraLabel: 'Hesaplayıcıda Aktif',
+    tabs: [
+      {
+        id: 'bread',
+        tabLabel: '01 · Taş Fırın Pide & Salata',
+        extraId: 'bread_salad',
+        headline: 'Çıtır Kabuk ve Sumak Ferahlığı',
+        description:
+          'Berlin’de günlük pişen susamlı taş fırın pidesi ve limonlu, zeytinyağlı sumaklı mor lahana salatası.',
+        image: '/media/setup-buffet.png',
+        items: [
+          {
+            name: 'Berlin Taş Fırın Pidesi',
+            detail: 'Kavrulmuş susam ve çörek otlu, etkinlik alanında sıcak ısıtılan özel pide.',
+            tag: 'Günlük Fırın',
+          },
+          {
+            name: 'Sumaklı Mor Lahana & Yeşillik',
+            detail: 'Nar ekşisi, taze maydanoz ve nane ile dengelenmiş çıtır salata.',
+            tag: '%100 Vegan',
+          },
+          {
+            name: 'Közlenmiş Mevsim Sebzeleri',
+            detail: 'Köz kapya biber ve kırmızı soğan ile ete eşlik eden sıcak dokunuş.',
+            tag: 'Mevsimsel',
+          },
+        ],
+      },
+      {
+        id: 'sauces',
+        tabLabel: '02 · 3 İmza Sos',
+        extraId: 'bread_salad',
+        headline: 'Katkısız Üç Ev Yapımı Reçete',
+        description:
+          'Her sos etkinlik günü taze hazırlanır; vegan ve klasik hatlar için ayrı servis edilir.',
+        image: '/media/spit-signature-duo.png',
+        items: [
+          {
+            name: 'Taze Otlu Yoğurt Sos',
+            detail: 'Süzme yoğurt, dereotu, taze nane ve ince limon kabuğu rendesi.',
+            tag: 'Klasik',
+          },
+          {
+            name: 'Köz Sarımsak & Tahin',
+            detail: 'İpeksi susam tahini ve ağır ateşte közlenmiş sarımsak dengesi.',
+            tag: 'Vegan Uyumlu',
+          },
+          {
+            name: 'Halep Biberi & Sumak Sos',
+            detail: 'Urfa biberi, olgun domates ve soğuk sıkım zeytinyağı ile dengeli acı.',
+            tag: '%100 Vegan',
+          },
+        ],
+      },
+      {
+        id: 'pairings',
+        tabLabel: '03 · İçecek & Baklava',
+        extraId: 'dessert',
+        headline: 'Berlin İçecek Barı & Gaziantep Baklavası',
+        description:
+          'Ev yapımı taze naneli ayrandan Club-Mate’e, çıtır Antep fıstıklı baklavadan semaver çayına.',
+        image: '/media/gallery-wedding.png',
+        items: [
+          {
+            name: 'Ev Yapımı Naneli Ayran',
+            detail: 'Taze bahçe nanesi ve deniz tuzuyla soğuk çırpılmış özel ayran.',
+            tag: 'Soğuk Servis',
+          },
+          {
+            name: 'Berlin İçecek Seçkisi',
+            detail: 'Club-Mate, Fritz-Kola, Uludağ gazoz ve soğutulmuş sular.',
+            tag: 'Tam Servis',
+          },
+          {
+            name: 'Gaziantep Fıstıklı Baklava & Çay',
+            detail: '40 kat çıtır yufkalı Antep baklavası ve taze demlenmiş Türk çayı.',
+            tag: 'Tatlı Final',
+          },
+        ],
+      },
+    ],
+  },
+  timeline: {
+    eyebrow: 'OPERASYON & ZAMANLAMA',
+    title: 'Talepten Kapanışa Dört Kusursuz Aşama',
+    subtitle:
+      'Ajanslar, oteller ve büyük davetler için dakik B2B saha yönetimi.',
+    steps: [
+      {
+        code: 'T-48S',
+        title: 'Üretim & Soğuk Zincir',
+        detail: 'Yaprak dönerlerin Berlin’de günlük el dizimi ve kayıtlı HACCP soğuk sevkiyatı.',
+        metric: '2–4 °C Kayıt',
+      },
+      {
+        code: 'T-90D',
+        title: 'Kurulum & Kalibrasyon',
+        detail: 'İç mekân istasyonunun sessiz kurulumu veya otonom Club-Trailer yerleşimi.',
+        metric: '90 Dk Kurulum',
+      },
+      {
+        code: 'CANLI',
+        title: 'Yüksek Hızlı Kesim',
+        detail: 'Çift kesim istasyonu ile beklemesiz akış — saatte 180 porsiyona kadar taze servis.',
+        metric: '180 / Saat',
+      },
+      {
+        code: 'T+30D',
+        title: 'Temiz Teslim & Fatura',
+        detail: 'Mekânın lekesiz teslimi ve %19 KDV dökümlü resmi B2B faturalandırma.',
+        metric: '%19 KDV',
+      },
+    ],
+  },
+  references: {
+    eyebrow: 'GÜVEN & REFERANSLAR',
+    title: 'Berlin’in Seçkin Ev Sahipleri Tarafından Tercih Ediliyor',
+    subtitle:
+      'Teknoloji zirveleri, otel düğünleri ve yaratıcı ajans festivallerinden gerçek saha notları.',
+    metrics: [
+      { value: '180 / Saat', label: 'İstasyon Başı Zirve Hızı' },
+      { value: '< 2 Saat', label: 'Resmi Teklif Yanıt Süresi' },
+      { value: '%100', label: 'Zamanında Kurulum Oranı' },
+    ],
+    items: [
+      {
+        tag: 'KURUMSAL ZİRVE · 380 MİSAFİR',
+        quote:
+          'Öğle arasında sıfır kuyruk ve atriumda bugüne kadar gördüğümüz en şık, en temiz catering istasyonu.',
+        author: 'Head of Workplace, Berlin Tech Hub',
+        meta: 'Live-Station · Yaprak Dana & Vegan',
+      },
+      {
+        tag: 'VIP DÜĞÜN · 160 MİSAFİR',
+        quote:
+          'Mat çelik istasyondaki gece yarısı döner servisi tüm davetlileri büyüledi — hem çok zarif hem kusursuz lezzet.',
+        author: 'Wedding Planner, Schlosshotel Berlin',
+        meta: 'Signature Duo · Baklava & Çay',
+      },
+      {
+        tag: 'AJANS FESTİVALİ · 550 MİSAFİR',
+        quote:
+          'Avluda tamamen otonom trailer, vergi numaralı hızlı faturalandırma ve saat gibi işleyen disiplinli ekip.',
+        author: 'Executive Producer, Kreuzberg Creative',
+        meta: 'Club-Trailer · Klasik Dana',
       },
     ],
   },

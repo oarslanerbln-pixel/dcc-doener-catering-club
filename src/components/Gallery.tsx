@@ -13,6 +13,7 @@ import type {
   MeatId,
   SetupId,
 } from '../types/catering';
+import { SmartPicture } from './SmartPicture';
 
 export interface GalleryPreset {
   guests: number;
@@ -25,13 +26,6 @@ export interface GalleryPreset {
 export interface GalleryProps {
   onApplyPreset?: (preset: GalleryPreset) => void;
 }
-
-const SLIDE_ACCENTS = [
-  'var(--brand-primary)',
-  'var(--brand-accent)',
-  'var(--accent-emerald)',
-  '#C89D66',
-] as const;
 
 const SLIDE_PRESETS: readonly GalleryPreset[] = [
   {
@@ -85,21 +79,20 @@ export function Gallery({ onApplyPreset }: GalleryProps): React.ReactElement {
 
   const currentMedia = GALLERY_SLIDES[activeIndex] ?? GALLERY_SLIDES[0];
   const currentCopy = t.gallery.slides[activeIndex] ?? t.gallery.slides[0];
-  const accentColor = SLIDE_ACCENTS[activeIndex % SLIDE_ACCENTS.length];
   const currentPreset = SLIDE_PRESETS[activeIndex] ?? SLIDE_PRESETS[0];
 
   return (
     <section
       id="galerie"
-      className="relative border-b border-[var(--border-main)] py-12 sm:py-16 lg:py-24"
+      className="relative border-b border-[var(--border-main)] py-14 sm:py-20 lg:py-24"
     >
       <div className="mx-auto max-w-7xl px-4 sm:px-6 space-y-8">
         <div className="flex flex-wrap items-end justify-between gap-4">
           <div className="max-w-2xl space-y-2.5">
-            <p className="font-mono text-xs font-semibold uppercase tracking-[0.2em] text-[var(--brand-primary)]">
+            <p className="font-mono text-[11px] font-medium uppercase tracking-[0.22em] text-[var(--brand-primary)]">
               {t.gallery.eyebrow}
             </p>
-            <h2 className="font-monument text-2xl sm:text-4xl lg:text-5xl font-bold tracking-tight text-[var(--text-primary)]">
+            <h2 className="font-monument text-3xl sm:text-4xl lg:text-5xl font-semibold tracking-tight text-[var(--text-primary)]">
               {t.gallery.title}
             </h2>
             <p className="text-sm sm:text-base text-[var(--text-secondary)]">
@@ -107,10 +100,10 @@ export function Gallery({ onApplyPreset }: GalleryProps): React.ReactElement {
             </p>
           </div>
 
-          <div className="flex items-center gap-3">
+          <div className="flex items-center gap-2.5">
             <span
               data-testid="gallery-counter"
-              className="rounded-full border border-[var(--border-main)] bg-[var(--bg-card)] px-3.5 py-1.5 font-mono tabular-nums text-sm font-bold text-[var(--brand-primary)]"
+              className="rounded-full border border-[var(--border-main)] bg-[var(--bg-card)] px-3.5 py-1.5 font-mono tabular-nums text-xs font-semibold text-[var(--brand-primary)]"
             >
               {activeIndex + 1} {t.gallery.counterSeparator} {total}
             </span>
@@ -120,9 +113,9 @@ export function Gallery({ onApplyPreset }: GalleryProps): React.ReactElement {
               data-testid="gallery-prev"
               aria-label={t.gallery.prevAria}
               onClick={handlePrev}
-              className="inline-flex h-11 w-11 items-center justify-center rounded-full border border-[var(--border-main)] bg-[var(--bg-card)] text-[var(--text-primary)] shadow-sm transition hover:border-[var(--brand-primary)] cursor-pointer"
+              className="inline-flex h-10 w-10 items-center justify-center rounded-full border border-[var(--border-main)] bg-[var(--bg-card)] text-[var(--text-primary)] transition hover:border-[var(--brand-primary)] cursor-pointer"
             >
-              <ChevronLeft className="h-5 w-5" />
+              <ChevronLeft className="h-4 w-4" />
             </button>
 
             <button
@@ -130,14 +123,14 @@ export function Gallery({ onApplyPreset }: GalleryProps): React.ReactElement {
               data-testid="gallery-next"
               aria-label={t.gallery.nextAria}
               onClick={handleNext}
-              className="inline-flex h-11 w-11 items-center justify-center rounded-full border border-[var(--border-main)] bg-[var(--bg-card)] text-[var(--text-primary)] shadow-sm transition hover:border-[var(--brand-primary)] cursor-pointer"
+              className="inline-flex h-10 w-10 items-center justify-center rounded-full border border-[var(--border-main)] bg-[var(--bg-card)] text-[var(--text-primary)] transition hover:border-[var(--brand-primary)] cursor-pointer"
             >
-              <ChevronRight className="h-5 w-5" />
+              <ChevronRight className="h-4 w-4" />
             </button>
           </div>
         </div>
 
-        {/* 4-Scenario Interactive Strip */}
+        {/* Minimalist 4-Scenario Strip */}
         <div className="grid grid-cols-2 gap-3 lg:grid-cols-4">
           {GALLERY_SLIDES.map((slide, idx) => {
             const copy = t.gallery.slides[idx] ?? t.gallery.slides[0];
@@ -148,24 +141,26 @@ export function Gallery({ onApplyPreset }: GalleryProps): React.ReactElement {
                 type="button"
                 data-testid={`gallery-scenario-${slide.id}`}
                 onClick={() => setActiveIndex(idx)}
-                className={`flex items-center gap-3 rounded-2xl border p-2.5 text-left transition cursor-pointer ${
+                className={`flex items-center gap-3 rounded-xl border p-2.5 text-left transition cursor-pointer ${
                   active
-                    ? 'border-[var(--brand-primary)] bg-[var(--bg-card)] ring-1 ring-[var(--brand-primary)] shadow-md'
-                    : 'border-[var(--border-main)] bg-[var(--bg-subtle)]/60 hover:border-[var(--brand-primary)]/60'
+                    ? 'border-[var(--brand-primary)] bg-[var(--bg-card)] ring-1 ring-[var(--brand-primary)]'
+                    : 'border-[var(--border-main)] bg-[var(--bg-subtle)]/40 hover:border-[var(--brand-primary)]/60'
                 }`}
               >
-                <img
-                  src={slide.image}
-                  alt={copy.title}
-                  width={96}
-                  height={64}
-                  className="h-12 w-16 rounded-xl object-cover shrink-0 border border-[var(--border-main)]"
-                />
+                <div className="h-11 w-14 rounded-lg overflow-hidden shrink-0 border border-[var(--border-main)]">
+                  <SmartPicture
+                    src={slide.image}
+                    alt={copy.title}
+                    width={96}
+                    height={64}
+                    className="h-full w-full object-cover"
+                  />
+                </div>
                 <div className="min-w-0">
                   <div className="font-mono text-[10px] uppercase tracking-wider text-[var(--brand-primary)] truncate">
                     {copy.tag}
                   </div>
-                  <div className="font-monument text-xs font-bold text-[var(--text-primary)] truncate">
+                  <div className="font-monument text-xs font-semibold text-[var(--text-primary)] truncate">
                     {copy.title}
                   </div>
                 </div>
@@ -174,10 +169,10 @@ export function Gallery({ onApplyPreset }: GalleryProps): React.ReactElement {
           })}
         </div>
 
-        {/* Cinema Split Showcase Card */}
-        <div className="apple-card grid grid-cols-1 overflow-hidden rounded-3xl lg:grid-cols-12">
+        {/* Clean Split Showcase Card */}
+        <div className="grid grid-cols-1 overflow-hidden rounded-2xl border border-[var(--border-main)] bg-[var(--bg-card)] lg:grid-cols-12">
           <div className="relative lg:col-span-7 aspect-[16/10] lg:aspect-auto overflow-hidden bg-[var(--bg-subtle)]">
-            <img
+            <SmartPicture
               key={currentMedia.image}
               src={currentMedia.image}
               alt={currentCopy.title}
@@ -185,26 +180,15 @@ export function Gallery({ onApplyPreset }: GalleryProps): React.ReactElement {
               height={768}
               className="h-full w-full object-cover transition-all duration-500"
             />
-            <div
-              aria-hidden="true"
-              className="pointer-events-none absolute inset-0 bg-gradient-to-t from-black/60 via-transparent to-transparent"
-            />
           </div>
 
-          <div className="lg:col-span-5 flex flex-col justify-between p-6 sm:p-9 space-y-6">
+          <div className="lg:col-span-5 flex flex-col justify-between p-6 sm:p-8 space-y-6">
             <div className="space-y-4">
-              <span
-                className="inline-flex items-center gap-2 rounded-full border border-[var(--border-main)] bg-[var(--bg-subtle)] px-3.5 py-1 font-mono text-xs font-semibold uppercase tracking-wider"
-                style={{ color: accentColor }}
-              >
-                <span
-                  className="h-2 w-2 rounded-full"
-                  style={{ backgroundColor: accentColor }}
-                />
+              <span className="font-mono text-[11px] font-semibold uppercase tracking-[0.18em] text-[var(--brand-primary)]">
                 {currentCopy.tag}
               </span>
 
-              <h3 className="font-monument text-2xl sm:text-3xl font-bold text-[var(--text-primary)]">
+              <h3 className="font-monument text-2xl sm:text-3xl font-semibold text-[var(--text-primary)]">
                 {currentCopy.title}
               </h3>
 
@@ -212,16 +196,13 @@ export function Gallery({ onApplyPreset }: GalleryProps): React.ReactElement {
                 {currentCopy.description}
               </p>
 
-              <ul className="space-y-3 pt-2">
+              <ul className="space-y-2.5 pt-2">
                 {currentCopy.bullets.map((bullet, idx) => (
                   <li
                     key={idx}
                     className="flex items-start gap-2.5 text-xs sm:text-sm text-[var(--text-primary)]"
                   >
-                    <CheckCircle2
-                      className="h-4 w-4 shrink-0 mt-0.5"
-                      style={{ color: accentColor }}
-                    />
+                    <CheckCircle2 className="h-4 w-4 shrink-0 mt-0.5 text-[var(--brand-primary)]" />
                     <span>{bullet}</span>
                   </li>
                 ))}
@@ -233,7 +214,7 @@ export function Gallery({ onApplyPreset }: GalleryProps): React.ReactElement {
                     type="button"
                     data-testid="gallery-apply-preset"
                     onClick={() => onApplyPreset(currentPreset)}
-                    className="inline-flex items-center gap-2 rounded-full border border-[var(--brand-primary)] bg-[var(--badge-bg)] px-4 py-2 font-mono text-xs font-semibold text-[var(--badge-text)] transition hover:bg-[var(--brand-primary)] hover:text-[var(--btn-text)] cursor-pointer"
+                    className="inline-flex items-center gap-2 rounded-full border border-[var(--brand-primary)]/50 bg-[var(--badge-bg)] px-4 py-2 font-mono text-xs font-semibold text-[var(--badge-text)] transition hover:bg-[var(--brand-primary)] hover:text-[var(--btn-text)] cursor-pointer"
                   >
                     <span>{LOAD_PRESET_COPY[locale]}</span>
                     <ArrowUpRight className="h-3.5 w-3.5" />
@@ -242,11 +223,10 @@ export function Gallery({ onApplyPreset }: GalleryProps): React.ReactElement {
               )}
             </div>
 
-            {/* Indicator Dots */}
             <div
               role="tablist"
               aria-label={t.gallery.title}
-              className="flex items-center gap-2.5 pt-4 border-t border-[var(--border-main)]"
+              className="flex items-center gap-2 pt-4 border-t border-[var(--border-main)]"
             >
               {GALLERY_SLIDES.map((slide, idx) => {
                 const active = idx === activeIndex;
@@ -259,10 +239,10 @@ export function Gallery({ onApplyPreset }: GalleryProps): React.ReactElement {
                     aria-selected={active}
                     aria-label={`${t.gallery.dotAriaPrefix} ${idx + 1}`}
                     onClick={() => setActiveIndex(idx)}
-                    className={`h-2.5 rounded-full transition-all cursor-pointer ${
+                    className={`h-2 rounded-full transition-all cursor-pointer ${
                       active
-                        ? 'w-12 bg-[var(--brand-primary)]'
-                        : 'w-2.5 bg-[var(--border-main)] hover:bg-[var(--text-muted)]'
+                        ? 'w-10 bg-[var(--brand-primary)]'
+                        : 'w-2 bg-[var(--border-main)] hover:bg-[var(--text-muted)]'
                     }`}
                   />
                 );

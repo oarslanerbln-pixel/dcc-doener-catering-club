@@ -1,12 +1,14 @@
 import React from 'react';
 import { FileText, MessageCircle, ShieldAlert, Sparkles } from 'lucide-react';
-import { EXTRA_PRICES, formatCurrency } from '../domain/calculator';
+import { MEAT_CATALOG, SETUP_CATALOG } from '../data/catalog';
+import { formatCurrency } from '../domain/calculator';
 import { useLocale } from '../i18n';
 import type {
   CalculatorInput,
   CalculatorResult,
   ExtraId,
 } from '../types/catering';
+import { SmartPicture } from './SmartPicture';
 
 export interface ReceiptSummaryProps {
   quoteId: string;
@@ -30,78 +32,56 @@ export function ReceiptSummary({
   const discountPct = Math.round(result.discountRate * 100);
   const activeExtras = EXTRA_ORDER.filter((id) => input.extras[id]);
 
-  const formattedDate = new Intl.DateTimeFormat(
-    locale === 'de' ? 'de-DE' : locale === 'tr' ? 'tr-TR' : 'en-GB',
-    { year: 'numeric', month: '2-digit', day: '2-digit' }
-  ).format(new Date());
-
-  const netSum = Math.max(1, result.subtotalNet);
-  const meatShare = Math.round((result.meatTotalNet / netSum) * 100);
-  const setupShare = Math.round((result.setupTotalNet / netSum) * 100);
-  const extrasShare = Math.max(0, 100 - meatShare - setupShare);
+  const activeMeat =
+    MEAT_CATALOG.find((m) => m.id === input.meatId) ?? MEAT_CATALOG[0];
+  const activeSetup =
+    SETUP_CATALOG.find((s) => s.id === input.setupId) ?? SETUP_CATALOG[0];
 
   return (
     <aside
       id="rechner-summary"
       aria-label={t.receipt.title}
-      className="rounded-3xl border border-[#D49B54]/30 shadow-2xl overflow-hidden"
+      className="rounded-2xl border border-[var(--border-main)] shadow-2xl overflow-hidden"
       style={{
         backgroundColor: 'var(--receipt-bg)',
         color: 'var(--receipt-text)',
       }}
     >
-      <div className="receipt-edge-top" />
-
-      <div className="p-5 sm:p-6 space-y-5">
-        {/* Private Club Dossier Header */}
-        <div className="border-b border-white/10 pb-4">
-          <div className="flex items-center justify-between gap-2">
-            <span className="inline-flex items-center gap-1.5 font-mono text-[11px] uppercase tracking-[0.2em] text-[#D49B54]">
-              <span className="h-1.5 w-1.5 rounded-full bg-[#D49B54]" />
+      <div className="p-5 space-y-4">
+        {/* Compact Tesla/Apple Summary Header with Paired Thumbnails */}
+        <div className="flex items-center justify-between gap-3">
+          <div className="min-w-0">
+            <div className="font-mono text-[10px] uppercase tracking-[0.2em] text-[#D49B54]">
               {t.receipt.eyebrow}
-            </span>
-            <span className="rounded-full border border-[#D49B54]/35 bg-[#D49B54]/10 px-2.5 py-0.5 font-mono text-[11px] font-semibold text-[#E5B06B]">
-              {quoteId}
-            </span>
-          </div>
-          <h3 className="mt-2 font-monument text-xl font-bold tracking-tight text-[#F3ECE0]">
-            {t.receipt.title}
-          </h3>
-          <div className="mt-1 flex items-center justify-between font-mono text-xs text-[#C8BFB0]/80">
-            <span>
-              {t.receipt.refLabel}: {quoteId}
-            </span>
-            <span>
-              {t.receipt.dateLabel}: {formattedDate}
-            </span>
+            </div>
+            <div className="mt-0.5 flex items-center gap-2">
+              <h3 className="font-monument text-lg font-semibold tracking-tight text-[#F3ECE0] truncate">
+                {t.receipt.title}
+              </h3>
+              <span className="rounded-full border border-[#D49B54]/30 bg-[#D49B54]/10 px-2 py-0.5 font-mono text-[10px] font-semibold text-[#E5B06B] shrink-0">
+                {quoteId}
+              </span>
+            </div>
           </div>
 
-          {/* Warm Brass & Ember Cost Allocation Bar */}
-          <div className="mt-3.5 space-y-1.5">
-            <div className="flex h-1.5 w-full overflow-hidden rounded-full bg-white/10">
-              <div
-                style={{ width: `${meatShare}%`, backgroundColor: '#D49B54' }}
-              />
-              <div
-                style={{ width: `${setupShare}%`, backgroundColor: '#E06440' }}
-              />
-              <div
-                style={{ width: `${extrasShare}%`, backgroundColor: '#C8BFB0' }}
+          <div className="flex items-center -space-x-2 shrink-0">
+            <div className="h-9 w-9 rounded-lg overflow-hidden border border-white/15 bg-[#1D1A16]">
+              <SmartPicture
+                src={activeMeat.image}
+                alt={t.calculator.steps.spits.items[input.meatId].title}
+                width={72}
+                height={72}
+                className="h-full w-full object-cover"
               />
             </div>
-            <div className="flex items-center justify-between font-mono text-[10px] text-[#C8BFB0]/75">
-              <span className="inline-flex items-center gap-1">
-                <span className="h-1.5 w-1.5 rounded-full bg-[#D49B54]" />
-                {t.receipt.meatLabel} {meatShare}%
-              </span>
-              <span className="inline-flex items-center gap-1">
-                <span className="h-1.5 w-1.5 rounded-full bg-[#E06440]" />
-                {t.receipt.setupLabel} {setupShare}%
-              </span>
-              <span className="inline-flex items-center gap-1">
-                <span className="h-1.5 w-1.5 rounded-full bg-[#C8BFB0]" />
-                {t.receipt.extrasLabel} {extrasShare}%
-              </span>
+            <div className="h-9 w-9 rounded-lg overflow-hidden border border-white/15 bg-[#1D1A16]">
+              <SmartPicture
+                src={activeSetup.image}
+                alt={t.calculator.steps.setups.items[input.setupId].title}
+                width={72}
+                height={72}
+                className="h-full w-full object-cover"
+              />
             </div>
           </div>
         </div>
@@ -110,9 +90,9 @@ export function ReceiptSummary({
         {isEnterprise && (
           <div
             data-testid="receipt-enterprise-banner"
-            className="flex items-start gap-2.5 rounded-2xl border border-[#D49B54]/40 bg-[#D49B54]/12 p-3 text-xs text-[#F3ECE0]"
+            className="flex items-start gap-2 rounded-xl border border-[#D49B54]/40 bg-[#D49B54]/12 p-2.5 text-[11px] leading-snug text-[#F3ECE0]"
           >
-            <Sparkles className="h-4 w-4 shrink-0 text-[#D49B54] mt-0.5" />
+            <Sparkles className="h-3.5 w-3.5 shrink-0 text-[#D49B54] mt-0.5" />
             <span>{t.receipt.enterpriseBanner}</span>
           </div>
         )}
@@ -120,15 +100,15 @@ export function ReceiptSummary({
         {result.duoRequiresMinGuests && (
           <div
             data-testid="receipt-duo-notice"
-            className="flex items-start gap-2.5 rounded-2xl border border-[#E06440]/50 bg-[#E06440]/15 p-3 text-xs text-[#F3ECE0]"
+            className="flex items-start gap-2 rounded-xl border border-[#E06440]/50 bg-[#E06440]/15 p-2.5 text-[11px] leading-snug text-[#F3ECE0]"
           >
-            <ShieldAlert className="h-4 w-4 shrink-0 text-[#E06440] mt-0.5" />
+            <ShieldAlert className="h-3.5 w-3.5 shrink-0 text-[#E06440] mt-0.5" />
             <span>{t.receipt.duoAppliedNotice}</span>
           </div>
         )}
 
-        {/* Itemized Line Items */}
-        <div className="space-y-3 text-sm border-b border-white/10 pb-4">
+        {/* Compact Line Items */}
+        <div className="space-y-2.5 border-y border-white/10 py-3.5 text-xs sm:text-[13px]">
           <div className="flex items-center justify-between gap-2">
             <span className="text-[#C8BFB0]">{t.receipt.guestsLabel}</span>
             <span className="font-mono tabular-nums font-semibold text-[#F3ECE0]">
@@ -139,22 +119,22 @@ export function ReceiptSummary({
                   : result.effectiveGuests}{' '}
               {result.effectiveGuests === 1
                 ? t.calculator.steps.guests.guestUnitSingular
-                : t.calculator.steps.guests.guestUnitPlural}
-            </span>
-          </div>
-
-          <div className="flex items-center justify-between gap-2">
-            <span className="text-[#C8BFB0]">{t.receipt.eventTypeLabel}</span>
-            <span className="font-medium text-[#E5B06B]">
-              {t.calculator.steps.guests.eventTypes[input.eventType].label}
+                : t.calculator.steps.guests.guestUnitPlural}{' '}
+              ·{' '}
+              <span className="text-[#E5B06B]">
+                {t.calculator.steps.guests.eventTypes[input.eventType].label}
+              </span>
             </span>
           </div>
 
           <div className="flex items-start justify-between gap-2">
             <div className="min-w-0">
-              <div className="text-[#C8BFB0]">{t.receipt.meatLabel}</div>
-              <div className="text-xs text-[#F3ECE0] font-medium truncate">
+              <div className="text-[#F3ECE0] font-medium truncate">
                 {t.calculator.steps.spits.items[input.meatId].title}
+              </div>
+              <div className="font-mono text-[11px] text-[#9A9082]">
+                -{discountPct} % ({formatCurrency(result.unitMeatDiscounted, locale)}{' '}
+                {t.calculator.steps.spits.perGuestSuffix})
               </div>
             </div>
             <span className="font-mono tabular-nums font-semibold shrink-0 text-[#F3ECE0]">
@@ -163,61 +143,35 @@ export function ReceiptSummary({
           </div>
 
           <div className="flex items-center justify-between gap-2">
-            <span className="text-[#C8BFB0]">{t.receipt.discountLabel}</span>
-            <span className="rounded-full border border-[#7AB887]/35 bg-[#7AB887]/15 px-2.5 py-0.5 font-mono tabular-nums text-xs font-semibold text-[#7AB887]">
-              -{discountPct} % ({formatCurrency(result.unitMeatDiscounted, locale)}{' '}
-              {t.calculator.steps.spits.perGuestSuffix})
+            <span className="text-[#C8BFB0] truncate">
+              {t.calculator.steps.setups.items[input.setupId].title}
             </span>
-          </div>
-
-          <div className="flex items-start justify-between gap-2">
-            <div className="min-w-0">
-              <div className="text-[#C8BFB0]">{t.receipt.setupLabel}</div>
-              <div className="text-xs text-[#F3ECE0] font-medium truncate">
-                {t.calculator.steps.setups.items[input.setupId].title}
-              </div>
-            </div>
             <span className="font-mono tabular-nums font-semibold shrink-0 text-[#F3ECE0]">
               {formatCurrency(result.setupTotalNet, locale)}
             </span>
           </div>
 
-          <div className="space-y-1.5 pt-1">
-            <div className="flex items-center justify-between gap-2">
-              <span className="text-[#C8BFB0]">{t.receipt.extrasLabel}</span>
-              <span className="font-mono tabular-nums font-semibold text-[#F3ECE0]">
-                {formatCurrency(result.extrasTotalNet, locale)}
-              </span>
+          <div className="flex items-start justify-between gap-2">
+            <div className="min-w-0">
+              <div className="text-[#C8BFB0]">{t.receipt.extrasLabel}</div>
+              <div className="text-[11px] text-[#9A9082] truncate">
+                {activeExtras.length === 0
+                  ? t.receipt.extrasNone
+                  : activeExtras
+                      .map((id) => t.calculator.steps.extras.items[id].title)
+                      .join(' · ')}
+              </div>
             </div>
-            {activeExtras.length === 0 ? (
-              <div className="text-xs text-[#9A9082]">{t.receipt.extrasNone}</div>
-            ) : (
-              <ul className="space-y-1 text-xs text-[#C8BFB0]">
-                {activeExtras.map((extraId) => (
-                  <li
-                    key={extraId}
-                    className="flex items-center justify-between gap-2"
-                  >
-                    <span className="truncate">
-                      • {t.calculator.steps.extras.items[extraId].title}
-                    </span>
-                    <span className="font-mono tabular-nums shrink-0 text-[#C8BFB0]/80">
-                      {formatCurrency(
-                        EXTRA_PRICES[extraId] * result.effectiveGuests,
-                        locale
-                      )}
-                    </span>
-                  </li>
-                ))}
-              </ul>
-            )}
+            <span className="font-mono tabular-nums font-semibold shrink-0 text-[#F3ECE0]">
+              {formatCurrency(result.extrasTotalNet, locale)}
+            </span>
           </div>
         </div>
 
         {/* Per-Guest Highlight */}
-        <div className="rounded-2xl bg-gradient-to-br from-[#D49B54]/14 to-white/5 border border-[#D49B54]/30 p-4 flex items-center justify-between gap-2">
+        <div className="rounded-xl border border-[#D49B54]/30 bg-[#D49B54]/10 p-3.5 flex items-center justify-between gap-2">
           <div>
-            <div className="text-xs uppercase font-mono tracking-wider text-[#D49B54]">
+            <div className="font-mono text-[10px] uppercase tracking-wider text-[#D49B54]">
               {t.receipt.perGuestNetLabel}
             </div>
             <div className="text-[11px] text-[#C8BFB0]/80">
@@ -229,14 +183,14 @@ export function ReceiptSummary({
           </div>
           <span
             data-testid="summary-per-guest"
-            className="font-mono tabular-nums text-2xl sm:text-3xl font-bold text-[#E5B06B]"
+            className="font-mono tabular-nums text-2xl font-bold text-[#E5B06B]"
           >
             {formatCurrency(result.perGuestNet, locale)}
           </span>
         </div>
 
         {/* Net / 19% VAT / Gross Totals */}
-        <div className="space-y-2 text-sm">
+        <div className="space-y-1.5 text-xs sm:text-sm">
           <div className="flex items-center justify-between gap-2">
             <span className="text-[#C8BFB0]">{t.receipt.subtotalNetLabel}</span>
             <span
@@ -257,24 +211,24 @@ export function ReceiptSummary({
             </span>
           </div>
 
-          <div className="flex items-center justify-between gap-2 border-t border-white/15 pt-3 text-base font-bold">
+          <div className="flex items-center justify-between gap-2 border-t border-white/15 pt-2.5 text-sm sm:text-base font-bold">
             <span className="text-[#F3ECE0]">{t.receipt.totalGrossLabel}</span>
             <span
               data-testid="summary-gross"
-              className="font-mono tabular-nums text-xl sm:text-2xl text-[#E5B06B]"
+              className="font-mono tabular-nums text-lg sm:text-xl text-[#E5B06B]"
             >
               {formatCurrency(result.totalGross, locale)}
             </span>
           </div>
         </div>
 
-        {/* Primary Modal CTA & Direct WhatsApp CTA */}
-        <div className="space-y-2.5 pt-2">
+        {/* Compact Action Stack */}
+        <div className="space-y-2 pt-1">
           <button
             type="button"
             data-testid="quote-open-modal"
             onClick={onOpenModal}
-            className="w-full inline-flex items-center justify-center gap-2 rounded-2xl bg-[#D49B54] px-4 py-3.5 text-xs sm:text-sm font-semibold uppercase tracking-wider text-[#0B0A09] shadow-lg transition hover:bg-[#E5B06B] cursor-pointer"
+            className="w-full inline-flex items-center justify-center gap-2 rounded-xl bg-[#D49B54] px-4 py-3 text-xs font-semibold uppercase tracking-wider text-[#0B0A09] transition hover:bg-[#E5B06B] cursor-pointer"
           >
             <FileText className="h-4 w-4" />
             <span>{t.receipt.modalCta}</span>
@@ -284,15 +238,13 @@ export function ReceiptSummary({
             type="button"
             data-testid="quote-whatsapp"
             onClick={onDirectWhatsApp}
-            className="w-full inline-flex items-center justify-center gap-2 rounded-2xl border border-[#D49B54]/35 bg-white/5 px-4 py-3 text-xs sm:text-sm font-semibold text-[#F3ECE0] transition hover:bg-white/10 hover:border-[#D49B54] cursor-pointer"
+            className="w-full inline-flex items-center justify-center gap-2 rounded-xl border border-white/15 bg-white/5 px-4 py-2.5 text-xs font-medium text-[#F3ECE0] transition hover:bg-white/10 hover:border-[#D49B54] cursor-pointer"
           >
             <MessageCircle className="h-4 w-4 text-[#D49B54]" />
             <span>{t.receipt.whatsappCta}</span>
           </button>
         </div>
       </div>
-
-      <div className="receipt-edge-bottom" />
     </aside>
   );
 }

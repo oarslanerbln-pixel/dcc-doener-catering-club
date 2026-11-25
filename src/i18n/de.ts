@@ -11,7 +11,9 @@ export const de: TranslationSchema = {
     brandSubtitle: 'BERLIN · EST. 2026',
     nav: {
       calculator: 'Kalkulator',
+      culinary: 'Kulinarik',
       gallery: 'Galerie',
+      timeline: 'Ablauf',
       production: 'Manufaktur',
       faq: 'FAQ',
       brandKit: 'Brand Kit',
@@ -405,6 +407,161 @@ export const de: TranslationSchema = {
         description:
           'Parallele Schnittstationen und vorwärmende Steinofen-Logistik liefern bis zu 180 frische Portionen pro Stunde.',
         checkBadge: '30–800+ Gäste · On-Time',
+      },
+    ],
+  },
+  culinary: {
+    eyebrow: 'KULINARIK & BEILAGEN',
+    title: 'Brot, Signature-Saucen & Antep-Finals',
+    subtitle:
+      'Drei aufeinander abgestimmte Komponenten — direkt im Rechner zu- oder abwählbar.',
+    includedLabel: 'Im Extra-Paket enthalten',
+    addExtraCta: 'Zum Paket hinzufügen',
+    addedExtraLabel: 'Im Kalkulator aktiv',
+    tabs: [
+      {
+        id: 'bread',
+        tabLabel: '01 · Steinofen-Brote & Salat',
+        extraId: 'bread_salad',
+        headline: 'Knusprige Kruste trifft auf Sumach-Frische',
+        description:
+          'Täglich in Berlin gebackenes Sesam-Pide und fein geschnittener Rotkohl-Salat mit Zitrone und Olivenöl.',
+        image: '/media/setup-buffet.png',
+        items: [
+          {
+            name: 'Berliner Steinofen-Pide',
+            detail: 'Luftige Krume mit geröstetem Sesam und Schwarzkümmel, vor Ort aufgewärmt.',
+            tag: 'Frisch gebacken',
+          },
+          {
+            name: 'Sumach-Rotkohl & Kräutermix',
+            detail: 'Knackig mariniert mit Granatapfel-Essig, Petersilie und Minze.',
+            tag: '100 % Vegan',
+          },
+          {
+            name: 'Gegrilltes Marktgemüse',
+            detail: 'Geröstete Spitzpaprika und rote Zwiebeln als warmer Kontrast zum Fleisch.',
+            tag: 'Saisonal',
+          },
+        ],
+      },
+      {
+        id: 'sauces',
+        tabLabel: '02 · 3 Signature-Saucen',
+        extraId: 'bread_salad',
+        headline: 'Drei Rezepturen ohne Industrie-Zusätze',
+        description:
+          'Jede Sauce wird am Eventtag frisch abgeschmeckt und separat für vegane und klassische Linien serviert.',
+        image: '/media/spit-signature-duo.png',
+        items: [
+          {
+            name: 'Kräuter-Joghurtsauce',
+            detail: 'Griechischer Joghurt, Dill, Minze und ein Hauch Zitronenzeste.',
+            tag: 'Klassiker',
+          },
+          {
+            name: 'Gerösteter Knoblauch & Tahin',
+            detail: 'Cremig auf Basis von Sesampaste und mild geröstetem Knoblauch.',
+            tag: 'Vegan möglich',
+          },
+          {
+            name: 'Aleppo-Chili & Sumach-Ember',
+            detail: 'Fruchtige Schärfe aus Urfa-Chili, Tomatenmark und kaltgepresstem Öl.',
+            tag: '100 % Vegan',
+          },
+        ],
+      },
+      {
+        id: 'pairings',
+        tabLabel: '03 · Getränke & Baklava',
+        extraId: 'dessert',
+        headline: 'Berliner Club-Drinks & Gaziantep-Finale',
+        description:
+          'Vom hausgemachten Minz-Ayran über Club-Mate bis zur knusprigen Pistazien-Baklava mit Çay.',
+        image: '/media/gallery-wedding.png',
+        items: [
+          {
+            name: 'Hausgemachter Minz-Ayran',
+            detail: 'Cremig geschlagen mit frischer Gartenminze und feinem Meersalz.',
+            tag: 'Gekühlt',
+          },
+          {
+            name: 'Berlin Craft Soda Auswahl',
+            detail: 'Club-Mate, Fritz-Kola, Uludağ und gekühltes Tafelwasser im Service.',
+            tag: 'Inkl. Glas/Eis',
+          },
+          {
+            name: 'Gaziantep Pistazien-Baklava & Çay',
+            detail: '40-lagiger Blätterteig mit Antep-Pistazien und frisch gebrühtem Tee.',
+            tag: 'Patisserie',
+          },
+        ],
+      },
+    ],
+  },
+  timeline: {
+    eyebrow: 'OPERATIONS & TIMING',
+    title: 'Vier präzise Takte von der Anfrage bis zum Abbau',
+    subtitle:
+      'Verlässliche B2B-Logistik für Agenturen, Hotels und Großveranstaltungen.',
+    steps: [
+      {
+        code: 'T-48H',
+        title: 'Manufaktur & Kühlkette',
+        detail: 'Frisches Stecken der Yaprak-Spieße in Berlin inkl. lückenloser HACCP-Dokumentation.',
+        metric: '2–4 °C Log',
+      },
+      {
+        code: 'T-90M',
+        title: 'Aufbau & Grill-Kalibrierung',
+        detail: 'Geräuscharmer Einzug in den Saal oder Positionierung des autonomen Club-Trailers.',
+        metric: '90 Min. Setup',
+      },
+      {
+        code: 'LIVE',
+        title: 'High-Speed Carving',
+        detail: 'Doppel-Station oder Trailer-Ausgabe ohne Schlangen — bis zu 180 frische Portionen pro Stunde.',
+        metric: '180 / Std.',
+      },
+      {
+        code: 'T+30M',
+        title: 'Sauberer Rückbau & Abrechnung',
+        detail: 'Rückstandsfreie Übergabe der Location und ordentliche B2B-Rechnung mit 19 % MwSt.',
+        metric: '19 % MwSt.',
+      },
+    ],
+  },
+  references: {
+    eyebrow: 'VERTRAUEN & REFERENZEN',
+    title: 'Für anspruchsvolle Gastgeber in Berlin & Brandenburg',
+    subtitle:
+      'Ausgewählte Einsätze bei Tech-Konferenzen, Boutique-Hotels und privaten Galas.',
+    metrics: [
+      { value: '180 / Std.', label: 'Spitzen-Durchsatz pro Station' },
+      { value: '< 2 Std.', label: 'Verbindliche Angebots-Antwort' },
+      { value: '100 %', label: 'Pünktliche Einsatz-Quote' },
+    ],
+    items: [
+      {
+        tag: 'CORPORATE SUMMIT · 380 GÄSTE',
+        quote:
+          'Keine Warteschlange in der Mittagspause und die sauberste Event-Station, die wir je im Atrium hatten.',
+        author: 'Head of Workplace, Berlin Tech Hub',
+        meta: 'Live-Station · Yaprak Rind & Vegan',
+      },
+      {
+        tag: 'VIP HOCHZEIT · 160 GÄSTE',
+        quote:
+          'Der Mitternachts-Döner im matten Stahl-Look hat unsere Gäste komplett begeistert — stilvoll und extrem lecker.',
+        author: 'Wedding Planner, Schlosshotel Berlin',
+        meta: 'Signature Duo · Baklava & Tee',
+      },
+      {
+        tag: 'AGENTUR-FESTIVAL · 550 GÄSTE',
+        quote:
+          'Autarker Trailer im Innenhof, schnelle Abwicklung mit USt-IdNr. und top geschultes Team.',
+        author: 'Executive Producer, Kreuzberg Creative',
+        meta: 'Club-Trailer · Classic Kalb',
       },
     ],
   },

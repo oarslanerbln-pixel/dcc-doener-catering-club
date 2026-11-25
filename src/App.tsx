@@ -2,6 +2,8 @@ import React, { useCallback, useEffect, useMemo, useState } from 'react';
 import { BrandKitPortal } from './components/BrandKitPortal';
 import { Calculator } from './components/Calculator';
 import { CorporateFaq } from './components/CorporateFaq';
+import { CulinaryShowcase } from './components/CulinaryShowcase';
+import { EventTimeline } from './components/EventTimeline';
 import { Footer } from './components/Footer';
 import { Gallery, type GalleryPreset } from './components/Gallery';
 import { Header } from './components/Header';
@@ -11,7 +13,9 @@ import { LegalModal, type LegalDocId } from './components/LegalModal';
 import { MobileBottomBar } from './components/MobileBottomBar';
 import { ProductionBento } from './components/ProductionBento';
 import { QuoteModal } from './components/QuoteModal';
+import { RevealSection } from './components/RevealSection';
 import { ThemeSwitcher } from './components/ThemeSwitcher';
+import { TrustReferences } from './components/TrustReferences';
 import { THEME_METADATA } from './data/catalog';
 import {
   buildQuoteText,
@@ -256,9 +260,35 @@ function AppContent(): React.ReactElement {
               onOpenModal={handleOpenQuoteModal}
               onDirectWhatsApp={handleDirectWhatsApp}
             />
-            <Gallery onApplyPreset={handleApplyGalleryPreset} />
-            <ProductionBento />
-            <CorporateFaq onOpenQuoteModal={handleOpenQuoteModal} />
+            <RevealSection>
+              <CulinaryShowcase
+                extras={calculatorInput.extras}
+                onToggleExtra={(extraId) =>
+                  setCalculatorInput((prev) => ({
+                    ...prev,
+                    extras: {
+                      ...prev.extras,
+                      [extraId]: !prev.extras[extraId],
+                    },
+                  }))
+                }
+              />
+            </RevealSection>
+            <RevealSection>
+              <Gallery onApplyPreset={handleApplyGalleryPreset} />
+            </RevealSection>
+            <RevealSection>
+              <EventTimeline />
+            </RevealSection>
+            <RevealSection>
+              <ProductionBento />
+            </RevealSection>
+            <RevealSection>
+              <TrustReferences />
+            </RevealSection>
+            <RevealSection>
+              <CorporateFaq onOpenQuoteModal={handleOpenQuoteModal} />
+            </RevealSection>
           </>
         )}
       </main>

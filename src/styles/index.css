@@ -10,6 +10,8 @@
 
 html {
   scroll-behavior: smooth;
+  scroll-padding-top: 96px;
+  scroll-padding-bottom: 140px;
   overflow-x: clip;
   max-width: 100vw;
   background-color: var(--bg-main);
@@ -20,15 +22,11 @@ body {
   margin: 0;
   padding: 0;
   min-height: 100vh;
-  overflow-x: clip;
-  max-width: 100vw;
+  width: 100%;
   font-family: var(--font-sans);
   background-color: var(--bg-main);
   background-image:
-    radial-gradient(ellipse 75% 45% at 15% -5%, var(--glow-primary), transparent 65%),
-    radial-gradient(ellipse 65% 40% at 88% 12%, var(--glow-secondary), transparent 65%),
-    radial-gradient(ellipse 70% 50% at 50% 60%, var(--glow-tertiary), transparent 72%);
-  background-attachment: fixed;
+    radial-gradient(ellipse 65% 40% at 50% -5%, var(--glow-primary), transparent 70%);
   color: var(--text-primary);
   transition:
     background-color 280ms var(--ease-expo-out),
@@ -37,21 +35,59 @@ body {
 
 #root {
   min-height: 100vh;
-  overflow-x: clip;
-  max-width: 100vw;
+  width: 100%;
 }
 
-/* Architectural Private-Club Surface & Specular Hairline Cards */
+/* Minimalist Tesla / Apple / Togg Architectural Surfaces */
 .apple-card {
   background-color: var(--bg-card);
   border: 1px solid var(--border-main);
+  border-radius: 1rem;
   box-shadow:
-    0 24px 56px -18px rgba(0, 0, 0, 0.42),
+    0 10px 30px -15px rgba(0, 0, 0, 0.28),
     inset 0 1px 0 0 var(--glass-border);
   transition:
     transform 260ms var(--ease-expo-out),
     border-color 260ms var(--ease-expo-out),
     box-shadow 260ms var(--ease-expo-out);
+}
+
+/* Guaranteed Sticky Configurator Grid & Laptop-Safe Summary */
+.dcc-configurator-grid {
+  display: grid;
+  grid-template-columns: minmax(0, 1fr);
+  gap: 1.5rem;
+  align-items: start;
+}
+
+.dcc-sticky-summary {
+  width: 100%;
+}
+
+@media (min-width: 960px) {
+  .dcc-configurator-grid {
+    grid-template-columns: minmax(0, 7.2fr) minmax(320px, 4.8fr);
+    gap: 2.25rem;
+  }
+
+  .dcc-sticky-summary {
+    position: sticky;
+    top: 5.75rem;
+    align-self: start;
+    max-height: calc(100vh - 6.25rem);
+    overflow-y: auto;
+    scrollbar-width: thin;
+  }
+}
+
+/* Subtle Scroll Reveal (transform-only so visibility is always preserved) */
+.dcc-reveal {
+  transform: translateY(10px);
+  transition: transform 480ms var(--ease-expo-out);
+}
+
+.dcc-reveal.dcc-reveal-visible {
+  transform: translateY(0);
 }
 
 .apple-glass {
@@ -73,12 +109,12 @@ body {
   color: transparent;
 }
 
-/* Custom Range Slider — Tactile Burnished Brass Track */
+/* Custom Range Slider — Sleek 4px Architectural Track */
 input[type="range"].dcc-slider {
   -webkit-appearance: none;
   appearance: none;
   width: 100%;
-  height: 8px;
+  height: 4px;
   border-radius: 9999px;
   background: var(--slider-track);
   outline: none;
@@ -88,14 +124,14 @@ input[type="range"].dcc-slider {
 input[type="range"].dcc-slider::-webkit-slider-thumb {
   -webkit-appearance: none;
   appearance: none;
-  width: 24px;
-  height: 24px;
+  width: 20px;
+  height: 20px;
   border-radius: 50%;
   background: var(--slider-thumb);
-  border: 3px solid var(--bg-card);
+  border: 2.5px solid var(--bg-card);
   box-shadow:
-    0 4px 14px rgba(0, 0, 0, 0.45),
-    0 0 0 1.5px var(--brand-primary);
+    0 3px 10px rgba(0, 0, 0, 0.4),
+    0 0 0 1px var(--brand-primary);
   cursor: pointer;
   transition: transform 180ms var(--ease-expo-out);
 }
@@ -105,14 +141,14 @@ input[type="range"].dcc-slider::-webkit-slider-thumb:hover {
 }
 
 input[type="range"].dcc-slider::-moz-range-thumb {
-  width: 24px;
-  height: 24px;
+  width: 20px;
+  height: 20px;
   border-radius: 50%;
   background: var(--slider-thumb);
-  border: 3px solid var(--bg-card);
+  border: 2.5px solid var(--bg-card);
   box-shadow:
-    0 4px 14px rgba(0, 0, 0, 0.45),
-    0 0 0 1.5px var(--brand-primary);
+    0 3px 10px rgba(0, 0, 0, 0.4),
+    0 0 0 1px var(--brand-primary);
   cursor: pointer;
 }
 
