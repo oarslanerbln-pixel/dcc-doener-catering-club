@@ -102,7 +102,7 @@ export function Header({
           <BrandLogo
             lockup="primary"
             theme={theme}
-            imgClassName="h-7 sm:h-9 w-auto max-w-[165px] sm:max-w-none object-contain"
+            imgClassName="h-9 sm:h-11 w-auto max-w-[175px] sm:max-w-none object-contain"
           />
         </a>
 
@@ -169,7 +169,7 @@ export function Header({
           <div
             role="group"
             aria-label={t.header.langSwitcherAria}
-            className="inline-flex items-center rounded-full border border-[var(--border-main)] bg-[var(--bg-subtle)]/70 p-0.5"
+            className="inline-flex items-center bg-white/[0.05] p-0.5"
           >
             {SUPPORTED_LOCALES.map((lang) => {
               const active = locale === lang;
@@ -181,10 +181,10 @@ export function Header({
                   aria-pressed={active}
                   data-active={String(active)}
                   onClick={() => setLocale(lang)}
-                  className={`rounded-lg px-2.5 sm:px-3 py-1.5 font-mono text-[11px] sm:text-xs font-semibold uppercase transition cursor-pointer ${
+                  className={`px-2.5 sm:px-3 py-1.5 font-mono text-[11px] sm:text-xs font-semibold uppercase transition cursor-pointer ${
                     active
-                      ? 'bg-[var(--brand-primary)] text-[var(--btn-text)] shadow-sm'
-                      : 'text-[var(--text-secondary)] hover:text-[var(--text-primary)]'
+                      ? 'bg-[var(--brand-primary)] text-[var(--btn-text)]'
+                      : 'text-[var(--text-secondary)] hover:text-white'
                   }`}
                 >
                   {t.header.langLabels[lang]}
@@ -196,7 +196,7 @@ export function Header({
           <a
             href="#rechner"
             onClick={(e) => handleAnchorClick(e, '#rechner')}
-            className="hidden sm:inline-flex h-10 items-center justify-center rounded-xl bg-[var(--brand-primary)] px-5 text-xs sm:text-sm font-bold tracking-wide text-[var(--btn-text)] shadow-md transition hover:bg-[var(--brand-hover)]"
+            className="hidden sm:inline-flex h-10 items-center justify-center bg-[var(--brand-primary)] px-5 text-xs font-bold uppercase tracking-wider text-[var(--btn-text)] transition hover:bg-[#F2D58B]"
           >
             {t.header.cta}
           </a>

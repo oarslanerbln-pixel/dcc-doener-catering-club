@@ -40,7 +40,7 @@ export function CulinaryShowcase({
           <div
             role="tablist"
             aria-label={t.culinary.title}
-            className="grid grid-cols-1 w-full sm:w-auto sm:inline-flex sm:flex-wrap items-center gap-1.5 rounded-xl border-[1.5px] border-[var(--border-strong)] bg-[var(--bg-card)] p-1.5"
+            className="grid grid-cols-1 w-full sm:w-auto sm:inline-flex sm:flex-wrap items-center gap-1 bg-[#0C0E0D] p-1"
           >
             {t.culinary.tabs.map((tab, idx) => {
               const active = idx === activeTabIdx;
@@ -52,10 +52,10 @@ export function CulinaryShowcase({
                   aria-selected={active}
                   data-testid={`culinary-tab-${tab.id}`}
                   onClick={() => setActiveTabIdx(idx)}
-                  className={`min-h-[40px] rounded-lg px-4 py-2 font-mono text-xs sm:text-[13px] text-left sm:text-center transition cursor-pointer ${
+                  className={`min-h-[40px] px-4 py-2 font-mono text-xs sm:text-[13px] text-left sm:text-center transition cursor-pointer ${
                     active
-                      ? 'bg-[var(--brand-primary)] font-bold text-[var(--btn-text)] shadow-sm'
-                      : 'font-medium text-[var(--text-secondary)] hover:text-[var(--text-primary)]'
+                      ? 'bg-[var(--brand-primary)] font-bold text-[var(--btn-text)]'
+                      : 'font-medium text-[var(--text-secondary)] hover:text-white'
                   }`}
                 >
                   {tab.tabLabel}

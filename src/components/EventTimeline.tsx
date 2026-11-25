@@ -33,12 +33,12 @@ export function EventTimeline(): React.ReactElement {
                   <span className="font-mono text-xs font-bold tracking-widest text-[var(--brand-primary)]">
                     {step.code}
                   </span>
-                  <span className="rounded-full border border-[var(--border-main)] bg-[var(--bg-subtle)]/70 px-2.5 py-0.5 font-mono text-[10px] text-[var(--text-secondary)]">
+                  <span className="bg-white/[0.06] px-2.5 py-0.5 font-mono text-[10px] text-[var(--text-secondary)]">
                     {step.metric}
                   </span>
                 </div>
 
-                <div className="h-[2px] w-full bg-[var(--border-main)] overflow-hidden rounded-full">
+                <div className="h-[2px] w-full bg-white/10 overflow-hidden">
                   <div className="h-full w-14 dcc-gold-emerald-bar" />
                 </div>
 

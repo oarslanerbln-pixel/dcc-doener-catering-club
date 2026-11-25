@@ -101,7 +101,7 @@ function AppContent(): React.ReactElement {
   useEffect(() => {
     const onPointerMove = (e: PointerEvent) => {
       const target = (e.target as HTMLElement | null)?.closest?.(
-        '.dcc-lux-card'
+        '.dcc-lux-card, .dcc-calc-tile'
       ) as HTMLElement | null;
       if (!target) return;
       const rect = target.getBoundingClientRect();

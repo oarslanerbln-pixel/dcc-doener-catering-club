@@ -208,7 +208,7 @@ export function QuoteModal({
           backgroundColor: 'var(--bg-card)',
           color: 'var(--text-primary)',
         }}
-        className="relative my-auto w-full max-w-2xl rounded-2xl border border-[var(--border-main)] p-4 sm:p-7 shadow-2xl max-h-[92vh] overflow-y-auto"
+        className="relative my-auto w-full max-w-2xl bg-[#0B0D0C] p-4 sm:p-7 shadow-2xl max-h-[92vh] overflow-y-auto"
       >
         {/* Header */}
         <div className="flex items-start justify-between gap-4 border-b border-[var(--border-main)] pb-4">
@@ -478,12 +478,12 @@ export function QuoteModal({
         </div>
 
         {/* Actions */}
-        <div className="mt-6 flex flex-wrap items-center gap-3 border-t border-[var(--border-main)] pt-4">
+        <div className="mt-6 flex flex-wrap items-center gap-3 border-t border-white/10 pt-4">
           <button
             type="button"
             data-testid="modal-whatsapp"
             onClick={handleWhatsAppSubmit}
-            className="flex-1 min-w-[200px] min-h-[48px] inline-flex items-center justify-center gap-2 rounded-xl bg-[var(--brand-primary)] px-5 py-3.5 text-sm font-bold uppercase tracking-wider text-[var(--btn-text)] shadow-md transition hover:bg-[var(--brand-hover)] cursor-pointer"
+            className="flex-1 min-w-[200px] min-h-[48px] inline-flex items-center justify-center gap-2 bg-[var(--brand-primary)] px-5 py-3.5 text-sm font-bold uppercase tracking-wider text-[var(--btn-text)] transition hover:bg-[#F2D58B] cursor-pointer"
           >
             <MessageCircle className="h-4 w-4" />
             <span>{t.quoteModal.actions.whatsapp}</span>
@@ -493,9 +493,9 @@ export function QuoteModal({
             type="button"
             data-testid="modal-email"
             onClick={handleEmailSubmit}
-            className="min-h-[48px] inline-flex items-center justify-center gap-2 rounded-xl border-[1.5px] border-[var(--brand-primary)]/60 bg-[var(--badge-bg)] px-5 py-3.5 text-sm font-semibold text-[var(--badge-text)] transition hover:bg-[var(--brand-primary)] hover:text-[var(--btn-text)] cursor-pointer"
+            className="min-h-[48px] inline-flex items-center justify-center gap-2 bg-[#142921] px-5 py-3.5 text-sm font-semibold uppercase tracking-wider text-white transition hover:bg-[#1E3D31] cursor-pointer"
           >
-            <Mail className="h-4 w-4" />
+            <Mail className="h-4 w-4 text-[#2BC48A]" />
             <span>{EMAIL_ACTION_LABEL[locale]}</span>
           </button>
 
@@ -503,10 +503,10 @@ export function QuoteModal({
             type="button"
             data-testid="modal-copy"
             onClick={handleCopyQuote}
-            className="min-h-[48px] inline-flex items-center justify-center gap-2 rounded-xl border-[1.5px] border-[var(--border-strong)] bg-[var(--bg-subtle)] px-4 py-3.5 text-sm font-semibold text-[var(--text-primary)] transition hover:border-[var(--brand-primary)] cursor-pointer"
+            className="min-h-[48px] inline-flex items-center justify-center gap-2 bg-white/[0.06] px-4 py-3.5 text-sm font-semibold uppercase tracking-wider text-white transition hover:bg-white/[0.12] cursor-pointer"
           >
             {copied ? (
-              <Check className="h-4 w-4 text-[var(--brand-primary)]" />
+              <Check className="h-4 w-4 text-[#2BC48A]" />
             ) : (
               <Copy className="h-4 w-4" />
             )}
@@ -519,7 +519,7 @@ export function QuoteModal({
             type="button"
             data-testid="modal-print"
             onClick={handlePrint}
-            className="min-h-[48px] inline-flex items-center justify-center gap-2 rounded-xl border-[1.5px] border-[var(--border-strong)] bg-[var(--bg-subtle)] px-4 py-3.5 text-sm font-semibold text-[var(--text-primary)] transition hover:border-[var(--brand-primary)] cursor-pointer"
+            className="min-h-[48px] inline-flex items-center justify-center gap-2 bg-white/[0.06] px-4 py-3.5 text-sm font-semibold uppercase tracking-wider text-white transition hover:bg-white/[0.12] cursor-pointer"
           >
             <Printer className="h-4 w-4" />
             <span>{t.quoteModal.actions.print}</span>

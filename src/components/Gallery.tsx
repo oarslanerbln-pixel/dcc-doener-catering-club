@@ -100,10 +100,10 @@ export function Gallery({ onApplyPreset }: GalleryProps): React.ReactElement {
             </p>
           </div>
 
-          <div className="flex items-center gap-2.5">
+          <div className="flex items-center gap-2">
             <span
               data-testid="gallery-counter"
-              className="rounded-xl border border-[var(--border-strong)] bg-[var(--bg-card)] px-4 py-2 font-mono tabular-nums text-xs font-bold text-[var(--brand-primary)]"
+              className="bg-[#0D0F0E] px-4 py-2.5 font-mono tabular-nums text-xs font-bold text-[#F2D58B]"
             >
               {activeIndex + 1} {t.gallery.counterSeparator} {total}
             </span>
@@ -113,7 +113,7 @@ export function Gallery({ onApplyPreset }: GalleryProps): React.ReactElement {
               data-testid="gallery-prev"
               aria-label={t.gallery.prevAria}
               onClick={handlePrev}
-              className="inline-flex h-11 w-11 items-center justify-center rounded-xl border-[1.5px] border-[var(--border-strong)] bg-[var(--bg-card)] text-[var(--text-primary)] transition hover:border-[var(--brand-primary)] hover:bg-[var(--bg-subtle)] cursor-pointer"
+              className="inline-flex h-11 w-11 items-center justify-center bg-[#0D0F0E] text-white transition hover:bg-[var(--brand-primary)] hover:text-[#050505] cursor-pointer"
             >
               <ChevronLeft className="h-5 w-5" />
             </button>
@@ -123,14 +123,14 @@ export function Gallery({ onApplyPreset }: GalleryProps): React.ReactElement {
               data-testid="gallery-next"
               aria-label={t.gallery.nextAria}
               onClick={handleNext}
-              className="inline-flex h-11 w-11 items-center justify-center rounded-xl border-[1.5px] border-[var(--border-strong)] bg-[var(--bg-card)] text-[var(--text-primary)] transition hover:border-[var(--brand-primary)] hover:bg-[var(--bg-subtle)] cursor-pointer"
+              className="inline-flex h-11 w-11 items-center justify-center bg-[#0D0F0E] text-white transition hover:bg-[var(--brand-primary)] hover:text-[#050505] cursor-pointer"
             >
               <ChevronRight className="h-5 w-5" />
             </button>
           </div>
         </div>
 
-        {/* Minimalist 4-Scenario Strip */}
+        {/* Minimalist 4-Scenario Strip (Sharp & Frameless) */}
         <div className="grid grid-cols-2 gap-3 lg:grid-cols-4">
           {GALLERY_SLIDES.map((slide, idx) => {
             const copy = t.gallery.slides[idx] ?? t.gallery.slides[0];
@@ -142,12 +142,10 @@ export function Gallery({ onApplyPreset }: GalleryProps): React.ReactElement {
                 data-testid={`gallery-scenario-${slide.id}`}
                 onClick={() => setActiveIndex(idx)}
                 className={`dcc-lux-card flex items-center gap-3 p-2.5 text-left cursor-pointer ${
-                  active
-                    ? '!border-[#D4A853] bg-[#121715] ring-1 ring-[#2BC48A]/40'
-                    : ''
+                  active ? 'dcc-calc-tile-active' : ''
                 }`}
               >
-                <div className="h-11 w-14 rounded-lg overflow-hidden shrink-0 border border-[var(--border-main)]">
+                <div className="h-11 w-14 overflow-hidden shrink-0">
                   <SmartPicture
                     src={slide.image}
                     alt={copy.title}

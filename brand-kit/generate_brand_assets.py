@@ -260,74 +260,85 @@ class VectorTextConverter:
         return pen.getCommands()
 
 
-def _emblem_svg_group(cx: float, cy: float, r_outer: float, pal: dict, show_rings: bool = True) -> list[str]:
-    """Generate the Architectural 3-Facet Diamond Crest emblem as pure SVG primitives."""
-    s = r_outer / 36.0
+def _spit_gradient_defs(grad_id: str, pal: dict, colorway: str) -> str:
+    """Silky vertical White -> Champagne Gold -> Subtle Emerald gradient for artistic Döner Spieß."""
+    if colorway == "mono":
+        c0, c1, c2 = "#060606", "#060606", "#060606"
+    elif colorway == "dark":
+        c0, c1, c2 = "#111312", "#9A7226", "#148F63"
+    elif colorway == "ember":
+        c0, c1, c2 = "#FFFFFF", "#F2CB76", "#2BC48A"
+    else:  # light (on pure black)
+        c0, c1, c2 = "#FFFFFF", "#E6C16E", "#2BC48A"
+    return (
+        f'<defs>'
+        f'<linearGradient id="{grad_id}" x1="15%" y1="0%" x2="85%" y2="100%">'
+        f'<stop offset="0%" stop-color="{c0}"/>'
+        f'<stop offset="56%" stop-color="{c1}"/>'
+        f'<stop offset="100%" stop-color="{c2}"/>'
+        f'</linearGradient>'
+        f'</defs>'
+    )
+
+
+def _emblem_svg_group(
+    cx: float,
+    cy: float,
+    r_outer: float,
+    pal: dict,
+    show_rings: bool = False,
+    grad_id: str = "dcc-spit-grad",
+) -> list[str]:
+    """Generate a minimalist, symmetrical, artistic Döner Spieß mark (no cartoon shapes, no clutter)."""
+    s = r_outer / 34.0
+    fill_ref = f"url(#{grad_id})"
     parts: list[str] = []
-    if show_rings:
-        # Outer precision ring + chamfered inner octagon
-        parts.append(
-            f'<circle cx="{cx:.2f}" cy="{cy:.2f}" r="{r_outer:.2f}" fill="none" stroke="{pal["brass"]}" stroke-width="{2.1 * s:.2f}"/>'
+
+    # Ultra-fine vertical rotisserie needle axis
+    parts.append(
+        f'<line x1="{cx:.2f}" y1="{cy - 28.0 * s:.2f}" x2="{cx:.2f}" y2="{cy + 27.5 * s:.2f}" '
+        f'stroke="{fill_ref}" stroke-width="{1.5 * s:.2f}" stroke-linecap="round"/>'
+    )
+    # Minimalist top spindle finial diamond
+    parts.append(
+        f'<polygon points="{cx:.2f},{cy - 31.5 * s:.2f} {cx + 2.6 * s:.2f},{cy - 28.5 * s:.2f} '
+        f'{cx:.2f},{cy - 25.5 * s:.2f} {cx - 2.6 * s:.2f},{cy - 28.5 * s:.2f}" fill="{fill_ref}"/>'
+    )
+
+    # 5 Symmetrical, gracefully tapering artistic carved contour bands (Döner Spieß silhouette)
+    # Each band is a sleek symmetrical faceted ribbon with subtle inner taper & clean negative space
+    tiers = [
+        (-21.5, -16.2, 16.5, 15.2),
+        (-13.4, -8.1, 15.2, 13.4),
+        (-5.3, 0.0, 13.4, 11.2),
+        (2.8, 8.0, 11.1, 8.6),
+        (10.8, 15.6, 8.4, 5.4),
+    ]
+    for y0_u, y1_u, w0_u, w1_u in tiers:
+        y0 = cy + y0_u * s
+        y1 = cy + y1_u * s
+        ym = (y0 + y1) * 0.5
+        # Left & right symmetrical artistic blades separated by a razor-thin central axis gleam
+        gap = 1.6 * s
+        left_d = (
+            f"M {cx - gap:.2f},{y0:.2f} "
+            f"L {cx - w0_u * s:.2f},{y0 + 1.1 * s:.2f} "
+            f"L {cx - w1_u * s:.2f},{y1:.2f} "
+            f"L {cx - gap:.2f},{y1 + 0.9 * s:.2f} Z"
         )
-        oct_r = r_outer * 0.84
-        oct_pts = []
-        for i in range(8):
-            ang = math.radians(22.5 + i * 45.0)
-            oct_pts.append(f"{cx + oct_r * math.cos(ang):.2f},{cy + oct_r * math.sin(ang):.2f}")
-        parts.append(
-            f'<polygon points="{" ".join(oct_pts)}" fill="none" stroke="{pal["hairline"]}" stroke-width="{1.0 * s:.2f}"/>'
+        right_d = (
+            f"M {cx + gap:.2f},{y0:.2f} "
+            f"L {cx + w0_u * s:.2f},{y0 + 1.1 * s:.2f} "
+            f"L {cx + w1_u * s:.2f},{y1:.2f} "
+            f"L {cx + gap:.2f},{y1 + 0.9 * s:.2f} Z"
         )
-        # 4 cardinal micro-diamonds (Gold N/S, Emerald E/W)
-        d_sz = 2.1 * s
-        for dx, dy, col in (
-            (0.0, -r_outer, pal["brass"]),
-            (0.0, r_outer, pal["brass"]),
-            (-r_outer, 0.0, pal["sear"]),
-            (r_outer, 0.0, pal["sear"]),
-        ):
-            px, py = cx + dx, cy + dy
-            parts.append(
-                f'<polygon points="{px:.2f},{py - d_sz:.2f} {px + d_sz:.2f},{py:.2f} {px:.2f},{py + d_sz:.2f} {px - d_sz:.2f},{py:.2f}" fill="{col}"/>'
-            )
+        parts.append(f'<path d="{left_d}" fill="{fill_ref}"/>')
+        parts.append(f'<path d="{right_d}" fill="{fill_ref}"/>')
 
-    # Central crisp architectural diamond spire (White / Primary)
-    spire = (
-        f"M {cx:.2f},{cy - 22.5 * s:.2f} "
-        f"L {cx + 5.8 * s:.2f},{cy:.2f} "
-        f"L {cx:.2f},{cy + 22.5 * s:.2f} "
-        f"L {cx - 5.8 * s:.2f},{cy:.2f} Z"
-    )
-    parts.append(f'<path d="{spire}" fill="{pal["primary"]}"/>')
-
-    # Left architectural bevel blade (Champagne Gold)
-    left_blade = (
-        f"M {cx - 9.2 * s:.2f},{cy - 15.0 * s:.2f} "
-        f"L {cx - 18.2 * s:.2f},{cy - 5.2 * s:.2f} "
-        f"L {cx - 18.2 * s:.2f},{cy + 5.2 * s:.2f} "
-        f"L {cx - 9.2 * s:.2f},{cy + 15.0 * s:.2f} "
-        f"L {cx - 7.4 * s:.2f},{cy:.2f} Z"
-    )
-    parts.append(f'<path d="{left_blade}" fill="{pal["brass"]}"/>')
-
-    # Right architectural bevel blade (Jewel Emerald)
-    right_blade = (
-        f"M {cx + 9.2 * s:.2f},{cy - 15.0 * s:.2f} "
-        f"L {cx + 18.2 * s:.2f},{cy - 5.2 * s:.2f} "
-        f"L {cx + 18.2 * s:.2f},{cy + 5.2 * s:.2f} "
-        f"L {cx + 9.2 * s:.2f},{cy + 15.0 * s:.2f} "
-        f"L {cx + 7.4 * s:.2f},{cy:.2f} Z"
-    )
-    parts.append(f'<path d="{right_blade}" fill="{pal["sear"]}"/>')
-
-    # Precision vertical axis hairline + crown/plinth accents
+    # Delicate tapered base drip-plate hairline
     parts.append(
-        f'<line x1="{cx:.2f}" y1="{cy - 15.0 * s:.2f}" x2="{cx:.2f}" y2="{cy + 15.0 * s:.2f}" stroke="{pal["brass"]}" stroke-width="{1.0 * s:.2f}" stroke-opacity="0.75"/>'
-    )
-    parts.append(
-        f'<rect x="{cx - 9.0 * s:.2f}" y="{cy - 24.5 * s:.2f}" width="{18.0 * s:.2f}" height="{1.8 * s:.2f}" rx="{0.9 * s:.2f}" fill="{pal["brass"]}"/>'
-    )
-    parts.append(
-        f'<rect x="{cx - 11.0 * s:.2f}" y="{cy + 22.7 * s:.2f}" width="{22.0 * s:.2f}" height="{1.8 * s:.2f}" rx="{0.9 * s:.2f}" fill="{pal["sear"]}"/>'
+        f'<path d="M {cx - 10.5 * s:.2f},{cy + 21.8 * s:.2f} L {cx + 10.5 * s:.2f},{cy + 21.8 * s:.2f} '
+        f'L {cx + 7.5 * s:.2f},{cy + 24.0 * s:.2f} L {cx - 7.5 * s:.2f},{cy + 24.0 * s:.2f} Z" fill="{fill_ref}"/>'
     )
 
     return parts
@@ -336,90 +347,50 @@ def _emblem_svg_group(cx: float, cy: float, r_outer: float, pal: dict, show_ring
 def build_logo_svg(lockup: str, colorway: str, conv: VectorTextConverter) -> tuple[str, int, int, int, int]:
     """Return (svg_xml, vw, vh, png_1x_w, png_1x_h) with zero <text> elements."""
     pal = COLORWAYS[colorway]
+    grad_id = f"dcc-spit-{lockup}-{colorway}"
+    body: list[str] = [_spit_gradient_defs(grad_id, pal, colorway)]
 
     if lockup == "logo-primary":
-        vw, vh, w1x, h1x = 480, 96, 480, 96
-        body = _emblem_svg_group(52.0, 48.0, 34.0, pal, show_rings=True)
-        body.append(f'<line x1="102" y1="16" x2="102" y2="80" stroke="{pal["hairline"]}" stroke-width="1.2"/>')
-        d_dcc = conv.text_to_path_d("DCC", "Montserrat-ExtraBold.ttf", 36.0, 120.0, 46.5, tracking=4.5)
-        d_sub = conv.text_to_path_d("DÖNER CATERING CLUB", "Montserrat-Bold.ttf", 12.2, 121.0, 65.5, tracking=3.2)
-        d_tag = conv.text_to_path_d("BERLIN · EST. 2026", "JetBrainsMono-Var.ttf", 8.8, 121.5, 81.5, tracking=2.2, weight=500)
-        body.append(f'<path d="{d_dcc}" fill="{pal["primary"]}"/>')
-        body.append(f'<path d="{d_sub}" fill="{pal["brass"]}"/>')
-        body.append(f'<path d="{d_tag}" fill="{pal["secondary"]}"/>')
+        vw, vh, w1x, h1x = 420, 108, 420, 108
+        # Minimalist symmetrical artistic Döner Spieß with DCC centered directly underneath
+        body.extend(_emblem_svg_group(56.0, 39.0, 31.0, pal, show_rings=False, grad_id=grad_id))
+        d_dcc_under = conv.text_to_path_d("DCC", "Montserrat-ExtraBold.ttf", 21.0, 56.0, 96.0, tracking=4.5, align="center")
+        body.append(f'<path d="{d_dcc_under}" fill="{pal["primary"]}"/>')
+
+        # Clean editorial brand wordmark to the right (no heavy box/border)
+        d_sub = conv.text_to_path_d("DÖNER CATERING CLUB", "Montserrat-Bold.ttf", 14.5, 114.0, 52.0, tracking=3.4)
+        d_tag = conv.text_to_path_d("BERLIN · EST. 2026", "JetBrainsMono-Var.ttf", 9.6, 115.0, 72.0, tracking=2.6, weight=500)
+        body.append(f'<path d="{d_sub}" fill="{pal["primary"]}"/>')
+        body.append(f'<path d="{d_tag}" fill="url(#{grad_id})"/>')
 
     elif lockup == "logo-stacked":
         vw, vh, w1x, h1x = 320, 280, 320, 280
-        body = _emblem_svg_group(160.0, 76.0, 52.0, pal, show_rings=True)
-        d_dcc = conv.text_to_path_d("DCC", "Montserrat-ExtraBold.ttf", 42.0, 160.0, 178.0, tracking=5.0, align="center")
-        d_sub = conv.text_to_path_d("DÖNER CATERING CLUB", "Montserrat-Bold.ttf", 12.0, 160.0, 206.0, tracking=2.8, align="center")
-        body.append(f'<line x1="78" y1="222" x2="242" y2="222" stroke="{pal["hairline"]}" stroke-width="1.2"/>')
-        d_tag = conv.text_to_path_d("BERLIN · EST. 2026", "JetBrainsMono-Var.ttf", 9.6, 160.0, 244.0, tracking=2.2, weight=500, align="center")
+        body.extend(_emblem_svg_group(160.0, 86.0, 62.0, pal, show_rings=False, grad_id=grad_id))
+        d_dcc = conv.text_to_path_d("DCC", "Montserrat-ExtraBold.ttf", 44.0, 160.0, 198.0, tracking=7.5, align="center")
+        d_sub = conv.text_to_path_d("DÖNER CATERING CLUB", "Montserrat-Bold.ttf", 11.5, 160.0, 226.0, tracking=3.2, align="center")
+        d_tag = conv.text_to_path_d("BERLIN · EST. 2026", "JetBrainsMono-Var.ttf", 9.4, 160.0, 250.0, tracking=2.4, weight=500, align="center")
         body.append(f'<path d="{d_dcc}" fill="{pal["primary"]}"/>')
-        body.append(f'<path d="{d_sub}" fill="{pal["brass"]}"/>')
+        body.append(f'<path d="{d_sub}" fill="url(#{grad_id})"/>')
         body.append(f'<path d="{d_tag}" fill="{pal["secondary"]}"/>')
 
     elif lockup == "logo-seal":
         vw, vh, w1x, h1x = 256, 256, 512, 512
         cx, cy = 128.0, 128.0
-        body = []
         if pal["seal_fill"]:
-            body.append(f'<circle cx="{cx}" cy="{cy}" r="118" fill="{pal["seal_fill"]}"/>')
-        body.append(f'<circle cx="{cx}" cy="{cy}" r="118" fill="none" stroke="{pal["brass"]}" stroke-width="2.6"/>')
-        body.append(f'<circle cx="{cx}" cy="{cy}" r="110" fill="none" stroke="{pal["hairline"]}" stroke-width="1.0"/>')
-        body.append(f'<circle cx="{cx}" cy="{cy}" r="72" fill="none" stroke="{pal["sear"]}" stroke-width="1.4"/>')
-        body.extend(_emblem_svg_group(cx, cy, 48.0, pal, show_rings=False))
-
-        top_size = 12.2
-        r_top = 87.0
-        cap_h = conv.cap_height("Montserrat-Bold.ttf", top_size)
-        r_bottom = r_top + cap_h
-
-        d_top = conv.arc_text_to_path_d(
-            "DÖNER CATERING CLUB",
-            "Montserrat-Bold.ttf",
-            top_size,
-            cx,
-            cy,
-            radius=r_top,
-            center_angle_deg=-90.0,
-            clockwise=True,
-            tracking=3.0,
-        )
-        d_bot = conv.arc_text_to_path_d(
-            "BERLIN · EST. 2026",
-            "JetBrainsMono-Var.ttf",
-            10.6,
-            cx,
-            cy,
-            radius=r_bottom,
-            center_angle_deg=90.0,
-            clockwise=False,
-            tracking=2.4,
-            weight=500,
-        )
-        # Left Gold & Right Emerald micro-diamonds at equator
-        for ex, col in ((cx - 91.5, pal["brass"]), (cx + 91.5, pal["sear"])):
-            body.append(
-                f'<polygon points="{ex:.2f},{cy - 3.2:.2f} {ex + 3.2:.2f},{cy:.2f} {ex:.2f},{cy + 3.2:.2f} {ex - 3.2:.2f},{cy:.2f}" fill="{col}"/>'
-            )
-        body.append(f'<path d="{d_top}" fill="{pal["primary"]}"/>')
-        body.append(f'<path d="{d_bot}" fill="{pal["brass"]}"/>')
+            body.append(f'<rect x="0" y="0" width="256" height="256" fill="{pal["seal_fill"]}"/>')
+        body.extend(_emblem_svg_group(cx, 102.0, 56.0, pal, show_rings=False, grad_id=grad_id))
+        d_dcc = conv.text_to_path_d("DCC", "Montserrat-ExtraBold.ttf", 34.0, cx, 196.0, tracking=6.0, align="center")
+        d_sub = conv.text_to_path_d("DÖNER CATERING CLUB", "Montserrat-Bold.ttf", 9.8, cx, 220.0, tracking=2.8, align="center")
+        body.append(f'<path d="{d_dcc}" fill="{pal["primary"]}"/>')
+        body.append(f'<path d="{d_sub}" fill="url(#{grad_id})"/>')
 
     elif lockup == "logo-monogram":
         vw, vh, w1x, h1x = 128, 128, 256, 256
-        cx, cy = 64.0, 64.0
-        body = []
+        cx = 64.0
         if pal["seal_fill"]:
-            body.append(f'<rect x="6" y="6" width="116" height="116" rx="26" fill="{pal["seal_fill"]}"/>')
-        body.append(f'<rect x="6" y="6" width="116" height="116" rx="26" fill="none" stroke="{pal["brass"]}" stroke-width="2.4"/>')
-        body.append(f'<rect x="13" y="13" width="102" height="102" rx="20" fill="none" stroke="{pal["hairline"]}" stroke-width="1.0"/>')
-        # Top Gold crown diamond + Bottom Emerald diamond
-        body.append(f'<polygon points="{cx},19 {cx + 5},25 {cx},31 {cx - 5},25" fill="{pal["brass"]}"/>')
-        body.append(f'<polygon points="{cx},97 {cx + 5},103 {cx},109 {cx - 5},103" fill="{pal["sear"]}"/>')
-        body.append(f'<line x1="28" y1="38" x2="100" y2="38" stroke="{pal["hairline"]}" stroke-width="1.0"/>')
-        body.append(f'<line x1="28" y1="90" x2="100" y2="90" stroke="{pal["hairline"]}" stroke-width="1.0"/>')
-        d_dcc = conv.text_to_path_d("DCC", "Montserrat-ExtraBold.ttf", 28.0, cx, 74.0, tracking=2.6, align="center")
+            body.append(f'<rect x="0" y="0" width="128" height="128" fill="{pal["seal_fill"]}"/>')
+        body.extend(_emblem_svg_group(cx, 48.0, 34.0, pal, show_rings=False, grad_id=grad_id))
+        d_dcc = conv.text_to_path_d("DCC", "Montserrat-ExtraBold.ttf", 22.0, cx, 112.0, tracking=4.2, align="center")
         body.append(f'<path d="{d_dcc}" fill="{pal["primary"]}"/>')
     else:
         raise ValueError(f"Unknown lockup: {lockup}")
@@ -486,16 +457,17 @@ def generate_logo_suite(conv: VectorTextConverter) -> dict[str, Path]:
 def generate_favicons_and_pwa(conv: VectorTextConverter, registry: FontRegistry) -> None:
     PUBLIC_DIR.mkdir(parents=True, exist_ok=True)
 
-    # 1. Simplified high-legibility 64x64 favicon.svg (pure vector paths, inner elements inside [6, 58])
-    d_dcc = conv.text_to_path_d("DCC", "Montserrat-ExtraBold.ttf", 14.5, 32.0, 37.5, tracking=1.0, align="center")
-    favicon_svg = (
-        '<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 64 64" width="64" height="64">\n'
-        '  <rect x="3" y="3" width="58" height="58" rx="14" fill="#060606" stroke="#D4A853" stroke-width="2.2"/>\n'
-        '  <polygon points="32,10 35,13.5 32,17 29,13.5" fill="#D4A853"/>\n'
-        '  <polygon points="32,47 35,50.5 32,54 29,50.5" fill="#2BC48A"/>\n'
-        f'  <path d="{d_dcc}" fill="#FFFFFF"/>\n'
-        "</svg>\n"
-    )
+    # 1. Minimalist symmetrical artistic Döner Spieß 64x64 favicon.svg (pure vector paths)
+    d_dcc = conv.text_to_path_d("DCC", "Montserrat-ExtraBold.ttf", 11.5, 32.0, 56.5, tracking=1.6, align="center")
+    fav_parts = [
+        '<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 64 64" width="64" height="64">',
+        '  ' + _spit_gradient_defs("dcc-fav-grad", COLORWAYS["light"], "light"),
+        '  <rect x="0" y="0" width="64" height="64" fill="#060606"/>',
+    ]
+    fav_parts.extend(["  " + p for p in _emblem_svg_group(32.0, 24.5, 17.5, COLORWAYS["light"], show_rings=False, grad_id="dcc-fav-grad")])
+    fav_parts.append(f'  <path d="{d_dcc}" fill="#FFFFFF"/>')
+    fav_parts.append("</svg>\n")
+    favicon_svg = "\n".join(fav_parts)
     assert "<text" not in favicon_svg.lower()
     (PUBLIC_DIR / "favicon.svg").write_text(favicon_svg, encoding="utf-8")
 
@@ -511,10 +483,13 @@ def generate_favicons_and_pwa(conv: VectorTextConverter, registry: FontRegistry)
     )
 
     # 3. Maskable PWA icon SVG (emblem inside inner 60% safe zone on solid #060606)
-    mask_svg_parts = ['<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 512 512" width="512" height="512">']
-    mask_svg_parts.append('  <rect x="0" y="0" width="512" height="512" fill="#060606"/>')
-    mask_svg_parts.extend(["  " + p for p in _emblem_svg_group(256.0, 224.0, 118.0, COLORWAYS["light"], show_rings=True)])
-    d_pwa = conv.text_to_path_d("DCC", "Montserrat-ExtraBold.ttf", 50.0, 256.0, 398.0, tracking=5.0, align="center")
+    mask_svg_parts = [
+        '<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 512 512" width="512" height="512">',
+        '  ' + _spit_gradient_defs("dcc-pwa-grad", COLORWAYS["light"], "light"),
+        '  <rect x="0" y="0" width="512" height="512" fill="#060606"/>',
+    ]
+    mask_svg_parts.extend(["  " + p for p in _emblem_svg_group(256.0, 206.0, 120.0, COLORWAYS["light"], show_rings=False, grad_id="dcc-pwa-grad")])
+    d_pwa = conv.text_to_path_d("DCC", "Montserrat-ExtraBold.ttf", 62.0, 256.0, 412.0, tracking=9.0, align="center")
     mask_svg_parts.append(f'  <path d="{d_pwa}" fill="#FFFFFF"/>')
     mask_svg_parts.append("</svg>\n")
     mask_pil = render_svg_to_pil("\n".join(mask_svg_parts), 512, 512)
@@ -584,8 +559,8 @@ def generate_favicons_and_pwa(conv: VectorTextConverter, registry: FontRegistry)
         canvas,
         registry,
         [
-            TextRun("Feuer. ", "Montserrat-ExtraBold.ttf", 62.0, "#FFFFFF", tracking_em=-0.03),
-            TextRun("Handwerk.", "Montserrat-ExtraBold.ttf", 62.0, "#D4A853", tracking_em=-0.03),
+            TextRun("Exklusives ", "Montserrat-ExtraBold.ttf", 56.0, "#FFFFFF", tracking_em=-0.03),
+            TextRun("Live-Döner", "Montserrat-ExtraBold.ttf", 56.0, "#D4A853", tracking_em=-0.03),
         ],
         grid.margin_x + 36.0,
         248.0,
@@ -594,7 +569,7 @@ def generate_favicons_and_pwa(conv: VectorTextConverter, registry: FontRegistry)
         canvas,
         registry,
         [
-            TextRun("Perfektion.", "Montserrat-ExtraBold.ttf", 62.0, "#2BC48A", tracking_em=-0.03),
+            TextRun("Catering.", "Montserrat-ExtraBold.ttf", 56.0, "#2BC48A", tracking_em=-0.03),
         ],
         grid.margin_x + 36.0,
         322.0,

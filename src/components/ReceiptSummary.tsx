@@ -41,32 +41,31 @@ export function ReceiptSummary({
     <aside
       id="rechner-summary"
       aria-label={t.receipt.title}
-      className="rounded-2xl border-[1.5px] border-[var(--border-strong)] shadow-2xl overflow-hidden"
+      className="dcc-rechner-module shadow-2xl overflow-hidden"
       style={{
-        backgroundColor: 'var(--receipt-bg)',
         color: 'var(--receipt-text)',
       }}
     >
       <div className="h-[2px] w-full dcc-gold-emerald-bar" />
       <div className="p-5 space-y-3.5">
-        {/* Compact Tesla/Apple Summary Header with Paired Thumbnails */}
+        {/* Compact Sharp Architectural Summary Header */}
         <div className="flex items-center justify-between gap-3">
           <div className="min-w-0">
-            <div className="font-mono text-[10px] uppercase tracking-[0.2em] text-[#D49B54]">
+            <div className="font-mono text-[10px] uppercase tracking-[0.2em] text-[#F2D58B]">
               {t.receipt.eyebrow}
             </div>
             <div className="mt-0.5 flex items-center gap-2">
-              <h3 className="font-monument text-lg font-semibold tracking-tight text-[#F3ECE0] truncate">
+              <h3 className="font-monument text-lg font-bold tracking-tight text-white truncate">
                 {t.receipt.title}
               </h3>
-              <span className="rounded-full border border-[#D49B54]/30 bg-[#D49B54]/10 px-2 py-0.5 font-mono text-[10px] font-semibold text-[#E5B06B] shrink-0">
+              <span className="bg-white/[0.06] px-2 py-0.5 font-mono text-[10px] font-semibold text-[#F2D58B] shrink-0">
                 {quoteId}
               </span>
             </div>
           </div>
 
           <div className="flex items-center -space-x-2 shrink-0">
-            <div className="h-9 w-9 rounded-lg overflow-hidden border border-white/15 bg-[#1D1A16]">
+            <div className="h-9 w-9 overflow-hidden bg-[#1D1A16]">
               <SmartPicture
                 src={activeMeat.image}
                 alt={t.calculator.steps.spits.items[input.meatId].title}
@@ -75,7 +74,7 @@ export function ReceiptSummary({
                 className="h-full w-full object-cover"
               />
             </div>
-            <div className="h-9 w-9 rounded-lg overflow-hidden border border-white/15 bg-[#1D1A16]">
+            <div className="h-9 w-9 overflow-hidden bg-[#1D1A16]">
               <SmartPicture
                 src={activeSetup.image}
                 alt={t.calculator.steps.setups.items[input.setupId].title}
@@ -91,9 +90,9 @@ export function ReceiptSummary({
         {isEnterprise && (
           <div
             data-testid="receipt-enterprise-banner"
-            className="flex items-start gap-2 rounded-xl border border-[#D49B54]/40 bg-[#D49B54]/12 p-2.5 text-[11px] leading-snug text-[#F3ECE0]"
+            className="flex items-start gap-2 dcc-calc-tile-active p-2.5 text-[11px] leading-snug text-white"
           >
-            <Sparkles className="h-3.5 w-3.5 shrink-0 text-[#D49B54] mt-0.5" />
+            <Sparkles className="h-3.5 w-3.5 shrink-0 text-[#F2D58B] mt-0.5" />
             <span>{t.receipt.enterpriseBanner}</span>
           </div>
         )}
@@ -101,7 +100,7 @@ export function ReceiptSummary({
         {result.duoRequiresMinGuests && (
           <div
             data-testid="receipt-duo-notice"
-            className="flex items-start gap-2 rounded-xl border border-[#E06440]/50 bg-[#E06440]/15 p-2.5 text-[11px] leading-snug text-[#F3ECE0]"
+            className="flex items-start gap-2 bg-[#1D1410] p-2.5 text-[11px] leading-snug text-white"
           >
             <ShieldAlert className="h-3.5 w-3.5 shrink-0 text-[#E06440] mt-0.5" />
             <span>{t.receipt.duoAppliedNotice}</span>
@@ -170,15 +169,9 @@ export function ReceiptSummary({
         </div>
 
         {/* Per-Guest Highlight */}
-        <div
-          className="rounded-xl border border-[#D4A853]/35 p-3.5 flex items-center justify-between gap-2"
-          style={{
-            background:
-              'linear-gradient(135deg, rgba(212, 168, 83, 0.14) 0%, rgba(43, 196, 138, 0.1) 100%)',
-          }}
-        >
+        <div className="dcc-calc-tile-active p-3.5 flex items-center justify-between gap-2">
           <div>
-            <div className="font-mono text-[10px] uppercase tracking-wider text-[#D49B54]">
+            <div className="font-mono text-[10px] uppercase tracking-wider text-[#F2D58B]">
               {t.receipt.perGuestNetLabel}
             </div>
             <div className="text-[11px] text-[#C8BFB0]/80">
@@ -190,7 +183,7 @@ export function ReceiptSummary({
           </div>
           <span
             data-testid="summary-per-guest"
-            className="font-mono tabular-nums text-2xl font-bold text-[#E5B06B]"
+            className="font-mono tabular-nums text-2xl font-bold text-[#F2D58B]"
           >
             {formatCurrency(result.perGuestNet, locale)}
           </span>
@@ -202,7 +195,7 @@ export function ReceiptSummary({
             <span className="text-[#C8BFB0]">{t.receipt.subtotalNetLabel}</span>
             <span
               data-testid="summary-net"
-              className="font-mono tabular-nums font-semibold text-[#F3ECE0]"
+              className="font-mono tabular-nums font-semibold text-white"
             >
               {formatCurrency(result.subtotalNet, locale)}
             </span>
@@ -212,30 +205,30 @@ export function ReceiptSummary({
             <span className="text-[#C8BFB0]">{t.receipt.vatLabel}</span>
             <span
               data-testid="summary-vat"
-              className="font-mono tabular-nums font-semibold text-[#F3ECE0]"
+              className="font-mono tabular-nums font-semibold text-white"
             >
               {formatCurrency(result.vatAmount, locale)}
             </span>
           </div>
 
-          <div className="flex items-center justify-between gap-2 border-t border-white/15 pt-2.5 text-sm sm:text-base font-bold">
-            <span className="text-[#F3ECE0]">{t.receipt.totalGrossLabel}</span>
+          <div className="flex items-center justify-between gap-2 border-t border-white/10 pt-2.5 text-sm sm:text-base font-bold">
+            <span className="text-white">{t.receipt.totalGrossLabel}</span>
             <span
               data-testid="summary-gross"
-              className="font-mono tabular-nums text-lg sm:text-xl text-[#E5B06B]"
+              className="font-mono tabular-nums text-lg sm:text-xl text-[#F2D58B]"
             >
               {formatCurrency(result.totalGross, locale)}
             </span>
           </div>
         </div>
 
-        {/* Prominent Action Stack */}
+        {/* Prominent Sharp Action Stack */}
         <div className="space-y-2.5 pt-1">
           <button
             type="button"
             data-testid="quote-open-modal"
             onClick={onOpenModal}
-            className="w-full min-h-[48px] inline-flex items-center justify-center gap-2 rounded-xl bg-[#D49B54] px-5 py-3.5 text-sm font-bold uppercase tracking-wider text-[#061510] shadow-lg transition hover:bg-[#E5B06B] cursor-pointer"
+            className="w-full min-h-[48px] inline-flex items-center justify-center gap-2 bg-[var(--brand-primary)] px-5 py-3.5 text-sm font-bold uppercase tracking-wider text-[#050505] transition hover:bg-[#F2D58B] cursor-pointer"
           >
             <FileText className="h-4 w-4" />
             <span>{t.receipt.modalCta}</span>
@@ -245,9 +238,9 @@ export function ReceiptSummary({
             type="button"
             data-testid="quote-whatsapp"
             onClick={onDirectWhatsApp}
-            className="w-full min-h-[44px] inline-flex items-center justify-center gap-2 rounded-xl border-[1.5px] border-[#D49B54]/65 bg-[#13352A] px-5 py-3 text-sm font-semibold text-[#F4EFE6] transition hover:bg-[#1B4638] hover:border-[#D49B54] cursor-pointer"
+            className="w-full min-h-[44px] inline-flex items-center justify-center gap-2 bg-[#112A21] px-5 py-3 text-sm font-semibold uppercase tracking-wider text-white transition hover:bg-[#193E31] cursor-pointer"
           >
-            <MessageCircle className="h-4 w-4 text-[#D49B54]" />
+            <MessageCircle className="h-4 w-4 text-[#2BC48A]" />
             <span>{t.receipt.whatsappCta}</span>
           </button>
         </div>
