@@ -1,4 +1,28 @@
-/* Self-hosted Atelier Motion Typography — 100% DE/EN/TR Diacritic & € Support */
+/* Self-hosted Typography — Bold Montserrat Primary + Atelier Motion Typefaces */
+
+@font-face {
+  font-family: 'Montserrat';
+  src: url('/fonts/Montserrat-Medium.ttf') format('truetype');
+  font-weight: 500;
+  font-style: normal;
+  font-display: swap;
+}
+
+@font-face {
+  font-family: 'Montserrat';
+  src: url('/fonts/Montserrat-Bold.ttf') format('truetype');
+  font-weight: 700;
+  font-style: normal;
+  font-display: swap;
+}
+
+@font-face {
+  font-family: 'Montserrat';
+  src: url('/fonts/Montserrat-ExtraBold.ttf') format('truetype');
+  font-weight: 800;
+  font-style: normal;
+  font-display: swap;
+}
 
 @font-face {
   font-family: 'Space Grotesk';
@@ -41,8 +65,8 @@
 }
 
 :root {
-  --font-sans: 'Space Grotesk', ui-sans-serif, system-ui, -apple-system, sans-serif;
-  --font-monument: 'Space Grotesk', ui-sans-serif, system-ui, -apple-system, sans-serif;
+  --font-sans: 'Montserrat', 'Space Grotesk', ui-sans-serif, system-ui, sans-serif;
+  --font-monument: 'Montserrat', ui-sans-serif, system-ui, sans-serif;
   --font-serif: 'Instrument Serif', Georgia, serif;
   --font-mono: 'JetBrains Mono', ui-monospace, SFMono-Regular, monospace;
 }
@@ -53,6 +77,7 @@
 
 .font-monument {
   font-family: var(--font-monument);
+  font-weight: 800;
   letter-spacing: -0.028em;
 }
 

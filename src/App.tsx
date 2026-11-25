@@ -14,9 +14,7 @@ import { MobileBottomBar } from './components/MobileBottomBar';
 import { ProductionBento } from './components/ProductionBento';
 import { QuoteModal } from './components/QuoteModal';
 import { RevealSection } from './components/RevealSection';
-import { ThemeSwitcher } from './components/ThemeSwitcher';
 import { TrustReferences } from './components/TrustReferences';
-import { THEME_METADATA } from './data/catalog';
 import {
   buildQuoteText,
   buildWhatsAppUrl,
@@ -31,13 +29,22 @@ import type {
   QuoteBuildLabels,
 } from './types/catering';
 
-const ALL_THEME_CLASSES = [
-  'theme-obsidian',
-  'theme-limestone',
-  'theme-emerald-club',
-] as const;
+const LOCKED_THEME: ThemeId = 'obsidian';
+const INTRO_SESSION_KEY = 'dcc_intro_seen_v3';
 
 const EXTRA_KEYS: readonly ExtraId[] = ['bread_salad', 'drinks', 'dessert'];
+
+function resolveInitialSplash(): boolean {
+  if (typeof window === 'undefined') return false;
+  try {
+    const params = new URLSearchParams(window.location.search);
+    if (params.get('view') === 'brand-kit') return false;
+    if (window.location.hash.length > 1) return false;
+    return window.sessionStorage.getItem(INTRO_SESSION_KEY) !== '1';
+  } catch {
+    return false;
+  }
+}
 
 function resolveInitialView(): 'main' | 'brand-kit' {
   if (typeof window === 'undefined') return 'main';
@@ -54,8 +61,8 @@ function resolveInitialView(): 'main' | 'brand-kit' {
 
 function AppContent(): React.ReactElement {
   const { locale, t } = useLocale();
-  const [theme, setTheme] = useState<ThemeId>('obsidian');
-  const [splashOpen, setSplashOpen] = useState<boolean>(false);
+  const theme: ThemeId = LOCKED_THEME;
+  const [splashOpen, setSplashOpen] = useState<boolean>(resolveInitialSplash);
   const [activeView, setActiveView] = useState<'main' | 'brand-kit'>(
     resolveInitialView
   );
@@ -83,21 +90,35 @@ function AppContent(): React.ReactElement {
     [calculatorInput]
   );
 
-  // Sync theme class onto <html> (document.documentElement) with strict single-class invariant
+  // Lock signature Pure Black + Gold/Emerald theme class onto <html>
   useEffect(() => {
     const root = document.documentElement;
-    for (const cls of ALL_THEME_CLASSES) {
-      if (cls !== THEME_METADATA[theme].className) {
-        root.classList.remove(cls);
-      }
-    }
-    root.classList.add(THEME_METADATA[theme].className);
-  }, [theme]);
+    root.classList.remove('theme-limestone', 'theme-emerald-club');
+    root.classList.add('theme-obsidian');
+  }, []);
 
-  // Preload all 4 self-hosted Atelier Motion font families into document.fonts
+  // Delegated 60 FPS cursor spotlight tracker for .dcc-lux-card surfaces
+  useEffect(() => {
+    const onPointerMove = (e: PointerEvent) => {
+      const target = (e.target as HTMLElement | null)?.closest?.(
+        '.dcc-lux-card'
+      ) as HTMLElement | null;
+      if (!target) return;
+      const rect = target.getBoundingClientRect();
+      target.style.setProperty('--mx', `${Math.round(e.clientX - rect.left)}px`);
+      target.style.setProperty('--my', `${Math.round(e.clientY - rect.top)}px`);
+    };
+    window.addEventListener('pointermove', onPointerMove, { passive: true });
+    return () => window.removeEventListener('pointermove', onPointerMove);
+  }, []);
+
+  // Preload all self-hosted typography into document.fonts
   useEffect(() => {
     if (typeof document !== 'undefined' && 'fonts' in document) {
       void Promise.allSettled([
+        document.fonts.load('500 16px "Montserrat"'),
+        document.fonts.load('700 16px "Montserrat"'),
+        document.fonts.load('800 16px "Montserrat"'),
         document.fonts.load('400 16px "Space Grotesk"'),
         document.fonts.load('700 16px "Syne"'),
         document.fonts.load('400 16px "Instrument Serif"'),
@@ -219,11 +240,20 @@ function AppContent(): React.ReactElement {
     window.open(waUrl, '_blank', 'noopener,noreferrer');
   }, [calculatorInput, calculatorResult, locale, quoteId, t]);
 
+  const handleDismissSplash = useCallback(() => {
+    try {
+      window.sessionStorage.setItem(INTRO_SESSION_KEY, '1');
+    } catch {
+      // ignore storage restrictions
+    }
+    setSplashOpen(false);
+  }, []);
+
   return (
     <div className="min-h-screen flex flex-col bg-[var(--bg-main)] text-[var(--text-primary)]">
       <IntroSplash
         isOpen={splashOpen}
-        onDismiss={() => setSplashOpen(false)}
+        onDismiss={handleDismissSplash}
         selectedCandidate={selectedCandidate}
       />
 
@@ -232,6 +262,7 @@ function AppContent(): React.ReactElement {
         activeView={activeView}
         onSelectView={handleSelectView}
         onOpenLegal={handleOpenLegalModal}
+        onReplayIntro={() => setSplashOpen(true)}
       />
 
       <main className="flex-1">
@@ -298,11 +329,6 @@ function AppContent(): React.ReactElement {
         activeView={activeView}
         onSelectView={handleSelectView}
         onOpenLegal={handleOpenLegalModal}
-      />
-
-      <ThemeSwitcher
-        theme={theme}
-        onSelectTheme={setTheme}
         onReplayIntro={() => setSplashOpen(true)}
       />
 

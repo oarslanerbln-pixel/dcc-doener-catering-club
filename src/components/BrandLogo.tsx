@@ -14,15 +14,14 @@ export interface BrandLogoProps {
 
 export function BrandLogo({
   lockup = 'primary',
-  theme = 'obsidian',
+  theme: _theme = 'emerald-club',
   colorway,
   className = '',
   imgClassName = 'h-9 sm:h-10 w-auto object-contain',
   showSubtitle = false,
   subtitle,
 }: BrandLogoProps): React.ReactElement {
-  const resolvedColorway: LogoColorway =
-    colorway ?? (theme === 'limestone' ? 'dark' : 'light');
+  const resolvedColorway: LogoColorway = colorway ?? 'light';
   const asset = BRAND_ASSETS.logos[lockup][resolvedColorway];
 
   return (

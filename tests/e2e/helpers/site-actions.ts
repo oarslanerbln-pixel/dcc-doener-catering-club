@@ -121,27 +121,16 @@ export async function switchLocale(page: Page, locale: SupportedLocale): Promise
   await expect(page.locator('html')).toHaveAttribute('lang', new RegExp(`^${locale}`, 'i'));
 }
 
-export async function switchTheme(page: Page, theme: ThemeId): Promise<void> {
-  const primary = page.locator(`[data-testid="theme-${theme}"]`);
-  const labelMap: Record<ThemeId, RegExp> = {
-    obsidian: /obsidian/i,
-    limestone: /limestone/i,
-    'emerald-club': /emerald/i,
-  };
-  const fallback = page.getByRole('button', { name: labelMap[theme] });
-  const target = await pickVisible(primary, fallback);
-  await target.scrollIntoViewIfNeeded().catch(() => {});
-  await target.click();
-
+export async function switchTheme(page: Page, _theme: ThemeId): Promise<void> {
+  // Pure Black + Gold/Emerald (theme-obsidian) is the single locked design
   await expect(async () => {
-    const hasClass = await page.evaluate((expectedTheme) => {
-      const cls = `theme-${expectedTheme}`;
+    const hasObsidian = await page.evaluate(() => {
       return (
-        document.documentElement.classList.contains(cls) ||
-        Boolean(document.querySelector(`.${cls}`))
+        document.documentElement.classList.contains('theme-obsidian') ||
+        Boolean(document.querySelector('.theme-obsidian'))
       );
-    }, theme);
-    expect(hasClass, `Expected active theme-${theme} class`).toBe(true);
+    });
+    expect(hasObsidian, 'Expected locked theme-obsidian class').toBe(true);
   }).toPass({ timeout: 3_000 });
 }
 
@@ -451,6 +440,8 @@ export async function captureAuditScreenshot(page: Page, name: string): Promise<
   }
   const safeProject = projectName.replace(/[^a-z0-9_-]+/gi, '-');
   const filePath = path.join(dir, `${safeProject}-${name}.png`);
-  await page.screenshot({ path: filePath, fullPage: true });
+  await page.screenshot({ path: filePath, fullPage: true, animations: 'disabled', timeout: 25_000 }).catch(async () => {
+    await page.screenshot({ path: filePath, fullPage: false, animations: 'disabled' });
+  });
   return filePath;
 }

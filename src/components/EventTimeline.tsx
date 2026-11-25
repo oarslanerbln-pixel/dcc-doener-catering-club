@@ -7,14 +7,14 @@ export function EventTimeline(): React.ReactElement {
   return (
     <section
       id="ablauf"
-      className="relative border-b border-[var(--border-main)] py-14 sm:py-20 lg:py-24"
+      className="relative border-b border-[var(--border-main)] py-14 sm:py-18 lg:py-22"
     >
       <div className="mx-auto max-w-7xl px-4 sm:px-6 space-y-10">
-        <div className="max-w-2xl space-y-2.5">
+        <div className="max-w-2xl space-y-2">
           <p className="font-mono text-[11px] font-medium uppercase tracking-[0.22em] text-[var(--brand-primary)]">
             {t.timeline.eyebrow}
           </p>
-          <h2 className="font-monument text-3xl sm:text-4xl lg:text-5xl font-semibold tracking-tight text-[var(--text-primary)]">
+          <h2 className="font-monument text-2xl sm:text-3xl lg:text-4xl font-semibold tracking-tight text-[var(--text-primary)]">
             {t.timeline.title}
           </h2>
           <p className="text-sm sm:text-base text-[var(--text-secondary)]">
@@ -26,7 +26,7 @@ export function EventTimeline(): React.ReactElement {
           {t.timeline.steps.map((step) => (
             <article
               key={step.code}
-              className="rounded-2xl border border-[var(--border-main)] bg-[var(--bg-card)] p-5 sm:p-6 flex flex-col justify-between space-y-5"
+              className="dcc-lux-card p-5 sm:p-6 flex flex-col justify-between space-y-5"
             >
               <div className="space-y-3">
                 <div className="flex items-center justify-between gap-2">
@@ -38,8 +38,8 @@ export function EventTimeline(): React.ReactElement {
                   </span>
                 </div>
 
-                <div className="h-px w-full bg-[var(--border-main)]">
-                  <div className="h-px w-10 bg-[var(--brand-primary)]" />
+                <div className="h-[2px] w-full bg-[var(--border-main)] overflow-hidden rounded-full">
+                  <div className="h-full w-14 dcc-gold-emerald-bar" />
                 </div>
 
                 <h3 className="font-monument text-lg font-semibold text-[var(--text-primary)]">

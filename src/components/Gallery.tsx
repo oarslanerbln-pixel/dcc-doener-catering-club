@@ -92,7 +92,7 @@ export function Gallery({ onApplyPreset }: GalleryProps): React.ReactElement {
             <p className="font-mono text-[11px] font-medium uppercase tracking-[0.22em] text-[var(--brand-primary)]">
               {t.gallery.eyebrow}
             </p>
-            <h2 className="font-monument text-3xl sm:text-4xl lg:text-5xl font-semibold tracking-tight text-[var(--text-primary)]">
+            <h2 className="font-monument text-2xl sm:text-3xl lg:text-4xl font-semibold tracking-tight text-[var(--text-primary)]">
               {t.gallery.title}
             </h2>
             <p className="text-sm sm:text-base text-[var(--text-secondary)]">
@@ -103,7 +103,7 @@ export function Gallery({ onApplyPreset }: GalleryProps): React.ReactElement {
           <div className="flex items-center gap-2.5">
             <span
               data-testid="gallery-counter"
-              className="rounded-full border border-[var(--border-main)] bg-[var(--bg-card)] px-3.5 py-1.5 font-mono tabular-nums text-xs font-semibold text-[var(--brand-primary)]"
+              className="rounded-xl border border-[var(--border-strong)] bg-[var(--bg-card)] px-4 py-2 font-mono tabular-nums text-xs font-bold text-[var(--brand-primary)]"
             >
               {activeIndex + 1} {t.gallery.counterSeparator} {total}
             </span>
@@ -113,9 +113,9 @@ export function Gallery({ onApplyPreset }: GalleryProps): React.ReactElement {
               data-testid="gallery-prev"
               aria-label={t.gallery.prevAria}
               onClick={handlePrev}
-              className="inline-flex h-10 w-10 items-center justify-center rounded-full border border-[var(--border-main)] bg-[var(--bg-card)] text-[var(--text-primary)] transition hover:border-[var(--brand-primary)] cursor-pointer"
+              className="inline-flex h-11 w-11 items-center justify-center rounded-xl border-[1.5px] border-[var(--border-strong)] bg-[var(--bg-card)] text-[var(--text-primary)] transition hover:border-[var(--brand-primary)] hover:bg-[var(--bg-subtle)] cursor-pointer"
             >
-              <ChevronLeft className="h-4 w-4" />
+              <ChevronLeft className="h-5 w-5" />
             </button>
 
             <button
@@ -123,9 +123,9 @@ export function Gallery({ onApplyPreset }: GalleryProps): React.ReactElement {
               data-testid="gallery-next"
               aria-label={t.gallery.nextAria}
               onClick={handleNext}
-              className="inline-flex h-10 w-10 items-center justify-center rounded-full border border-[var(--border-main)] bg-[var(--bg-card)] text-[var(--text-primary)] transition hover:border-[var(--brand-primary)] cursor-pointer"
+              className="inline-flex h-11 w-11 items-center justify-center rounded-xl border-[1.5px] border-[var(--border-strong)] bg-[var(--bg-card)] text-[var(--text-primary)] transition hover:border-[var(--brand-primary)] hover:bg-[var(--bg-subtle)] cursor-pointer"
             >
-              <ChevronRight className="h-4 w-4" />
+              <ChevronRight className="h-5 w-5" />
             </button>
           </div>
         </div>
@@ -141,10 +141,10 @@ export function Gallery({ onApplyPreset }: GalleryProps): React.ReactElement {
                 type="button"
                 data-testid={`gallery-scenario-${slide.id}`}
                 onClick={() => setActiveIndex(idx)}
-                className={`flex items-center gap-3 rounded-xl border p-2.5 text-left transition cursor-pointer ${
+                className={`dcc-lux-card flex items-center gap-3 p-2.5 text-left cursor-pointer ${
                   active
-                    ? 'border-[var(--brand-primary)] bg-[var(--bg-card)] ring-1 ring-[var(--brand-primary)]'
-                    : 'border-[var(--border-main)] bg-[var(--bg-subtle)]/40 hover:border-[var(--brand-primary)]/60'
+                    ? '!border-[#D4A853] bg-[#121715] ring-1 ring-[#2BC48A]/40'
+                    : ''
                 }`}
               >
                 <div className="h-11 w-14 rounded-lg overflow-hidden shrink-0 border border-[var(--border-main)]">
@@ -170,7 +170,7 @@ export function Gallery({ onApplyPreset }: GalleryProps): React.ReactElement {
         </div>
 
         {/* Clean Split Showcase Card */}
-        <div className="grid grid-cols-1 overflow-hidden rounded-2xl border border-[var(--border-main)] bg-[var(--bg-card)] lg:grid-cols-12">
+        <div className="dcc-lux-card grid grid-cols-1 lg:grid-cols-12">
           <div className="relative lg:col-span-7 aspect-[16/10] lg:aspect-auto overflow-hidden bg-[var(--bg-subtle)]">
             <SmartPicture
               key={currentMedia.image}
@@ -214,10 +214,10 @@ export function Gallery({ onApplyPreset }: GalleryProps): React.ReactElement {
                     type="button"
                     data-testid="gallery-apply-preset"
                     onClick={() => onApplyPreset(currentPreset)}
-                    className="inline-flex items-center gap-2 rounded-full border border-[var(--brand-primary)]/50 bg-[var(--badge-bg)] px-4 py-2 font-mono text-xs font-semibold text-[var(--badge-text)] transition hover:bg-[var(--brand-primary)] hover:text-[var(--btn-text)] cursor-pointer"
+                    className="dcc-btn-primary"
                   >
                     <span>{LOAD_PRESET_COPY[locale]}</span>
-                    <ArrowUpRight className="h-3.5 w-3.5" />
+                    <ArrowUpRight className="h-4 w-4" />
                   </button>
                 </div>
               )}

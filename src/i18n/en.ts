@@ -4,7 +4,7 @@ export const en: TranslationSchema = {
   meta: {
     title: 'DCC Döner Catering Club — Live Rotisserie & Quote Calculator',
     description:
-      'Ember-Cut Architectural Hospitality: Hand-stacked Yaprak rotisserie spits, live carving stations & autonomous Club Trailers for 30 to 800+ guests in Berlin.',
+      'Ember-Cut Architectural Hospitality: Hand-stacked Yaprak rotisserie spits, live carving stations & autonomous Event Trailers for 30 to 800+ guests in Berlin.',
     skipToContent: 'Skip to main content',
   },
   header: {
@@ -31,25 +31,25 @@ export const en: TranslationSchema = {
   introSplash: {
     eyebrow: 'EMBER-CUT ARCHITECTURAL HOSPITALITY',
     title: 'DCC Döner Catering Club',
-    subtitle: 'Fire. Craft. Club Culture. — Live rotisserie catering for 30 to 800+ guests.',
+    subtitle: 'Fire. Craft. Perfection. — Live rotisserie catering for 30 to 800+ guests.',
     skipHint: 'Press ESC or click to skip',
-    skipButton: 'Enter Club',
+    skipButton: 'Explore',
     ariaLabel: 'DCC Döner Catering Club intro sequence',
   },
   hero: {
     eyebrow: 'BERLIN · OPEN-FIRE ROTISSERIE · EVENT CATERING',
     headlinePrefix: 'Fire.',
     headlineAccent: 'Craft.',
-    headlineSuffix: 'Club Culture.',
+    headlineSuffix: 'Perfection.',
     subtitle:
-      'Hand-stacked Yaprak layers, open-ember sear, and Berlin club precision — carved live off the spit for corporate summits, weddings, and festival courtyards from 30 guests.',
+      'Hand-stacked Yaprak layers, open-ember sear, and Berlin precision — carved live off the spit for corporate summits, weddings, and private receptions from 30 guests.',
     primaryCta: 'Calculate Your Quote',
     secondaryCta: 'Explore Event Gallery',
     brandKitCta: 'Brand Kit & Guidelines',
     viewToggleLabel: 'Switch hero stage setup',
     views: {
       station: 'Live-Station · Hotel & Event',
-      trailer: 'Club-Trailer · Autonomous',
+      trailer: 'Event-Trailer · Autonomous',
     },
     highlights: [
       { value: '30–800+', label: 'Guests per Event' },
@@ -70,7 +70,7 @@ export const en: TranslationSchema = {
     themes: {
       obsidian: 'Obsidian & Brass',
       limestone: 'Limestone & Bronze',
-      'emerald-club': 'Emerald Club',
+      'emerald-club': 'Emerald & Brass',
     },
     replayIntro: 'Replay Intro',
   },
@@ -119,7 +119,7 @@ export const en: TranslationSchema = {
             hint: 'Midnight carving & gala service',
           },
           festival: {
-            label: 'Festival / Club',
+            label: 'Festival / Open-Air',
             hint: 'High-throughput courtyard setup',
           },
         },
@@ -186,7 +186,7 @@ export const en: TranslationSchema = {
           },
           truck: {
             badge: 'Outdoor & Autonomous',
-            title: 'Club-Trailer (Matte Obsidian)',
+            title: 'Event-Trailer (Matte Obsidian)',
             spec: 'Self-contained DCC event trailer equipped with onboard refrigeration, power distribution, and dual rotisserie capacity.',
           },
           buffet: {
@@ -200,7 +200,7 @@ export const en: TranslationSchema = {
         index: '04',
         title: 'Per-Guest Extras & Pairings',
         subtitle:
-          'Complete the experience with stone-baked pide, craft Berlin sodas, and Gaziantep pistachio baklava.',
+          'Complete your catering experience with stone-baked pide, craft Berlin sodas, and Gaziantep pistachio baklava.',
         perGuestSuffix: 'per guest',
         activeLabel: 'Selected',
         inactiveLabel: 'Add extra',
@@ -350,8 +350,8 @@ export const en: TranslationSchema = {
       },
       {
         id: 'festival',
-        tag: '03 · FESTIVAL & CLUB NIGHT',
-        title: 'Autonomous Power from Our Club Trailer',
+        tag: '03 · FESTIVAL & OPEN-AIR',
+        title: 'Autonomous Power from Our Event Trailer',
         description:
           'Matte-obsidian trailer with onboard refrigeration, power distribution, and dual spits for open courtyards.',
         bullets: [
@@ -398,7 +398,7 @@ export const en: TranslationSchema = {
       },
       {
         id: 'highspeed',
-        tag: 'CLUB THROUGHPUT',
+        tag: 'HIGH THROUGHPUT',
         title: 'Zero Bottlenecks at Peak Hours',
         description:
           'Parallel carving stations and pre-warmed stone-oven bread logistics serve up to 180 fresh portions per hour.',
@@ -471,7 +471,7 @@ export const en: TranslationSchema = {
         id: 'pairings',
         tabLabel: '03 · Drinks & Antep Baklava',
         extraId: 'dessert',
-        headline: 'Berlin Club Sodas & Gaziantep Finale',
+        headline: 'Berlin Craft Drinks & Gaziantep Finale',
         description:
           'From house-whipped mint ayran and Club-Mate to crisp pistachio baklava with samovar tea.',
         image: '/media/gallery-wedding.png',
@@ -510,7 +510,7 @@ export const en: TranslationSchema = {
       {
         code: 'T-90M',
         title: 'Load-In & Calibration',
-        detail: 'Quiet indoor station assembly or autonomous Club-Trailer positioning on site.',
+        detail: 'Quiet indoor station assembly or autonomous Event-Trailer positioning on site.',
         metric: '90 Min Setup',
       },
       {
@@ -557,7 +557,7 @@ export const en: TranslationSchema = {
         quote:
           'Autonomous trailer in the courtyard, seamless VAT invoicing, and an impeccably disciplined crew.',
         author: 'Executive Producer, Kreuzberg Creative',
-        meta: 'Club-Trailer · Classic Veal',
+        meta: 'Event-Trailer · Classic Veal',
       },
     ],
   },
@@ -581,9 +581,9 @@ export const en: TranslationSchema = {
       },
       {
         id: 'logistics',
-        question: 'What power and space do the Live-Station or Club-Trailer need?',
+        question: 'What power and space do the Live-Station or Event-Trailer need?',
         answer:
-          'The indoor Live-Station requires two separate 230V (16A) outlets and roughly 3 × 2 meters of floor space. Our autonomous Club-Trailer runs on 16A/32A CEE or its onboard hybrid system. We cater across Berlin and surrounding regions up to a maximum radius of 300 km.',
+          'The indoor Live-Station requires two separate 230V (16A) outlets and roughly 3 × 2 meters of floor space. Our autonomous Event-Trailer runs on 16A/32A CEE or its onboard hybrid system. We cater across Berlin and surrounding regions up to a maximum radius of 300 km.',
       },
       {
         id: 'billing',
@@ -601,7 +601,7 @@ export const en: TranslationSchema = {
         id: 'capacity',
         question: 'Can DCC cater large festivals or summits beyond 800 guests?',
         answer:
-          'Yes. Enable "800+ Enterprise / Custom Event" in Step 01 and submit your inquiry — we deploy multiple Club Trailers and dual stations with dedicated shift scheduling.',
+          'Yes. Enable "800+ Enterprise / Custom Event" in Step 01 and submit your inquiry — we deploy multiple Event Trailers and dual stations with dedicated shift scheduling.',
       },
     ],
   },
@@ -632,17 +632,17 @@ export const en: TranslationSchema = {
         },
         {
           tag: 'PILLAR 03 · FESTIVALS',
-          title: 'Self-Contained Club Energy',
-          body: 'Matte-obsidian Club Trailer delivering high-throughput service with 100% Halal & dedicated Vegan options.',
+          title: 'Autonomous Event Energy',
+          body: 'Matte-obsidian Event Trailer delivering high-throughput service with 100% Halal & dedicated Vegan options.',
         },
       ],
       boilerplates: {
         shortLabel: 'Short Boilerplate (~25 Words)',
         shortText:
-          'DCC Döner Catering Club brings Berlin club culture and hand-stacked open-fire rotisserie live to corporate summits, weddings, and festivals for 30 to 800+ guests.',
+          'DCC Döner Catering Club brings premier hand-stacked open-fire rotisserie live to corporate summits, weddings, and festivals for 30 to 800+ guests.',
         mediumLabel: 'Medium Boilerplate (~55 Words)',
         mediumText:
-          'DCC Döner Catering Club pairs artisan hand-layered spits with architectural live-carving stations and self-contained club trailers. From executive lunches in Berlin-Mitte to 800-guest festival courtyards, our instant calculator prices net totals, 19% VAT, and volume tiers in seconds — carved live under certified Halal and IFS standards.',
+          'DCC Döner Catering Club pairs artisan hand-layered spits with architectural live-carving stations and self-contained event trailers. From executive lunches in Berlin-Mitte to 800-guest festival courtyards, our instant calculator prices net totals, 19% VAT, and volume tiers in seconds — carved live under certified Halal and IFS standards.',
       },
     },
     logos: {
@@ -660,7 +660,7 @@ export const en: TranslationSchema = {
       lockupNames: {
         primary: 'Primary Horizontal',
         stacked: 'Stacked Totem',
-        seal: 'Club Seal',
+        seal: 'Crest Seal',
         monogram: 'DCC Monogram',
       },
       colorwayNames: {
@@ -746,12 +746,12 @@ export const en: TranslationSchema = {
         'Click any swatch to copy its hex value to your clipboard. All 51 text pairings pass WCAG AA (≥ 5.35:1) or AAA.',
       copyButtonLabel: 'Copy Hex',
       copiedToastPrefix: 'Copied:',
-      wcagTitle: 'WCAG 2.1 Contrast Matrix (Obsidian / Limestone / Emerald Club)',
+      wcagTitle: 'WCAG 2.1 Contrast Matrix (Emerald & Brass)',
       wcagHeaders: {
         pair: 'Token Pair',
         obsidian: 'Obsidian',
         limestone: 'Limestone',
-        emerald: 'Emerald Club',
+        emerald: 'Emerald & Brass',
         status: 'Level',
       },
       swatchRoles: {
@@ -765,9 +765,9 @@ export const en: TranslationSchema = {
         emberTerracotta: 'Non-text sear fills & emblem accents',
         liftedEmber: 'AA-safe ember accent text on Obsidian',
         kilnTerracotta: 'AA-safe terracotta accent text on Limestone',
-        emeraldClub: 'Berlin Club Emerald background',
+        emeraldClub: 'Deep Emerald background',
         halalHerb: 'Non-text Halal & Vegan botanical indicator',
-        liftedHerb: 'AA/AAA-safe herb accent text on Emerald Club',
+        liftedHerb: 'AA/AAA-safe herb accent text on Emerald',
       },
     },
     typography: {
@@ -784,7 +784,7 @@ export const en: TranslationSchema = {
       eyebrow: '07 · BRAND APPLICATIONS',
       title: 'Six Production Plates',
       subtitle:
-        'Packaging, carver apparel, Club-Trailer livery, indoor Live-Station, and social safe-zone templates.',
+        'Packaging, carver apparel, Event-Trailer livery, indoor Live-Station, and social safe-zone templates.',
       plates: [
         {
           id: 'wrap-paper',
@@ -807,7 +807,7 @@ export const en: TranslationSchema = {
         {
           id: 'trailer-livery',
           file: '/brand/plate-trailer-livery.png',
-          label: '04 · Club-Trailer Livery',
+          label: '04 · Event-Trailer Livery',
           caption: 'Matte-obsidian trailer elevation with brass beltline.',
         },
         {
@@ -912,7 +912,7 @@ export const en: TranslationSchema = {
   },
   footer: {
     tagline:
-      'Ember-Cut Architectural Hospitality — Berlin live rotisserie catering for corporate summits, weddings, and club nights.',
+      'Ember-Cut Architectural Hospitality — Berlin live rotisserie catering for corporate summits, weddings, and private receptions.',
     citiesLabel: 'Service Area (max. 300 km around Berlin)',
     cities: [
       'Berlin & Surroundings',

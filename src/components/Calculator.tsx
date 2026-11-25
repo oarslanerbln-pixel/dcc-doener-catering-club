@@ -209,7 +209,7 @@ export function Calculator({
           <p className="font-mono text-[11px] font-medium uppercase tracking-[0.22em] text-[var(--brand-primary)]">
             {t.calculator.eyebrow}
           </p>
-          <h2 className="font-monument text-3xl sm:text-4xl lg:text-5xl font-semibold tracking-tight text-[var(--text-primary)]">
+          <h2 className="font-monument text-2xl sm:text-3xl lg:text-4xl font-semibold tracking-tight text-[var(--text-primary)]">
             {t.calculator.title}
           </h2>
           <p className="text-sm sm:text-base text-[var(--text-secondary)]">
@@ -220,18 +220,18 @@ export function Calculator({
         {/* Mobile/Tablet Sticky Live Quote Bar */}
         <div
           data-testid="mobile-calculator-sticky-bar"
-          className="min-[960px]:hidden sticky top-[84px] z-20 rounded-xl border border-[var(--brand-primary)]/40 bg-[var(--bg-card)]/95 px-3.5 py-2.5 shadow-lg backdrop-blur-xl flex items-center justify-between gap-2"
+          className="min-[960px]:hidden sticky top-[88px] sm:top-[96px] z-20 rounded-xl border border-[#D4A853]/50 bg-[#0A0C0B]/95 px-3.5 py-2.5 shadow-[0_12px_30px_-10px_rgba(0,0,0,0.85)] backdrop-blur-xl flex items-center justify-between gap-2.5"
         >
-          <div className="min-w-0">
+          <div className="min-w-0 flex-1">
             <div className="font-mono text-[10px] uppercase tracking-wider text-[var(--text-muted)] truncate">
               {result.effectiveGuests} {extraCopy.mobileStickyGuests} ·{' '}
               {t.calculator.steps.spits.items[input.meatId].title}
             </div>
-            <div className="flex items-baseline gap-2">
-              <span className="font-mono tabular-nums text-sm font-bold text-[var(--brand-primary)]">
+            <div className="flex items-baseline gap-2 truncate">
+              <span className="font-mono tabular-nums text-sm font-bold text-[#D4A853]">
                 {formatCurrency(result.subtotalNet, locale)}
               </span>
-              <span className="font-mono tabular-nums text-[11px] text-[var(--text-secondary)]">
+              <span className="font-mono tabular-nums text-[11px] text-[var(--text-secondary)] truncate">
                 ({formatCurrency(result.perGuestNet, locale)}{' '}
                 {extraCopy.mobileStickyPerGuest})
               </span>
@@ -240,10 +240,10 @@ export function Calculator({
 
           <a
             href="#rechner-summary"
-            className="inline-flex items-center gap-1 rounded-full bg-[var(--brand-primary)] px-3 py-1.5 font-mono text-[11px] font-semibold text-[var(--btn-text)] shrink-0"
+            className="inline-flex items-center gap-1 rounded-xl bg-[var(--brand-primary)] px-3.5 py-2 font-mono text-xs font-bold text-[var(--btn-text)] shrink-0"
           >
             <span>{extraCopy.mobileStickySummaryBtn}</span>
-            <ArrowDown className="h-3 w-3" />
+            <ArrowDown className="h-3.5 w-3.5" />
           </a>
         </div>
 
@@ -251,7 +251,7 @@ export function Calculator({
           {/* Left Column: 4 Sleek Tesla/Apple/Togg Configurator Modules */}
           <div className="space-y-5 min-w-0">
             {/* STEP 01: Guests & Volume Discount */}
-            <div className="rounded-2xl border border-[var(--border-main)] bg-[var(--bg-card)] p-5 sm:p-6 space-y-5">
+            <div className="rounded-2xl border-[1.5px] border-[var(--border-strong)] bg-[var(--bg-card)] p-5 sm:p-6 space-y-5">
               <div className="flex flex-wrap items-start justify-between gap-3">
                 <div>
                   <span className="font-mono text-[11px] font-medium uppercase tracking-[0.18em] text-[var(--brand-primary)]">
@@ -281,7 +281,7 @@ export function Calculator({
               </div>
 
               {/* Clean Digital Readout + Tactile Stepper */}
-              <div className="flex flex-wrap items-center justify-between gap-4 rounded-xl border border-[var(--border-main)] bg-[var(--bg-subtle)]/50 p-3.5 sm:p-4">
+              <div className="flex flex-col sm:flex-row sm:items-center sm:justify-between gap-3 sm:gap-4 rounded-xl border border-[var(--border-main)] bg-[var(--bg-subtle)]/50 p-3.5 sm:p-4">
                 <div>
                   <label
                     htmlFor="dcc-guest-input"
@@ -294,15 +294,15 @@ export function Calculator({
                   </span>
                 </div>
 
-                <div className="flex items-center gap-2">
+                <div className="flex items-center justify-between sm:justify-end gap-2">
                   <button
                     type="button"
                     data-testid="guest-minus"
                     aria-label={t.calculator.steps.guests.decreaseAria}
                     onClick={handleStepMinus}
-                    className="inline-flex h-10 w-10 items-center justify-center rounded-xl border border-[var(--border-main)] bg-[var(--bg-card)] text-[var(--text-primary)] transition hover:border-[var(--brand-primary)] cursor-pointer"
+                    className="inline-flex h-12 w-12 items-center justify-center rounded-xl border-[1.5px] border-[var(--border-strong)] bg-[var(--bg-card)] text-base font-bold text-[var(--text-primary)] transition hover:border-[var(--brand-primary)] hover:bg-[var(--bg-subtle)] cursor-pointer"
                   >
-                    <Minus className="h-4 w-4" />
+                    <Minus className="h-5 w-5" />
                   </button>
 
                   <input
@@ -320,7 +320,7 @@ export function Calculator({
                         handleGuestInputCommit();
                       }
                     }}
-                    className="w-24 rounded-xl border border-[var(--border-main)] bg-[var(--bg-card)] px-2.5 py-2 text-center font-mono tabular-nums text-lg font-bold text-[var(--text-primary)] focus:border-[var(--brand-primary)] focus:outline-none"
+                    className="h-12 w-28 rounded-xl border-[1.5px] border-[var(--border-strong)] bg-[var(--bg-card)] px-2.5 text-center font-mono tabular-nums text-xl font-bold text-[var(--text-primary)] focus:border-[var(--brand-primary)] focus:outline-none"
                   />
 
                   <button
@@ -328,18 +328,18 @@ export function Calculator({
                     data-testid="guest-plus"
                     aria-label={t.calculator.steps.guests.increaseAria}
                     onClick={handleStepPlus}
-                    className="inline-flex h-10 w-10 items-center justify-center rounded-xl border border-[var(--border-main)] bg-[var(--bg-card)] text-[var(--text-primary)] transition hover:border-[var(--brand-primary)] cursor-pointer"
+                    className="inline-flex h-12 w-12 items-center justify-center rounded-xl border-[1.5px] border-[var(--border-strong)] bg-[var(--bg-card)] text-base font-bold text-[var(--text-primary)] transition hover:border-[var(--brand-primary)] hover:bg-[var(--bg-subtle)] cursor-pointer"
                   >
-                    <Plus className="h-4 w-4" />
+                    <Plus className="h-5 w-5" />
                   </button>
                 </div>
               </div>
 
               {/* Sleek Range Slider */}
               <div className="space-y-2">
-                <div className="h-1 w-full overflow-hidden rounded-full bg-[var(--bg-subtle)]">
+                <div className="h-1.5 w-full overflow-hidden rounded-full bg-[var(--bg-subtle)]">
                   <div
-                    className="h-full rounded-full transition-all duration-200 bg-[var(--brand-primary)]"
+                    className="h-full rounded-full transition-all duration-200 dcc-gold-emerald-bar"
                     style={{ width: `${capacityProgress}%` }}
                   />
                 </div>
@@ -402,8 +402,8 @@ export function Calculator({
               </div>
 
               {/* Event Format + 800+ Enterprise Button */}
-              <div className="flex flex-wrap items-center justify-between gap-2.5 pt-2 border-t border-[var(--border-main)]">
-                <div className="flex flex-wrap items-center gap-1.5">
+              <div className="flex flex-col sm:flex-row sm:flex-wrap sm:items-center sm:justify-between gap-2.5 pt-3 border-t border-[var(--border-main)]">
+                <div className="grid grid-cols-3 w-full sm:w-auto sm:flex sm:flex-wrap sm:items-center gap-1.5 sm:gap-2">
                   {EVENT_TYPES.map((ev) => {
                     const active = input.eventType === ev;
                     return (
@@ -416,10 +416,10 @@ export function Calculator({
                         onClick={() =>
                           onChangeInput((prev) => ({ ...prev, eventType: ev }))
                         }
-                        className={`rounded-full border px-3.5 py-1.5 text-xs transition cursor-pointer ${
+                        className={`min-h-[42px] rounded-xl border-[1.5px] px-2 sm:px-4 py-2 text-[11px] sm:text-sm text-center truncate transition cursor-pointer ${
                           active
-                            ? 'border-[var(--brand-primary)] bg-[var(--brand-primary)] font-semibold text-[var(--btn-text)]'
-                            : 'border-[var(--border-main)] bg-[var(--bg-subtle)]/50 text-[var(--text-secondary)] hover:text-[var(--text-primary)]'
+                            ? 'border-[var(--brand-primary)] bg-[var(--brand-primary)] font-bold text-[var(--btn-text)] shadow-sm'
+                            : 'border-[var(--border-strong)] bg-[var(--bg-subtle)]/50 font-medium text-[var(--text-secondary)] hover:border-[var(--brand-primary)] hover:text-[var(--text-primary)]'
                         }`}
                       >
                         {t.calculator.steps.guests.eventTypes[ev].label}
@@ -442,13 +442,13 @@ export function Calculator({
                       enterprise800Plus: !prev.enterprise800Plus,
                     }))
                   }
-                  className={`inline-flex items-center gap-1.5 rounded-full border px-3.5 py-1.5 font-mono text-[11px] font-semibold transition cursor-pointer ${
+                  className={`inline-flex w-full sm:w-auto min-h-[42px] items-center justify-center gap-2 rounded-xl border-[1.5px] px-4 py-2 font-mono text-xs sm:text-[13px] font-semibold transition cursor-pointer ${
                     input.enterprise800Plus
-                      ? 'border-[var(--brand-primary)] bg-[var(--brand-primary)] text-[var(--btn-text)]'
-                      : 'border-[var(--border-main)] bg-[var(--bg-subtle)]/50 text-[var(--text-secondary)] hover:border-[var(--brand-primary)]'
+                      ? 'border-[var(--brand-primary)] bg-[var(--brand-primary)] text-[var(--btn-text)] shadow-sm'
+                      : 'border-[var(--border-strong)] bg-[var(--bg-subtle)]/50 text-[var(--text-secondary)] hover:border-[var(--brand-primary)] hover:text-[var(--text-primary)]'
                   }`}
                 >
-                  <Sparkles className="h-3 w-3" />
+                  <Sparkles className="h-3.5 w-3.5" />
                   <span>{t.calculator.steps.guests.enterpriseToggle}</span>
                 </button>
               </div>
@@ -461,7 +461,7 @@ export function Calculator({
             </div>
 
             {/* STEP 02: Uniform Horizontal Tesla/Apple Döner Configurator Rows */}
-            <div className="rounded-2xl border border-[var(--border-main)] bg-[var(--bg-card)] p-5 sm:p-6 space-y-4">
+            <div className="rounded-2xl border-[1.5px] border-[var(--border-strong)] bg-[var(--bg-card)] p-5 sm:p-6 space-y-4">
               <div>
                 <span className="font-mono text-[11px] font-medium uppercase tracking-[0.18em] text-[var(--brand-primary)]">
                   {extraCopy.stepPrefix} {t.calculator.steps.spits.index}
@@ -505,10 +505,10 @@ export function Calculator({
                       aria-pressed={active}
                       data-active={String(active)}
                       onClick={() => handleSelectMeat(meat.id)}
-                      className={`w-full flex items-start sm:items-center gap-3.5 sm:gap-4 rounded-xl border p-3 sm:p-3.5 text-left transition cursor-pointer ${
+                      className={`dcc-lux-card w-full flex items-start sm:items-center gap-3.5 sm:gap-4 p-3.5 sm:p-4 text-left cursor-pointer ${
                         active
-                          ? 'border-[var(--brand-primary)] bg-[var(--bg-subtle)]/80 ring-1 ring-[var(--brand-primary)]'
-                          : 'border-[var(--border-main)] bg-[var(--bg-main)]/50 hover:border-[var(--brand-primary)]/60'
+                          ? '!border-[#D4A853] bg-[#121715] ring-1 ring-[#2BC48A]/40'
+                          : ''
                       }`}
                     >
                       <div className="w-16 h-16 sm:w-22 sm:h-16 rounded-lg overflow-hidden bg-[var(--bg-subtle)] shrink-0 border border-[var(--border-main)]">
@@ -547,13 +547,13 @@ export function Calculator({
                           </div>
 
                           <span
-                            className={`inline-flex h-5 w-5 items-center justify-center rounded-full border transition shrink-0 ${
+                            className={`inline-flex h-6 w-6 items-center justify-center rounded-full border-2 transition shrink-0 ${
                               active
                                 ? 'border-[var(--brand-primary)] bg-[var(--brand-primary)] text-[var(--btn-text)]'
-                                : 'border-[var(--border-main)] bg-transparent text-transparent'
+                                : 'border-[var(--border-strong)] bg-transparent text-transparent'
                             }`}
                           >
-                            <Check className="h-3 w-3" />
+                            <Check className="h-3.5 w-3.5" />
                           </span>
                         </div>
                       </div>
@@ -564,7 +564,7 @@ export function Calculator({
             </div>
 
             {/* STEP 03: Service Setup Architecture */}
-            <div className="rounded-2xl border border-[var(--border-main)] bg-[var(--bg-card)] p-5 sm:p-6 space-y-4">
+            <div className="rounded-2xl border-[1.5px] border-[var(--border-strong)] bg-[var(--bg-card)] p-5 sm:p-6 space-y-4">
               <div>
                 <span className="font-mono text-[11px] font-medium uppercase tracking-[0.18em] text-[var(--brand-primary)]">
                   {extraCopy.stepPrefix} {t.calculator.steps.setups.index}
@@ -590,10 +590,10 @@ export function Calculator({
                       aria-pressed={active}
                       data-active={String(active)}
                       onClick={() => handleSelectSetup(setup.id)}
-                      className={`w-full flex items-start sm:items-center gap-3.5 sm:gap-4 rounded-xl border p-3 sm:p-3.5 text-left transition cursor-pointer ${
+                      className={`dcc-lux-card w-full flex items-start sm:items-center gap-3.5 sm:gap-4 p-3.5 sm:p-4 text-left cursor-pointer ${
                         active
-                          ? 'border-[var(--brand-primary)] bg-[var(--bg-subtle)]/80 ring-1 ring-[var(--brand-primary)]'
-                          : 'border-[var(--border-main)] bg-[var(--bg-main)]/50 hover:border-[var(--brand-primary)]/60'
+                          ? '!border-[#D4A853] bg-[#121715] ring-1 ring-[#2BC48A]/40'
+                          : ''
                       }`}
                     >
                       <div className="w-16 h-16 sm:w-22 sm:h-16 rounded-lg overflow-hidden bg-[var(--bg-subtle)] shrink-0 border border-[var(--border-main)]">
@@ -632,13 +632,13 @@ export function Calculator({
                           </div>
 
                           <span
-                            className={`inline-flex h-5 w-5 items-center justify-center rounded-full border transition shrink-0 ${
+                            className={`inline-flex h-6 w-6 items-center justify-center rounded-full border-2 transition shrink-0 ${
                               active
                                 ? 'border-[var(--brand-primary)] bg-[var(--brand-primary)] text-[var(--btn-text)]'
-                                : 'border-[var(--border-main)] bg-transparent text-transparent'
+                                : 'border-[var(--border-strong)] bg-transparent text-transparent'
                             }`}
                           >
-                            <Check className="h-3 w-3" />
+                            <Check className="h-3.5 w-3.5" />
                           </span>
                         </div>
                       </div>
@@ -649,7 +649,7 @@ export function Calculator({
             </div>
 
             {/* STEP 04: Optional Extras */}
-            <div className="rounded-2xl border border-[var(--border-main)] bg-[var(--bg-card)] p-5 sm:p-6 space-y-4">
+            <div className="rounded-2xl border-[1.5px] border-[var(--border-strong)] bg-[var(--bg-card)] p-5 sm:p-6 space-y-4">
               <div>
                 <span className="font-mono text-[11px] font-medium uppercase tracking-[0.18em] text-[var(--brand-primary)]">
                   {extraCopy.stepPrefix} {t.calculator.steps.extras.index}
@@ -676,18 +676,18 @@ export function Calculator({
                       aria-checked={active}
                       data-active={String(active)}
                       onClick={() => handleToggleExtra(extra.id)}
-                      className={`w-full flex items-center justify-between gap-4 rounded-xl border p-3.5 sm:p-4 text-left transition cursor-pointer ${
+                      className={`dcc-lux-card w-full flex items-center justify-between gap-4 p-4 text-left cursor-pointer ${
                         active
-                          ? 'border-[var(--brand-primary)] bg-[var(--bg-subtle)]/80 ring-1 ring-[var(--brand-primary)]'
-                          : 'border-[var(--border-main)] bg-[var(--bg-main)]/50 hover:border-[var(--brand-primary)]/60'
+                          ? '!border-[#D4A853] bg-[#121715] ring-1 ring-[#2BC48A]/40'
+                          : ''
                       }`}
                     >
                       <div className="flex items-start gap-3 min-w-0">
                         <span
-                          className={`mt-0.5 inline-flex h-5 w-5 shrink-0 items-center justify-center rounded-md border transition ${
+                          className={`mt-0.5 inline-flex h-6 w-6 shrink-0 items-center justify-center rounded-md border-2 transition ${
                             active
                               ? 'border-[var(--brand-primary)] bg-[var(--brand-primary)] text-[var(--btn-text)]'
-                              : 'border-[var(--border-main)] bg-[var(--bg-card)] text-transparent'
+                              : 'border-[var(--border-strong)] bg-[var(--bg-card)] text-transparent'
                           }`}
                         >
                           <Check className="h-3.5 w-3.5" />

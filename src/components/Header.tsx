@@ -1,4 +1,5 @@
 import React from 'react';
+import { Play } from 'lucide-react';
 import { SUPPORTED_LOCALES, useLocale } from '../i18n';
 import type { ThemeId } from '../types/brand';
 import { BrandLogo } from './BrandLogo';
@@ -9,6 +10,7 @@ export interface HeaderProps {
   activeView: 'main' | 'brand-kit';
   onSelectView: (view: 'main' | 'brand-kit', targetHash?: string) => void;
   onOpenLegal?: (docId: LegalDocId) => void;
+  onReplayIntro?: () => void;
 }
 
 export function Header({
@@ -16,6 +18,7 @@ export function Header({
   activeView,
   onSelectView,
   onOpenLegal,
+  onReplayIntro,
 }: HeaderProps): React.ReactElement {
   const { locale, setLocale, t } = useLocale();
 
@@ -75,10 +78,21 @@ export function Header({
               {t.footer.ifsLink}
             </a>
           </div>
+          {onReplayIntro && (
+            <button
+              type="button"
+              onClick={onReplayIntro}
+              title={t.themeSwitcher.replayIntro}
+              className="inline-flex items-center gap-1 font-mono text-[9px] sm:text-[10px] uppercase tracking-wider text-[var(--brand-primary)] hover:text-white transition cursor-pointer shrink-0"
+            >
+              <Play className="h-2.5 w-2.5 fill-current" />
+              <span>INTRO</span>
+            </button>
+          )}
         </div>
       </div>
 
-      <div className="mx-auto flex h-14 max-w-7xl items-center justify-between gap-4 px-4 sm:px-6">
+      <div className="mx-auto flex h-14 sm:h-16 max-w-7xl items-center justify-between gap-2 sm:gap-4 px-3.5 sm:px-6">
         <a
           href="#hero"
           onClick={(e) => handleAnchorClick(e, '#hero')}
@@ -88,13 +102,13 @@ export function Header({
           <BrandLogo
             lockup="primary"
             theme={theme}
-            imgClassName="h-7 sm:h-8 w-auto object-contain"
+            imgClassName="h-7 sm:h-9 w-auto max-w-[165px] sm:max-w-none object-contain"
           />
         </a>
 
         <nav
           aria-label="Primary Navigation"
-          className="hidden lg:flex items-center gap-6 text-[13px] font-medium text-[var(--text-secondary)]"
+          className="hidden lg:flex items-center gap-6 text-sm font-medium text-[var(--text-secondary)]"
         >
           <a
             href="#rechner"
@@ -167,9 +181,9 @@ export function Header({
                   aria-pressed={active}
                   data-active={String(active)}
                   onClick={() => setLocale(lang)}
-                  className={`rounded-full px-2.5 py-1 font-mono text-[11px] font-semibold uppercase transition cursor-pointer ${
+                  className={`rounded-lg px-2.5 sm:px-3 py-1.5 font-mono text-[11px] sm:text-xs font-semibold uppercase transition cursor-pointer ${
                     active
-                      ? 'bg-[var(--brand-primary)] text-[var(--btn-text)]'
+                      ? 'bg-[var(--brand-primary)] text-[var(--btn-text)] shadow-sm'
                       : 'text-[var(--text-secondary)] hover:text-[var(--text-primary)]'
                   }`}
                 >
@@ -182,7 +196,7 @@ export function Header({
           <a
             href="#rechner"
             onClick={(e) => handleAnchorClick(e, '#rechner')}
-            className="hidden sm:inline-flex items-center justify-center rounded-full bg-[var(--brand-primary)] px-4 py-2 text-xs font-semibold tracking-wide text-[var(--btn-text)] transition hover:bg-[var(--brand-hover)]"
+            className="hidden sm:inline-flex h-10 items-center justify-center rounded-xl bg-[var(--brand-primary)] px-5 text-xs sm:text-sm font-bold tracking-wide text-[var(--btn-text)] shadow-md transition hover:bg-[var(--brand-hover)]"
           >
             {t.header.cta}
           </a>

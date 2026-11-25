@@ -1,112 +1,43 @@
-/* DCC Döner Catering Club — Soho House / Gaggenau / Michelin Private Club 3-Theme Design Tokens */
+/* DCC Döner Catering Club — Pure Black, Bold White Montserrat & Gold-to-Emerald Design Tokens */
 
 :root,
 .theme-obsidian {
-  --bg-main: #0B0A09;
-  --bg-card: #141210;
-  --bg-subtle: #1D1A16;
-  --bg-contrast: #F3ECE0;
-  --text-primary: #F3ECE0;
-  --text-secondary: #C8BFB0;
-  --text-muted: #9A9082;
-  --brand-primary: #D49B54;
-  --brand-hover: #E5B06B;
-  --brand-accent: #E06440;
-  --border-main: #2A2520;
-  --badge-bg: #211B14;
-  --badge-text: #E5B06B;
-  --btn-text: #0B0A09;
-  --navbar-bg: rgba(11, 10, 9, 0.88);
-  --slider-track: #2A2520;
-  --slider-thumb: #D49B54;
-  --receipt-bg: #12100E;
-  --receipt-text: #F3ECE0;
-  --receipt-accent: #D49B54;
+  --bg-main: #060606;
+  --bg-card: #0D0F0E;
+  --bg-subtle: #141816;
+  --bg-contrast: #FFFFFF;
+  --text-primary: #FFFFFF;
+  --text-secondary: #A8B2AE;
+  --text-muted: #707A76;
+  --brand-primary: #D4A853;
+  --brand-hover: #E6BE6A;
+  --brand-accent: #18A974;
+  --accent-emerald: #2BC48A;
+  --border-main: #1A1F1D;
+  --border-strong: #262E2B;
+  --badge-bg: #111A16;
+  --badge-text: #E6BE6A;
+  --btn-text: #050505;
+  --navbar-bg: rgba(6, 6, 6, 0.88);
+  --slider-track: #1E2422;
+  --slider-thumb: #D4A853;
+  --receipt-bg: #0A0C0B;
+  --receipt-text: #FFFFFF;
+  --receipt-accent: #D4A853;
 
-  /* Restrained Mineral & Metallic Club Accents (Zero Neon / SaaS Cyan) */
-  --accent-emerald: #7AB887;
-  --accent-cyan: #D49B54;
-  --accent-rose: #E06440;
-  --accent-violet: #C89D66;
-  --glow-primary: rgba(212, 155, 84, 0.14);
-  --glow-secondary: rgba(200, 75, 39, 0.08);
-  --glow-tertiary: rgba(212, 155, 84, 0.05);
-  --glass-border: rgba(243, 236, 224, 0.09);
-  --glass-surface: rgba(20, 18, 16, 0.86);
+  --gradient-gold-emerald: linear-gradient(125deg, #F2CB76 0%, #D4A853 46%, #2BC48A 100%);
+  --glow-primary: rgba(212, 168, 83, 0.14);
+  --glow-secondary: rgba(43, 196, 138, 0.12);
+  --glow-tertiary: rgba(212, 168, 83, 0.05);
+  --glass-border: rgba(255, 255, 255, 0.1);
+  --glass-surface: rgba(13, 15, 14, 0.88);
 
-  /* Raw Non-Text Brand Swatches & Motion Physics */
-  --swatch-ember-raw: #C84B27;
-  --swatch-herb-raw: #5D8A66;
+  --swatch-ember-raw: #D4A853;
+  --swatch-herb-raw: #2BC48A;
   --ease-expo-out: cubic-bezier(0.16, 1, 0.3, 1);
   --ease-quint-in-out: cubic-bezier(0.83, 0, 0.17, 1);
   --ease-exit-snap: cubic-bezier(0.7, 0, 0.84, 0);
   --stagger-step: 45ms;
-}
-
-.theme-limestone {
-  --bg-main: #FAF6EF;
-  --bg-card: #FFFDF9;
-  --bg-subtle: #EFE8DC;
-  --bg-contrast: #0B0A09;
-  --text-primary: #0B0A09;
-  --text-secondary: #3D362E;
-  --text-muted: #706558;
-  --brand-primary: #7A4710;
-  --brand-hover: #5E350A;
-  --brand-accent: #A13618;
-  --border-main: #E2D9C8;
-  --badge-bg: #F3E8D7;
-  --badge-text: #7A4710;
-  --btn-text: #FFFDF9;
-  --navbar-bg: rgba(250, 246, 239, 0.9);
-  --slider-track: #DDD2C0;
-  --slider-thumb: #7A4710;
-  --receipt-bg: #141210;
-  --receipt-text: #F3ECE0;
-  --receipt-accent: #D49B54;
-
-  --accent-emerald: #4A7A53;
-  --accent-cyan: #7A4710;
-  --accent-rose: #A13618;
-  --accent-violet: #8C5820;
-  --glow-primary: rgba(212, 155, 84, 0.14);
-  --glow-secondary: rgba(161, 54, 24, 0.06);
-  --glow-tertiary: rgba(122, 71, 16, 0.05);
-  --glass-border: rgba(11, 10, 9, 0.08);
-  --glass-surface: rgba(255, 253, 249, 0.9);
-}
-
-.theme-emerald-club {
-  --bg-main: #071A14;
-  --bg-card: #0C241C;
-  --bg-subtle: #123127;
-  --bg-contrast: #F3ECE0;
-  --text-primary: #F3ECE0;
-  --text-secondary: #C6D6CE;
-  --text-muted: #8AA398;
-  --brand-primary: #D49B54;
-  --brand-hover: #E5B06B;
-  --brand-accent: #E06440;
-  --border-main: #1D3E33;
-  --badge-bg: #12362C;
-  --badge-text: #E5B06B;
-  --btn-text: #071A14;
-  --navbar-bg: rgba(7, 26, 20, 0.88);
-  --slider-track: #1D3E33;
-  --slider-thumb: #D49B54;
-  --receipt-bg: #05130E;
-  --receipt-text: #F3ECE0;
-  --receipt-accent: #D49B54;
-
-  --accent-emerald: #7AB887;
-  --accent-cyan: #D49B54;
-  --accent-rose: #E06440;
-  --accent-violet: #C89D66;
-  --glow-primary: rgba(212, 155, 84, 0.13);
-  --glow-secondary: rgba(122, 184, 135, 0.09);
-  --glow-tertiary: rgba(200, 75, 39, 0.06);
-  --glass-border: rgba(243, 236, 224, 0.1);
-  --glass-surface: rgba(12, 36, 28, 0.86);
 }
 
 @media (prefers-reduced-motion: reduce) {

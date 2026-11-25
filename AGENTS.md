@@ -10,6 +10,7 @@
 - `html` dışında `body`, `#root` ve kapsayıcı `<section>` elemanlarında **asla** `overflow-x: hidden` veya ara `overflow-x: clip` kullanılmaz; tek viewport scroll kapsayıcısı `document.documentElement` olmalıdır.
 - `.dcc-configurator-grid` içinde sağ sütun `.dcc-sticky-summary` üzerinde `position: sticky; top: 5rem; align-self: start; max-height: calc(100vh - 5.75rem); overflow-y: auto;` uygulanır ve özet kartı `1280x780` laptop ekranında toplam + CTA butonlarını kesmeden tek bakışta gösterecek kadar kompakt tutulur.
 
-## 3. Minimalist Architectural Club (Tesla × Apple × Togg) Görsel Disiplini
-- Gastronomy & private-club arayüzlerinde neon cyan (`#38BDF8`), neon yeşil (`#34D399`), pembe (`#FB7185`), gökkuşağı yazı gradyanları ve kripto/SaaS jargonu **yasaktır**.
-- Yalnızca sıcak mat obsidyen (`#0B0A09`), kömür (`#141210`), fırçalanmış pirinç (`#D49B54`), köz terakota (`#C84B27` / `#E06440`), yumuşak adaçayı/ot yeşili (`#7AB887`) ve kemik (`#F3ECE0`) tonları; 1px hairline kenarlıklar ve bol negatif boşlukla kullanılır.
+## 3. Minimalist Pure Black + Bold White Montserrat + Gold/Emerald Disiplini
+- Gastronomy & catering arayüzlerinde neon cyan (`#38BDF8`), pembe (`#FB7185`), gökkuşağı yazı gradyanları ve kripto/SaaS jargonu **yasaktır**.
+- Ana tuval derin siyah (`#060606`), kartlar `#0D0F0E`, başlıklar kalın beyaz **Montserrat** (`#FFFFFF`), vurgular ise **Altın (`#D4A853`) → Zümrüt Yeşili (`#2BC48A`)** renk geçişiyle uygulanır; kartlarda `.dcc-lux-card` imleç takipli hover parlaması kullanılır.
+- Başlıklarda ve sloganlarda gece kulübü (`Clubkultur`, `Kulüp Gecesi` vb.) çağrışımı yerine kurumsal ve özel davet dili (`Perfektion`, `Event-Trailer`, `Open-Air`) tercih edilir.

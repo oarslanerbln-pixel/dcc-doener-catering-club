@@ -219,44 +219,31 @@ test.describe('Tier 2 — Boundary, Corner & Invalid Case Matrix', () => {
   });
 
   test.describe('Area C: Theme Boundaries', () => {
-    test('T2-THEME-01: Rapid cycling obsidian -> limestone -> emerald-club -> obsidian (single active class)', async ({
+    test('T2-THEME-01: Single locked theme-obsidian class across interactions', async ({
       page,
     }) => {
       await openApp(page, '/');
-      for (const theme of ['limestone', 'emerald-club', 'obsidian'] as const) {
-        await switchTheme(page, theme);
-        const activeThemeClasses = await page.evaluate(() => {
-          const classes = Array.from(document.documentElement.classList).filter((c) =>
-            c.startsWith('theme-')
-          );
-          return classes;
-        });
-        expect(activeThemeClasses.length).toBeLessThanOrEqual(1);
-        if (activeThemeClasses.length === 1) {
-          expect(activeThemeClasses[0]).toBe(`theme-${theme}`);
-        }
-      }
+      const activeThemeClasses = await page.evaluate(() =>
+        Array.from(document.documentElement.classList).filter((c) => c.startsWith('theme-'))
+      );
+      expect(activeThemeClasses).toEqual(['theme-obsidian']);
     });
 
-    test('T2-THEME-02: Theme switch preserves Calculator & Locale state', async ({ page }) => {
+    test('T2-THEME-02: Locale & Calculator state integrity in Pure Black', async ({ page }) => {
       await openApp(page, '/');
       await switchLocale(page, 'tr');
       await setGuestsViaInput(page, 275);
       await selectMeat(page, 'kalb');
-
-      await switchTheme(page, 'limestone');
-      await switchTheme(page, 'emerald-club');
 
       await expect(page.locator('html')).toHaveAttribute('lang', /^tr/i);
       await expect(getGuestInput(page)).toHaveValue('275');
       expect(await isControlActive(page.locator('[data-testid="meat-kalb"]').first())).toBe(true);
     });
 
-    test('T2-THEME-03: Modal & Brand Kit inherit active theme with readable contrast', async ({
+    test('T2-THEME-03: Modal & Brand Kit inherit Pure Black theme with readable contrast', async ({
       page,
     }) => {
       await openApp(page, '/');
-      await switchTheme(page, 'limestone');
       const modal = await openQuoteModal(page);
       const contrast = await modal.evaluate((el) => {
         const s = getComputedStyle(el);
@@ -266,7 +253,6 @@ test.describe('Tier 2 — Boundary, Corner & Invalid Case Matrix', () => {
       await page.keyboard.press('Escape');
 
       await openApp(page, '/?view=brand-kit');
-      await switchTheme(page, 'limestone');
       await expect(page.locator('#brand-kit')).toBeVisible();
     });
 
@@ -279,19 +265,18 @@ test.describe('Tier 2 — Boundary, Corner & Invalid Case Matrix', () => {
       monitors.assertClean();
     });
 
-    test('T2-THEME-05: Page reload boots cleanly into valid default theme without console errors', async ({
+    test('T2-THEME-05: Page reload boots cleanly into theme-obsidian without console errors', async ({
       page,
     }) => {
       const monitors = await openApp(page, '/');
-      await switchTheme(page, 'limestone');
       await page.reload({ waitUntil: 'domcontentloaded' });
       await dismissSplash(page);
-      const hasValidTheme = await page.evaluate(() =>
-        ['theme-obsidian', 'theme-limestone', 'theme-emerald-club'].some(
-          (c) => document.documentElement.classList.contains(c) || Boolean(document.querySelector(`.${c}`))
-        )
+      const hasObsidian = await page.evaluate(
+        () =>
+          document.documentElement.classList.contains('theme-obsidian') ||
+          Boolean(document.querySelector('.theme-obsidian'))
       );
-      expect(hasValidTheme).toBe(true);
+      expect(hasObsidian).toBe(true);
       monitors.assertClean();
     });
   });

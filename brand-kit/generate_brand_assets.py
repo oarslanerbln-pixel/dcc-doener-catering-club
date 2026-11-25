@@ -65,38 +65,38 @@ BLENDER_EXE = r"C:\Program Files\Blender Foundation\Blender 5.2\blender.exe"
 #   mono  = 1-color #0B0A09 monochrome
 COLORWAYS = {
     "light": {
-        "primary": "#F3ECE0",
-        "brass": "#D49B54",
-        "sear": "#E06440",
-        "secondary": "#D1C7B8",
-        "hairline": "#3D362F",
+        "primary": "#FFFFFF",
+        "brass": "#D4A853",
+        "sear": "#2BC48A",
+        "secondary": "#B8C2BE",
+        "hairline": "#2A3531",
         "seal_fill": None,
-        "mono_bg": "#151311",
+        "mono_bg": "#0A0C0B",
     },
     "dark": {
-        "primary": "#0B0A09",
-        "brass": "#7A4710",
-        "sear": "#A13618",
-        "secondary": "#2D2823",
-        "hairline": "#C7BCAA",
+        "primary": "#060606",
+        "brass": "#9A7226",
+        "sear": "#148F63",
+        "secondary": "#2C3330",
+        "hairline": "#C9C4B8",
         "seal_fill": None,
-        "mono_bg": "#FAF6EF",
+        "mono_bg": "#FAF8F2",
     },
     "ember": {
-        "primary": "#D49B54",
-        "brass": "#D49B54",
-        "sear": "#C84B27",
-        "secondary": "#F3ECE0",
-        "hairline": "#544432",
-        "seal_fill": "#0B0A09",
-        "mono_bg": "#0B0A09",
+        "primary": "#F2CB76",
+        "brass": "#D4A853",
+        "sear": "#2BC48A",
+        "secondary": "#FFFFFF",
+        "hairline": "#263630",
+        "seal_fill": "#060606",
+        "mono_bg": "#060606",
     },
     "mono": {
-        "primary": "#0B0A09",
-        "brass": "#0B0A09",
-        "sear": "#0B0A09",
-        "secondary": "#0B0A09",
-        "hairline": "#0B0A09",
+        "primary": "#060606",
+        "brass": "#060606",
+        "sear": "#060606",
+        "secondary": "#060606",
+        "hairline": "#060606",
         "seal_fill": None,
         "mono_bg": None,
     },
@@ -261,46 +261,74 @@ class VectorTextConverter:
 
 
 def _emblem_svg_group(cx: float, cy: float, r_outer: float, pal: dict, show_rings: bool = True) -> list[str]:
-    """Generate the Ember-Cut Rotisserie Totem emblem as pure SVG primitives."""
+    """Generate the Architectural 3-Facet Diamond Crest emblem as pure SVG primitives."""
     s = r_outer / 36.0
     parts: list[str] = []
     if show_rings:
+        # Outer precision ring + chamfered inner octagon
         parts.append(
-            f'<circle cx="{cx:.2f}" cy="{cy:.2f}" r="{r_outer:.2f}" fill="none" stroke="{pal["brass"]}" stroke-width="{2.2 * s:.2f}"/>'
+            f'<circle cx="{cx:.2f}" cy="{cy:.2f}" r="{r_outer:.2f}" fill="none" stroke="{pal["brass"]}" stroke-width="{2.1 * s:.2f}"/>'
         )
+        oct_r = r_outer * 0.84
+        oct_pts = []
+        for i in range(8):
+            ang = math.radians(22.5 + i * 45.0)
+            oct_pts.append(f"{cx + oct_r * math.cos(ang):.2f},{cy + oct_r * math.sin(ang):.2f}")
         parts.append(
-            f'<circle cx="{cx:.2f}" cy="{cy:.2f}" r="{r_outer * 0.79:.2f}" fill="none" stroke="{pal["hairline"]}" stroke-width="{1.0 * s:.2f}"/>'
+            f'<polygon points="{" ".join(oct_pts)}" fill="none" stroke="{pal["hairline"]}" stroke-width="{1.0 * s:.2f}"/>'
         )
+        # 4 cardinal micro-diamonds (Gold N/S, Emerald E/W)
+        d_sz = 2.1 * s
+        for dx, dy, col in (
+            (0.0, -r_outer, pal["brass"]),
+            (0.0, r_outer, pal["brass"]),
+            (-r_outer, 0.0, pal["sear"]),
+            (r_outer, 0.0, pal["sear"]),
+        ):
+            px, py = cx + dx, cy + dy
+            parts.append(
+                f'<polygon points="{px:.2f},{py - d_sz:.2f} {px + d_sz:.2f},{py:.2f} {px:.2f},{py + d_sz:.2f} {px - d_sz:.2f},{py:.2f}" fill="{col}"/>'
+            )
 
-    # Vertical skewer rod
-    rod_top = cy - 23.0 * s
-    rod_bot = cy + 23.0 * s
-    parts.append(
-        f'<line x1="{cx:.2f}" y1="{rod_top:.2f}" x2="{cx:.2f}" y2="{rod_bot:.2f}" stroke="{pal["brass"]}" stroke-width="{2.2 * s:.2f}" stroke-linecap="round"/>'
+    # Central crisp architectural diamond spire (White / Primary)
+    spire = (
+        f"M {cx:.2f},{cy - 22.5 * s:.2f} "
+        f"L {cx + 5.8 * s:.2f},{cy:.2f} "
+        f"L {cx:.2f},{cy + 22.5 * s:.2f} "
+        f"L {cx - 5.8 * s:.2f},{cy:.2f} Z"
     )
-    # Chamfered spindle crown bar
-    parts.append(
-        f'<rect x="{cx - 7.5 * s:.2f}" y="{cy - 22.0 * s:.2f}" width="{15.0 * s:.2f}" height="{3.0 * s:.2f}" rx="{1.5 * s:.2f}" fill="{pal["brass"]}"/>'
-    )
-    # Base drip plate
-    parts.append(
-        f'<rect x="{cx - 12.5 * s:.2f}" y="{cy + 19.0 * s:.2f}" width="{25.0 * s:.2f}" height="{3.0 * s:.2f}" rx="{1.5 * s:.2f}" fill="{pal["brass"]}"/>'
-    )
+    parts.append(f'<path d="{spire}" fill="{pal["primary"]}"/>')
 
-    # 4 Stepped Ember-Cut Meat Slabs (beveled trapezoids with 3px vertical air-gaps)
-    slabs = [
-        (-15.5, -8.5, 17.5, 15.5, pal["primary"]),
-        (-5.5, 1.5, 14.5, 12.5, pal["brass"]),
-        (4.5, 10.5, 11.5, 9.5, pal["primary"]),
-        (13.5, 17.5, 8.2, 6.2, pal["sear"]),
-    ]
-    for y0_u, y1_u, w0_u, w1_u, col in slabs:
-        y0 = cy + y0_u * s
-        y1 = cy + y1_u * s
-        x0_l, x0_r = cx - w0_u * s, cx + w0_u * s
-        x1_l, x1_r = cx - w1_u * s, cx + w1_u * s
-        d = f"M {x0_l:.2f},{y0:.2f} L {x0_r:.2f},{y0:.2f} L {x1_r:.2f},{y1:.2f} L {x1_l:.2f},{y1:.2f} Z"
-        parts.append(f'<path d="{d}" fill="{col}"/>')
+    # Left architectural bevel blade (Champagne Gold)
+    left_blade = (
+        f"M {cx - 9.2 * s:.2f},{cy - 15.0 * s:.2f} "
+        f"L {cx - 18.2 * s:.2f},{cy - 5.2 * s:.2f} "
+        f"L {cx - 18.2 * s:.2f},{cy + 5.2 * s:.2f} "
+        f"L {cx - 9.2 * s:.2f},{cy + 15.0 * s:.2f} "
+        f"L {cx - 7.4 * s:.2f},{cy:.2f} Z"
+    )
+    parts.append(f'<path d="{left_blade}" fill="{pal["brass"]}"/>')
+
+    # Right architectural bevel blade (Jewel Emerald)
+    right_blade = (
+        f"M {cx + 9.2 * s:.2f},{cy - 15.0 * s:.2f} "
+        f"L {cx + 18.2 * s:.2f},{cy - 5.2 * s:.2f} "
+        f"L {cx + 18.2 * s:.2f},{cy + 5.2 * s:.2f} "
+        f"L {cx + 9.2 * s:.2f},{cy + 15.0 * s:.2f} "
+        f"L {cx + 7.4 * s:.2f},{cy:.2f} Z"
+    )
+    parts.append(f'<path d="{right_blade}" fill="{pal["sear"]}"/>')
+
+    # Precision vertical axis hairline + crown/plinth accents
+    parts.append(
+        f'<line x1="{cx:.2f}" y1="{cy - 15.0 * s:.2f}" x2="{cx:.2f}" y2="{cy + 15.0 * s:.2f}" stroke="{pal["brass"]}" stroke-width="{1.0 * s:.2f}" stroke-opacity="0.75"/>'
+    )
+    parts.append(
+        f'<rect x="{cx - 9.0 * s:.2f}" y="{cy - 24.5 * s:.2f}" width="{18.0 * s:.2f}" height="{1.8 * s:.2f}" rx="{0.9 * s:.2f}" fill="{pal["brass"]}"/>'
+    )
+    parts.append(
+        f'<rect x="{cx - 11.0 * s:.2f}" y="{cy + 22.7 * s:.2f}" width="{22.0 * s:.2f}" height="{1.8 * s:.2f}" rx="{0.9 * s:.2f}" fill="{pal["sear"]}"/>'
+    )
 
     return parts
 
@@ -313,9 +341,9 @@ def build_logo_svg(lockup: str, colorway: str, conv: VectorTextConverter) -> tup
         vw, vh, w1x, h1x = 480, 96, 480, 96
         body = _emblem_svg_group(52.0, 48.0, 34.0, pal, show_rings=True)
         body.append(f'<line x1="102" y1="16" x2="102" y2="80" stroke="{pal["hairline"]}" stroke-width="1.2"/>')
-        d_dcc = conv.text_to_path_d("DCC", "Syne-Var.ttf", 38.0, 120.0, 46.0, tracking=2.2, weight=800)
-        d_sub = conv.text_to_path_d("DÖNER CATERING CLUB", "SpaceGrotesk-Var.ttf", 14.2, 121.0, 65.5, tracking=2.4, weight=600)
-        d_tag = conv.text_to_path_d("BERLIN · EST. 2026", "JetBrainsMono-Var.ttf", 9.0, 121.5, 81.5, tracking=2.0, weight=500)
+        d_dcc = conv.text_to_path_d("DCC", "Montserrat-ExtraBold.ttf", 36.0, 120.0, 46.5, tracking=4.5)
+        d_sub = conv.text_to_path_d("DÖNER CATERING CLUB", "Montserrat-Bold.ttf", 12.2, 121.0, 65.5, tracking=3.2)
+        d_tag = conv.text_to_path_d("BERLIN · EST. 2026", "JetBrainsMono-Var.ttf", 8.8, 121.5, 81.5, tracking=2.2, weight=500)
         body.append(f'<path d="{d_dcc}" fill="{pal["primary"]}"/>')
         body.append(f'<path d="{d_sub}" fill="{pal["brass"]}"/>')
         body.append(f'<path d="{d_tag}" fill="{pal["secondary"]}"/>')
@@ -323,10 +351,10 @@ def build_logo_svg(lockup: str, colorway: str, conv: VectorTextConverter) -> tup
     elif lockup == "logo-stacked":
         vw, vh, w1x, h1x = 320, 280, 320, 280
         body = _emblem_svg_group(160.0, 76.0, 52.0, pal, show_rings=True)
-        d_dcc = conv.text_to_path_d("DCC", "Syne-Var.ttf", 44.0, 160.0, 178.0, tracking=2.5, weight=800, align="center")
-        d_sub = conv.text_to_path_d("DÖNER CATERING CLUB", "SpaceGrotesk-Var.ttf", 13.5, 160.0, 206.0, tracking=2.4, weight=600, align="center")
+        d_dcc = conv.text_to_path_d("DCC", "Montserrat-ExtraBold.ttf", 42.0, 160.0, 178.0, tracking=5.0, align="center")
+        d_sub = conv.text_to_path_d("DÖNER CATERING CLUB", "Montserrat-Bold.ttf", 12.0, 160.0, 206.0, tracking=2.8, align="center")
         body.append(f'<line x1="78" y1="222" x2="242" y2="222" stroke="{pal["hairline"]}" stroke-width="1.2"/>')
-        d_tag = conv.text_to_path_d("BERLIN · EST. 2026", "JetBrainsMono-Var.ttf", 10.0, 160.0, 244.0, tracking=2.0, weight=500, align="center")
+        d_tag = conv.text_to_path_d("BERLIN · EST. 2026", "JetBrainsMono-Var.ttf", 9.6, 160.0, 244.0, tracking=2.2, weight=500, align="center")
         body.append(f'<path d="{d_dcc}" fill="{pal["primary"]}"/>')
         body.append(f'<path d="{d_sub}" fill="{pal["brass"]}"/>')
         body.append(f'<path d="{d_tag}" fill="{pal["secondary"]}"/>')
@@ -337,20 +365,19 @@ def build_logo_svg(lockup: str, colorway: str, conv: VectorTextConverter) -> tup
         body = []
         if pal["seal_fill"]:
             body.append(f'<circle cx="{cx}" cy="{cy}" r="118" fill="{pal["seal_fill"]}"/>')
-        body.append(f'<circle cx="{cx}" cy="{cy}" r="118" fill="none" stroke="{pal["brass"]}" stroke-width="2.8"/>')
+        body.append(f'<circle cx="{cx}" cy="{cy}" r="118" fill="none" stroke="{pal["brass"]}" stroke-width="2.6"/>')
         body.append(f'<circle cx="{cx}" cy="{cy}" r="110" fill="none" stroke="{pal["hairline"]}" stroke-width="1.0"/>')
-        body.append(f'<circle cx="{cx}" cy="{cy}" r="72" fill="none" stroke="{pal["brass"]}" stroke-width="1.6"/>')
+        body.append(f'<circle cx="{cx}" cy="{cy}" r="72" fill="none" stroke="{pal["sear"]}" stroke-width="1.4"/>')
         body.extend(_emblem_svg_group(cx, cy, 48.0, pal, show_rings=False))
 
-        # Concentric ring text: r_bottom = r_top + cap_height
-        top_size = 13.5
+        top_size = 12.2
         r_top = 87.0
-        cap_h = conv.cap_height("SpaceGrotesk-Var.ttf", top_size, weight=700)
+        cap_h = conv.cap_height("Montserrat-Bold.ttf", top_size)
         r_bottom = r_top + cap_h
 
         d_top = conv.arc_text_to_path_d(
             "DÖNER CATERING CLUB",
-            "SpaceGrotesk-Var.ttf",
+            "Montserrat-Bold.ttf",
             top_size,
             cx,
             cy,
@@ -358,12 +385,11 @@ def build_logo_svg(lockup: str, colorway: str, conv: VectorTextConverter) -> tup
             center_angle_deg=-90.0,
             clockwise=True,
             tracking=3.0,
-            weight=700,
         )
         d_bot = conv.arc_text_to_path_d(
             "BERLIN · EST. 2026",
             "JetBrainsMono-Var.ttf",
-            11.0,
+            10.6,
             cx,
             cy,
             radius=r_bottom,
@@ -372,9 +398,11 @@ def build_logo_svg(lockup: str, colorway: str, conv: VectorTextConverter) -> tup
             tracking=2.4,
             weight=500,
         )
-        # Left & right decorative club bullets at equator
-        body.append(f'<circle cx="{cx - 91.5:.2f}" cy="{cy:.2f}" r="2.6" fill="{pal["sear"]}"/>')
-        body.append(f'<circle cx="{cx + 91.5:.2f}" cy="{cy:.2f}" r="2.6" fill="{pal["sear"]}"/>')
+        # Left Gold & Right Emerald micro-diamonds at equator
+        for ex, col in ((cx - 91.5, pal["brass"]), (cx + 91.5, pal["sear"])):
+            body.append(
+                f'<polygon points="{ex:.2f},{cy - 3.2:.2f} {ex + 3.2:.2f},{cy:.2f} {ex:.2f},{cy + 3.2:.2f} {ex - 3.2:.2f},{cy:.2f}" fill="{col}"/>'
+            )
         body.append(f'<path d="{d_top}" fill="{pal["primary"]}"/>')
         body.append(f'<path d="{d_bot}" fill="{pal["brass"]}"/>')
 
@@ -383,16 +411,16 @@ def build_logo_svg(lockup: str, colorway: str, conv: VectorTextConverter) -> tup
         cx, cy = 64.0, 64.0
         body = []
         if pal["seal_fill"]:
-            body.append(f'<rect x="6" y="6" width="116" height="116" rx="24" fill="{pal["seal_fill"]}"/>')
-        body.append(f'<rect x="6" y="6" width="116" height="116" rx="24" fill="none" stroke="{pal["brass"]}" stroke-width="2.4"/>')
-        body.append(f'<circle cx="{cx}" cy="{cy}" r="48" fill="none" stroke="{pal["hairline"]}" stroke-width="1.1"/>')
-        # Vertical brass skewer axis behind/through monogram
-        body.append(f'<line x1="{cx}" y1="16" x2="{cx}" y2="112" stroke="{pal["brass"]}" stroke-width="2.6" stroke-linecap="round"/>')
-        body.append(f'<rect x="{cx - 8}" y="17" width="16" height="3.2" rx="1.6" fill="{pal["brass"]}"/>')
-        body.append(f'<rect x="{cx - 12}" y="107" width="24" height="3.2" rx="1.6" fill="{pal["brass"]}"/>')
-        d_dcc = conv.text_to_path_d("DCC", "Syne-Var.ttf", 24.5, cx, 72.5, tracking=1.0, weight=800, align="center")
+            body.append(f'<rect x="6" y="6" width="116" height="116" rx="26" fill="{pal["seal_fill"]}"/>')
+        body.append(f'<rect x="6" y="6" width="116" height="116" rx="26" fill="none" stroke="{pal["brass"]}" stroke-width="2.4"/>')
+        body.append(f'<rect x="13" y="13" width="102" height="102" rx="20" fill="none" stroke="{pal["hairline"]}" stroke-width="1.0"/>')
+        # Top Gold crown diamond + Bottom Emerald diamond
+        body.append(f'<polygon points="{cx},19 {cx + 5},25 {cx},31 {cx - 5},25" fill="{pal["brass"]}"/>')
+        body.append(f'<polygon points="{cx},97 {cx + 5},103 {cx},109 {cx - 5},103" fill="{pal["sear"]}"/>')
+        body.append(f'<line x1="28" y1="38" x2="100" y2="38" stroke="{pal["hairline"]}" stroke-width="1.0"/>')
+        body.append(f'<line x1="28" y1="90" x2="100" y2="90" stroke="{pal["hairline"]}" stroke-width="1.0"/>')
+        d_dcc = conv.text_to_path_d("DCC", "Montserrat-ExtraBold.ttf", 28.0, cx, 74.0, tracking=2.6, align="center")
         body.append(f'<path d="{d_dcc}" fill="{pal["primary"]}"/>')
-        body.append(f'<circle cx="{cx}" cy="96" r="3.4" fill="{pal["sear"]}"/>')
     else:
         raise ValueError(f"Unknown lockup: {lockup}")
 
@@ -459,16 +487,13 @@ def generate_favicons_and_pwa(conv: VectorTextConverter, registry: FontRegistry)
     PUBLIC_DIR.mkdir(parents=True, exist_ok=True)
 
     # 1. Simplified high-legibility 64x64 favicon.svg (pure vector paths, inner elements inside [6, 58])
-    pal = COLORWAYS["ember"]
-    d_dcc = conv.text_to_path_d("DCC", "Syne-Var.ttf", 12.0, 32.0, 36.0, tracking=0.5, weight=800, align="center")
+    d_dcc = conv.text_to_path_d("DCC", "Montserrat-ExtraBold.ttf", 14.5, 32.0, 37.5, tracking=1.0, align="center")
     favicon_svg = (
         '<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 64 64" width="64" height="64">\n'
-        '  <rect x="3" y="3" width="58" height="58" rx="12" fill="#0B0A09" stroke="#D49B54" stroke-width="2.0"/>\n'
-        '  <line x1="32" y1="9" x2="32" y2="55" stroke="#D49B54" stroke-width="2.0" stroke-linecap="round"/>\n'
-        '  <rect x="25" y="9.5" width="14" height="2.2" rx="1.1" fill="#D49B54"/>\n'
-        '  <rect x="22" y="52.3" width="20" height="2.2" rx="1.1" fill="#D49B54"/>\n'
-        f'  <path d="{d_dcc}" fill="#F3ECE0"/>\n'
-        '  <circle cx="32" cy="45.5" r="2.4" fill="#C84B27"/>\n'
+        '  <rect x="3" y="3" width="58" height="58" rx="14" fill="#060606" stroke="#D4A853" stroke-width="2.2"/>\n'
+        '  <polygon points="32,10 35,13.5 32,17 29,13.5" fill="#D4A853"/>\n'
+        '  <polygon points="32,47 35,50.5 32,54 29,50.5" fill="#2BC48A"/>\n'
+        f'  <path d="{d_dcc}" fill="#FFFFFF"/>\n'
         "</svg>\n"
     )
     assert "<text" not in favicon_svg.lower()
@@ -485,18 +510,18 @@ def generate_favicons_and_pwa(conv: VectorTextConverter, registry: FontRegistry)
         append_images=[fav_32, fav_16],
     )
 
-    # 3. Maskable PWA icon SVG (emblem inside inner 60% safe zone on solid #0B0A09)
+    # 3. Maskable PWA icon SVG (emblem inside inner 60% safe zone on solid #060606)
     mask_svg_parts = ['<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 512 512" width="512" height="512">']
-    mask_svg_parts.append('  <rect x="0" y="0" width="512" height="512" fill="#0B0A09"/>')
+    mask_svg_parts.append('  <rect x="0" y="0" width="512" height="512" fill="#060606"/>')
     mask_svg_parts.extend(["  " + p for p in _emblem_svg_group(256.0, 224.0, 118.0, COLORWAYS["light"], show_rings=True)])
-    d_pwa = conv.text_to_path_d("DCC", "Syne-Var.ttf", 52.0, 256.0, 396.0, tracking=4.0, weight=800, align="center")
-    mask_svg_parts.append(f'  <path d="{d_pwa}" fill="#F3ECE0"/>')
+    d_pwa = conv.text_to_path_d("DCC", "Montserrat-ExtraBold.ttf", 50.0, 256.0, 398.0, tracking=5.0, align="center")
+    mask_svg_parts.append(f'  <path d="{d_pwa}" fill="#FFFFFF"/>')
     mask_svg_parts.append("</svg>\n")
     mask_pil = render_svg_to_pil("\n".join(mask_svg_parts), 512, 512)
     mask_pil.save(PUBLIC_DIR / "icon-512.png", format="PNG", optimize=True)
     mask_pil.resize((192, 192), Image.Resampling.LANCZOS).save(PUBLIC_DIR / "icon-192.png", format="PNG", optimize=True)
 
-    # 4. apple-touch-icon.png (180x180, 24-bit opaque RGB on #0B0A09, 22% safe margin)
+    # 4. apple-touch-icon.png (180x180, 24-bit opaque RGB on #060606, 22% safe margin)
     apple_pil = mask_pil.resize((180, 180), Image.Resampling.LANCZOS).convert("RGB")
     apple_pil.save(PUBLIC_DIR / "apple-touch-icon.png", format="PNG", optimize=True)
 
@@ -504,11 +529,11 @@ def generate_favicons_and_pwa(conv: VectorTextConverter, registry: FontRegistry)
     manifest = {
         "name": "DCC Döner Catering Club",
         "short_name": "DCC Catering",
-        "description": "Ember-Cut Architectural Hospitality — Live Döner Catering & Club Trailer Berlin (DE/EN/TR)",
+        "description": "Ember-Cut Architectural Hospitality — Live Döner Catering & Event-Trailer Berlin (DE/EN/TR)",
         "start_url": "/",
         "display": "standalone",
-        "background_color": "#0B0A09",
-        "theme_color": "#0B0A09",
+        "background_color": "#060606",
+        "theme_color": "#060606",
         "icons": [
             {"src": "/icon-192.png", "sizes": "192x192", "type": "image/png", "purpose": "any maskable"},
             {"src": "/icon-512.png", "sizes": "512x512", "type": "image/png", "purpose": "any maskable"},
@@ -516,24 +541,24 @@ def generate_favicons_and_pwa(conv: VectorTextConverter, registry: FontRegistry)
     }
     (PUBLIC_DIR / "site.webmanifest").write_text(json.dumps(manifest, indent=2, ensure_ascii=False) + "\n", encoding="utf-8")
 
-    # 6. og-image.png (1200x630 RGB) built with SwissGrid + mixed typography + DCC Club Seal
+    # 6. og-image.png (1200x630 RGB) built with SwissGrid + Montserrat typography + DCC Seal
     w, h = 1200, 630
     grid = SwissGrid(w, h)
     surf = skia.Surface(w, h)
     canvas = surf.getCanvas()
-    canvas.clear(skia_color("#0B0A09"))
+    canvas.clear(skia_color("#060606"))
 
-    # Subtle architectural radial ember & brass atmosphere
+    # Subtle architectural radial Gold & Emerald atmosphere
     ember_grad = skia.GradientShader.MakeRadial(
         center=(930.0, 290.0),
-        radius=460.0,
-        colors=[skia_color("#C84B27", 0.28), skia_color("#D49B54", 0.10), skia_color("#0B0A09", 0.0)],
-        positions=[0.0, 0.45, 1.0],
+        radius=480.0,
+        colors=[skia_color("#D4A853", 0.22), skia_color("#2BC48A", 0.14), skia_color("#060606", 0.0)],
+        positions=[0.0, 0.48, 1.0],
     )
     canvas.drawRect(skia.Rect.MakeWH(w, h), skia.Paint(Shader=ember_grad))
 
     # Subtle Swiss architectural grid hairlines
-    border_paint = skia.Paint(AntiAlias=True, Style=skia.Paint.kStroke_Style, StrokeWidth=1.0, Color=skia_color("#2E2924", 0.85))
+    border_paint = skia.Paint(AntiAlias=True, Style=skia.Paint.kStroke_Style, StrokeWidth=1.0, Color=skia_color("#26302B", 0.9))
     canvas.drawRect(skia.Rect.MakeLTRB(grid.margin_x, grid.safe_top, w - grid.margin_x, h - grid.safe_bottom), border_paint)
 
     # Embed real logo-seal-ember SVG on the right
@@ -550,17 +575,17 @@ def generate_favicons_and_pwa(conv: VectorTextConverter, registry: FontRegistry)
         grid.margin_x + 36.0,
         grid.safe_top + 64.0,
         mono_sm,
-        skia.Paint(AntiAlias=True, Color=skia_color("#D49B54")),
+        skia.Paint(AntiAlias=True, Color=skia_color("#D4A853")),
         tracking_em=0.16,
     )
 
-    # Mixed-typeface headline
+    # Bold Montserrat headline
     draw_mixed_runs(
         canvas,
         registry,
         [
-            TextRun("Feuer. ", "SpaceGrotesk-Var.ttf", 64.0, "#F3ECE0", weight=700, tracking_em=-0.03),
-            TextRun("Handwerk.", "InstrumentSerif-Italic.ttf", 68.0, "#D49B54", weight=400, tracking_em=-0.01),
+            TextRun("Feuer. ", "Montserrat-ExtraBold.ttf", 62.0, "#FFFFFF", tracking_em=-0.03),
+            TextRun("Handwerk.", "Montserrat-ExtraBold.ttf", 62.0, "#D4A853", tracking_em=-0.03),
         ],
         grid.margin_x + 36.0,
         248.0,
@@ -569,25 +594,25 @@ def generate_favicons_and_pwa(conv: VectorTextConverter, registry: FontRegistry)
         canvas,
         registry,
         [
-            TextRun("Clubkultur.", "SpaceGrotesk-Var.ttf", 64.0, "#F3ECE0", weight=700, tracking_em=-0.03),
+            TextRun("Perfektion.", "Montserrat-ExtraBold.ttf", 62.0, "#2BC48A", tracking_em=-0.03),
         ],
         grid.margin_x + 36.0,
         322.0,
     )
 
     # Trilingual subcopy & verified diacritic line
-    sub_font = make_font(registry, "SpaceGrotesk-Var.ttf", 21.0, weight=400)
+    sub_font = make_font(registry, "Montserrat-Medium.ttf", 21.0)
     draw_tracked_text(
         canvas,
-        "Live Yaprak & Club-Trailer Catering · 30–800+ Gäste",
+        "Live Yaprak & Event-Trailer Catering · 30–800+ Gäste",
         grid.margin_x + 36.0,
         396.0,
         sub_font,
-        skia.Paint(AntiAlias=True, Color=skia_color("#D1C7B8")),
+        skia.Paint(AntiAlias=True, Color=skia_color("#D5DDD9")),
         tracking_em=0.0,
     )
 
-    draw_hairline_rule(canvas, grid.margin_x + 36.0, 446.0, 720.0, 446.0, "#2E2924", stroke_width=1.2)
+    draw_hairline_rule(canvas, grid.margin_x + 36.0, 446.0, 720.0, 446.0, "#26302B", stroke_width=1.2)
     mono_footer = make_font(registry, "JetBrainsMono-Var.ttf", 15.0, weight=500)
     draw_tracked_text(
         canvas,
@@ -595,7 +620,7 @@ def generate_favicons_and_pwa(conv: VectorTextConverter, registry: FontRegistry)
         grid.margin_x + 36.0,
         492.0,
         mono_footer,
-        skia.Paint(AntiAlias=True, Color=skia_color("#AAA193")),
+        skia.Paint(AntiAlias=True, Color=skia_color("#A1ADA8")),
         tracking_em=0.10,
     )
 
@@ -761,7 +786,7 @@ def generate_application_plates(conv: VectorTextConverter, registry: FontRegistr
     surf = skia.Surface(wt, ht)
     c = surf.getCanvas()
     c.clear(skia_color("#0B0A09"))
-    _draw_plate_header(c, registry, wt, "APPLICATION 04 / FLEET LIVERY", "Autonomous DCC Club-Trailer — Side Elevation & Architectural Graphics", dark_bg=True)
+    _draw_plate_header(c, registry, wt, "APPLICATION 04 / FLEET LIVERY", "Autonomous DCC Event-Trailer — Side Elevation & Architectural Graphics", dark_bg=True)
 
     # Trailer Body Elevation
     c.drawRRect(skia.RRect.MakeRectXY(skia.Rect.MakeXYWH(170, 185, 1020, 420), 18, 18), skia.Paint(AntiAlias=True, Color=skia_color("#151311")))
@@ -774,7 +799,7 @@ def generate_application_plates(conv: VectorTextConverter, registry: FontRegistr
     draw_hairline_rule(c, 330, 445, 970, 445, "#D49B54", stroke_width=4.0)
     # Primary Light Logo on Lower Fascia
     _paste_rgba(c, primary_light.resize((370, 74), Image.Resampling.LANCZOS), 230, 482)
-    draw_tracked_text(c, "30–800+ GÄSTE  ·  DE / EN / TR  ·  AUTARKER CLUB-TRAILER", 1145, 524, make_font(registry, "JetBrainsMono-Var.ttf", 11.0, weight=500), skia.Paint(AntiAlias=True, Color=skia_color("#D49B54")), tracking_em=0.06, align="right")
+    draw_tracked_text(c, "30–800+ GÄSTE  ·  DE / EN / TR  ·  AUTARKER EVENT-TRAILER", 1145, 524, make_font(registry, "JetBrainsMono-Var.ttf", 11.0, weight=500), skia.Paint(AntiAlias=True, Color=skia_color("#D49B54")), tracking_em=0.06, align="right")
     # Dual Wheels + Brass Rims
     for wx in (620, 790):
         c.drawCircle(wx, 615, 62, skia.Paint(AntiAlias=True, Color=skia_color("#0B0A09")))
@@ -866,8 +891,8 @@ def generate_application_plates(conv: VectorTextConverter, registry: FontRegistr
         c,
         registry,
         [
-            TextRun("Club ", "SpaceGrotesk-Var.ttf", 36.0, "#F3ECE0", weight=700, tracking_em=-0.02),
-            TextRun("Night.", "InstrumentSerif-Italic.ttf", 38.0, "#D49B54", weight=400),
+            TextRun("Live ", "Montserrat-ExtraBold.ttf", 36.0, "#FFFFFF", tracking_em=-0.02),
+            TextRun("Craft.", "Montserrat-ExtraBold.ttf", 36.0, "#D4A853"),
         ],
         sx + sw * 0.5,
         sy + 370,

@@ -4,7 +4,7 @@ export const de: TranslationSchema = {
   meta: {
     title: 'DCC Döner Catering Club — Live-Catering & Kalkulator Berlin',
     description:
-      'Ember-Cut Architectural Hospitality: Handgesteckte Yaprak-Dönerspieße, Live-Stationen & Club-Trailer für 30 bis 800+ Gäste in Berlin.',
+      'Ember-Cut Architectural Hospitality: Handgesteckte Yaprak-Dönerspieße, Live-Stationen & Event-Trailer für 30 bis 800+ Gäste in Berlin.',
     skipToContent: 'Direkt zum Inhalt springen',
   },
   header: {
@@ -31,7 +31,7 @@ export const de: TranslationSchema = {
   introSplash: {
     eyebrow: 'EMBER-CUT ARCHITECTURAL HOSPITALITY',
     title: 'DCC Döner Catering Club',
-    subtitle: 'Feuer. Handwerk. Clubkultur. — Live-Rotisserie für 30 bis 800+ Gäste.',
+    subtitle: 'Feuer. Handwerk. Perfektion. — Live-Döner-Catering für 30 bis 800+ Gäste.',
     skipHint: 'ESC oder Klick zum Überspringen',
     skipButton: 'Eintreten',
     ariaLabel: 'Intro-Sequenz von DCC Döner Catering Club',
@@ -40,16 +40,16 @@ export const de: TranslationSchema = {
     eyebrow: 'BERLIN · OFFENES FEUER · B2B & VIP CATERING',
     headlinePrefix: 'Feuer.',
     headlineAccent: 'Handwerk.',
-    headlineSuffix: 'Clubkultur.',
+    headlineSuffix: 'Perfektion.',
     subtitle:
-      'Handgesteckte Yaprak-Schichten, rauchige Glut und Berliner Club-Präzision — live am Spieß geschnitten für Corporate Summits, Hochzeiten und Festival-Nächte ab 30 Gästen.',
+      'Handgesteckte Yaprak-Schichten, offene Glut und Berliner Präzision — frisch am Spieß geschnitten für Corporate Events, Hochzeiten und große Empfänge ab 30 Gästen.',
     primaryCta: 'Budget jetzt kalkulieren',
     secondaryCta: 'Event-Galerie ansehen',
     brandKitCta: 'Brand Kit & Richtlinien',
     viewToggleLabel: 'Bühnen-Setup umschalten',
     views: {
       station: 'Live-Station · Hotel & Event',
-      trailer: 'Club-Trailer · Autark',
+      trailer: 'Event-Trailer · Autark',
     },
     highlights: [
       { value: '30–800+', label: 'Gäste pro Event' },
@@ -70,7 +70,7 @@ export const de: TranslationSchema = {
     themes: {
       obsidian: 'Obsidian & Messing',
       limestone: 'Kalkstein & Bronze',
-      'emerald-club': 'Club Smaragd',
+      'emerald-club': 'Smaragd & Messing',
     },
     replayIntro: 'Intro abspielen',
   },
@@ -119,7 +119,7 @@ export const de: TranslationSchema = {
             hint: 'Mitternachts-Show & Gala-Service',
           },
           festival: {
-            label: 'Festival / Club',
+            label: 'Festival / Open-Air',
             hint: 'High-Speed-Durchsatz am Hof',
           },
         },
@@ -186,7 +186,7 @@ export const de: TranslationSchema = {
           },
           truck: {
             badge: 'Outdoor & Autark',
-            title: 'Club-Trailer (Mattschwarz)',
+            title: 'Event-Trailer (Mattschwarz)',
             spec: 'Unser eigenständiger DCC Event-Trailer mit eigener Strom-, Kühl- und Grilltechnik für bis zu 800+ Portionen.',
           },
           buffet: {
@@ -200,7 +200,7 @@ export const de: TranslationSchema = {
         index: '04',
         title: 'Zusatzleistungen pro Gast',
         subtitle:
-          'Kombinieren Sie handwerkliche Beilagen, Craft-Limonaden und Gaziantep-Baklava für das komplette Club-Erlebnis.',
+          'Kombinieren Sie handwerkliche Beilagen, Craft-Limonaden und Gaziantep-Baklava für ein vollendetes Catering-Erlebnis.',
         perGuestSuffix: 'pro Gast',
         activeLabel: 'Ausgewählt',
         inactiveLabel: 'Hinzufügen',
@@ -354,8 +354,8 @@ export const de: TranslationSchema = {
       },
       {
         id: 'festival',
-        tag: '03 · FESTIVAL & CLUB NIGHT',
-        title: 'Autarke Power aus dem Club-Trailer',
+        tag: '03 · FESTIVAL & OPEN-AIR',
+        title: 'Autarke Power aus dem Event-Trailer',
         description:
           'Mattschwarzer Trailer mit eigener Kühlung, Stromverteilung und zwei parallelen Spießen für offene Höfe.',
         bullets: [
@@ -402,7 +402,7 @@ export const de: TranslationSchema = {
       },
       {
         id: 'highspeed',
-        tag: 'CLUB-DURCHSATZ',
+        tag: 'HOHER DURCHSATZ',
         title: 'Keine langen Schlangen vor dem Buffet',
         description:
           'Parallele Schnittstationen und vorwärmende Steinofen-Logistik liefern bis zu 180 frische Portionen pro Stunde.',
@@ -475,7 +475,7 @@ export const de: TranslationSchema = {
         id: 'pairings',
         tabLabel: '03 · Getränke & Baklava',
         extraId: 'dessert',
-        headline: 'Berliner Club-Drinks & Gaziantep-Finale',
+        headline: 'Berliner Craft-Drinks & Gaziantep-Finale',
         description:
           'Vom hausgemachten Minz-Ayran über Club-Mate bis zur knusprigen Pistazien-Baklava mit Çay.',
         image: '/media/gallery-wedding.png',
@@ -514,7 +514,7 @@ export const de: TranslationSchema = {
       {
         code: 'T-90M',
         title: 'Aufbau & Grill-Kalibrierung',
-        detail: 'Geräuscharmer Einzug in den Saal oder Positionierung des autonomen Club-Trailers.',
+        detail: 'Geräuscharmer Einzug in den Saal oder Positionierung des autonomen Event-Trailers.',
         metric: '90 Min. Setup',
       },
       {
@@ -561,7 +561,7 @@ export const de: TranslationSchema = {
         quote:
           'Autarker Trailer im Innenhof, schnelle Abwicklung mit USt-IdNr. und top geschultes Team.',
         author: 'Executive Producer, Kreuzberg Creative',
-        meta: 'Club-Trailer · Classic Kalb',
+        meta: 'Event-Trailer · Classic Kalb',
       },
     ],
   },
@@ -585,9 +585,9 @@ export const de: TranslationSchema = {
       },
       {
         id: 'logistics',
-        question: 'Welche Anschlüsse benötigt die Live-Station oder der Club-Trailer?',
+        question: 'Welche Anschlüsse benötigt die Live-Station oder der Event-Trailer?',
         answer:
-          'Die Indoor-Live-Station benötigt lediglich zwei getrennte 230V-Steckdosen (16A) und ca. 3 × 2 Meter Stellfläche. Der Club-Trailer arbeitet autark mit Starkstrom (16A/32A CEE) oder eigener Gas-Elektro-Kombination. Unser Einsatzgebiet umfasst Berlin und das Umland bis maximal 300 km.',
+          'Die Indoor-Live-Station benötigt lediglich zwei getrennte 230V-Steckdosen (16A) und ca. 3 × 2 Meter Stellfläche. Der Event-Trailer arbeitet autark mit Starkstrom (16A/32A CEE) oder eigener Gas-Elektro-Kombination. Unser Einsatzgebiet umfasst Berlin und das Umland bis maximal 300 km.',
       },
       {
         id: 'billing',
@@ -605,7 +605,7 @@ export const de: TranslationSchema = {
         id: 'capacity',
         question: 'Realisiert DCC auch Großevents über 800 Gäste hinaus?',
         answer:
-          'Ja. Aktivieren Sie im Rechner die Option „800+ Großevent (Enterprise)“. Wir kombinieren dann mehrere Club-Trailer und parallele Doppel-Stationen inklusive projektspezifischer Schichtplanung.',
+          'Ja. Aktivieren Sie im Rechner die Option „800+ Großevent (Enterprise)“. Wir kombinieren dann mehrere Event-Trailer und parallele Doppel-Stationen inklusive projektspezifischer Schichtplanung.',
       },
     ],
   },
@@ -636,17 +636,17 @@ export const de: TranslationSchema = {
         },
         {
           tag: 'PILLAR 03 · FESTIVALS',
-          title: 'Autarke Club-Energie',
-          body: 'Mattschwarzer Club-Trailer mit hohem Durchsatz, 100 % Halal-Standard und separatem Vegan-Spieß.',
+          title: 'Autarke Event-Energie',
+          body: 'Mattschwarzer Event-Trailer mit hohem Durchsatz, 100 % Halal-Standard und separatem Vegan-Spieß.',
         },
       ],
       boilerplates: {
         shortLabel: 'Kurz-Boilerplate (~25 Wörter)',
         shortText:
-          'DCC Döner Catering Club bringt Berliner Clubkultur und handgestecktes Yaprak-Handwerk live zu Corporate Summits, Hochzeiten und Festivals — ab 30 bis 800+ Gästen.',
+          'DCC Döner Catering Club bringt erstklassiges, handgestecktes Yaprak-Handwerk live zu Corporate Summits, Hochzeiten und Festivals — ab 30 bis 800+ Gästen.',
         mediumLabel: 'Standard-Boilerplate (~55 Wörter)',
         mediumText:
-          'DCC Döner Catering Club verbindet handgeschichtete Spieße aus eigener Manufaktur mit architektonischen Live-Stationen und autarken Club-Trailern. Ob Executive Lunch in Berlin-Mitte oder Festival-Hof für 800 Personen: Unser Sofort-Rechner kalkuliert Netto, 19 % MwSt. und Mengenrabatte in Sekunden — serviert auf höchstem Hygiene- und Halal-Standard.',
+          'DCC Döner Catering Club verbindet handgeschichtete Spieße aus eigener Manufaktur mit architektonischen Live-Stationen und autarken Event-Trailern. Ob Executive Lunch in Berlin-Mitte oder Festival-Hof für 800 Personen: Unser Sofort-Rechner kalkuliert Netto, 19 % MwSt. und Mengenrabatte in Sekunden — serviert auf höchstem Hygiene- und Halal-Standard.',
       },
     },
     logos: {
@@ -664,7 +664,7 @@ export const de: TranslationSchema = {
       lockupNames: {
         primary: 'Primary Horizontal',
         stacked: 'Stacked Totem',
-        seal: 'Club Seal',
+        seal: 'Rund-Siegel',
         monogram: 'DCC Monogramm',
       },
       colorwayNames: {
@@ -724,7 +724,7 @@ export const de: TranslationSchema = {
           code: 'DONT-01',
           title: "Falsch (Don't): Keine Verzerrung",
           detail:
-            'Seitenverhältnis niemals stauchen, neigen oder die konzentrischen Club-Ringe verformen.',
+            'Seitenverhältnis niemals stauchen, neigen oder die konzentrischen Emblem-Ringe verformen.',
           kind: 'dont',
         },
         {
@@ -755,7 +755,7 @@ export const de: TranslationSchema = {
         pair: 'Token-Paar',
         obsidian: 'Obsidian',
         limestone: 'Kalkstein',
-        emerald: 'Club Smaragd',
+        emerald: 'Smaragd & Messing',
         status: 'Level',
       },
       swatchRoles: {
@@ -769,7 +769,7 @@ export const de: TranslationSchema = {
         emberTerracotta: 'Dekorative Glut-Füllung & Emblem-Akzent',
         liftedEmber: 'AA-geprüfter Ember-Text auf Obsidian',
         kilnTerracotta: 'AA-geprüfter Terracotta-Text auf Kalkstein',
-        emeraldClub: 'Berliner Club-Smaragd Hintergrund',
+        emeraldClub: 'Dunkler Smaragd-Hintergrund',
         halalHerb: 'Botanischer Indikator für Halal & Vegan',
         liftedHerb: 'AA/AAA-geprüfter Kräuter-Akzent auf Smaragd',
       },
@@ -788,7 +788,7 @@ export const de: TranslationSchema = {
       eyebrow: '07 · MARKENANWENDUNGEN',
       title: 'Sechs reale Produktionsplatten',
       subtitle:
-        'Verpackung, Berufsbekleidung, Club-Trailer-Livery, Live-Station und Social-Media-Schutzzonen.',
+        'Verpackung, Berufsbekleidung, Event-Trailer-Livery, Live-Station und Social-Media-Schutzzonen.',
       plates: [
         {
           id: 'wrap-paper',
@@ -811,7 +811,7 @@ export const de: TranslationSchema = {
         {
           id: 'trailer-livery',
           file: '/brand/plate-trailer-livery.png',
-          label: '04 · Club-Trailer Livery',
+          label: '04 · Event-Trailer Livery',
           caption: 'Mattschwarzer Trailer-Aufbau mit Messing-Gürtellinie.',
         },
         {
@@ -916,7 +916,7 @@ export const de: TranslationSchema = {
   },
   footer: {
     tagline:
-      'Ember-Cut Architectural Hospitality — Berliner Live-Döner-Catering für Corporate Summits, Hochzeiten und Club-Nächte.',
+      'Ember-Cut Architectural Hospitality — Berliner Live-Döner-Catering für Corporate Events, Hochzeiten und exklusive Empfänge.',
     citiesLabel: 'Einsatzgebiet (max. 300 km um Berlin)',
     cities: [
       'Berlin & Umland',

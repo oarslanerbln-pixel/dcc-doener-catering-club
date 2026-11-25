@@ -41,13 +41,14 @@ export function ReceiptSummary({
     <aside
       id="rechner-summary"
       aria-label={t.receipt.title}
-      className="rounded-2xl border border-[var(--border-main)] shadow-2xl overflow-hidden"
+      className="rounded-2xl border-[1.5px] border-[var(--border-strong)] shadow-2xl overflow-hidden"
       style={{
         backgroundColor: 'var(--receipt-bg)',
         color: 'var(--receipt-text)',
       }}
     >
-      <div className="p-5 space-y-4">
+      <div className="h-[2px] w-full dcc-gold-emerald-bar" />
+      <div className="p-5 space-y-3.5">
         {/* Compact Tesla/Apple Summary Header with Paired Thumbnails */}
         <div className="flex items-center justify-between gap-3">
           <div className="min-w-0">
@@ -169,7 +170,13 @@ export function ReceiptSummary({
         </div>
 
         {/* Per-Guest Highlight */}
-        <div className="rounded-xl border border-[#D49B54]/30 bg-[#D49B54]/10 p-3.5 flex items-center justify-between gap-2">
+        <div
+          className="rounded-xl border border-[#D4A853]/35 p-3.5 flex items-center justify-between gap-2"
+          style={{
+            background:
+              'linear-gradient(135deg, rgba(212, 168, 83, 0.14) 0%, rgba(43, 196, 138, 0.1) 100%)',
+          }}
+        >
           <div>
             <div className="font-mono text-[10px] uppercase tracking-wider text-[#D49B54]">
               {t.receipt.perGuestNetLabel}
@@ -222,13 +229,13 @@ export function ReceiptSummary({
           </div>
         </div>
 
-        {/* Compact Action Stack */}
-        <div className="space-y-2 pt-1">
+        {/* Prominent Action Stack */}
+        <div className="space-y-2.5 pt-1">
           <button
             type="button"
             data-testid="quote-open-modal"
             onClick={onOpenModal}
-            className="w-full inline-flex items-center justify-center gap-2 rounded-xl bg-[#D49B54] px-4 py-3 text-xs font-semibold uppercase tracking-wider text-[#0B0A09] transition hover:bg-[#E5B06B] cursor-pointer"
+            className="w-full min-h-[48px] inline-flex items-center justify-center gap-2 rounded-xl bg-[#D49B54] px-5 py-3.5 text-sm font-bold uppercase tracking-wider text-[#061510] shadow-lg transition hover:bg-[#E5B06B] cursor-pointer"
           >
             <FileText className="h-4 w-4" />
             <span>{t.receipt.modalCta}</span>
@@ -238,7 +245,7 @@ export function ReceiptSummary({
             type="button"
             data-testid="quote-whatsapp"
             onClick={onDirectWhatsApp}
-            className="w-full inline-flex items-center justify-center gap-2 rounded-xl border border-white/15 bg-white/5 px-4 py-2.5 text-xs font-medium text-[#F3ECE0] transition hover:bg-white/10 hover:border-[#D49B54] cursor-pointer"
+            className="w-full min-h-[44px] inline-flex items-center justify-center gap-2 rounded-xl border-[1.5px] border-[#D49B54]/65 bg-[#13352A] px-5 py-3 text-sm font-semibold text-[#F4EFE6] transition hover:bg-[#1B4638] hover:border-[#D49B54] cursor-pointer"
           >
             <MessageCircle className="h-4 w-4 text-[#D49B54]" />
             <span>{t.receipt.whatsappCta}</span>

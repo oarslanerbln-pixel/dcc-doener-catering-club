@@ -27,7 +27,6 @@ import {
   setGuestsViaInput,
   setGuestsViaSlider,
   switchLocale,
-  switchTheme,
   triggerAndCaptureWhatsApp,
   waitForImgLoaded,
 } from './helpers/site-actions';
@@ -350,7 +349,7 @@ test.describe('Tier 1 — Core Feature Coverage', () => {
     });
   });
 
-  test.describe('Area C: Theme Switching', () => {
+  test.describe('Area C: Locked Pure Black Gold-Emerald Theme', () => {
     test('T1-THEME-01: Default theme-obsidian on boot', async ({ page }) => {
       await openApp(page, '/');
       const state = await page.evaluate(() => {
@@ -363,75 +362,38 @@ test.describe('Tier 1 — Core Feature Coverage', () => {
         return { hasObsidian, bg, luminance };
       });
       expect(state.hasObsidian).toBe(true);
-      expect(state.luminance).toBeLessThan(0.2);
+      expect(state.luminance).toBeLessThan(0.1);
     });
 
-    test('T1-THEME-02: Switch to theme-limestone', async ({ page }) => {
+    test('T1-THEME-02: ThemeSwitcher removed (Pure Black single theme)', async ({ page }) => {
       await openApp(page, '/');
-      await switchTheme(page, 'limestone');
-      const state = await page.evaluate(() => {
-        const bg = getComputedStyle(document.body).backgroundColor;
-        const m = bg.match(/\d+/g)?.map(Number) ?? [0, 0, 0];
-        const luminance = (0.2126 * m[0] + 0.7152 * m[1] + 0.0722 * m[2]) / 255;
-        return { bg, luminance };
+      await expect(page.locator('[data-testid="theme-switcher"]')).toHaveCount(0);
+    });
+
+    test('T1-THEME-03: Visual contrast & token consistency in Pure Black', async ({ page }) => {
+      await openApp(page, '/');
+      const tokens = await page.evaluate(() => {
+        const rootStyle = getComputedStyle(document.documentElement);
+        const bodyStyle = getComputedStyle(document.body);
+        const receiptEl = document.querySelector('#rechner-summary');
+        const receiptStyle = receiptEl ? getComputedStyle(receiptEl) : null;
+        return {
+          bgMain: rootStyle.getPropertyValue('--bg-main').trim(),
+          textPrimary: rootStyle.getPropertyValue('--text-primary').trim(),
+          brandPrimary: rootStyle.getPropertyValue('--brand-primary').trim(),
+          receiptBg: rootStyle.getPropertyValue('--receipt-bg').trim(),
+          bodyColor: bodyStyle.color,
+          bodyBg: bodyStyle.backgroundColor,
+          receiptColor: receiptStyle?.color ?? '',
+          receiptBgComputed: receiptStyle?.backgroundColor ?? '',
+        };
       });
-      expect(state.luminance).toBeGreaterThan(0.65);
-    });
 
-    test('T1-THEME-03: Switch to theme-emerald-club', async ({ page }) => {
-      await openApp(page, '/');
-      await switchTheme(page, 'limestone');
-      const limestoneBg = await page.evaluate(() => getComputedStyle(document.body).backgroundColor);
-
-      await switchTheme(page, 'emerald-club');
-      const emeraldState = await page.evaluate(() => ({
-        bg: getComputedStyle(document.body).backgroundColor,
-        brand: getComputedStyle(document.documentElement).getPropertyValue('--brand-primary').trim(),
-      }));
-      expect(emeraldState.bg).not.toEqual(limestoneBg);
-      expect(emeraldState.brand).not.toBe('');
-    });
-
-    test('T1-THEME-04: Round-trip back to theme-obsidian', async ({ page }) => {
-      await openApp(page, '/');
-      const initialBg = await page.evaluate(() =>
-        getComputedStyle(document.documentElement).getPropertyValue('--bg-main').trim()
-      );
-      await switchTheme(page, 'emerald-club');
-      await switchTheme(page, 'obsidian');
-      const restoredBg = await page.evaluate(() =>
-        getComputedStyle(document.documentElement).getPropertyValue('--bg-main').trim()
-      );
-      expect(restoredBg).toEqual(initialBg);
-    });
-
-    test('T1-THEME-05: Visual contrast & token consistency across all 3 themes', async ({ page }) => {
-      await openApp(page, '/');
-      for (const theme of ['obsidian', 'limestone', 'emerald-club'] as const) {
-        await switchTheme(page, theme);
-        const tokens = await page.evaluate(() => {
-          const rootStyle = getComputedStyle(document.documentElement);
-          const bodyStyle = getComputedStyle(document.body);
-          const receiptEl = document.querySelector('#rechner-summary');
-          const receiptStyle = receiptEl ? getComputedStyle(receiptEl) : null;
-          return {
-            bgMain: rootStyle.getPropertyValue('--bg-main').trim(),
-            textPrimary: rootStyle.getPropertyValue('--text-primary').trim(),
-            brandPrimary: rootStyle.getPropertyValue('--brand-primary').trim(),
-            receiptBg: rootStyle.getPropertyValue('--receipt-bg').trim(),
-            bodyColor: bodyStyle.color,
-            bodyBg: bodyStyle.backgroundColor,
-            receiptColor: receiptStyle?.color ?? '',
-            receiptBgComputed: receiptStyle?.backgroundColor ?? '',
-          };
-        });
-
-        expect(tokens.bgMain).not.toBe('');
-        expect(tokens.textPrimary).not.toBe('');
-        expect(tokens.brandPrimary).not.toBe('');
-        expect(tokens.bodyColor).not.toEqual(tokens.bodyBg);
-        expect(tokens.receiptColor).not.toEqual(tokens.receiptBgComputed);
-      }
+      expect(tokens.bgMain.toLowerCase()).toBe('#060606');
+      expect(tokens.textPrimary.toLowerCase()).toMatch(/^#f{3,6}$/);
+      expect(tokens.brandPrimary).not.toBe('');
+      expect(tokens.bodyColor).not.toEqual(tokens.bodyBg);
+      expect(tokens.receiptColor).not.toEqual(tokens.receiptBgComputed);
     });
   });
 

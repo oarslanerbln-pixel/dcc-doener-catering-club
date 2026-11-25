@@ -37,10 +37,10 @@ export function MobileBottomBar({
       data-testid="mobile-bottom-bar"
       aria-label={t.mobileBottomBar.ariaLabel}
       style={{
-        backgroundColor: 'var(--bg-card)',
+        backgroundColor: 'rgba(6, 6, 6, 0.94)',
         color: 'var(--text-primary)',
       }}
-      className="fixed bottom-0 left-0 right-0 z-40 h-16 border-t border-[var(--border-main)] md:hidden"
+      className="fixed bottom-0 left-0 right-0 z-40 h-16 border-t border-white/12 backdrop-blur-2xl md:hidden"
     >
       <div className="grid h-full grid-cols-5 items-center px-1 text-[11px] font-medium">
         <a

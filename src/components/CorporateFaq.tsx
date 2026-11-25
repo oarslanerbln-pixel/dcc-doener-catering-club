@@ -62,7 +62,7 @@ export function CorporateFaq({
           <p className="font-mono text-[11px] font-medium uppercase tracking-[0.22em] text-[var(--brand-primary)]">
             {t.faq.eyebrow}
           </p>
-          <h2 className="font-monument text-3xl sm:text-4xl lg:text-5xl font-semibold tracking-tight text-[var(--text-primary)]">
+          <h2 className="font-monument text-2xl sm:text-3xl lg:text-4xl font-semibold tracking-tight text-[var(--text-primary)]">
             {t.faq.title}
           </h2>
           <p className="text-sm sm:text-base text-[var(--text-secondary)]">
@@ -72,7 +72,7 @@ export function CorporateFaq({
 
         <div className="grid grid-cols-1 gap-8 lg:grid-cols-12 items-start">
           {/* Left 4 Columns: B2B & VIP Concierge Desk */}
-          <aside className="lg:col-span-4 rounded-2xl border border-[var(--border-main)] bg-[var(--bg-card)] p-6 space-y-5">
+          <aside className="lg:col-span-4 dcc-lux-card p-6 space-y-5">
             <span className="font-mono text-[10px] font-semibold uppercase tracking-[0.18em] text-[var(--brand-primary)]">
               {desk.badge}
             </span>
@@ -118,7 +118,7 @@ export function CorporateFaq({
               <button
                 type="button"
                 onClick={onOpenQuoteModal}
-                className="w-full inline-flex items-center justify-center gap-2 rounded-2xl bg-[var(--brand-primary)] px-4 py-3 text-xs font-semibold uppercase tracking-wider text-[var(--btn-text)] transition hover:bg-[var(--brand-hover)] cursor-pointer"
+                className="dcc-btn-primary w-full"
               >
                 <FileText className="h-4 w-4" />
                 <span>{desk.cta}</span>
@@ -134,7 +134,7 @@ export function CorporateFaq({
                 <div
                   key={item.id}
                   data-testid={`faq-item-${item.id}`}
-                  className="rounded-2xl border border-[var(--border-main)] bg-[var(--bg-card)] overflow-hidden"
+                  className="dcc-lux-card"
                 >
                   <button
                     type="button"

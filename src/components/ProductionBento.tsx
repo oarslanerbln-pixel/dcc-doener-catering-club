@@ -31,7 +31,7 @@ export function ProductionBento(): React.ReactElement {
           <p className="font-mono text-[11px] font-medium uppercase tracking-[0.22em] text-[var(--brand-primary)]">
             {t.bento.eyebrow}
           </p>
-          <h2 className="font-monument text-3xl sm:text-4xl lg:text-5xl font-semibold tracking-tight text-[var(--text-primary)]">
+          <h2 className="font-monument text-2xl sm:text-3xl lg:text-4xl font-semibold tracking-tight text-[var(--text-primary)]">
             {t.bento.title}
           </h2>
           <p className="text-sm sm:text-base text-[var(--text-secondary)]">
@@ -46,7 +46,7 @@ export function ProductionBento(): React.ReactElement {
               <article
                 key={card.id}
                 data-testid={`bento-card-${card.id}`}
-                className="flex flex-col justify-between overflow-hidden rounded-2xl border border-[var(--border-main)] bg-[var(--bg-card)]"
+                className="dcc-lux-card flex flex-col justify-between"
               >
                 <div className="relative aspect-[16/10] w-full overflow-hidden bg-[var(--bg-subtle)] border-b border-[var(--border-main)]">
                   <SmartPicture

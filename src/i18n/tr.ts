@@ -4,7 +4,7 @@ export const tr: TranslationSchema = {
   meta: {
     title: 'DCC Döner Catering Club — Canlı Döner Catering & Hesaplayıcı',
     description:
-      'Ember-Cut Architectural Hospitality: Berlin’de 30 ila 800+ konukluk etkinlikler için el dizimi yaprak dönerler, canlı kesim istasyonları ve otonom Club-Trailer.',
+      'Ember-Cut Architectural Hospitality: Berlin’de 30 ila 800+ konukluk etkinlikler için el dizimi yaprak dönerler, canlı kesim istasyonları ve otonom Event-Trailer.',
     skipToContent: 'Ana içeriğe geç',
   },
   header: {
@@ -31,25 +31,25 @@ export const tr: TranslationSchema = {
   introSplash: {
     eyebrow: 'EMBER-CUT ARCHITECTURAL HOSPITALITY',
     title: 'DCC Döner Catering Club',
-    subtitle: 'Ateş. Zanaat. Kulüp Kültürü. — 30 ila 800+ kişi için canlı döner deneyimi.',
+    subtitle: 'Ateş. Zanaat. Mükemmellik. — 30 ila 800+ kişi için canlı döner catering deneyimi.',
     skipHint: 'Geçmek için ESC veya tıklayın',
-    skipButton: 'Kulübe Gir',
+    skipButton: 'Keşfet',
     ariaLabel: 'DCC Döner Catering Club açılış sekansı',
   },
   hero: {
     eyebrow: 'BERLİN · AÇIK ATEŞ DÖNER · KURUMSAL & VIP',
     headlinePrefix: 'Ateş.',
     headlineAccent: 'Zanaat.',
-    headlineSuffix: 'Kulüp Kültürü.',
+    headlineSuffix: 'Mükemmellik.',
     subtitle:
-      'El işçiliğiyle dizilmiş yaprak et katmanları, köz dengesi ve Berlin hassasiyeti — 30 kişiden başlayan kurumsal zirveler, düğünler ve festival geceleri için ocak başından canlı döner kesimi.',
+      'El işçiliğiyle dizilmiş yaprak et katmanları, köz dengesi ve kusursuz servis — 30 kişiden başlayan kurumsal davetler, düğünler ve büyük organizasyonlar için ocak başından canlı döner kesimi.',
     primaryCta: 'Bütçeyi Şimdi Hesapla',
     secondaryCta: 'Etkinlik Galerisini Gör',
     brandKitCta: 'Marka Kiti & Kurallar',
     viewToggleLabel: 'Sahne kurulumunu değiştir',
     views: {
       station: 'Live-Station · Canlı İstasyon',
-      trailer: 'Club-Trailer · Mobil Araç',
+      trailer: 'Event-Trailer · Mobil Araç',
     },
     highlights: [
       { value: '30–800+', label: 'Etkinlik Kapasitesi' },
@@ -70,7 +70,7 @@ export const tr: TranslationSchema = {
     themes: {
       obsidian: 'Obsidyen & Pirinç',
       limestone: 'Kireçtaşı & Bronz',
-      'emerald-club': 'Zümrüt Kulüp',
+      'emerald-club': 'Zümrüt & Pirinç',
     },
     replayIntro: 'Açılışı Oynat',
   },
@@ -119,7 +119,7 @@ export const tr: TranslationSchema = {
             hint: 'Gece yarısı canlı kesim şovu',
           },
           festival: {
-            label: 'Festival / Kulüp',
+            label: 'Festival / Açık Hava',
             hint: 'Açık alanda yüksek servis hızı',
           },
         },
@@ -186,7 +186,7 @@ export const tr: TranslationSchema = {
           },
           truck: {
             badge: 'Dış Mekân & Otonom',
-            title: 'Club-Trailer (Mat Siyah)',
+            title: 'Event-Trailer (Mat Siyah)',
             spec: 'Kendi soğutma, güç dağıtımı ve çift ocak kapasitesine sahip tam donanımlı DCC etkinlik aracı.',
           },
           buffet: {
@@ -350,8 +350,8 @@ export const tr: TranslationSchema = {
       },
       {
         id: 'festival',
-        tag: '03 · FESTİVAL & KULÜP GECESİ',
-        title: 'Club-Trailer ile Tam Otonom Güç',
+        tag: '03 · FESTİVAL & AÇIK HAVA',
+        title: 'Event-Trailer ile Tam Otonom Güç',
         description:
           'Açık hava avluları için kendi soğutma ve elektrik sistemine sahip mat siyah mobil araç.',
         bullets: [
@@ -510,7 +510,7 @@ export const tr: TranslationSchema = {
       {
         code: 'T-90D',
         title: 'Kurulum & Kalibrasyon',
-        detail: 'İç mekân istasyonunun sessiz kurulumu veya otonom Club-Trailer yerleşimi.',
+        detail: 'İç mekân istasyonunun sessiz kurulumu veya otonom Event-Trailer yerleşimi.',
         metric: '90 Dk Kurulum',
       },
       {
@@ -557,7 +557,7 @@ export const tr: TranslationSchema = {
         quote:
           'Avluda tamamen otonom trailer, vergi numaralı hızlı faturalandırma ve saat gibi işleyen disiplinli ekip.',
         author: 'Executive Producer, Kreuzberg Creative',
-        meta: 'Club-Trailer · Klasik Dana',
+        meta: 'Event-Trailer · Klasik Dana',
       },
     ],
   },
@@ -581,9 +581,9 @@ export const tr: TranslationSchema = {
       },
       {
         id: 'logistics',
-        question: 'Live-Station veya Club-Trailer için hangi bağlantılar gerekir?',
+        question: 'Live-Station veya Event-Trailer için hangi bağlantılar gerekir?',
         answer:
-          'İç mekân Live-Station kurulumu için iki adet ayrı 230V (16A) priz ve yaklaşık 3 × 2 metre alan yeterlidir. Club-Trailer ise 16A/32A CEE veya kendi hibrit sistemiyle otonom çalışır. Hizmet alanımız Berlin ve çevresinde en fazla 300 km mesafeyi kapsar.',
+          'İç mekân Live-Station kurulumu için iki adet ayrı 230V (16A) priz ve yaklaşık 3 × 2 metre alan yeterlidir. Event-Trailer ise 16A/32A CEE veya kendi hibrit sistemiyle otonom çalışır. Hizmet alanımız Berlin ve çevresinde en fazla 300 km mesafeyi kapsar.',
       },
       {
         id: 'billing',
@@ -601,7 +601,7 @@ export const tr: TranslationSchema = {
         id: 'capacity',
         question: 'DCC 800 kişiyi aşan büyük festivallerde hizmet verebilir mi?',
         answer:
-          'Evet. 1. adımda "800+ Kurumsal / Büyük Etkinlik" seçeneğini işaretleyip talep iletin; birden fazla Club-Trailer ve çift istasyonla özel vardiya planı hazırlıyoruz.',
+          'Evet. 1. adımda "800+ Kurumsal / Büyük Etkinlik" seçeneğini işaretleyip talep iletin; birden fazla Event-Trailer ve çift istasyonla özel vardiya planı hazırlıyoruz.',
       },
     ],
   },
@@ -632,17 +632,17 @@ export const tr: TranslationSchema = {
         },
         {
           tag: 'SÜTUN 03 · FESTİVALLER',
-          title: 'Otonom Kulüp Enerjisi',
-          body: 'Mat siyah Club-Trailer ile yüksek hız, %100 Helal standardı ve ayrı Vegan Seitan seçeneği.',
+          title: 'Otonom Etkinlik Gücü',
+          body: 'Mat siyah Event-Trailer ile yüksek hız, %100 Helal standardı ve ayrı Vegan Seitan seçeneği.',
         },
       ],
       boilerplates: {
         shortLabel: 'Kısa Tanıtım (~25 Kelime)',
         shortText:
-          'DCC Döner Catering Club, Berlin kulüp kültürünü ve el işçiliği açık ateş döner zanaatını 30 ila 800+ konukluk kurumsal zirvelere, düğünlere ve festivallere taşır.',
+          'DCC Döner Catering Club, seçkin ve el işçiliği açık ateş döner zanaatını 30 ila 800+ konukluk kurumsal zirvelere, düğünlere ve festivallere taşır.',
         mediumLabel: 'Orta Tanıtım (~55 Kelime)',
         mediumText:
-          'DCC Döner Catering Club, kendi üretimimiz el dizimi yaprak dönerleri mimari canlı kesim istasyonları ve tam donanımlı Club-Trailer araçlarıyla buluşturur. Berlin-Mitte’deki yönetici yemeklerinden 800 kişilik festival avlularına kadar hesaplayıcımız net, %19 KDV ve hacim indirimlerini saniyeler içinde çıkarır.',
+          'DCC Döner Catering Club, kendi üretimimiz el dizimi yaprak dönerleri mimari canlı kesim istasyonları ve tam donanımlı Event-Trailer araçlarıyla buluşturur. Berlin-Mitte’deki yönetici yemeklerinden 800 kişilik festival avlularına kadar hesaplayıcımız net, %19 KDV ve hacim indirimlerini saniyeler içinde çıkarır.',
       },
     },
     logos: {
@@ -660,7 +660,7 @@ export const tr: TranslationSchema = {
       lockupNames: {
         primary: 'Birincil Yatay',
         stacked: 'Dikey Totem',
-        seal: 'Kulüp Mührü',
+        seal: 'Arma Mührü',
         monogram: 'DCC Monogram',
       },
       colorwayNames: {
@@ -711,16 +711,16 @@ export const tr: TranslationSchema = {
         },
         {
           code: 'DO-03',
-          title: 'Doğru: Şiş Eksenini Dikey Tut',
+          title: 'Doğru: Döner Eksenini Dikey Tut',
           detail:
-            'Döner şişi ekseni 0° dik kalmalıdır; açılı tekrarlar yalnızca ambalaj sarma kâğıdında kullanılır.',
+            'Döner ocağı ekseni 0° dik kalmalıdır; açılı tekrarlar yalnızca ambalaj sarma kâğıdında kullanılır.',
           kind: 'do',
         },
         {
           code: 'DONT-01',
           title: 'Yanlış: Oranı Bozma veya Eğme',
           detail:
-            'Logo en-boy oranını asla uzatmayın ve iç içe kulüp halkalarını deforme etmeyin.',
+            'Logo en-boy oranını asla uzatmayın ve iç içe arma halkalarını deforme etmeyin.',
           kind: 'dont',
         },
         {
@@ -751,7 +751,7 @@ export const tr: TranslationSchema = {
         pair: 'Token Çifti',
         obsidian: 'Obsidyen',
         limestone: 'Kireçtaşı',
-        emerald: 'Zümrüt Kulüp',
+        emerald: 'Zümrüt & Pirinç',
         status: 'Seviye',
       },
       swatchRoles: {
@@ -765,7 +765,7 @@ export const tr: TranslationSchema = {
         emberTerracotta: 'Metin dışı ateş dolgusu ve amblem vurgusu',
         liftedEmber: 'Obsidyen üzerinde AA uyumlu kor vurgu metni',
         kilnTerracotta: 'Kireçtaşı üzerinde AA uyumlu pişmiş toprak metni',
-        emeraldClub: 'Berlin Zümrüt Kulüp ana arka planı',
+        emeraldClub: 'Zümrüt & Pirinç ana arka planı',
         halalHerb: 'Helal & Vegan botanik gösterge dolgusu',
         liftedHerb: 'Zümrüt üzerinde AA/AAA uyumlu yeşil vurgu metni',
       },
@@ -784,7 +784,7 @@ export const tr: TranslationSchema = {
       eyebrow: '07 · MARKA UYGULAMALARI',
       title: 'Altı Gerçek Üretim Plakası',
       subtitle:
-        'Ambalaj kâğıdı, servis kutusu, şef önlüğü, Club-Trailer giydirme, canlı istasyon ve sosyal medya şablonları.',
+        'Ambalaj kâğıdı, servis kutusu, şef önlüğü, Event-Trailer giydirme, canlı istasyon ve sosyal medya şablonları.',
       plates: [
         {
           id: 'wrap-paper',
@@ -807,7 +807,7 @@ export const tr: TranslationSchema = {
         {
           id: 'trailer-livery',
           file: '/brand/plate-trailer-livery.png',
-          label: '04 · Club-Trailer Giydirme',
+          label: '04 · Event-Trailer Giydirme',
           caption: 'Pirinç kuşaklı mat siyah otonom araç tasarımı.',
         },
         {
@@ -912,7 +912,7 @@ export const tr: TranslationSchema = {
   },
   footer: {
     tagline:
-      'Ember-Cut Architectural Hospitality — Kurumsal zirveler, düğünler ve kulüp geceleri için Berlin canlı döner cateringi.',
+      'Ember-Cut Architectural Hospitality — Kurumsal zirveler, düğünler ve özel davetler için Berlin canlı döner cateringi.',
     citiesLabel: 'Hizmet Alanı (Berlin Çevresi · Maks. 300 km)',
     cities: [
       'Berlin & Çevresi',

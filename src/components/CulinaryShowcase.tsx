@@ -21,15 +21,15 @@ export function CulinaryShowcase({
   return (
     <section
       id="kulinarik"
-      className="relative border-b border-[var(--border-main)] py-14 sm:py-20 lg:py-24"
+      className="relative border-b border-[var(--border-main)] py-14 sm:py-18 lg:py-22"
     >
       <div className="mx-auto max-w-7xl px-4 sm:px-6 space-y-8">
         <div className="flex flex-wrap items-end justify-between gap-4">
-          <div className="max-w-2xl space-y-2.5">
+          <div className="max-w-2xl space-y-2">
             <p className="font-mono text-[11px] font-medium uppercase tracking-[0.22em] text-[var(--brand-primary)]">
               {t.culinary.eyebrow}
             </p>
-            <h2 className="font-monument text-3xl sm:text-4xl lg:text-5xl font-semibold tracking-tight text-[var(--text-primary)]">
+            <h2 className="font-monument text-2xl sm:text-3xl lg:text-4xl font-semibold tracking-tight text-[var(--text-primary)]">
               {t.culinary.title}
             </h2>
             <p className="text-sm sm:text-base text-[var(--text-secondary)]">
@@ -40,7 +40,7 @@ export function CulinaryShowcase({
           <div
             role="tablist"
             aria-label={t.culinary.title}
-            className="inline-flex flex-wrap items-center gap-1 rounded-full border border-[var(--border-main)] bg-[var(--bg-card)] p-1"
+            className="grid grid-cols-1 w-full sm:w-auto sm:inline-flex sm:flex-wrap items-center gap-1.5 rounded-xl border-[1.5px] border-[var(--border-strong)] bg-[var(--bg-card)] p-1.5"
           >
             {t.culinary.tabs.map((tab, idx) => {
               const active = idx === activeTabIdx;
@@ -52,10 +52,10 @@ export function CulinaryShowcase({
                   aria-selected={active}
                   data-testid={`culinary-tab-${tab.id}`}
                   onClick={() => setActiveTabIdx(idx)}
-                  className={`rounded-full px-3.5 py-1.5 font-mono text-xs transition cursor-pointer ${
+                  className={`min-h-[40px] rounded-lg px-4 py-2 font-mono text-xs sm:text-[13px] text-left sm:text-center transition cursor-pointer ${
                     active
-                      ? 'bg-[var(--brand-primary)] font-semibold text-[var(--btn-text)]'
-                      : 'text-[var(--text-secondary)] hover:text-[var(--text-primary)]'
+                      ? 'bg-[var(--brand-primary)] font-bold text-[var(--btn-text)] shadow-sm'
+                      : 'font-medium text-[var(--text-secondary)] hover:text-[var(--text-primary)]'
                   }`}
                 >
                   {tab.tabLabel}
@@ -65,7 +65,7 @@ export function CulinaryShowcase({
           </div>
         </div>
 
-        <div className="grid grid-cols-1 overflow-hidden rounded-2xl border border-[var(--border-main)] bg-[var(--bg-card)] lg:grid-cols-12">
+        <div className="dcc-lux-card grid grid-cols-1 lg:grid-cols-12">
           <div className="relative lg:col-span-5 aspect-[16/10] lg:aspect-auto overflow-hidden bg-[var(--bg-subtle)]">
             <SmartPicture
               key={currentTab.image}
@@ -122,16 +122,12 @@ export function CulinaryShowcase({
                 type="button"
                 data-testid={`culinary-sync-${currentTab.id}`}
                 onClick={() => onToggleExtra(currentTab.extraId)}
-                className={`inline-flex items-center gap-1.5 rounded-full border px-4 py-2 font-mono text-xs font-semibold transition cursor-pointer ${
-                  extraActive
-                    ? 'border-[var(--brand-primary)] bg-[var(--brand-primary)] text-[var(--btn-text)]'
-                    : 'border-[var(--brand-primary)]/50 bg-[var(--badge-bg)] text-[var(--badge-text)] hover:bg-[var(--brand-primary)] hover:text-[var(--btn-text)]'
-                }`}
+                className={`${extraActive ? 'dcc-btn-primary' : 'dcc-btn-secondary'} w-full sm:w-auto`}
               >
                 {extraActive ? (
-                  <Check className="h-3.5 w-3.5" />
+                  <Check className="h-4 w-4" />
                 ) : (
-                  <Plus className="h-3.5 w-3.5" />
+                  <Plus className="h-4 w-4" />
                 )}
                 <span>
                   {extraActive

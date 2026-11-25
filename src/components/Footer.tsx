@@ -11,6 +11,7 @@ export interface FooterProps {
   activeView: 'main' | 'brand-kit';
   onSelectView: (view: 'main' | 'brand-kit', hash?: string) => void;
   onOpenLegal: (docId: LegalDocId) => void;
+  onReplayIntro?: () => void;
 }
 
 const PARTNER_STUDIO_LABEL = {
@@ -24,6 +25,7 @@ export function Footer({
   activeView,
   onSelectView,
   onOpenLegal,
+  onReplayIntro,
 }: FooterProps): React.ReactElement {
   const { locale, t } = useLocale();
 
@@ -56,7 +58,11 @@ export function Footer({
         <div className="grid grid-cols-1 gap-8 md:grid-cols-12">
           {/* Brand Column */}
           <div className="md:col-span-5 space-y-4">
-            <BrandLogo lockup="primary" theme={theme} />
+            <BrandLogo
+              lockup="primary"
+              theme={theme}
+              imgClassName="h-10 sm:h-11 w-auto object-contain"
+            />
             <p className="max-w-md text-sm leading-relaxed text-[var(--text-secondary)]">
               {t.footer.tagline}
             </p>
@@ -200,9 +206,21 @@ export function Footer({
 
         <div className="border-t border-[var(--border-main)] pt-6 flex flex-wrap items-center justify-between gap-4 text-xs text-[var(--text-muted)]">
           <span>{t.footer.copyright}</span>
-          <span className="font-mono">
-            {BRAND_METADATA.name} · {BRAND_METADATA.heritageStamp}
-          </span>
+          <div className="flex items-center gap-4">
+            {onReplayIntro && (
+              <button
+                type="button"
+                data-testid="replay-intro"
+                onClick={onReplayIntro}
+                className="font-mono text-xs text-[var(--text-secondary)] hover:text-[var(--brand-primary)] transition cursor-pointer"
+              >
+                {t.themeSwitcher.replayIntro}
+              </button>
+            )}
+            <span className="font-mono">
+              {BRAND_METADATA.name} · {BRAND_METADATA.heritageStamp}
+            </span>
+          </div>
         </div>
       </div>
     </footer>
