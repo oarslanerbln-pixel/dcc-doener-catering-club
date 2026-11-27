@@ -102,7 +102,7 @@ export function CulinaryShowcase({
                         {item.detail}
                       </div>
                     </div>
-                    <span className="shrink-0 bg-white/[0.05] px-2.5 py-0.5 font-mono text-[10px] text-[var(--text-secondary)]">
+                    <span className="shrink-0 bg-white/[0.05] px-2.5 py-1 font-eyebrow text-xs text-[#E6C986]">
                       {item.tag}
                     </span>
                   </div>

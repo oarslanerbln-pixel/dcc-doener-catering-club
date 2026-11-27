@@ -55,7 +55,7 @@ export function LegalModal({
         }}
         className="relative my-auto w-full max-w-2xl shadow-2xl max-h-[90vh] overflow-y-auto"
       >
-        <div className="h-[2px] w-full dcc-gold-emerald-bar" />
+        <div className="h-[2px] w-full bg-gradient-to-r from-white via-[#E6C986] to-[#FFA733]" />
         <div className="p-6 sm:p-8">
         <div className="flex items-start justify-between gap-4 border-b border-[var(--border-main)] pb-4">
           <div className="space-y-1">

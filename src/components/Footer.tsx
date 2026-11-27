@@ -14,12 +14,6 @@ export interface FooterProps {
   onReplayIntro?: () => void;
 }
 
-const PARTNER_STUDIO_LABEL = {
-  de: 'Partner Logo Studio (11)',
-  en: 'Partner Logo Studio (11)',
-  tr: 'Ortak Logo Stüdyosu (11)',
-} as const;
-
 export function Footer({
   theme,
   activeView,
@@ -27,7 +21,7 @@ export function Footer({
   onOpenLegal,
   onReplayIntro,
 }: FooterProps): React.ReactElement {
-  const { locale, t } = useLocale();
+  const { t } = useLocale();
 
   const handleSectionLink = (
     e: React.MouseEvent<HTMLAnchorElement>,
@@ -150,18 +144,9 @@ export function Footer({
                   <a
                     href="#brand-kit"
                     onClick={(e) => handleSectionLink(e, '#brand-kit')}
-                    className="hover:text-[var(--brand-primary)] font-semibold text-[var(--text-primary)]"
+                    className="hover:text-[var(--brand-primary)]"
                   >
                     {t.footer.brandKitLink}
-                  </a>
-                </li>
-                <li>
-                  <a
-                    href="#brand-kit"
-                    onClick={(e) => handleSectionLink(e, '#logo-studio')}
-                    className="hover:text-[var(--brand-primary)] text-xs"
-                  >
-                    {PARTNER_STUDIO_LABEL[locale]}
                   </a>
                 </li>
               </ul>

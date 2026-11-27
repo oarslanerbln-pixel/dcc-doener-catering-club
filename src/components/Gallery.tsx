@@ -155,7 +155,7 @@ export function Gallery({ onApplyPreset }: GalleryProps): React.ReactElement {
                   />
                 </div>
                 <div className="min-w-0">
-                  <div className="font-mono text-[10px] uppercase tracking-wider text-[var(--brand-primary)] truncate">
+                  <div className="font-eyebrow text-xs font-bold uppercase tracking-wider text-[#E6C986] truncate">
                     {copy.tag}
                   </div>
                   <div className="font-monument text-xs font-semibold text-[var(--text-primary)] truncate">
@@ -182,7 +182,7 @@ export function Gallery({ onApplyPreset }: GalleryProps): React.ReactElement {
 
           <div className="lg:col-span-5 flex flex-col justify-between p-6 sm:p-8 space-y-6">
             <div className="space-y-4">
-              <span className="font-mono text-[11px] font-semibold uppercase tracking-[0.18em] text-[var(--brand-primary)]">
+              <span className="font-eyebrow text-xs font-bold uppercase tracking-[0.16em] text-[#E6C986]">
                 {currentCopy.tag}
               </span>
 

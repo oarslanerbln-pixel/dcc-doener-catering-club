@@ -210,13 +210,13 @@ export function QuoteModal({
         }}
         className="relative my-auto w-full max-w-2xl bg-[#0B0D0C] shadow-2xl max-h-[92vh] overflow-y-auto"
       >
-        <div className="h-[2px] w-full dcc-gold-emerald-bar" />
+        <div className="h-[2px] w-full bg-gradient-to-r from-white via-[#E6C986] to-[#FFA733]" />
         <div className="p-4 sm:p-7">
         {/* Header */}
         <div className="flex items-start justify-between gap-4 border-b border-[var(--border-main)] pb-4">
           <div className="space-y-1">
             <div className="flex flex-wrap items-center gap-2">
-              <span className="font-mono text-xs font-semibold uppercase tracking-widest text-[var(--brand-primary)]">
+              <span className="font-eyebrow text-xs sm:text-[13px] text-[#E6C986]">
                 {t.quoteModal.eyebrow} · {quoteId}
               </span>
               {isEnterprise && (

@@ -39,7 +39,7 @@ export function EventTimeline(): React.ReactElement {
                 </div>
 
                 <div className="h-[2px] w-full bg-white/10 overflow-hidden">
-                  <div className="h-full w-14 dcc-gold-emerald-bar" />
+                  <div className="h-full w-14 bg-gradient-to-r from-white via-[#E6C986] to-[#FFA733]" />
                 </div>
 
                 <h3 className="font-monument text-lg font-semibold text-[var(--text-primary)]">

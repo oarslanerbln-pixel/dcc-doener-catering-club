@@ -26,7 +26,7 @@ export function TrustReferences(): React.ReactElement {
           <div className="dcc-lux-card grid grid-cols-3 gap-2.5 sm:gap-6 px-3.5 sm:px-5 py-3.5 sm:py-4">
             {t.references.metrics.map((m, idx) => (
               <div key={idx} className="space-y-0.5">
-                <div className="font-mono tabular-nums text-base sm:text-2xl font-bold dcc-gold-emerald-text">
+                <div className="font-monument tabular-nums text-base sm:text-2xl font-extrabold text-white">
                   {m.value}
                 </div>
                 <div className="text-[10px] sm:text-[11px] leading-tight text-[var(--text-secondary)]">
