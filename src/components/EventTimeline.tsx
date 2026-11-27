@@ -11,7 +11,7 @@ export function EventTimeline(): React.ReactElement {
     >
       <div className="mx-auto max-w-7xl px-4 sm:px-6 space-y-10">
         <div className="max-w-2xl space-y-2">
-          <p className="font-mono text-[11px] font-medium uppercase tracking-[0.22em] text-[var(--brand-primary)]">
+          <p className="font-eyebrow text-xs sm:text-[13.5px] font-bold uppercase tracking-[0.20em] text-[#E6C986]">
             {t.timeline.eyebrow}
           </p>
           <h2 className="font-monument text-2xl sm:text-3xl lg:text-4xl font-semibold tracking-tight text-[var(--text-primary)]">
@@ -30,7 +30,7 @@ export function EventTimeline(): React.ReactElement {
             >
               <div className="space-y-3">
                 <div className="flex items-center justify-between gap-2">
-                  <span className="font-mono text-xs font-bold tracking-widest text-[var(--brand-primary)]">
+                  <span className="font-eyebrow text-xs sm:text-[13px] font-bold tracking-widest text-[#E6C986]">
                     {step.code}
                   </span>
                   <span className="bg-white/[0.06] px-2.5 py-0.5 font-mono text-[10px] text-[var(--text-secondary)]">

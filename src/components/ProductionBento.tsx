@@ -28,7 +28,7 @@ export function ProductionBento(): React.ReactElement {
     >
       <div className="mx-auto max-w-7xl px-4 sm:px-6 space-y-10">
         <div className="max-w-2xl space-y-2.5">
-          <p className="font-mono text-[11px] font-medium uppercase tracking-[0.22em] text-[var(--brand-primary)]">
+          <p className="font-eyebrow text-xs sm:text-[13.5px] font-bold uppercase tracking-[0.20em] text-[#E6C986]">
             {t.bento.eyebrow}
           </p>
           <h2 className="font-monument text-2xl sm:text-3xl lg:text-4xl font-semibold tracking-tight text-[var(--text-primary)]">
@@ -67,7 +67,7 @@ export function ProductionBento(): React.ReactElement {
 
                 <div className="flex flex-1 flex-col justify-between p-5 sm:p-6 space-y-4">
                   <div className="space-y-2">
-                    <span className="font-mono text-[10px] font-semibold uppercase tracking-[0.18em] text-[var(--brand-primary)]">
+                    <span className="font-eyebrow text-xs sm:text-[13px] font-bold uppercase tracking-[0.16em] text-[#E6C986]">
                       {card.tag}
                     </span>
 

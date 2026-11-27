@@ -51,7 +51,7 @@ export function ReceiptSummary({
         {/* Commanding Monochrome Summary Header */}
         <div className="flex items-center justify-between gap-3">
           <div className="min-w-0">
-            <div className="font-monument text-[11px] font-bold uppercase tracking-[0.2em] text-white/50">
+            <div className="font-eyebrow text-xs sm:text-[13px] font-bold uppercase tracking-[0.18em] text-white/60">
               {t.receipt.eyebrow} · {quoteId}
             </div>
             <h3 className="mt-1 font-monument text-2xl font-extrabold tracking-tight text-white truncate">

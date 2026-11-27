@@ -12,7 +12,7 @@ export function TrustReferences(): React.ReactElement {
       <div className="mx-auto max-w-7xl px-4 sm:px-6 space-y-10">
         <div className="flex flex-col gap-6 lg:flex-row lg:items-end lg:justify-between">
           <div className="max-w-2xl space-y-2">
-            <p className="font-mono text-[11px] font-medium uppercase tracking-[0.22em] text-[var(--brand-primary)]">
+            <p className="font-eyebrow text-xs sm:text-[13.5px] font-bold uppercase tracking-[0.20em] text-[#E6C986]">
               {t.references.eyebrow}
             </p>
             <h2 className="font-monument text-2xl sm:text-3xl lg:text-4xl font-semibold tracking-tight text-[var(--text-primary)]">
@@ -44,7 +44,7 @@ export function TrustReferences(): React.ReactElement {
               className="dcc-lux-card p-6 flex flex-col justify-between space-y-5"
             >
               <div className="space-y-3">
-                <span className="font-mono text-[10px] font-semibold uppercase tracking-[0.18em] text-[var(--brand-primary)]">
+                <span className="font-eyebrow text-xs sm:text-[13px] font-bold uppercase tracking-[0.16em] text-[#E6C986]">
                   {item.tag}
                 </span>
                 <p className="font-sans text-base sm:text-lg font-medium leading-snug text-white">

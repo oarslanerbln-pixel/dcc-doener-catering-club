@@ -35,7 +35,7 @@ export function BrandLogo({
       />
       {showSubtitle && (
         <span className="hidden xl:inline-flex flex-col border-l border-[var(--border-main)] pl-3 leading-tight">
-          <span className="font-mono text-[10px] tracking-[0.2em] uppercase text-[var(--brand-primary)]">
+          <span className="font-eyebrow text-[11px] sm:text-xs tracking-[0.22em] uppercase text-[var(--brand-primary)]">
             {subtitle ?? BRAND_METADATA.heritageStamp}
           </span>
         </span>

@@ -261,7 +261,7 @@ export function Calculator({
       <div className="relative z-10 mx-auto max-w-7xl px-4 sm:px-6 space-y-12">
         {/* Monumental Editorial Header */}
         <div className="max-w-3xl space-y-4">
-          <p className="font-monument text-xs sm:text-[13px] font-bold uppercase tracking-[0.24em] text-[#FFE08A]">
+          <p className="font-eyebrow text-xs sm:text-[14px] font-bold uppercase tracking-[0.22em] text-[#FFE08A]">
             {t.calculator.eyebrow}
           </p>
           <h2 className="font-monument text-3xl sm:text-5xl lg:text-[54px] font-extrabold tracking-[-0.025em] leading-[1.06] text-white drop-shadow-[0_4px_24px_rgba(0,0,0,0.55)]">
@@ -307,11 +307,11 @@ export function Calculator({
           <div className="space-y-6 min-w-0">
             {/* Interactive 5-Step Stepper Tabs Header */}
             <div className="bg-[#120A06]/92 border border-white/20 p-3 sm:p-4 backdrop-blur-xl shadow-lg space-y-3">
-              <div className="flex items-center justify-between text-xs font-monument uppercase tracking-wider text-white/75 px-1">
-                <span className="font-bold text-[#FFA733]">
+              <div className="flex items-center justify-between text-xs font-eyebrow uppercase tracking-wider text-white/75 px-1">
+                <span className="font-bold text-[#FFA733] text-xs sm:text-[13px]">
                   {extraCopy.stepPrefix} {activeStep} {extraCopy.stepOf} 5
                 </span>
-                <span className="font-extrabold text-white">
+                <span className="font-extrabold text-white text-xs sm:text-[13px]">
                   {STEP_ITEMS[activeStep - 1].label}
                 </span>
               </div>
@@ -362,7 +362,7 @@ export function Calculator({
               {activeStep === 1 && (
                 <div className="space-y-6">
                   <div>
-                    <span className="font-monument text-xs font-bold uppercase tracking-[0.24em] text-[#FFA733]">
+                    <span className="font-eyebrow text-xs sm:text-[13.5px] font-bold uppercase tracking-[0.22em] text-[#FFA733]">
                       {extraCopy.stepPrefix} 01
                     </span>
                     <h3 className="mt-2 font-monument text-2xl sm:text-3xl font-extrabold tracking-tight text-white">
@@ -458,7 +458,7 @@ export function Calculator({
               {activeStep === 2 && (
                 <div className="space-y-6">
                   <div>
-                    <span className="font-monument text-xs font-bold uppercase tracking-[0.24em] text-[#FFA733]">
+                    <span className="font-eyebrow text-xs sm:text-[13.5px] font-bold uppercase tracking-[0.22em] text-[#FFA733]">
                       {extraCopy.stepPrefix} 02
                     </span>
                     <h3 className="mt-2 font-monument text-2xl sm:text-3xl font-extrabold tracking-tight text-white">
@@ -518,7 +518,7 @@ export function Calculator({
                                   {copy.title}
                                 </h4>
                                 <span
-                                  className={`font-monument text-[11px] sm:text-xs font-bold uppercase tracking-[0.12em] ${
+                                  className={`font-eyebrow text-xs sm:text-[13px] font-bold uppercase tracking-[0.14em] ${
                                     active ? 'text-[#FFA733]' : 'text-white/45'
                                   }`}
                                 >
@@ -566,7 +566,7 @@ export function Calculator({
               {activeStep === 3 && (
                 <div className="space-y-6">
                   <div>
-                    <span className="font-monument text-xs font-bold uppercase tracking-[0.24em] text-[#FFA733]">
+                    <span className="font-eyebrow text-xs sm:text-[13.5px] font-bold uppercase tracking-[0.22em] text-[#FFA733]">
                       {extraCopy.stepPrefix} 03
                     </span>
                     <h3 className="mt-2 font-monument text-2xl sm:text-3xl font-extrabold tracking-tight text-white">
@@ -608,7 +608,7 @@ export function Calculator({
                                   {copy.title}
                                 </h4>
                                 <span
-                                  className={`font-monument text-[11px] sm:text-xs font-bold uppercase tracking-[0.12em] ${
+                                  className={`font-eyebrow text-xs sm:text-[13px] font-bold uppercase tracking-[0.14em] ${
                                     active ? 'text-[#FFA733]' : 'text-white/45'
                                   }`}
                                 >
@@ -656,7 +656,7 @@ export function Calculator({
               {activeStep === 4 && (
                 <div className="space-y-6">
                   <div>
-                    <span className="font-monument text-xs font-bold uppercase tracking-[0.24em] text-[#FFA733]">
+                    <span className="font-eyebrow text-xs sm:text-[13.5px] font-bold uppercase tracking-[0.22em] text-[#FFA733]">
                       {extraCopy.stepPrefix} 04
                     </span>
                     <h3 className="mt-2 font-monument text-2xl sm:text-3xl font-extrabold tracking-tight text-white">
@@ -726,7 +726,7 @@ export function Calculator({
                 <div className="space-y-8">
                   <div className="flex flex-wrap items-end justify-between gap-4">
                     <div>
-                      <span className="font-monument text-xs font-bold uppercase tracking-[0.24em] text-[#FFA733]">
+                      <span className="font-eyebrow text-xs sm:text-[13.5px] font-bold uppercase tracking-[0.22em] text-[#FFA733]">
                         {extraCopy.stepPrefix} 05
                       </span>
                       <h3 className="mt-2 font-monument text-2xl sm:text-3xl font-extrabold tracking-tight text-white">

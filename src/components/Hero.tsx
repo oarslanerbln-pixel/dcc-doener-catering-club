@@ -174,7 +174,7 @@ export function Hero({
 
         <div className="max-w-4xl space-y-5 sm:space-y-6">
           <div className="overflow-hidden">
-            <p className="dcc-hero-mask-up font-monument text-[11px] sm:text-xs font-bold uppercase tracking-[0.28em] text-white/75">
+            <p className="dcc-hero-mask-up font-eyebrow text-xs sm:text-[13.5px] font-bold uppercase tracking-[0.24em] text-[#F3D382]">
               {t.hero.eyebrow}
             </p>
           </div>

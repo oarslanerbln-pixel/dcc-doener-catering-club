@@ -67,12 +67,20 @@
 :root {
   --font-sans: 'Montserrat', 'Space Grotesk', ui-sans-serif, system-ui, sans-serif;
   --font-monument: 'Montserrat', ui-sans-serif, system-ui, sans-serif;
+  --font-eyebrow: 'Space Grotesk', -apple-system, sans-serif;
   --font-serif: 'Instrument Serif', Georgia, serif;
   --font-mono: 'JetBrains Mono', ui-monospace, SFMono-Regular, monospace;
 }
 
 .font-sans {
   font-family: var(--font-sans);
+}
+
+.font-eyebrow {
+  font-family: var(--font-eyebrow);
+  letter-spacing: 0.18em;
+  font-weight: 700;
+  text-transform: uppercase;
 }
 
 .font-monument {

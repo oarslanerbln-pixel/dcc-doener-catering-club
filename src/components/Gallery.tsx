@@ -89,7 +89,7 @@ export function Gallery({ onApplyPreset }: GalleryProps): React.ReactElement {
       <div className="mx-auto max-w-7xl px-4 sm:px-6 space-y-8">
         <div className="flex flex-wrap items-end justify-between gap-4">
           <div className="max-w-2xl space-y-2.5">
-            <p className="font-mono text-[11px] font-medium uppercase tracking-[0.22em] text-[var(--brand-primary)]">
+            <p className="font-eyebrow text-xs sm:text-[13.5px] font-bold uppercase tracking-[0.20em] text-[#E6C986]">
               {t.gallery.eyebrow}
             </p>
             <h2 className="font-monument text-2xl sm:text-3xl lg:text-4xl font-semibold tracking-tight text-[var(--text-primary)]">
