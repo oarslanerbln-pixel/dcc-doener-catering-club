@@ -201,21 +201,21 @@ export function Calculator({
   return (
     <section
       id="rechner"
-      className="relative border-b border-[#E5DDD0] bg-[#F5F1E9] text-[#0B0D0C] py-16 sm:py-22 lg:py-26"
+      className="relative border-b border-white/10 bg-[#060606] text-white py-16 sm:py-22 lg:py-26"
     >
       <div className="mx-auto max-w-7xl px-4 sm:px-6 space-y-9">
-        {/* Clean Minimalist Light Architectural Header */}
+        {/* Clean Minimalist Pure Black Architectural Header */}
         <div className="max-w-2xl space-y-3">
-          <div className="inline-flex items-center gap-2 bg-[#0B0D0C] px-3 py-1">
+          <div className="inline-flex items-center gap-2 bg-white/[0.05] border border-white/10 px-3 py-1">
             <span className="h-1.5 w-1.5 bg-[#2BC48A]" />
             <p className="font-monument text-[11px] font-extrabold uppercase tracking-[0.2em] text-[#F2D58B]">
               {t.calculator.eyebrow}
             </p>
           </div>
-          <h2 className="font-monument text-2xl sm:text-3xl lg:text-4xl font-extrabold tracking-tight text-[#0B0D0C]">
+          <h2 className="font-monument text-2xl sm:text-3xl lg:text-4xl font-extrabold tracking-tight text-white">
             {t.calculator.title}
           </h2>
-          <p className="text-sm sm:text-base font-medium leading-relaxed text-[#333B37]">
+          <p className="text-sm sm:text-base font-medium leading-relaxed text-white/65">
             {t.calculator.subtitle}
           </p>
         </div>
@@ -223,18 +223,18 @@ export function Calculator({
         {/* Mobile/Tablet Sticky Live Quote Bar */}
         <div
           data-testid="mobile-calculator-sticky-bar"
-          className="min-[960px]:hidden sticky top-[88px] sm:top-[96px] z-20 dcc-rechner-module bg-white/95 px-3.5 py-2.5 shadow-[0_12px_28px_-12px_rgba(11,13,12,0.18)] backdrop-blur-xl flex items-center justify-between gap-2.5"
+          className="min-[960px]:hidden sticky top-[88px] sm:top-[96px] z-20 dcc-rechner-module bg-[#0B0D0C]/95 px-3.5 py-2.5 shadow-[0_14px_32px_-12px_rgba(0,0,0,0.85)] backdrop-blur-xl flex items-center justify-between gap-2.5"
         >
           <div className="min-w-0 flex-1">
-            <div className="font-monument text-[11px] font-bold uppercase tracking-wide text-[#464F4A] truncate">
+            <div className="font-monument text-[11px] font-bold uppercase tracking-wide text-white/60 truncate">
               {result.effectiveGuests} {extraCopy.mobileStickyGuests} ·{' '}
               {t.calculator.steps.spits.items[input.meatId].title}
             </div>
             <div className="flex items-baseline gap-2 truncate">
-              <span className="font-monument tabular-nums text-sm font-extrabold text-[#7A5512]">
+              <span className="font-monument tabular-nums text-sm font-extrabold text-[#F2D58B]">
                 {formatCurrency(result.subtotalNet, locale)}
               </span>
-              <span className="font-monument tabular-nums text-[11px] font-semibold text-[#333B37] truncate">
+              <span className="font-monument tabular-nums text-[11px] font-semibold text-white/70 truncate">
                 ({formatCurrency(result.perGuestNet, locale)}{' '}
                 {extraCopy.mobileStickyPerGuest})
               </span>
@@ -243,7 +243,7 @@ export function Calculator({
 
           <a
             href="#rechner-summary"
-            className="inline-flex items-center gap-1 bg-[#0B0D0C] px-3.5 py-2 font-monument text-xs font-extrabold uppercase tracking-wider text-[#FAF6EF] transition-colors duration-[260ms] hover:bg-[#9A7226] shrink-0"
+            className="inline-flex items-center gap-1 bg-white px-3.5 py-2 font-monument text-xs font-extrabold uppercase tracking-wider text-[#060606] transition-colors duration-[220ms] hover:bg-[#D4A853] shrink-0"
           >
             <span>{extraCopy.mobileStickySummaryBtn}</span>
             <ArrowDown className="h-3.5 w-3.5" />
@@ -251,30 +251,30 @@ export function Calculator({
         </div>
 
         <div className="dcc-configurator-grid">
-          {/* Left Column: 4 Clean High-Contrast Light Architectural Modules */}
+          {/* Left Column: 4 Clean Pure Black Architectural Modules */}
           <div className="space-y-6 min-w-0">
             {/* STEP 01: Guests & Volume Discount */}
             <div className="dcc-rechner-module p-5 sm:p-7 space-y-5">
               <div className="flex flex-wrap items-start justify-between gap-3">
                 <div>
-                  <span className="inline-block bg-[#F3ECE0] px-2.5 py-1 font-monument text-[11px] font-extrabold uppercase tracking-[0.16em] text-[#7A5512]">
+                  <span className="inline-block bg-white/[0.06] border border-white/10 px-2.5 py-1 font-monument text-[11px] font-extrabold uppercase tracking-[0.16em] text-[#F2D58B]">
                     {extraCopy.stepPrefix} {t.calculator.steps.guests.index}
                   </span>
-                  <h3 className="mt-2 font-monument text-lg sm:text-xl font-extrabold tracking-tight text-[#0B0D0C]">
+                  <h3 className="mt-2 font-monument text-lg sm:text-xl font-extrabold tracking-tight text-white">
                     {t.calculator.steps.guests.title}
                   </h3>
-                  <p className="mt-1 text-xs sm:text-sm font-medium text-[#3B443F]">
+                  <p className="mt-1 text-xs sm:text-sm font-medium text-white/60">
                     {t.calculator.steps.guests.subtitle}
                   </p>
                 </div>
 
-                <div className="bg-[#EEF7F3] border border-[#C6E6D8] px-4 py-2 text-right">
-                  <div className="font-monument text-[10px] font-bold uppercase tracking-[0.12em] text-[#355A4B]">
+                <div className="bg-[#0F241C] border border-[#2BC48A]/30 px-4 py-2 text-right">
+                  <div className="font-monument text-[10px] font-bold uppercase tracking-[0.12em] text-white/65">
                     {t.calculator.steps.guests.activeDiscountPrefix}
                   </div>
                   <div
                     data-testid="active-discount-badge"
-                    className="font-monument tabular-nums text-base font-extrabold text-[#0B6B48]"
+                    className="font-monument tabular-nums text-base font-extrabold text-[#2BC48A]"
                   >
                     {discountPct > 0
                       ? `-${discountPct} %`
@@ -284,15 +284,15 @@ export function Calculator({
               </div>
 
               {/* Clean Digital Readout + Sharp Tactile Stepper */}
-              <div className="flex flex-col sm:flex-row sm:items-center sm:justify-between gap-3 sm:gap-4 bg-[#FAF7F2] border border-[#EAE2D5] p-4 sm:p-4.5">
+              <div className="flex flex-col sm:flex-row sm:items-center sm:justify-between gap-3 sm:gap-4 bg-[#111413] border border-white/8 p-4 sm:p-4.5">
                 <div>
                   <label
                     htmlFor="dcc-guest-input"
-                    className="block font-monument text-sm font-bold text-[#0B0D0C]"
+                    className="block font-monument text-sm font-bold text-white"
                   >
                     {t.calculator.steps.guests.inputLabel}
                   </label>
-                  <span className="font-monument text-[11px] font-semibold text-[#535D58]">
+                  <span className="font-monument text-[11px] font-semibold text-white/55">
                     {t.calculator.steps.guests.minOrderNote}
                   </span>
                 </div>
@@ -303,7 +303,7 @@ export function Calculator({
                     data-testid="guest-minus"
                     aria-label={t.calculator.steps.guests.decreaseAria}
                     onClick={handleStepMinus}
-                    className="inline-flex h-12 w-12 items-center justify-center bg-white border border-[#DED5C5] text-base font-bold text-[#0B0D0C] transition-colors duration-[220ms] hover:bg-[#0B0D0C] hover:border-[#0B0D0C] hover:text-white cursor-pointer"
+                    className="inline-flex h-12 w-12 items-center justify-center bg-[#060606] border border-white/15 text-base font-bold text-white transition-colors duration-[220ms] hover:bg-white hover:border-white hover:text-[#060606] cursor-pointer"
                   >
                     <Minus className="h-5 w-5" />
                   </button>
@@ -323,7 +323,7 @@ export function Calculator({
                         handleGuestInputCommit();
                       }
                     }}
-                    className="h-12 w-28 bg-white border border-[#DED5C5] px-2.5 text-center font-monument tabular-nums text-xl font-extrabold text-[#0B0D0C] transition-colors duration-[220ms] focus:border-[#0F7550] focus:outline-none"
+                    className="h-12 w-28 bg-[#060606] border border-white/15 px-2.5 text-center font-monument tabular-nums text-xl font-extrabold text-white transition-colors duration-[220ms] focus:border-[#2BC48A] focus:outline-none"
                   />
 
                   <button
@@ -331,7 +331,7 @@ export function Calculator({
                     data-testid="guest-plus"
                     aria-label={t.calculator.steps.guests.increaseAria}
                     onClick={handleStepPlus}
-                    className="inline-flex h-12 w-12 items-center justify-center bg-white border border-[#DED5C5] text-base font-bold text-[#0B0D0C] transition-colors duration-[220ms] hover:bg-[#0B0D0C] hover:border-[#0B0D0C] hover:text-white cursor-pointer"
+                    className="inline-flex h-12 w-12 items-center justify-center bg-[#060606] border border-white/15 text-base font-bold text-white transition-colors duration-[220ms] hover:bg-white hover:border-white hover:text-[#060606] cursor-pointer"
                   >
                     <Plus className="h-5 w-5" />
                   </button>
@@ -340,7 +340,7 @@ export function Calculator({
 
               {/* Sleek Range Slider */}
               <div className="space-y-2.5">
-                <div className="h-1.5 w-full overflow-hidden bg-[#EAE2D5]">
+                <div className="h-1.5 w-full overflow-hidden bg-white/10">
                   <div
                     className="h-full transition-all duration-200 dcc-gold-emerald-bar"
                     style={{ width: `${capacityProgress}%` }}
@@ -357,7 +357,7 @@ export function Calculator({
                   onChange={handleSliderChange}
                   className="dcc-slider"
                 />
-                <div className="flex items-center justify-between font-monument text-[11px] font-bold text-[#464F4A]">
+                <div className="flex items-center justify-between font-monument text-[11px] font-bold text-white/55">
                   <span>{extraCopy.tierScaleStart}</span>
                   <span>100 (-5%)</span>
                   <span>250 (-10%)</span>
@@ -367,17 +367,17 @@ export function Calculator({
               </div>
 
               {clampReason === 'below_min' && (
-                <p className="text-xs font-monument font-bold text-[#0F7550]">
+                <p className="text-xs font-monument font-bold text-[#2BC48A]">
                   {t.calculator.steps.guests.clampedMinNotice}
                 </p>
               )}
               {clampReason === 'above_max' && (
-                <p className="text-xs font-monument font-bold text-[#7A5512]">
+                <p className="text-xs font-monument font-bold text-[#F2D58B]">
                   {t.calculator.steps.guests.clampedMaxNotice}
                 </p>
               )}
 
-              {/* Volume Discount Tiers (Bold Montserrat Architectural Chips) */}
+              {/* Volume Discount Tiers (Bold Montserrat Dark Chips) */}
               <div className="grid grid-cols-2 gap-2.5 sm:grid-cols-4">
                 {(
                   [
@@ -394,8 +394,8 @@ export function Calculator({
                       data-active={String(active)}
                       className={`px-3 py-2.5 text-center font-monument text-xs tracking-tight transition-colors duration-[220ms] ${
                         active
-                          ? 'dcc-calc-tile-active font-extrabold text-[#0B0D0C]'
-                          : 'bg-[#FAF7F2] border border-[#EAE2D5] font-bold text-[#3B443F]'
+                          ? 'dcc-calc-tile-active font-extrabold text-white'
+                          : 'bg-[#111413] border border-white/8 font-bold text-white/60'
                       }`}
                     >
                       {t.calculator.steps.guests.tiers[tier.key]}
@@ -404,8 +404,8 @@ export function Calculator({
                 })}
               </div>
 
-              {/* Event Format + 800+ Enterprise Button (Bold Montserrat) */}
-              <div className="flex flex-col sm:flex-row sm:flex-wrap sm:items-center sm:justify-between gap-2.5 pt-2 border-t border-[#EFE8DC]">
+              {/* Event Format + 800+ Enterprise Button (Pure Black / White High-Contrast) */}
+              <div className="flex flex-col sm:flex-row sm:flex-wrap sm:items-center sm:justify-between gap-2.5 pt-3 border-t border-white/10">
                 <div className="grid grid-cols-3 w-full sm:w-auto sm:flex sm:flex-wrap sm:items-center gap-2">
                   {EVENT_TYPES.map((ev) => {
                     const active = input.eventType === ev;
@@ -421,8 +421,8 @@ export function Calculator({
                         }
                         className={`min-h-[44px] px-2.5 sm:px-4 py-2 text-[11px] sm:text-xs font-monument uppercase tracking-[0.06em] text-center truncate transition-colors duration-[220ms] cursor-pointer ${
                           active
-                            ? 'bg-[#0B0D0C] font-extrabold text-white shadow-[0_6px_16px_-8px_rgba(11,13,12,0.45)]'
-                            : 'bg-[#FAF7F2] border border-[#E5DDD0] font-bold text-[#222825] hover:bg-[#EFE8DC] hover:text-[#0B0D0C]'
+                            ? 'bg-white font-extrabold text-[#060606]'
+                            : 'bg-[#111413] border border-white/12 font-bold text-white/80 hover:border-white/35 hover:text-white'
                         }`}
                       >
                         {t.calculator.steps.guests.eventTypes[ev].label}
@@ -447,8 +447,8 @@ export function Calculator({
                   }
                   className={`inline-flex w-full sm:w-auto min-h-[44px] items-center justify-center gap-2 px-4 py-2 font-monument text-xs font-extrabold uppercase tracking-[0.06em] transition-colors duration-[220ms] cursor-pointer ${
                     input.enterprise800Plus
-                      ? 'bg-[#0F7550] text-white shadow-[0_6px_16px_-8px_rgba(15,117,80,0.45)]'
-                      : 'bg-[#FAF7F2] border border-[#E5DDD0] text-[#222825] hover:bg-[#EFE8DC] hover:text-[#0B0D0C]'
+                      ? 'bg-[#2BC48A] text-[#060606]'
+                      : 'bg-[#111413] border border-white/12 text-white/80 hover:border-white/35 hover:text-white'
                   }`}
                 >
                   <Sparkles className="h-3.5 w-3.5" />
@@ -457,22 +457,22 @@ export function Calculator({
               </div>
 
               {input.enterprise800Plus && (
-                <div className="dcc-calc-tile-active p-3.5 text-xs font-monument font-bold text-[#0B0D0C]">
+                <div className="dcc-calc-tile-active p-3.5 text-xs font-monument font-bold text-white">
                   {t.calculator.steps.guests.enterpriseActiveNote}
                 </div>
               )}
             </div>
 
-            {/* STEP 02: Clean High-Contrast Döner Selection Tiles */}
+            {/* STEP 02: Clean Pure Black Döner Selection Tiles */}
             <div className="dcc-rechner-module p-5 sm:p-7 space-y-4">
               <div>
-                <span className="inline-block bg-[#F3ECE0] px-2.5 py-1 font-monument text-[11px] font-extrabold uppercase tracking-[0.16em] text-[#7A5512]">
+                <span className="inline-block bg-white/[0.06] border border-white/10 px-2.5 py-1 font-monument text-[11px] font-extrabold uppercase tracking-[0.16em] text-[#F2D58B]">
                   {extraCopy.stepPrefix} {t.calculator.steps.spits.index}
                 </span>
-                <h3 className="mt-2 font-monument text-lg sm:text-xl font-extrabold tracking-tight text-[#0B0D0C]">
+                <h3 className="mt-2 font-monument text-lg sm:text-xl font-extrabold tracking-tight text-white">
                   {t.calculator.steps.spits.title}
                 </h3>
-                <p className="mt-1 text-xs sm:text-sm font-medium text-[#3B443F]">
+                <p className="mt-1 text-xs sm:text-sm font-medium text-white/60">
                   {t.calculator.steps.spits.subtitle}
                 </p>
               </div>
@@ -480,9 +480,9 @@ export function Calculator({
               {result.duoRequiresMinGuests && (
                 <div
                   data-testid="duo-min-warning"
-                  className="flex items-start gap-2.5 bg-[#FDF2EC] p-3.5 text-xs font-monument font-bold text-[#0B0D0C] shadow-[inset_4px_0_0_0_#A13618]"
+                  className="flex items-start gap-2.5 bg-[#21130F] p-3.5 text-xs font-monument font-bold text-white shadow-[inset_4px_0_0_0_#E0643C]"
                 >
-                  <ShieldAlert className="h-4 w-4 shrink-0 text-[#A13618] mt-0.5" />
+                  <ShieldAlert className="h-4 w-4 shrink-0 text-[#E0643C] mt-0.5" />
                   <span>{t.calculator.steps.spits.duoFloorWarning}</span>
                 </div>
               )}
@@ -512,7 +512,7 @@ export function Calculator({
                         active ? 'dcc-calc-tile-active' : ''
                       }`}
                     >
-                      <div className="w-16 h-16 sm:w-22 sm:h-16 overflow-hidden bg-[#E4DBCC] shrink-0">
+                      <div className="w-16 h-16 sm:w-22 sm:h-16 overflow-hidden bg-[#181B1A] shrink-0">
                         <SmartPicture
                           src={meat.image}
                           alt={copy.title}
@@ -525,30 +525,30 @@ export function Calculator({
                       <div className="flex-1 min-w-0 flex flex-col gap-2 sm:flex-row sm:items-center sm:justify-between sm:gap-4">
                         <div className="min-w-0 space-y-1.5">
                           <div className="flex flex-wrap items-center gap-2">
-                            <h4 className="font-monument text-sm sm:text-base font-extrabold tracking-tight text-[#0B0D0C]">
+                            <h4 className="font-monument text-sm sm:text-base font-extrabold tracking-tight text-white">
                               {copy.title}
                             </h4>
                             <span
                               className={`px-2.5 py-0.5 font-monument text-[11px] font-bold tracking-[0.03em] ${
                                 active
-                                  ? 'bg-[#0B0D0C] text-[#F2D58B]'
-                                  : 'bg-[#EDE5D7] text-[#3B2A0A]'
+                                  ? 'bg-[#D4A853] text-[#060606]'
+                                  : 'bg-white/[0.08] text-white/80'
                               }`}
                             >
                               {copy.badge}
                             </span>
                           </div>
-                          <p className="text-xs sm:text-[13px] font-medium leading-snug text-[#3B443F] line-clamp-2">
+                          <p className="text-xs sm:text-[13px] font-medium leading-snug text-white/60 line-clamp-2">
                             {copy.spec}
                           </p>
                         </div>
 
                         <div className="shrink-0 flex items-center justify-between sm:justify-end gap-3 pt-2 sm:pt-0">
                           <div className="flex items-baseline gap-1.5 sm:block sm:text-right">
-                            <div className="font-monument tabular-nums text-base sm:text-lg font-extrabold text-[#7A5512]">
+                            <div className="font-monument tabular-nums text-base sm:text-lg font-extrabold text-[#F2D58B]">
                               {formatCurrency(discountedUnit, locale)}
                             </div>
-                            <div className="font-monument text-[11px] font-bold text-[#464F4A]">
+                            <div className="font-monument text-[11px] font-bold text-white/50">
                               {t.calculator.steps.spits.perGuestSuffix}
                             </div>
                           </div>
@@ -556,8 +556,8 @@ export function Calculator({
                           <span
                             className={`inline-flex h-6 w-6 items-center justify-center transition-colors duration-[220ms] shrink-0 ${
                               active
-                                ? 'bg-[#0F7550] text-white'
-                                : 'bg-[#E5DDD0] text-transparent'
+                                ? 'bg-[#2BC48A] text-[#060606]'
+                                : 'bg-white/10 text-transparent'
                             }`}
                           >
                             <Check className="h-3.5 w-3.5 stroke-[3]" />
@@ -573,13 +573,13 @@ export function Calculator({
             {/* STEP 03: Service Setup Architecture */}
             <div className="dcc-rechner-module p-5 sm:p-7 space-y-4">
               <div>
-                <span className="inline-block bg-[#F3ECE0] px-2.5 py-1 font-monument text-[11px] font-extrabold uppercase tracking-[0.16em] text-[#7A5512]">
+                <span className="inline-block bg-white/[0.06] border border-white/10 px-2.5 py-1 font-monument text-[11px] font-extrabold uppercase tracking-[0.16em] text-[#F2D58B]">
                   {extraCopy.stepPrefix} {t.calculator.steps.setups.index}
                 </span>
-                <h3 className="mt-2 font-monument text-lg sm:text-xl font-extrabold tracking-tight text-[#0B0D0C]">
+                <h3 className="mt-2 font-monument text-lg sm:text-xl font-extrabold tracking-tight text-white">
                   {t.calculator.steps.setups.title}
                 </h3>
-                <p className="mt-1 text-xs sm:text-sm font-medium text-[#3B443F]">
+                <p className="mt-1 text-xs sm:text-sm font-medium text-white/60">
                   {t.calculator.steps.setups.subtitle}
                 </p>
               </div>
@@ -601,7 +601,7 @@ export function Calculator({
                         active ? 'dcc-calc-tile-active' : ''
                       }`}
                     >
-                      <div className="w-16 h-16 sm:w-22 sm:h-16 overflow-hidden bg-[#E4DBCC] shrink-0">
+                      <div className="w-16 h-16 sm:w-22 sm:h-16 overflow-hidden bg-[#181B1A] shrink-0">
                         <SmartPicture
                           src={setup.image}
                           alt={copy.title}
@@ -614,30 +614,30 @@ export function Calculator({
                       <div className="flex-1 min-w-0 flex flex-col gap-2 sm:flex-row sm:items-center sm:justify-between sm:gap-4">
                         <div className="min-w-0 space-y-1.5">
                           <div className="flex flex-wrap items-center gap-2">
-                            <h4 className="font-monument text-sm sm:text-base font-extrabold tracking-tight text-[#0B0D0C]">
+                            <h4 className="font-monument text-sm sm:text-base font-extrabold tracking-tight text-white">
                               {copy.title}
                             </h4>
                             <span
                               className={`px-2.5 py-0.5 font-monument text-[11px] font-bold tracking-[0.03em] ${
                                 active
-                                  ? 'bg-[#0B0D0C] text-[#F2D58B]'
-                                  : 'bg-[#EDE5D7] text-[#3B2A0A]'
+                                  ? 'bg-[#D4A853] text-[#060606]'
+                                  : 'bg-white/[0.08] text-white/80'
                               }`}
                             >
                               {copy.badge}
                             </span>
                           </div>
-                          <p className="text-xs sm:text-[13px] font-medium leading-snug text-[#3B443F] line-clamp-2">
+                          <p className="text-xs sm:text-[13px] font-medium leading-snug text-white/60 line-clamp-2">
                             {copy.spec}
                           </p>
                         </div>
 
                         <div className="shrink-0 flex items-center justify-between sm:justify-end gap-3 pt-2 sm:pt-0">
                           <div className="flex items-baseline gap-1.5 sm:block sm:text-right">
-                            <div className="font-monument tabular-nums text-base sm:text-lg font-extrabold text-[#7A5512]">
+                            <div className="font-monument tabular-nums text-base sm:text-lg font-extrabold text-[#F2D58B]">
                               + {formatCurrency(setup.flatFeeNet, locale)}
                             </div>
-                            <div className="font-monument text-[11px] font-bold text-[#464F4A]">
+                            <div className="font-monument text-[11px] font-bold text-white/50">
                               {t.calculator.steps.setups.flatFeeLabel}
                             </div>
                           </div>
@@ -645,8 +645,8 @@ export function Calculator({
                           <span
                             className={`inline-flex h-6 w-6 items-center justify-center transition-colors duration-[220ms] shrink-0 ${
                               active
-                                ? 'bg-[#0F7550] text-white'
-                                : 'bg-[#E5DDD0] text-transparent'
+                                ? 'bg-[#2BC48A] text-[#060606]'
+                                : 'bg-white/10 text-transparent'
                             }`}
                           >
                             <Check className="h-3.5 w-3.5 stroke-[3]" />
@@ -662,13 +662,13 @@ export function Calculator({
             {/* STEP 04: Optional Extras */}
             <div className="dcc-rechner-module p-5 sm:p-7 space-y-4">
               <div>
-                <span className="inline-block bg-[#F3ECE0] px-2.5 py-1 font-monument text-[11px] font-extrabold uppercase tracking-[0.16em] text-[#7A5512]">
+                <span className="inline-block bg-white/[0.06] border border-white/10 px-2.5 py-1 font-monument text-[11px] font-extrabold uppercase tracking-[0.16em] text-[#F2D58B]">
                   {extraCopy.stepPrefix} {t.calculator.steps.extras.index}
                 </span>
-                <h3 className="mt-2 font-monument text-lg sm:text-xl font-extrabold tracking-tight text-[#0B0D0C]">
+                <h3 className="mt-2 font-monument text-lg sm:text-xl font-extrabold tracking-tight text-white">
                   {t.calculator.steps.extras.title}
                 </h3>
-                <p className="mt-1 text-xs sm:text-sm font-medium text-[#3B443F]">
+                <p className="mt-1 text-xs sm:text-sm font-medium text-white/60">
                   {t.calculator.steps.extras.subtitle}
                 </p>
               </div>
@@ -695,27 +695,27 @@ export function Calculator({
                         <span
                           className={`mt-0.5 inline-flex h-6 w-6 shrink-0 items-center justify-center transition-colors duration-[220ms] ${
                             active
-                              ? 'bg-[#0F7550] text-white'
-                              : 'bg-[#E5DDD0] text-transparent'
+                              ? 'bg-[#2BC48A] text-[#060606]'
+                              : 'bg-white/10 text-transparent'
                           }`}
                         >
                           <Check className="h-3.5 w-3.5 stroke-[3]" />
                         </span>
                         <div className="min-w-0">
-                          <div className="font-monument text-sm sm:text-base font-extrabold tracking-tight text-[#0B0D0C]">
+                          <div className="font-monument text-sm sm:text-base font-extrabold tracking-tight text-white">
                             {copy.title}
                           </div>
-                          <div className="mt-1 text-xs sm:text-[13px] font-medium leading-snug text-[#3B443F]">
+                          <div className="mt-1 text-xs sm:text-[13px] font-medium leading-snug text-white/60">
                             {copy.spec}
                           </div>
                         </div>
                       </div>
 
                       <div className="text-right shrink-0">
-                        <div className="font-monument tabular-nums text-base sm:text-lg font-extrabold text-[#7A5512]">
+                        <div className="font-monument tabular-nums text-base sm:text-lg font-extrabold text-[#F2D58B]">
                           + {formatCurrency(extra.pricePerGuest, locale)}
                         </div>
-                        <div className="font-monument text-[11px] font-bold text-[#464F4A]">
+                        <div className="font-monument text-[11px] font-bold text-white/50">
                           {t.calculator.steps.extras.perGuestSuffix}
                         </div>
                       </div>

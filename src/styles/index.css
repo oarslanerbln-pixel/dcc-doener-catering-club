@@ -109,53 +109,46 @@ body {
   animation-delay: 110ms;
 }
 
-/* Calculator (#rechner) Scoped Light Contrast Theme + Sharp Frameless Surfaces */
+/* Calculator (#rechner) Unified Pure Black Obsidian Theme */
 #rechner {
-  --bg-main: #FAF6EF;
-  --bg-card: #FFFFFF;
-  --bg-subtle: #F1EBE0;
-  --text-primary: #0B0D0C;
-  --text-secondary: #2D3532;
-  --text-muted: #535D58;
-  --brand-primary: #9A7226;
-  --brand-accent: #148F63;
-  --border-main: rgba(11, 13, 12, 0.11);
-  --slider-track: #DDD4C4;
-  --slider-thumb: #9A7226;
-  --receipt-bg: #FFFFFF;
-  --receipt-text: #0B0D0C;
-  --receipt-accent: #9A7226;
-  background-color: #FAF6EF;
-  color: #0B0D0C;
+  --bg-main: #060606;
+  --bg-card: #0B0D0C;
+  --bg-subtle: #111413;
+  --text-primary: #FFFFFF;
+  --text-secondary: rgba(255, 255, 255, 0.72);
+  --text-muted: rgba(255, 255, 255, 0.52);
+  --brand-primary: #D4A853;
+  --brand-accent: #2BC48A;
+  --border-main: rgba(255, 255, 255, 0.08);
+  --slider-track: rgba(255, 255, 255, 0.14);
+  --slider-thumb: #D4A853;
+  --receipt-bg: #0B0D0C;
+  --receipt-text: #FFFFFF;
+  --receipt-accent: #D4A853;
+  background-color: #060606;
+  color: #FFFFFF;
 }
 
 #rechner .dcc-gold-emerald-bar {
-  background: linear-gradient(90deg, #9A7226 0%, #D4A853 45%, #148F63 100%);
-  background-size: 100% 100%;
-  animation: none;
+  background: linear-gradient(90deg, #D4A853 0%, #F2D58B 45%, #2BC48A 100%);
+  background-size: 200% 100%;
+  animation: dcc-soft-gold-loop 12s ease-in-out infinite;
 }
 
 @layer components {
   .dcc-rechner-module {
     position: relative;
     border-radius: 0;
-    border: none;
+    border: 1px solid rgba(255, 255, 255, 0.07);
     background: linear-gradient(
       125deg,
-      #0B0C0C 0%,
-      #13110D 35%,
-      #0C0E0D 68%,
-      #15120C 100%
+      #0B0D0C 0%,
+      #101210 38%,
+      #0A0C0B 72%,
+      #12110D 100%
     );
-    background-size: 300% 300%;
-    animation: dcc-soft-gold-loop 16s ease-in-out infinite;
-  }
-
-  #rechner .dcc-rechner-module {
-    background: #FFFFFF;
-    background-color: #FFFFFF;
-    animation: none;
-    box-shadow: 0 14px 36px -22px rgba(11, 13, 12, 0.14);
+    background-size: 280% 280%;
+    animation: dcc-soft-gold-loop 18s ease-in-out infinite;
   }
 }
 
@@ -172,15 +165,15 @@ body {
 }
 
 #rechner .dcc-rechner-module {
-  background-color: #FFFFFF;
-  border: 1px solid #EAE2D5;
-  box-shadow: 0 12px 32px -22px rgba(11, 13, 12, 0.14);
+  background-color: #0B0D0C;
+  border: 1px solid rgba(255, 255, 255, 0.07);
+  box-shadow: 0 20px 44px -26px rgba(0, 0, 0, 0.85);
 }
 
 #rechner .dcc-calc-tile {
-  background-color: #FAF7F2;
-  border: 1px solid #EAE2D5;
-  color: #0B0D0C;
+  background-color: #111413;
+  border: 1px solid rgba(255, 255, 255, 0.06);
+  color: #FFFFFF;
 }
 
 .dcc-calc-tile::before {
@@ -202,8 +195,8 @@ body {
 #rechner .dcc-calc-tile::before {
   background: radial-gradient(
     420px circle at var(--mx, 50%) var(--my, 50%),
-    rgba(154, 114, 38, 0.11) 0%,
-    rgba(20, 143, 99, 0.07) 45%,
+    rgba(245, 224, 168, 0.12) 0%,
+    rgba(43, 196, 138, 0.07) 45%,
     transparent 75%
   );
 }
@@ -214,8 +207,8 @@ body {
 }
 
 #rechner .dcc-calc-tile:hover {
-  background-color: #F3EDE2;
-  border-color: #D8CCB8;
+  background-color: #161A18;
+  border-color: rgba(255, 255, 255, 0.14);
 }
 
 .dcc-calc-tile:hover::before {
@@ -243,15 +236,16 @@ body {
   background: linear-gradient(
     120deg,
     rgba(212, 168, 83, 0.14) 0%,
-    rgba(43, 196, 138, 0.06) 55%,
-    rgba(212, 168, 83, 0.12) 100%
+    rgba(43, 196, 138, 0.08) 52%,
+    rgba(212, 168, 83, 0.15) 100%
   );
-  background-color: #FDF8EC;
-  border: 1px solid #D4A853;
-  animation: none;
+  background-size: 260% 260%;
+  background-color: #141715;
+  border: 1px solid rgba(212, 168, 83, 0.42);
+  animation: dcc-soft-gold-loop 14s ease-in-out infinite;
   box-shadow:
-    inset 4px 0 0 0 #0F7550,
-    0 10px 24px -18px rgba(154, 114, 38, 0.35);
+    inset 3px 0 0 0 #2BC48A,
+    0 12px 28px -16px rgba(0, 0, 0, 0.75);
 }
 
 /* Sharp Architectural Frameless Card with Cursor-Tracking Gold-Emerald Hover Sheen */
