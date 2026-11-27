@@ -92,7 +92,7 @@ export function Header({
         </div>
       </div>
 
-      <div className="mx-auto flex h-14 sm:h-16 max-w-7xl items-center justify-between gap-2 sm:gap-4 px-3.5 sm:px-6">
+      <div className="mx-auto flex h-16 sm:h-20 max-w-7xl items-center justify-between gap-3 sm:gap-6 px-4 sm:px-8">
         <a
           href="#hero"
           onClick={(e) => handleAnchorClick(e, '#hero')}
@@ -102,74 +102,74 @@ export function Header({
           <BrandLogo
             lockup="primary"
             theme={theme}
-            imgClassName="h-9 sm:h-11 w-auto max-w-[175px] sm:max-w-none object-contain"
+            imgClassName="h-10 sm:h-12 w-auto max-w-[190px] sm:max-w-none object-contain"
           />
         </a>
 
         <nav
           aria-label="Primary Navigation"
-          className="hidden lg:flex items-center gap-6 text-sm font-medium text-[var(--text-secondary)]"
+          className="hidden lg:flex items-center gap-7 xl:gap-8 text-[15px] font-semibold text-white/70"
         >
           <a
             href="#rechner"
             onClick={(e) => handleAnchorClick(e, '#rechner')}
-            className="transition hover:text-[var(--text-primary)]"
+            className="transition hover:text-white"
           >
             {t.header.nav.calculator}
           </a>
           <a
             href="#kulinarik"
             onClick={(e) => handleAnchorClick(e, '#kulinarik')}
-            className="transition hover:text-[var(--text-primary)]"
+            className="transition hover:text-white"
           >
             {t.header.nav.culinary}
           </a>
           <a
             href="#galerie"
             onClick={(e) => handleAnchorClick(e, '#galerie')}
-            className="transition hover:text-[var(--text-primary)]"
+            className="transition hover:text-white"
           >
             {t.header.nav.gallery}
           </a>
           <a
             href="#ablauf"
             onClick={(e) => handleAnchorClick(e, '#ablauf')}
-            className="transition hover:text-[var(--text-primary)]"
+            className="transition hover:text-white"
           >
             {t.header.nav.timeline}
           </a>
           <a
             href="#produktion"
             onClick={(e) => handleAnchorClick(e, '#produktion')}
-            className="transition hover:text-[var(--text-primary)]"
+            className="transition hover:text-white"
           >
             {t.header.nav.production}
           </a>
           <a
             href="#faq"
             onClick={(e) => handleAnchorClick(e, '#faq')}
-            className="transition hover:text-[var(--text-primary)]"
+            className="transition hover:text-white"
           >
             {t.header.nav.faq}
           </a>
           <a
             href="#brand-kit"
             onClick={(e) => handleAnchorClick(e, '#brand-kit')}
-            className={`font-mono text-xs transition ${
+            className={`font-mono text-xs uppercase tracking-wider transition ${
               activeView === 'brand-kit'
-                ? 'text-[var(--brand-primary)] font-semibold'
-                : 'text-[var(--text-muted)] hover:text-[var(--text-primary)]'
+                ? 'text-white font-bold'
+                : 'text-white/40 hover:text-white'
             }`}
           >
             {t.header.nav.brandKit}
           </a>
         </nav>
 
-        <div className="flex items-center gap-2.5 shrink-0">
+        <div className="flex items-center gap-3 sm:gap-4 shrink-0">
           <div
             role="group"
             aria-label={t.header.langSwitcherAria}
-            className="inline-flex items-center bg-white/[0.05] p-0.5"
+            className="inline-flex items-center bg-[#0D0E0E] border border-white/20 p-1"
           >
             {SUPPORTED_LOCALES.map((lang) => {
               const active = locale === lang;
@@ -181,10 +181,10 @@ export function Header({
                   aria-pressed={active}
                   data-active={String(active)}
                   onClick={() => setLocale(lang)}
-                  className={`px-2.5 sm:px-3 py-1.5 font-mono text-[11px] sm:text-xs font-semibold uppercase transition cursor-pointer ${
+                  className={`px-3 sm:px-3.5 py-1.5 font-mono text-xs sm:text-[13px] font-bold uppercase transition cursor-pointer ${
                     active
-                      ? 'bg-[var(--brand-primary)] text-[var(--btn-text)]'
-                      : 'text-[var(--text-secondary)] hover:text-white'
+                      ? 'bg-white text-[#060606] shadow-sm'
+                      : 'text-white/60 hover:text-white hover:bg-white/10'
                   }`}
                 >
                   {t.header.langLabels[lang]}
@@ -196,7 +196,7 @@ export function Header({
           <a
             href="#rechner"
             onClick={(e) => handleAnchorClick(e, '#rechner')}
-            className="hidden sm:inline-flex h-10 items-center justify-center bg-[var(--brand-primary)] px-5 text-xs font-bold uppercase tracking-wider text-[var(--btn-text)] transition hover:bg-[#F2D58B]"
+            className="hidden sm:inline-flex h-11 items-center justify-center bg-white border border-white px-6 font-monument text-xs sm:text-[13px] font-extrabold uppercase tracking-wider text-[#060606] shadow-[0_4px_20px_rgba(255,255,255,0.18)] transition-all duration-200 hover:bg-white/90 hover:shadow-[0_0_24px_rgba(255,255,255,0.4)] hover:-translate-y-0.5"
           >
             {t.header.cta}
           </a>

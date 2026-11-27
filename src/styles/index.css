@@ -81,6 +81,39 @@ body {
   animation: dcc-gold-emerald-flow 7.5s ease-in-out infinite;
 }
 
+/* Dynamic Smooth Liquid Gold <-> Pure White Sheen Animation for Hero Live-Döner Headline */
+@keyframes dcc-gold-white-flow {
+  0% {
+    background-position: 0% 50%;
+  }
+  50% {
+    background-position: 100% 50%;
+  }
+  100% {
+    background-position: 0% 50%;
+  }
+}
+
+.dcc-hero-gold-white-text {
+  background: linear-gradient(
+    115deg,
+    #FFFFFF 0%,
+    #F8EBC6 18%,
+    #D4A853 36%,
+    #FFFFFF 52%,
+    #E6C26D 68%,
+    #FFFDF9 82%,
+    #D4A853 100%
+  );
+  background-size: 280% 280%;
+  -webkit-background-clip: text;
+  background-clip: text;
+  color: transparent;
+  animation: dcc-gold-white-flow 4.8s cubic-bezier(0.4, 0, 0.2, 1) infinite;
+  display: inline-block;
+  filter: drop-shadow(0 2px 20px rgba(212, 168, 83, 0.32));
+}
+
 .dcc-gold-emerald-bar {
   background: linear-gradient(90deg, #F5DC9B 0%, #D4A853 45%, #2BC48A 100%);
   background-size: 200% 100%;

@@ -182,7 +182,7 @@ export function Hero({
           <div className="overflow-hidden">
             <h1 className="dcc-hero-mask-up dcc-hero-mask-delay-1 font-monument text-[40px] sm:text-6xl lg:text-[82px] font-extrabold tracking-[-0.03em] leading-[1.03] text-white drop-shadow-[0_8px_32px_rgba(0,0,0,0.55)]">
               <span>{t.hero.headlinePrefix} </span>
-              <span className="dcc-gold-emerald-text">
+              <span className="dcc-hero-gold-white-text">
                 {t.hero.headlineAccent}
               </span>{' '}
               <span>{t.hero.headlineSuffix}</span>
@@ -215,14 +215,13 @@ export function Hero({
         </div>
       </div>
 
-      {/* Slow Flowing Luxury Services Marquee Banner */}
+      {/* Slow Flowing Luxury Services Marquee Banner — Prominent, Grand & High-Impact */}
       <div
         aria-label={marqueeCopy.servicesBannerLabel}
         data-testid="hero-services-marquee"
-        className="dcc-marquee-viewport relative z-10 mt-14 sm:mt-20 w-full overflow-hidden bg-[#060606]/92 backdrop-blur-md"
+        className="dcc-marquee-viewport relative z-10 mt-14 sm:mt-20 w-full overflow-hidden bg-[#060606]/95 border-y border-white/15 backdrop-blur-xl"
       >
-        <div className="h-[1px] w-full bg-white/15" />
-        <div className="py-4">
+        <div className="py-5 sm:py-6">
           <div className="dcc-marquee-track">
             {[0, 1].map((dupIdx) => (
               <div
@@ -235,12 +234,12 @@ export function Hero({
                     key={`${dupIdx}-${idx}`}
                     className="inline-flex items-center whitespace-nowrap"
                   >
-                    <span className="font-monument text-[11px] sm:text-xs font-bold uppercase tracking-[0.2em] text-white/90 px-5 sm:px-7">
+                    <span className="font-monument text-xs sm:text-sm md:text-base font-extrabold uppercase tracking-[0.22em] text-white px-6 sm:px-9">
                       {service}
                     </span>
                     <span
                       aria-hidden="true"
-                      className="text-[9px] text-white/35"
+                      className="text-xs sm:text-sm text-[#D4A853] drop-shadow-[0_0_8px_rgba(212,168,83,0.55)]"
                     >
                       ◆
                     </span>
@@ -250,7 +249,6 @@ export function Hero({
             ))}
           </div>
         </div>
-        <div className="h-[1px] w-full bg-white/10" />
       </div>
     </section>
   );

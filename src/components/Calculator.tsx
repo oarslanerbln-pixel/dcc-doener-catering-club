@@ -218,16 +218,13 @@ export function Calculator({
       <div className="mx-auto max-w-7xl px-4 sm:px-6 space-y-14">
         {/* Monumental Editorial Header */}
         <div className="max-w-3xl space-y-4">
-          <p className="font-monument text-xs font-bold uppercase tracking-[0.26em] text-[#E6C986]">
+          <p className="font-monument text-xs sm:text-[13px] font-bold uppercase tracking-[0.24em] text-[#E6C986]">
             {t.calculator.eyebrow}
           </p>
-          <h2
-            style={{ fontFamily: '"Syne", "Montserrat", sans-serif' }}
-            className="text-3xl sm:text-5xl lg:text-[56px] font-extrabold tracking-[-0.03em] leading-[1.04] text-white"
-          >
+          <h2 className="font-monument text-3xl sm:text-5xl lg:text-[54px] font-extrabold tracking-[-0.025em] leading-[1.06] text-white">
             {t.calculator.title}
           </h2>
-          <p className="text-base sm:text-lg font-normal leading-relaxed text-white/60">
+          <p className="text-base sm:text-lg font-normal leading-relaxed text-white/70 max-w-2xl">
             {t.calculator.subtitle}
           </p>
         </div>
