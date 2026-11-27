@@ -311,6 +311,15 @@ body {
   animation: dcc-step-enter 300ms var(--ease-expo-out);
 }
 
+@keyframes dcc-bento-fill {
+  from {
+    width: 0%;
+  }
+  to {
+    width: 100%;
+  }
+}
+
 /* Smooth Translucent Animated Hero Glass Buttons */
 @keyframes dcc-glass-shimmer {
   0% {

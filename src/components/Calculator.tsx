@@ -260,7 +260,7 @@ export function Calculator({
       4,
       Math.round(
         ((result.effectiveGuests - MIN_GUESTS) / (MAX_GUESTS - MIN_GUESTS)) *
-          100
+        100
       )
     )
   );
@@ -366,22 +366,20 @@ export function Calculator({
                       data-testid={`calc-tab-step-${item.id}`}
                       aria-selected={isActive}
                       onClick={() => setActiveStep(item.id)}
-                      className={`flex shrink-0 sm:shrink items-center justify-center gap-1.5 sm:gap-2 py-2 sm:py-3 px-3 sm:px-2.5 text-center transition-all duration-200 cursor-pointer border whitespace-nowrap ${
-                        isActive
-                          ? 'bg-white border-white text-[#060606] font-extrabold shadow-[0_4px_20px_rgba(0,0,0,0.4)]'
-                          : isCompleted
+                      className={`flex shrink-0 sm:shrink items-center justify-center gap-1.5 sm:gap-2 py-2 sm:py-3 px-3 sm:px-2.5 text-center transition-all duration-200 cursor-pointer border whitespace-nowrap ${isActive
+                        ? 'bg-white border-white text-[#060606] font-extrabold shadow-[0_4px_20px_rgba(0,0,0,0.4)]'
+                        : isCompleted
                           ? 'bg-[#1C0E08]/90 border-white/35 text-white hover:border-white hover:bg-white/10'
                           : 'bg-[#140A06]/60 border-white/15 text-white/55 hover:border-white/35 hover:text-white'
-                      }`}
+                        }`}
                     >
                       <span
-                        className={`inline-flex items-center justify-center h-4 w-4 sm:h-5 sm:w-5 text-[9px] sm:text-[10px] font-monument font-extrabold shrink-0 ${
-                          isActive
-                            ? 'bg-[#060606] text-white'
-                            : isCompleted
+                        className={`inline-flex items-center justify-center h-4 w-4 sm:h-5 sm:w-5 text-[9px] sm:text-[10px] font-monument font-extrabold shrink-0 ${isActive
+                          ? 'bg-[#060606] text-white'
+                          : isCompleted
                             ? 'bg-[#FFA733] text-[#060606]'
                             : 'bg-white/15 text-white/70'
-                        }`}
+                          }`}
                       >
                         {isCompleted ? '✓' : item.num}
                       </span>
@@ -537,11 +535,10 @@ export function Calculator({
                           <div
                             key={tier.key}
                             data-active={String(active)}
-                            className={`py-2.5 text-center font-monument text-xs sm:text-[13px] transition-colors duration-200 border-b-2 ${
-                              active
-                                ? 'border-[#FFA733] font-extrabold text-[#FFA733]'
-                                : 'border-white/10 font-semibold text-white/45'
-                            }`}
+                            className={`py-2.5 text-center font-monument text-xs sm:text-[13px] transition-colors duration-200 border-b-2 ${active
+                              ? 'border-[#FFA733] font-extrabold text-[#FFA733]'
+                              : 'border-white/10 font-semibold text-white/45'
+                              }`}
                           >
                             {t.calculator.steps.guests.tiers[tier.key]}
                           </div>
@@ -606,11 +603,10 @@ export function Calculator({
                           aria-pressed={active}
                           data-active={String(active)}
                           onClick={() => handleSelectMeat(meat.id)}
-                          className={`dcc-calc-tile w-full flex items-start sm:items-center gap-4 sm:gap-6 px-4 sm:px-7 py-5 sm:py-7 text-left cursor-pointer transition-all duration-200 border ${
-                            active
-                              ? 'bg-gradient-to-br from-[#2E160C] via-[#1D0C06] to-[#120704] border-[#FFA733] shadow-[0_0_28px_rgba(255,167,51,0.22)]'
-                              : 'bg-gradient-to-br from-[#1A0E08]/85 via-[#130A05]/85 to-[#0C0603]/85 border-white/15 hover:border-[#FFA733]/50 hover:bg-[#20110A]'
-                          }`}
+                          className={`dcc-calc-tile w-full flex items-start sm:items-center gap-4 sm:gap-6 px-4 sm:px-7 py-5 sm:py-7 text-left cursor-pointer transition-all duration-200 border ${active
+                            ? 'bg-gradient-to-br from-[#2E160C] via-[#1D0C06] to-[#120704] border-[#FFA733] shadow-[0_0_28px_rgba(255,167,51,0.22)]'
+                            : 'bg-gradient-to-br from-[#1A0E08]/85 via-[#130A05]/85 to-[#0C0603]/85 border-white/15 hover:border-[#FFA733]/50 hover:bg-[#20110A]'
+                            }`}
                         >
                           <div className="w-24 h-24 sm:w-36 sm:h-28 overflow-hidden bg-white/5 shrink-0 border border-white/20 shadow-md">
                             <SmartPicture
@@ -629,9 +625,8 @@ export function Calculator({
                                   {copy.title}
                                 </h4>
                                 <span
-                                  className={`font-eyebrow text-xs sm:text-[13px] font-bold uppercase tracking-[0.14em] ${
-                                    active ? 'text-[#FFA733]' : 'text-[#E6C986]/80'
-                                  }`}
+                                  className={`font-eyebrow text-xs sm:text-[13px] font-bold uppercase tracking-[0.14em] ${active ? 'text-[#FFA733]' : 'text-[#E6C986]/80'
+                                    }`}
                                 >
                                   {copy.badge}
                                 </span>
@@ -641,11 +636,10 @@ export function Calculator({
                               </p>
                               <div className="flex items-center gap-2 pt-0.5">
                                 <span
-                                  className={`font-monument text-[11px] sm:text-xs uppercase tracking-wider font-extrabold ${
-                                    active
-                                      ? 'text-[#FFA733]'
-                                      : 'text-white/55 group-hover:text-white'
-                                  }`}
+                                  className={`font-monument text-[11px] sm:text-xs uppercase tracking-wider font-extrabold ${active
+                                    ? 'text-[#FFA733]'
+                                    : 'text-white/55 group-hover:text-white'
+                                    }`}
                                 >
                                   {active ? extraCopy.selectedLabel : extraCopy.clickToSelect}
                                 </span>
@@ -655,9 +649,8 @@ export function Calculator({
                             <div className="shrink-0 flex items-center justify-between sm:justify-end gap-4 sm:gap-5">
                               <div className="flex items-baseline gap-2 sm:block sm:text-right">
                                 <div
-                                  className={`font-monument tabular-nums text-xl sm:text-3xl font-extrabold ${
-                                    active ? 'text-[#FFA733]' : 'text-white'
-                                  }`}
+                                  className={`font-monument tabular-nums text-xl sm:text-3xl font-extrabold ${active ? 'text-[#FFA733]' : 'text-white'
+                                    }`}
                                 >
                                   {formatCurrency(discountedUnit, locale)}
                                 </div>
@@ -667,11 +660,10 @@ export function Calculator({
                               </div>
 
                               <span
-                                className={`inline-flex h-8 w-8 items-center justify-center border transition-colors duration-200 shrink-0 ${
-                                  active
-                                    ? 'bg-[#FFA733] border-[#FFA733] text-[#060606]'
-                                    : 'border-white/30 text-transparent'
-                                }`}
+                                className={`inline-flex h-8 w-8 items-center justify-center border transition-colors duration-200 shrink-0 ${active
+                                  ? 'bg-[#FFA733] border-[#FFA733] text-[#060606]'
+                                  : 'border-white/30 text-transparent'
+                                  }`}
                               >
                                 <Check className="h-4 w-4 stroke-[3]" />
                               </span>
@@ -709,11 +701,10 @@ export function Calculator({
                           aria-pressed={active}
                           data-active={String(active)}
                           onClick={() => handleSelectSetup(setup.id)}
-                          className={`dcc-calc-tile w-full flex items-start sm:items-center gap-4 sm:gap-6 px-4 sm:px-7 py-5 sm:py-7 text-left cursor-pointer transition-all duration-200 border ${
-                            active
-                              ? 'bg-gradient-to-br from-[#2E160C] via-[#1D0C06] to-[#120704] border-[#FFA733] shadow-[0_0_28px_rgba(255,167,51,0.22)]'
-                              : 'bg-gradient-to-br from-[#1A0E08]/85 via-[#130A05]/85 to-[#0C0603]/85 border-white/15 hover:border-[#FFA733]/50 hover:bg-[#20110A]'
-                          }`}
+                          className={`dcc-calc-tile w-full flex items-start sm:items-center gap-4 sm:gap-6 px-4 sm:px-7 py-5 sm:py-7 text-left cursor-pointer transition-all duration-200 border ${active
+                            ? 'bg-gradient-to-br from-[#2E160C] via-[#1D0C06] to-[#120704] border-[#FFA733] shadow-[0_0_28px_rgba(255,167,51,0.22)]'
+                            : 'bg-gradient-to-br from-[#1A0E08]/85 via-[#130A05]/85 to-[#0C0603]/85 border-white/15 hover:border-[#FFA733]/50 hover:bg-[#20110A]'
+                            }`}
                         >
                           <div className="w-24 h-24 sm:w-36 sm:h-28 overflow-hidden bg-white/5 shrink-0 border border-white/20 shadow-md">
                             <SmartPicture
@@ -732,9 +723,8 @@ export function Calculator({
                                   {copy.title}
                                 </h4>
                                 <span
-                                  className={`font-eyebrow text-xs sm:text-[13px] font-bold uppercase tracking-[0.14em] ${
-                                    active ? 'text-[#FFA733]' : 'text-[#E6C986]/80'
-                                  }`}
+                                  className={`font-eyebrow text-xs sm:text-[13px] font-bold uppercase tracking-[0.14em] ${active ? 'text-[#FFA733]' : 'text-[#E6C986]/80'
+                                    }`}
                                 >
                                   {copy.badge}
                                 </span>
@@ -744,11 +734,10 @@ export function Calculator({
                               </p>
                               <div className="flex items-center gap-2 pt-0.5">
                                 <span
-                                  className={`font-monument text-[11px] sm:text-xs uppercase tracking-wider font-extrabold ${
-                                    active
-                                      ? 'text-[#FFA733]'
-                                      : 'text-white/55 group-hover:text-white'
-                                  }`}
+                                  className={`font-monument text-[11px] sm:text-xs uppercase tracking-wider font-extrabold ${active
+                                    ? 'text-[#FFA733]'
+                                    : 'text-white/55 group-hover:text-white'
+                                    }`}
                                 >
                                   {active ? extraCopy.selectedLabel : extraCopy.clickToSelect}
                                 </span>
@@ -758,9 +747,8 @@ export function Calculator({
                             <div className="shrink-0 flex items-center justify-between sm:justify-end gap-4 sm:gap-5">
                               <div className="flex items-baseline gap-2 sm:block sm:text-right">
                                 <div
-                                  className={`font-monument tabular-nums text-xl sm:text-3xl font-extrabold ${
-                                    active ? 'text-[#FFA733]' : 'text-white'
-                                  }`}
+                                  className={`font-monument tabular-nums text-xl sm:text-3xl font-extrabold ${active ? 'text-[#FFA733]' : 'text-white'
+                                    }`}
                                 >
                                   + {formatCurrency(setup.flatFeeNet, locale)}
                                 </div>
@@ -770,11 +758,10 @@ export function Calculator({
                               </div>
 
                               <span
-                                className={`inline-flex h-8 w-8 items-center justify-center border transition-colors duration-200 shrink-0 ${
-                                  active
-                                    ? 'bg-[#FFA733] border-[#FFA733] text-[#060606]'
-                                    : 'border-white/30 text-transparent'
-                                }`}
+                                className={`inline-flex h-8 w-8 items-center justify-center border transition-colors duration-200 shrink-0 ${active
+                                  ? 'bg-[#FFA733] border-[#FFA733] text-[#060606]'
+                                  : 'border-white/30 text-transparent'
+                                  }`}
                               >
                                 <Check className="h-4 w-4 stroke-[3]" />
                               </span>
@@ -813,19 +800,17 @@ export function Calculator({
                           aria-checked={active}
                           data-active={String(active)}
                           onClick={() => handleToggleExtra(extra.id)}
-                          className={`dcc-calc-tile w-full flex items-center justify-between gap-4 sm:gap-5 px-4 sm:px-7 py-5 sm:py-6 text-left cursor-pointer transition-all duration-200 border ${
-                            active
-                              ? 'bg-gradient-to-br from-[#2E160C] via-[#1D0C06] to-[#120704] border-[#FFA733] shadow-[0_0_24px_rgba(255,167,51,0.2)]'
-                              : 'bg-gradient-to-br from-[#1A0E08]/85 via-[#130A05]/85 to-[#0C0603]/85 border-white/15 hover:border-[#FFA733]/50 hover:bg-[#20110A]'
-                          }`}
+                          className={`dcc-calc-tile w-full flex items-center justify-between gap-4 sm:gap-5 px-4 sm:px-7 py-5 sm:py-6 text-left cursor-pointer transition-all duration-200 border ${active
+                            ? 'bg-gradient-to-br from-[#2E160C] via-[#1D0C06] to-[#120704] border-[#FFA733] shadow-[0_0_24px_rgba(255,167,51,0.2)]'
+                            : 'bg-gradient-to-br from-[#1A0E08]/85 via-[#130A05]/85 to-[#0C0603]/85 border-white/15 hover:border-[#FFA733]/50 hover:bg-[#20110A]'
+                            }`}
                         >
                           <div className="flex items-start sm:items-center gap-3.5 sm:gap-4 min-w-0">
                             <span
-                              className={`mt-0.5 sm:mt-0 inline-flex h-7 w-7 shrink-0 items-center justify-center border transition-colors duration-200 ${
-                                active
-                                  ? 'bg-[#FFA733] border-[#FFA733] text-[#060606]'
-                                  : 'border-white/30 text-transparent'
-                              }`}
+                              className={`mt-0.5 sm:mt-0 inline-flex h-7 w-7 shrink-0 items-center justify-center border transition-colors duration-200 ${active
+                                ? 'bg-[#FFA733] border-[#FFA733] text-[#060606]'
+                                : 'border-white/30 text-transparent'
+                                }`}
                             >
                               <Check className="h-4 w-4 stroke-[3]" />
                             </span>
@@ -841,9 +826,8 @@ export function Calculator({
 
                           <div className="text-right shrink-0">
                             <div
-                              className={`font-monument tabular-nums text-lg sm:text-2xl font-extrabold ${
-                                active ? 'text-[#FFA733]' : 'text-white'
-                              }`}
+                              className={`font-monument tabular-nums text-lg sm:text-2xl font-extrabold ${active ? 'text-[#FFA733]' : 'text-white'
+                                }`}
                             >
                               + {formatCurrency(extra.pricePerGuest, locale)}
                             </div>
@@ -886,11 +870,10 @@ export function Calculator({
                           aria-pressed={active}
                           data-active={String(active)}
                           onClick={() => handleSelectEvent(ev)}
-                          className={`group flex flex-col justify-between gap-4 p-6 sm:p-7 min-h-[180px] sm:min-h-[200px] text-left transition-all duration-200 cursor-pointer border ${
-                            active
-                              ? 'bg-gradient-to-br from-[#2E160C] via-[#1D0C06] to-[#120704] border-[#FFA733] shadow-[0_0_28px_rgba(255,167,51,0.28)] text-white scale-[1.01]'
-                              : 'bg-gradient-to-br from-[#1A0E08]/90 via-[#130A05]/90 to-[#0C0603]/90 border-white/15 text-white hover:border-[#FFA733]/60 hover:bg-[#20110A] hover:scale-[1.008]'
-                          }`}
+                          className={`group flex flex-col justify-between gap-4 p-6 sm:p-7 min-h-[180px] sm:min-h-[200px] text-left transition-all duration-200 cursor-pointer border ${active
+                            ? 'bg-gradient-to-br from-[#2E160C] via-[#1D0C06] to-[#120704] border-[#FFA733] shadow-[0_0_28px_rgba(255,167,51,0.28)] text-white scale-[1.01]'
+                            : 'bg-gradient-to-br from-[#1A0E08]/90 via-[#130A05]/90 to-[#0C0603]/90 border-white/15 text-white hover:border-[#FFA733]/60 hover:bg-[#20110A] hover:scale-[1.008]'
+                            }`}
                         >
                           <div className="space-y-2.5 w-full">
                             <div className="flex items-center justify-between gap-2 w-full">
@@ -898,19 +881,17 @@ export function Calculator({
                                 {evCopy.label}
                               </span>
                               <span
-                                className={`inline-flex h-7 w-7 items-center justify-center border shrink-0 transition-colors ${
-                                  active
-                                    ? 'bg-[#FFA733] border-[#FFA733] text-[#060606]'
-                                    : 'border-white/25 text-transparent'
-                                }`}
+                                className={`inline-flex h-7 w-7 items-center justify-center border shrink-0 transition-colors ${active
+                                  ? 'bg-[#FFA733] border-[#FFA733] text-[#060606]'
+                                  : 'border-white/25 text-transparent'
+                                  }`}
                               >
                                 <Check className="h-4 w-4 stroke-[3]" />
                               </span>
                             </div>
                             <p
-                              className={`text-xs sm:text-sm leading-relaxed ${
-                                active ? 'text-[#FBF1DE] font-medium' : 'text-[#D6CEC2]'
-                              }`}
+                              className={`text-xs sm:text-sm leading-relaxed ${active ? 'text-[#FBF1DE] font-medium' : 'text-[#D6CEC2]'
+                                }`}
                             >
                               {evCopy.hint}
                             </p>
@@ -918,18 +899,16 @@ export function Calculator({
 
                           <div className="pt-3.5 border-t border-white/10 flex items-center justify-between">
                             <span
-                              className={`font-monument text-[11px] sm:text-xs uppercase tracking-wider font-extrabold transition-colors ${
-                                active
-                                  ? 'text-[#FFA733]'
-                                  : 'text-white/60 group-hover:text-white'
-                              }`}
+                              className={`font-monument text-[11px] sm:text-xs uppercase tracking-wider font-extrabold transition-colors ${active
+                                ? 'text-[#FFA733]'
+                                : 'text-white/60 group-hover:text-white'
+                                }`}
                             >
                               {active ? extraCopy.selectedLabel : extraCopy.clickToSelect}
                             </span>
                             <span
-                              className={`text-[10px] font-mono font-bold tracking-widest ${
-                                active ? 'text-[#FFA733]' : 'text-white/35'
-                              }`}
+                              className={`text-[10px] font-mono font-bold tracking-widest ${active ? 'text-[#FFA733]' : 'text-white/35'
+                                }`}
                             >
                               {active ? '✓' : 'KLICK'}
                             </span>
@@ -954,11 +933,10 @@ export function Calculator({
                           enterprise800Plus: !prev.enterprise800Plus,
                         }))
                       }
-                      className={`inline-flex min-h-[48px] w-full sm:w-auto items-center justify-center gap-2.5 px-5 py-3 font-monument text-xs sm:text-[13px] uppercase tracking-[0.12em] transition-all duration-200 cursor-pointer border ${
-                        input.enterprise800Plus
-                          ? 'bg-[#FFA733] border-[#FFA733] font-extrabold text-[#060606]'
-                          : 'bg-transparent border-white/25 font-bold text-white/80 hover:border-white/55 hover:text-white'
-                      }`}
+                      className={`inline-flex min-h-[48px] w-full sm:w-auto items-center justify-center gap-2.5 px-5 py-3 font-monument text-xs sm:text-[13px] uppercase tracking-[0.12em] transition-all duration-200 cursor-pointer border ${input.enterprise800Plus
+                        ? 'bg-[#FFA733] border-[#FFA733] font-extrabold text-[#060606]'
+                        : 'bg-transparent border-white/25 font-bold text-white/80 hover:border-white/55 hover:text-white'
+                        }`}
                     >
                       <Sparkles className="h-4 w-4" />
                       <span>{t.calculator.steps.guests.enterpriseToggle}</span>

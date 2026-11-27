@@ -21,8 +21,9 @@ export function BrandLogo({
   showSubtitle = false,
   subtitle,
 }: BrandLogoProps): React.ReactElement {
-  const resolvedColorway: LogoColorway = colorway ?? 'light';
-  const asset = BRAND_ASSETS.logos[lockup][resolvedColorway];
+  const resolvedColorway: LogoColorway =
+    colorway ?? (_theme === 'obsidian' || _theme === 'emerald-club' ? 'dark' : 'light');
+  const asset = BRAND_ASSETS.logos[lockup][resolvedColorway] ?? BRAND_ASSETS.logos.primary.dark;
 
   return (
     <span className={`inline-flex items-center gap-3 select-none ${className}`}>

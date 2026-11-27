@@ -1,0 +1,68 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 500 320" width="100%" height="100%">
+  <!-- DCC Official Brand Logo - Light Palette (Exact match to uploaded image) -->
+  <defs>
+    <linearGradient id="dccGoldGradLight" x1="0%" y1="0%" x2="100%" y2="100%">
+      <stop offset="0%" stop-color="#D8BA7B"/>
+      <stop offset="50%" stop-color="#C5A566"/>
+      <stop offset="100%" stop-color="#A58442"/>
+    </linearGradient>
+  </defs>
+
+  <g transform="translate(0, -10)">
+    <!-- Top Spindle Pin -->
+    <path d="M 250 25 L 253 68 L 247 68 Z" fill="url(#dccGoldGradLight)"/>
+
+    <!-- Golden Döner Inverted Cone Silhouette -->
+    <path d="M 218 68 
+             C 238 64, 262 64, 282 68 
+             C 278 108, 268 142, 250 156 
+             C 232 142, 222 108, 218 68 
+             Z" 
+          fill="url(#dccGoldGradLight)"/>
+
+    <!-- Bottom Spindle Pin -->
+    <path d="M 247 156 L 253 156 L 250 195 Z" fill="url(#dccGoldGradLight)"/>
+
+    <!-- 4 Dynamic Sweeping Blade / Yaprak Arcs Wrapping Around the Spit -->
+    <path d="M 198 73 
+             C 225 89, 275 89, 302 73 
+             C 275 83, 225 83, 198 73 
+             Z" 
+          fill="#1F2224"/>
+
+    <path d="M 203 94 
+             C 230 111, 270 111, 297 94 
+             C 270 105, 230 105, 203 94 
+             Z" 
+          fill="#1F2224"/>
+
+    <path d="M 212 116 
+             C 233 131, 267 131, 288 116 
+             C 267 125, 233 125, 212 116 
+             Z" 
+          fill="#1F2224"/>
+
+    <path d="M 218 136 
+             C 235 149, 265 149, 282 136 
+             C 265 143, 235 143, 218 136 
+             Z" 
+          fill="#1F2224"/>
+
+    <!-- DCC Bold Monogram Typography -->
+    <g transform="translate(250, 240)">
+      <!-- Gold Bevel Accent Layer (Shadowed) -->
+      <text x="1.5" y="2" text-anchor="middle" font-family="'Montserrat', 'Space Grotesk', sans-serif" font-weight="900" font-size="54" letter-spacing="0.10em" fill="#C5A566">
+        DCC
+      </text>
+      <!-- Deep Charcoal Face Layer -->
+      <text x="0" y="0" text-anchor="middle" font-family="'Montserrat', 'Space Grotesk', sans-serif" font-weight="900" font-size="54" letter-spacing="0.10em" fill="#1F2224">
+        DCC
+      </text>
+
+      <!-- Subtitle: DÖNER CATERING CLUB -->
+      <text x="0" y="28" text-anchor="middle" font-family="'Montserrat', 'Space Grotesk', sans-serif" font-weight="600" font-size="12.5" letter-spacing="0.42em" fill="#1F2224">
+        DÖNER CATERING CLUB
+      </text>
+    </g>
+  </g>
+</svg>
