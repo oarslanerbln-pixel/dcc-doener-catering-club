@@ -1,7 +1,6 @@
 import React, { useState } from 'react';
 import {
   ArrowUpRight,
-  CheckCircle2,
   ChevronLeft,
   ChevronRight,
 } from 'lucide-react';
@@ -130,7 +129,7 @@ export function Gallery({ onApplyPreset }: GalleryProps): React.ReactElement {
           </div>
         </div>
 
-        {/* Minimalist 4-Scenario Strip (Sharp & Frameless) */}
+        {/* Minimalist 4-Scenario Selector Strip */}
         <div className="grid grid-cols-2 gap-3 lg:grid-cols-4">
           {GALLERY_SLIDES.map((slide, idx) => {
             const copy = t.gallery.slides[idx] ?? t.gallery.slides[0];
@@ -141,24 +140,28 @@ export function Gallery({ onApplyPreset }: GalleryProps): React.ReactElement {
                 type="button"
                 data-testid={`gallery-scenario-${slide.id}`}
                 onClick={() => setActiveIndex(idx)}
-                className={`dcc-lux-card flex items-center gap-3 p-2.5 text-left cursor-pointer ${
-                  active ? 'dcc-calc-tile-active' : ''
+                className={`group relative flex items-center gap-3 p-3 text-left rounded-xl transition-all duration-300 cursor-pointer overflow-hidden border ${
+                  active
+                    ? 'border-[#FFA733] bg-white/[0.08] shadow-[0_0_24px_rgba(255,167,51,0.20)]'
+                    : 'border-white/10 bg-[#0D0F0E]/80 hover:border-white/25 hover:bg-white/[0.04]'
                 }`}
               >
-                <div className="h-11 w-14 overflow-hidden shrink-0">
+                <div className="h-12 w-16 overflow-hidden rounded-lg shrink-0 border border-white/10">
                   <SmartPicture
                     src={slide.image}
                     alt={copy.title}
                     width={96}
                     height={64}
-                    className="h-full w-full object-cover"
+                    className="h-full w-full object-cover transition-transform duration-500 group-hover:scale-105"
                   />
                 </div>
-                <div className="min-w-0">
-                  <div className="font-eyebrow text-xs font-bold uppercase tracking-wider text-[#E6C986] truncate">
+                <div className="min-w-0 flex-1">
+                  <div className={`font-monument text-[11px] font-bold uppercase tracking-wider truncate ${
+                    active ? 'text-[#FFA733]' : 'text-white/60'
+                  }`}>
                     {copy.tag}
                   </div>
-                  <div className="font-monument text-xs font-semibold text-[var(--text-primary)] truncate">
+                  <div className="font-monument text-xs font-bold text-white truncate">
                     {copy.title}
                   </div>
                 </div>
@@ -167,64 +170,34 @@ export function Gallery({ onApplyPreset }: GalleryProps): React.ReactElement {
           })}
         </div>
 
-        {/* Clean Split Showcase Card */}
-        <div className="dcc-lux-card grid grid-cols-1 lg:grid-cols-12">
-          <div className="relative lg:col-span-7 aspect-[16/10] lg:aspect-auto overflow-hidden bg-[var(--bg-subtle)]">
+        {/* Grand Full-Bleed Architectural Showcase with Bold White Typography */}
+        <div className="relative w-full aspect-[16/10] sm:aspect-[16/9] md:aspect-[21/9] min-h-[460px] sm:min-h-[520px] md:min-h-[580px] rounded-2xl overflow-hidden border border-white/15 shadow-2xl bg-[#060606] flex flex-col justify-between p-6 sm:p-10 md:p-12">
+          {/* Full-Cover Background Image */}
+          <div className="absolute inset-0 z-0">
             <SmartPicture
               key={currentMedia.image}
               src={currentMedia.image}
               alt={currentCopy.title}
-              width={1376}
-              height={768}
-              className="h-full w-full object-cover transition-all duration-500"
+              width={1600}
+              height={900}
+              className="h-full w-full object-cover transition-all duration-700 ease-out"
             />
+            {/* Cinematic Gradient Scrim for Effortless Contrast */}
+            <div className="absolute inset-0 bg-gradient-to-t from-black/95 via-black/55 to-black/25" />
+            <div className="absolute inset-0 bg-radial-gradient from-transparent via-black/30 to-black/70 pointer-events-none" />
           </div>
 
-          <div className="lg:col-span-5 flex flex-col justify-between p-6 sm:p-8 space-y-6">
-            <div className="space-y-4">
-              <span className="font-eyebrow text-xs font-bold uppercase tracking-[0.16em] text-[#E6C986]">
-                {currentCopy.tag}
-              </span>
-
-              <h3 className="font-monument text-2xl sm:text-3xl font-semibold text-[var(--text-primary)]">
-                {currentCopy.title}
-              </h3>
-
-              <p className="text-sm sm:text-base leading-relaxed text-[var(--text-secondary)]">
-                {currentCopy.description}
-              </p>
-
-              <ul className="space-y-2.5 pt-2">
-                {currentCopy.bullets.map((bullet, idx) => (
-                  <li
-                    key={idx}
-                    className="flex items-start gap-2.5 text-xs sm:text-sm text-[var(--text-primary)]"
-                  >
-                    <CheckCircle2 className="h-4 w-4 shrink-0 mt-0.5 text-[var(--brand-primary)]" />
-                    <span>{bullet}</span>
-                  </li>
-                ))}
-              </ul>
-
-              {onApplyPreset && (
-                <div className="pt-2">
-                  <button
-                    type="button"
-                    data-testid="gallery-apply-preset"
-                    onClick={() => onApplyPreset(currentPreset)}
-                    className="dcc-btn-primary"
-                  >
-                    <span>{LOAD_PRESET_COPY[locale]}</span>
-                    <ArrowUpRight className="h-4 w-4" />
-                  </button>
-                </div>
-              )}
-            </div>
+          {/* Top Tag & Counter Capsule */}
+          <div className="relative z-10 flex items-center justify-between gap-4">
+            <span className="inline-flex items-center gap-2 px-4 py-1.5 rounded-full bg-black/60 border border-[#FFA733]/40 text-[#FFA733] font-monument text-xs font-bold uppercase tracking-[0.20em] backdrop-blur-md">
+              <span className="h-2 w-2 rounded-full bg-[#FFA733] shadow-[0_0_8px_#FFA733]" />
+              {currentCopy.tag}
+            </span>
 
             <div
               role="tablist"
               aria-label={t.gallery.title}
-              className="flex items-center gap-2 pt-4 border-t border-[var(--border-main)]"
+              className="hidden sm:flex items-center gap-2 px-3 py-1.5 rounded-full bg-black/50 border border-white/15 backdrop-blur-md"
             >
               {GALLERY_SLIDES.map((slide, idx) => {
                 const active = idx === activeIndex;
@@ -237,15 +210,40 @@ export function Gallery({ onApplyPreset }: GalleryProps): React.ReactElement {
                     aria-selected={active}
                     aria-label={`${t.gallery.dotAriaPrefix} ${idx + 1}`}
                     onClick={() => setActiveIndex(idx)}
-                    className={`h-1.5 transition-all duration-[260ms] cursor-pointer ${
+                    className={`h-2 transition-all duration-300 rounded-full cursor-pointer ${
                       active
-                        ? 'w-10 bg-[var(--brand-primary)]'
-                        : 'w-3 bg-white/15 hover:bg-white/35'
+                        ? 'w-8 bg-[#FFA733] shadow-[0_0_8px_#FFA733]'
+                        : 'w-2 bg-white/25 hover:bg-white/50'
                     }`}
                   />
                 );
               })}
             </div>
+          </div>
+
+          {/* Bottom Area: Massive Bold White Headline & Restrained Copy */}
+          <div className="relative z-10 max-w-4xl space-y-4 pt-12 sm:pt-16">
+            <h3 className="font-monument text-2xl sm:text-4xl md:text-5xl lg:text-6xl font-extrabold text-white tracking-tight leading-[1.06] [text-shadow:0_4px_30px_rgba(0,0,0,0.85)]">
+              {currentCopy.title}
+            </h3>
+
+            <p className="max-w-2xl text-sm sm:text-base md:text-lg text-white/85 font-normal leading-relaxed [text-shadow:0_2px_12px_rgba(0,0,0,0.8)]">
+              {currentCopy.description}
+            </p>
+
+            {onApplyPreset && (
+              <div className="pt-3">
+                <button
+                  type="button"
+                  data-testid="gallery-apply-preset"
+                  onClick={() => onApplyPreset(currentPreset)}
+                  className="dcc-hero-glass-primary group inline-flex items-center gap-3 px-7 py-3.5 rounded-xl font-monument text-xs sm:text-[13px] font-bold uppercase tracking-[0.14em] text-white cursor-pointer"
+                >
+                  <span>{LOAD_PRESET_COPY[locale]}</span>
+                  <ArrowUpRight className="h-4 w-4 text-[#FFA733] transition-transform duration-300 group-hover:translate-x-0.5 group-hover:-translate-y-0.5" />
+                </button>
+              </div>
+            )}
           </div>
         </div>
       </div>

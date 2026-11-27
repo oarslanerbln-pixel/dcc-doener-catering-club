@@ -7,29 +7,17 @@ import type { LegalDocId } from './LegalModal';
 
 export interface HeaderProps {
   theme: ThemeId;
-  activeView: 'main' | 'brand-kit';
-  onSelectView: (view: 'main' | 'brand-kit', targetHash?: string) => void;
+  activeView?: 'main' | 'brand-kit';
+  onSelectView?: (view: 'main' | 'brand-kit', targetHash?: string) => void;
   onOpenLegal?: (docId: LegalDocId) => void;
   onReplayIntro?: () => void;
 }
 
 export function Header({
   theme,
-  activeView,
-  onSelectView,
 }: HeaderProps): React.ReactElement {
   const { locale, setLocale, t } = useLocale();
   const [langOpen, setLangOpen] = useState<boolean>(false);
-
-  const handleAnchorClick = (
-    e: React.MouseEvent<HTMLAnchorElement>,
-    hash: string
-  ) => {
-    if (activeView !== 'main') {
-      e.preventDefault();
-      onSelectView('main', hash);
-    }
-  };
 
   return (
     <header
@@ -39,7 +27,6 @@ export function Header({
       <div className="mx-auto flex h-16 sm:h-20 max-w-7xl items-center justify-between gap-3 sm:gap-6 px-4 sm:px-8">
         <a
           href="#hero"
-          onClick={(e) => handleAnchorClick(e, '#hero')}
           className="dcc-logo-ember-glow flex items-center gap-2 focus:outline-none shrink-0"
           aria-label="DCC Döner Catering Club"
         >
@@ -56,7 +43,6 @@ export function Header({
         >
           <a
             href="#rechner"
-            onClick={(e) => handleAnchorClick(e, '#rechner')}
             className="transition hover:text-white"
           >
             {t.header.nav.calculator}
@@ -64,28 +50,24 @@ export function Header({
 
           <a
             href="#galerie"
-            onClick={(e) => handleAnchorClick(e, '#galerie')}
             className="transition hover:text-white"
           >
             {t.header.nav.gallery}
           </a>
           <a
             href="#ablauf"
-            onClick={(e) => handleAnchorClick(e, '#ablauf')}
             className="transition hover:text-white"
           >
             {t.header.nav.timeline}
           </a>
           <a
             href="#produktion"
-            onClick={(e) => handleAnchorClick(e, '#produktion')}
             className="transition hover:text-white"
           >
             {t.header.nav.production}
           </a>
           <a
             href="#faq"
-            onClick={(e) => handleAnchorClick(e, '#faq')}
             className="transition hover:text-white"
           >
             {t.header.nav.faq}
@@ -153,7 +135,6 @@ export function Header({
 
           <a
             href="#rechner"
-            onClick={(e) => handleAnchorClick(e, '#rechner')}
             className="hidden sm:inline-flex h-11 items-center justify-center bg-white border border-white px-6 font-monument text-xs sm:text-[13px] font-extrabold uppercase tracking-wider text-[#060606] shadow-[0_4px_20px_rgba(255,255,255,0.18)] transition-all duration-200 hover:bg-white/90 hover:shadow-[0_0_24px_rgba(255,255,255,0.4)] hover:-translate-y-0.5"
           >
             {t.header.cta}

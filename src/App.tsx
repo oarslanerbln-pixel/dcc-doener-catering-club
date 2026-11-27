@@ -14,9 +14,6 @@ import { ProductionBento } from './components/ProductionBento';
 import { RevealSection } from './components/RevealSection';
 import { TrustReferences } from './components/TrustReferences';
 
-const BrandKitPortal = lazy(() =>
-  import('./components/BrandKitPortal').then((m) => ({ default: m.BrandKitPortal }))
-);
 const QuoteModal = lazy(() =>
   import('./components/QuoteModal').then((m) => ({ default: m.QuoteModal }))
 );
@@ -30,7 +27,7 @@ import {
   generateQuoteId,
 } from './domain/calculator';
 import { LocaleProvider, useLocale } from './i18n';
-import type { LogoCandidateItem, ThemeId } from './types/brand';
+import type { ThemeId } from './types/brand';
 import type {
   CalculatorInput,
   ExtraId,
@@ -45,8 +42,6 @@ const EXTRA_KEYS: readonly ExtraId[] = ['bread_salad', 'drinks', 'dessert'];
 function resolveInitialSplash(): boolean {
   if (typeof window === 'undefined') return false;
   try {
-    const params = new URLSearchParams(window.location.search);
-    if (params.get('view') === 'brand-kit') return false;
     if (window.location.hash.length > 1) return false;
     return window.sessionStorage.getItem(INTRO_SESSION_KEY) !== '1';
   } catch {
@@ -54,30 +49,12 @@ function resolveInitialSplash(): boolean {
   }
 }
 
-function resolveInitialView(): 'main' | 'brand-kit' {
-  if (typeof window === 'undefined') return 'main';
-  try {
-    const params = new URLSearchParams(window.location.search);
-    if (params.get('view') === 'brand-kit') return 'brand-kit';
-    const hash = window.location.hash.toLowerCase();
-    if (hash === '#brand-kit' || hash === '#logo-studio') return 'brand-kit';
-  } catch {
-    // ignore URL errors
-  }
-  return 'main';
-}
-
 function AppContent(): React.ReactElement {
   const { locale, t } = useLocale();
   const theme: ThemeId = LOCKED_THEME;
   const [splashOpen, setSplashOpen] = useState<boolean>(resolveInitialSplash);
-  const [activeView, setActiveView] = useState<'main' | 'brand-kit'>(
-    resolveInitialView
-  );
   const [quoteModalOpen, setQuoteModalOpen] = useState<boolean>(false);
   const [activeLegalDoc, setActiveLegalDoc] = useState<LegalDocId | null>(null);
-  const [selectedCandidate, setSelectedCandidate] =
-    useState<LogoCandidateItem | null>(null);
 
   const [quoteId] = useState<string>(() => generateQuoteId());
   const [calculatorInput, setCalculatorInput] = useState<CalculatorInput>({
@@ -136,13 +113,11 @@ function AppContent(): React.ReactElement {
     }
   }, []);
 
-  // Listen to URL hash changes for #brand-kit, #logo-studio, #impressum, #datenschutz, #ifs
+  // Listen to URL hash changes for #impressum, #datenschutz, #ifs
   useEffect(() => {
     const handleHash = () => {
       const h = window.location.hash.toLowerCase();
-      if (h === '#brand-kit' || h === '#logo-studio') {
-        setActiveView('brand-kit');
-      } else if (h === '#impressum') {
+      if (h === '#impressum') {
         setQuoteModalOpen(false);
         setActiveLegalDoc('impressum');
       } else if (h === '#datenschutz') {
@@ -157,25 +132,6 @@ function AppContent(): React.ReactElement {
     window.addEventListener('hashchange', handleHash);
     return () => window.removeEventListener('hashchange', handleHash);
   }, []);
-
-  const handleSelectView = useCallback(
-    (view: 'main' | 'brand-kit', targetHash?: string) => {
-      setActiveView(view);
-      if (typeof window !== 'undefined') {
-        window.requestAnimationFrame(() => {
-          if (targetHash && targetHash.startsWith('#')) {
-            const el = document.getElementById(targetHash.slice(1));
-            if (el) {
-              el.scrollIntoView({ behavior: 'smooth' });
-              return;
-            }
-          }
-          window.scrollTo({ top: 0, behavior: 'smooth' });
-        });
-      }
-    },
-    []
-  );
 
   const handleOpenQuoteModal = useCallback(() => {
     setActiveLegalDoc(null);
@@ -262,82 +218,53 @@ function AppContent(): React.ReactElement {
       <IntroSplash
         isOpen={splashOpen}
         onDismiss={handleDismissSplash}
-        selectedCandidate={selectedCandidate}
       />
 
       <Header
         theme={theme}
-        activeView={activeView}
-        onSelectView={handleSelectView}
         onOpenLegal={handleOpenLegalModal}
         onReplayIntro={() => setSplashOpen(true)}
       />
 
       <main className="flex-1">
-        {activeView === 'brand-kit' ? (
-          <Suspense
-            fallback={
-              <div className="min-h-[60vh] flex items-center justify-center bg-[#060606] text-xs font-mono uppercase tracking-[0.24em] text-[#D4A853]">
-                DCC Brand Kit…
-              </div>
-            }
-          >
-            <BrandKitPortal
-              onBackToCalculator={() => handleSelectView('main', '#rechner')}
-              selectedCandidateId={selectedCandidate?.id ?? null}
-              onSelectCandidate={setSelectedCandidate}
-              onLaunchAnimation={() => setSplashOpen(true)}
-            />
-          </Suspense>
-        ) : (
-          <>
-            <Hero
-              input={calculatorInput}
-              result={calculatorResult}
-              onChangeInput={setCalculatorInput}
-              onOpenBrandKit={() => handleSelectView('brand-kit', '#brand-kit')}
-              selectedCandidate={selectedCandidate}
-              onClearCandidate={() => setSelectedCandidate(null)}
-            />
-            <Calculator
-              quoteId={quoteId}
-              input={calculatorInput}
-              result={calculatorResult}
-              onChangeInput={setCalculatorInput}
-              onOpenModal={handleOpenQuoteModal}
-              onDirectWhatsApp={handleDirectWhatsApp}
-            />
+        <Hero
+          input={calculatorInput}
+          result={calculatorResult}
+          onChangeInput={setCalculatorInput}
+        />
+        <Calculator
+          quoteId={quoteId}
+          input={calculatorInput}
+          result={calculatorResult}
+          onChangeInput={setCalculatorInput}
+          onOpenModal={handleOpenQuoteModal}
+          onDirectWhatsApp={handleDirectWhatsApp}
+        />
 
-            <RevealSection>
-              <Gallery onApplyPreset={handleApplyGalleryPreset} />
-            </RevealSection>
-            <RevealSection>
-              <EventTimeline />
-            </RevealSection>
-            <RevealSection>
-              <ProductionBento />
-            </RevealSection>
-            <RevealSection>
-              <TrustReferences />
-            </RevealSection>
-            <RevealSection>
-              <CorporateFaq onOpenQuoteModal={handleOpenQuoteModal} />
-            </RevealSection>
-          </>
-        )}
+        <RevealSection>
+          <Gallery onApplyPreset={handleApplyGalleryPreset} />
+        </RevealSection>
+        <RevealSection>
+          <EventTimeline />
+        </RevealSection>
+        <RevealSection>
+          <ProductionBento />
+        </RevealSection>
+        <RevealSection>
+          <TrustReferences />
+        </RevealSection>
+        <RevealSection>
+          <CorporateFaq onOpenQuoteModal={handleOpenQuoteModal} />
+        </RevealSection>
       </main>
 
       <Footer
         theme={theme}
-        activeView={activeView}
-        onSelectView={handleSelectView}
         onOpenLegal={handleOpenLegalModal}
         onReplayIntro={() => setSplashOpen(true)}
       />
 
       <MobileBottomBar
-        activeView={activeView}
-        onSelectView={handleSelectView}
         onDirectWhatsApp={handleDirectWhatsApp}
       />
 

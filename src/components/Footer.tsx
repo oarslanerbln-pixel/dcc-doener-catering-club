@@ -8,35 +8,18 @@ import type { LegalDocId } from './LegalModal';
 
 export interface FooterProps {
   theme: ThemeId;
-  activeView: 'main' | 'brand-kit';
-  onSelectView: (view: 'main' | 'brand-kit', hash?: string) => void;
+  activeView?: 'main' | 'brand-kit';
+  onSelectView?: (view: 'main' | 'brand-kit', hash?: string) => void;
   onOpenLegal: (docId: LegalDocId) => void;
   onReplayIntro?: () => void;
 }
 
 export function Footer({
   theme,
-  activeView,
-  onSelectView,
   onOpenLegal,
   onReplayIntro,
 }: FooterProps): React.ReactElement {
   const { t } = useLocale();
-
-  const handleSectionLink = (
-    e: React.MouseEvent<HTMLAnchorElement>,
-    hash: string
-  ) => {
-    if (hash === '#brand-kit' || hash === '#logo-studio') {
-      e.preventDefault();
-      onSelectView('brand-kit', hash);
-      return;
-    }
-    if (activeView !== 'main') {
-      e.preventDefault();
-      onSelectView('main', hash);
-    }
-  };
 
   const handleLegalClick = (
     e: React.MouseEvent<HTMLAnchorElement>,
@@ -107,7 +90,6 @@ export function Footer({
                 <li>
                   <a
                     href="#rechner"
-                    onClick={(e) => handleSectionLink(e, '#rechner')}
                     className="hover:text-[var(--brand-primary)]"
                   >
                     {t.header.nav.calculator}
@@ -116,7 +98,6 @@ export function Footer({
                 <li>
                   <a
                     href="#galerie"
-                    onClick={(e) => handleSectionLink(e, '#galerie')}
                     className="hover:text-[var(--brand-primary)]"
                   >
                     {t.header.nav.gallery}
@@ -125,7 +106,6 @@ export function Footer({
                 <li>
                   <a
                     href="#produktion"
-                    onClick={(e) => handleSectionLink(e, '#produktion')}
                     className="hover:text-[var(--brand-primary)]"
                   >
                     {t.header.nav.production}
@@ -134,19 +114,9 @@ export function Footer({
                 <li>
                   <a
                     href="#faq"
-                    onClick={(e) => handleSectionLink(e, '#faq')}
                     className="hover:text-[var(--brand-primary)]"
                   >
                     {t.header.nav.faq}
-                  </a>
-                </li>
-                <li>
-                  <a
-                    href="#brand-kit"
-                    onClick={(e) => handleSectionLink(e, '#brand-kit')}
-                    className="hover:text-[var(--brand-primary)]"
-                  >
-                    {t.footer.brandKitLink}
                   </a>
                 </li>
               </ul>

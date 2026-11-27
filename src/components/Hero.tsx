@@ -64,10 +64,7 @@ export interface HeroProps {
   onClearCandidate?: () => void;
 }
 
-export function Hero({
-  selectedCandidate,
-  onClearCandidate,
-}: HeroProps): React.ReactElement {
+export function Hero(_props?: Partial<HeroProps>): React.ReactElement {
   const { locale, t } = useLocale();
   const [activeSlideIdx, setActiveSlideIdx] = useState<number>(0);
   const marqueeCopy = HERO_MARQUEE_COPY[locale];
@@ -95,7 +92,7 @@ export function Hero({
       ref={heroRef}
       id="hero"
       data-bg-style="obsidian-shader"
-      className="relative min-h-[78vh] sm:min-h-[86vh] flex flex-col justify-between overflow-hidden bg-[#060606] pt-20 sm:pt-28 pb-0"
+      className="relative min-h-[82vh] sm:min-h-[90vh] flex flex-col justify-between overflow-hidden bg-[#060606] pt-24 sm:pt-32 pb-0"
     >
       {/* Clean Static-Camera Full-Bleed Photo Crossfade (Zero Mouse Jitter) */}
       <div
@@ -137,7 +134,7 @@ export function Hero({
               'radial-gradient(ellipse 78% 68% at 50% 45%, rgba(6,6,6,0.30) 0%, rgba(6,6,6,0.72) 70%, #060606 100%)',
           }}
         />
-        <div className="absolute inset-x-0 bottom-0 h-40 bg-gradient-to-t from-[#060606] via-[#060606]/75 to-transparent" />
+        <div className="absolute inset-x-0 bottom-0 h-44 bg-gradient-to-t from-[#060606] via-[#060606]/75 to-transparent" />
       </div>
 
       {/* Liquid Obsidian WebGL2 Shader Atmosphere */}
@@ -147,40 +144,22 @@ export function Hero({
         heroContainerRef={heroRef}
       />
 
-      {/* Ultra-Clean Minimalist Hero Centerpiece */}
-      <div className="relative z-10 my-auto mx-auto w-full max-w-5xl px-4 sm:px-6 flex flex-col items-center text-center space-y-6 sm:space-y-8">
-        {selectedCandidate && (
-          <div className="inline-flex items-center gap-3 bg-[#0A0A0A]/90 border border-white/15 px-4 py-2 text-white">
-            <img
-              src={selectedCandidate.image}
-              alt={selectedCandidate.titles[locale]}
-              className="h-8 w-12 object-cover"
-            />
-            <span className="font-monument text-xs font-bold text-white/90">
-              LOGO · #{selectedCandidate.number} · {selectedCandidate.titles[locale]}
-            </span>
-            {onClearCandidate && (
-              <button
-                type="button"
-                aria-label="Clear active logo preview"
-                onClick={onClearCandidate}
-                className="ml-1 px-2 py-0.5 font-monument text-xs text-white/70 hover:text-white cursor-pointer"
-              >
-                ×
-              </button>
-            )}
-          </div>
-        )}
-
-        <div className="max-w-4xl space-y-4 sm:space-y-5">
-          <div className="overflow-hidden pb-1 -mt-2 sm:-mt-4">
-            <p className="dcc-hero-mask-up font-serif italic text-lg sm:text-2xl md:text-[26px] font-normal text-[#F6E5BE] tracking-[0.08em] leading-none drop-shadow-[0_2px_16px_rgba(212,168,83,0.35)]">
-              {t.hero.eyebrow}
-            </p>
+      {/* Ultra-Clean Minimalist Hero Centerpiece with Spacious Breathing Room */}
+      <div className="relative z-10 my-auto mx-auto w-full max-w-5xl px-4 sm:px-6 flex flex-col items-center text-center space-y-8 sm:space-y-12 py-8 sm:py-14">
+        <div className="max-w-4xl space-y-6 sm:space-y-8">
+          {/* Delicate, architectural, airy Eyebrow */}
+          <div className="overflow-hidden pb-1">
+            <div className="dcc-hero-mask-up inline-flex items-center gap-2.5 px-4 py-1.5 rounded-full bg-white/[0.04] border border-[#FFA733]/30 backdrop-blur-md">
+              <span className="h-1.5 w-1.5 rounded-full bg-[#FFA733] shadow-[0_0_8px_#FFA733]" />
+              <p className="font-monument text-[11px] sm:text-xs font-bold uppercase tracking-[0.32em] text-[#F6E5BE]/90">
+                {t.hero.eyebrow}
+              </p>
+            </div>
           </div>
 
-          <div className="overflow-hidden">
-            <h1 className="dcc-hero-mask-up dcc-hero-mask-delay-1 font-monument text-[40px] sm:text-6xl lg:text-[82px] font-extrabold tracking-[-0.03em] leading-[1.03] text-white [text-shadow:0_4px_24px_rgba(0,0,0,0.6)]">
+          {/* Grand Architectural Headline */}
+          <div className="overflow-hidden py-1">
+            <h1 className="dcc-hero-mask-up dcc-hero-mask-delay-1 font-monument text-[42px] sm:text-6xl lg:text-[84px] font-extrabold tracking-[-0.03em] leading-[1.04] text-white [text-shadow:0_4px_24px_rgba(0,0,0,0.6)]">
               <span>{t.hero.headlinePrefix} </span>
               <span className="dcc-hero-ember-flame-text">
                 {t.hero.headlineAccent}
@@ -190,7 +169,7 @@ export function Hero({
           </div>
 
           {/* Translucent Animated Smooth Glass CTA Buttons */}
-          <div className="flex flex-col sm:flex-row items-stretch sm:items-center justify-center gap-4 pt-3">
+          <div className="flex flex-col sm:flex-row items-stretch sm:items-center justify-center gap-4 sm:gap-5 pt-4 sm:pt-6">
             <a
               href="#rechner"
               className="dcc-hero-glass-primary group inline-flex min-h-[54px] w-full sm:w-auto sm:min-w-[250px] items-center justify-center gap-3 px-8 py-3.5 font-monument text-xs sm:text-[13px] font-bold uppercase tracking-[0.14em] text-white cursor-pointer"
@@ -213,7 +192,7 @@ export function Hero({
       <div
         aria-label={marqueeCopy.servicesBannerLabel}
         data-testid="hero-services-marquee"
-        className="dcc-marquee-viewport relative z-10 mt-14 sm:mt-20 w-full overflow-hidden bg-[#060606]/95 border-y border-white/15 backdrop-blur-xl"
+        className="dcc-marquee-viewport relative z-10 mt-16 sm:mt-24 w-full overflow-hidden bg-[#060606]/95 border-y border-white/15 backdrop-blur-xl"
       >
         <div className="py-5 sm:py-6">
           <div className="dcc-marquee-track">

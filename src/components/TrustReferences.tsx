@@ -1,5 +1,12 @@
 import React from 'react';
 import { useLocale } from '../i18n';
+import { SmartPicture } from './SmartPicture';
+
+const REFERENCE_IMAGES = [
+  '/media/gallery-corporate.png',
+  '/media/gallery-wedding.png',
+  '/media/gallery-festival.png',
+] as const;
 
 export function TrustReferences(): React.ReactElement {
   const { t } = useLocale();
@@ -47,32 +54,50 @@ export function TrustReferences(): React.ReactElement {
           </div>
         </div>
 
-        <div className="grid grid-cols-1 gap-5 md:grid-cols-3">
+        {/* Large Aesthetic Event Imagery Cards with Bold White Typography */}
+        <div className="grid grid-cols-1 gap-6 md:grid-cols-3">
           {t.references.items.map((item, idx) => (
             <article
               key={idx}
-              className="dcc-lux-card p-6 sm:p-7 flex flex-col justify-between space-y-6 border border-white/10 hover:border-[#FFA733]/60 transition-all duration-300"
+              className="relative min-h-[440px] sm:min-h-[480px] rounded-2xl overflow-hidden border border-white/15 hover:border-[#FFA733]/60 transition-all duration-500 group flex flex-col justify-between p-6 sm:p-8 bg-[#060606] shadow-xl"
             >
-              <div className="space-y-4">
-                <div className="flex items-center justify-between">
-                  <span className="font-eyebrow text-xs sm:text-[13px] font-bold uppercase tracking-[0.16em] text-[#E6C986]">
-                    {item.tag}
-                  </span>
-                  <span className="font-serif italic text-2xl text-[#E6C986]/40 select-none">
-                    “
-                  </span>
-                </div>
-                <p className="font-serif italic text-lg sm:text-[21px] font-normal leading-relaxed text-[#FBF1DE]">
-                  „{item.quote}“
-                </p>
+              {/* Full-Cover Background Image */}
+              <div className="absolute inset-0 z-0">
+                <SmartPicture
+                  src={REFERENCE_IMAGES[idx] ?? REFERENCE_IMAGES[0]}
+                  alt={item.tag}
+                  width={800}
+                  height={600}
+                  className="h-full w-full object-cover transition-transform duration-700 ease-out group-hover:scale-105"
+                />
+                {/* Deep cinematic obsidian gradient scrim */}
+                <div className="absolute inset-0 bg-gradient-to-t from-black/95 via-black/60 to-black/35 group-hover:via-black/50 transition-colors duration-500" />
               </div>
 
-              <div className="border-t border-white/10 pt-4 space-y-1">
-                <div className="font-monument text-sm font-bold text-white">
-                  {item.author}
-                </div>
-                <div className="font-mono text-xs text-[#A89F91]">
-                  {item.meta}
+              {/* Top: Refined Scenario Pill */}
+              <div className="relative z-10 flex items-center justify-between">
+                <span className="inline-flex items-center gap-2 px-3.5 py-1.5 rounded-full bg-black/60 border border-[#FFA733]/40 text-[#FFA733] font-monument text-xs font-bold uppercase tracking-[0.16em] backdrop-blur-md">
+                  <span className="h-1.5 w-1.5 rounded-full bg-[#FFA733] shadow-[0_0_6px_#FFA733]" />
+                  {item.tag}
+                </span>
+                <span className="font-serif italic text-3xl text-white/30 select-none">
+                  “
+                </span>
+              </div>
+
+              {/* Bottom: Bold White Quote & Clean Meta */}
+              <div className="relative z-10 space-y-4 pt-10">
+                <p className="font-monument text-lg sm:text-xl md:text-[21px] font-extrabold leading-snug text-white [text-shadow:0_3px_16px_rgba(0,0,0,0.85)]">
+                  „{item.quote}“
+                </p>
+
+                <div className="border-t border-white/15 pt-3.5 space-y-1">
+                  <div className="font-monument text-sm font-bold text-white tracking-wide">
+                    {item.author}
+                  </div>
+                  <div className="font-mono text-xs text-[#FFA733]/90">
+                    {item.meta}
+                  </div>
                 </div>
               </div>
             </article>
