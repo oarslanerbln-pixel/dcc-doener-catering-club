@@ -1,5 +1,5 @@
 import React, { useEffect, useState } from 'react';
-import { ShieldCheck } from 'lucide-react';
+import { ArrowUpRight, ShieldCheck } from 'lucide-react';
 import { useLocale } from '../i18n';
 import { SmartPicture } from './SmartPicture';
 
@@ -149,17 +149,13 @@ export function ProductionBento(): React.ReactElement {
               );
             })}
 
-            {/* Active Content Capsule Floating on Stage */}
+            {/* Active Content Floating on Stage (Frameless Editorial) */}
             <div className="relative z-10 max-w-2xl space-y-4">
-              <div className="inline-flex items-center gap-2 px-3 py-1 bg-black/60 backdrop-blur-md border border-[#FFA733]/40">
-                <span className="h-1.5 w-1.5 rounded-full bg-[#FFA733] animate-pulse" />
-                <span className="font-eyebrow text-xs uppercase tracking-[0.18em] text-[#FFA733]">
-                  {activeCard.tag}
-                </span>
-                <span className="text-white/30 text-xs">·</span>
-                <span className="font-sans text-xs font-bold text-white/90">
-                  {activeMeta.metric}
-                </span>
+              <div className="flex items-center gap-2.5 text-[#FFA733] font-monument text-xs font-bold uppercase tracking-[0.22em] drop-shadow">
+                <span className="h-1.5 w-1.5 bg-[#FFA733] shadow-[0_0_8px_#FFA733]" />
+                <span>{activeCard.tag}</span>
+                <span className="text-white/30">|</span>
+                <span className="text-white/90 font-mono">{activeMeta.metric}</span>
               </div>
 
               <h3 className="font-card text-2xl sm:text-3xl lg:text-4xl font-extrabold tracking-tight text-white leading-tight drop-shadow-md">
@@ -171,7 +167,7 @@ export function ProductionBento(): React.ReactElement {
               </p>
 
               <div className="pt-2 flex flex-wrap items-center gap-4 text-xs font-semibold text-[#E6C986]">
-                <span className="inline-flex items-center gap-1.5 bg-black/50 backdrop-blur-md px-3 py-1.5 border border-white/15">
+                <span className="inline-flex items-center gap-1.5 text-white/90 font-mono text-xs">
                   <ShieldCheck className="h-4 w-4 text-[#FFA733]" />
                   {activeCard.checkBadge}
                 </span>
@@ -180,6 +176,46 @@ export function ProductionBento(): React.ReactElement {
                 </span>
               </div>
             </div>
+          </div>
+        </div>
+
+        {/* Official Fleischmanufaktur Partner: MEVA Döner Berlin (Ahrensfelde) */}
+        <div className="relative border border-white/15 bg-gradient-to-r from-[#140C08]/90 via-[#0D0704]/95 to-[#060302] p-6 sm:p-8 backdrop-blur-xl">
+          <div className="flex flex-col md:flex-row items-center justify-between gap-6">
+            <div className="flex flex-col sm:flex-row items-center gap-5 text-center sm:text-left">
+              <div className="h-16 w-36 shrink-0 bg-white/[0.04] border border-white/10 p-2 flex items-center justify-center">
+                <img
+                  src="/brand/meva-doner-logo-tight.png"
+                  alt="Meva Döner Berlin Logo"
+                  className="max-h-12 w-auto object-contain brightness-110"
+                />
+              </div>
+              <div className="space-y-1.5">
+                <div className="flex flex-wrap items-center justify-center sm:justify-start gap-2">
+                  <span className="font-eyebrow text-[11px] uppercase tracking-[0.20em] text-[#FFA733] font-bold">
+                    Zertifizierter Produktionspartner
+                  </span>
+                  <span className="text-white/20">|</span>
+                  <span className="font-mono text-xs text-white/60">Berlin / Ahrensfelde</span>
+                </div>
+                <h4 className="font-card text-lg sm:text-xl font-bold text-white">
+                  MEVA by Kahraman Dönerproduktion
+                </h4>
+                <p className="text-xs sm:text-sm text-[#D6CEC2] max-w-2xl leading-relaxed">
+                  Unsere Yaprak-Döner-Spieße stammen täglich frisch gesteckt aus der hochmodernen Berliner Fleischmanufaktur von Meva Döner — 100 % Halal zertifiziert (HQC & EHZ) und nach strengen EU-Veterinärstandards.
+                </p>
+              </div>
+            </div>
+
+            <a
+              href="https://mevadöner.de"
+              target="_blank"
+              rel="noopener noreferrer"
+              className="dcc-hero-glass-secondary group inline-flex items-center gap-2 px-5 py-3 font-monument text-xs font-bold uppercase tracking-wider text-white shrink-0 cursor-pointer"
+            >
+              <span>Meva Döner Web</span>
+              <ArrowUpRight className="h-4 w-4 text-[#FFA733] transition-transform duration-300 group-hover:translate-x-0.5 group-hover:-translate-y-0.5" />
+            </a>
           </div>
         </div>
       </div>

@@ -13,6 +13,7 @@ const HERO_MARQUEE_COPY = {
     servicesBannerLabel: 'DCC Catering Leistungen',
     services: [
       '100 % Yaprak Rind & Kalb',
+      'Manufaktur-Partner: MEVA Döner Berlin',
       'Live-Döner-Station',
       'Autarker Event-Trailer',
       '30 bis 800+ Gäste',
@@ -28,6 +29,7 @@ const HERO_MARQUEE_COPY = {
     servicesBannerLabel: 'DCC Catering Services',
     services: [
       '100% Yaprak Beef & Veal',
+      'Production Partner: MEVA Döner Berlin',
       'Live Döner Station',
       'Self-Contained Event Trailer',
       '30 to 800+ Guests',
@@ -43,6 +45,7 @@ const HERO_MARQUEE_COPY = {
     servicesBannerLabel: 'DCC Catering Hizmetleri',
     services: [
       '%100 Yaprak Dana & Et Döner',
+      'Üretim Ortağı: MEVA Döner Berlin',
       'Canlı Döner İstasyonu',
       'Tam Donanımlı Event-Trailer',
       '30 – 800+ Misafir',
@@ -147,14 +150,11 @@ export function Hero(_props?: Partial<HeroProps>): React.ReactElement {
       {/* Ultra-Clean Minimalist Hero Centerpiece with Spacious Breathing Room */}
       <div className="relative z-10 my-auto mx-auto w-full max-w-5xl px-4 sm:px-6 flex flex-col items-center text-center space-y-8 sm:space-y-12 py-8 sm:py-14">
         <div className="max-w-4xl space-y-6 sm:space-y-8">
-          {/* Delicate, architectural, airy Eyebrow */}
+          {/* Frameless, architectural, airy Eyebrow (No pill frame) */}
           <div className="overflow-hidden pb-1">
-            <div className="dcc-hero-mask-up inline-flex items-center gap-2.5 px-4 py-1.5 rounded-full bg-white/[0.04] border border-[#FFA733]/30 backdrop-blur-md">
-              <span className="h-1.5 w-1.5 rounded-full bg-[#FFA733] shadow-[0_0_8px_#FFA733]" />
-              <p className="font-monument text-[11px] sm:text-xs font-bold uppercase tracking-[0.32em] text-[#F6E5BE]/90">
-                {t.hero.eyebrow}
-              </p>
-            </div>
+            <p className="dcc-hero-mask-up font-monument text-xs sm:text-sm md:text-[15px] font-bold uppercase tracking-[0.28em] text-[#FFA733] drop-shadow-[0_2px_12px_rgba(255,167,51,0.25)]">
+              {t.hero.eyebrow}
+            </p>
           </div>
 
           {/* Grand Architectural Headline */}
@@ -184,6 +184,14 @@ export function Hero(_props?: Partial<HeroProps>): React.ReactElement {
             >
               <span>{t.hero.secondaryCta}</span>
             </a>
+          </div>
+
+          {/* Subtle B2B Fleischmanufaktur Partner Citation */}
+          <div className="pt-2 flex flex-wrap items-center justify-center gap-2 text-xs font-mono text-white/60 tracking-wider">
+            <span className="text-white/40">Fleischmanufaktur:</span>
+            <span className="font-bold text-white tracking-widest uppercase">MEVA DÖNER BERLIN</span>
+            <span className="text-[#FFA733]">·</span>
+            <span className="text-[#FFA733] font-semibold">100 % Halal & IFS-Standard</span>
           </div>
         </div>
       </div>

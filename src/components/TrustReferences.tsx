@@ -74,12 +74,12 @@ export function TrustReferences(): React.ReactElement {
                 <div className="absolute inset-0 bg-gradient-to-t from-black/95 via-black/60 to-black/35 group-hover:via-black/50 transition-colors duration-500" />
               </div>
 
-              {/* Top: Refined Scenario Pill */}
+              {/* Top: Frameless Scenario Tag */}
               <div className="relative z-10 flex items-center justify-between">
-                <span className="inline-flex items-center gap-2 px-3.5 py-1.5 rounded-full bg-black/60 border border-[#FFA733]/40 text-[#FFA733] font-monument text-xs font-bold uppercase tracking-[0.16em] backdrop-blur-md">
-                  <span className="h-1.5 w-1.5 rounded-full bg-[#FFA733] shadow-[0_0_6px_#FFA733]" />
-                  {item.tag}
-                </span>
+                <div className="flex items-center gap-2 text-[#FFA733] font-monument text-xs sm:text-[13px] font-extrabold uppercase tracking-[0.20em] drop-shadow-md">
+                  <span className="h-1.5 w-1.5 bg-[#FFA733] shadow-[0_0_6px_#FFA733]" />
+                  <span>{item.tag}</span>
+                </div>
                 <span className="font-serif italic text-3xl text-white/30 select-none">
                   “
                 </span>

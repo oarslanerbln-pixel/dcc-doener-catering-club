@@ -328,34 +328,35 @@ export function Calculator({
           {/* Left Column: Interactive Step-by-Step Wizard (Event -> Meat -> Setup -> Extras -> Guests Slider) */}
           <div className="space-y-6 min-w-0">
             {/* Architectural Step Wizard Status & Progress */}
-            <div className="bg-[#120A06]/95 border border-white/20 p-3.5 sm:p-5 backdrop-blur-xl shadow-lg space-y-3.5">
-              <div className="flex flex-col sm:flex-row sm:items-center justify-between gap-2 px-1">
+            <div className="bg-[#120A06]/95 border border-white/20 p-4 sm:p-6 backdrop-blur-xl shadow-lg space-y-4">
+              <div className="flex flex-col sm:flex-row sm:items-center justify-between gap-3 px-1">
                 <div className="flex items-center gap-3">
-                  <span className="inline-flex items-center justify-center px-2.5 py-1 bg-[#FFA733]/15 border border-[#FFA733]/40 text-[#FFA733] font-monument text-xs sm:text-[13px] font-extrabold tracking-wider">
+                  <span className="font-mono text-xs sm:text-sm font-bold text-[#FFA733] tracking-wider px-2.5 py-1 bg-[#FFA733]/10 border border-[#FFA733]/30">
                     0{activeStep} / 05
                   </span>
-                  <span className="font-monument text-sm sm:text-base font-extrabold uppercase tracking-wide text-white">
+                  <span className="h-4 w-[1px] bg-white/20" />
+                  <span className="font-monument text-sm sm:text-base font-bold uppercase tracking-wider text-white">
                     {STEP_ITEMS[activeStep - 1].label}
                   </span>
                 </div>
-                <div className="flex items-center gap-2 text-xs font-medium text-[#D6CEC2]">
-                  <span className="inline-block h-1.5 w-1.5 rounded-full bg-[#FFA733] animate-pulse" />
-                  <span>
+                <div className="flex items-center gap-2 text-xs font-medium text-white/70">
+                  <span className="inline-block h-2 w-2 bg-[#FFA733] animate-pulse" />
+                  <span className="font-sans">
                     {activeStep < 4 ? extraCopy.clickToAdvanceHint : extraCopy.finalStepHint}
                   </span>
                 </div>
               </div>
 
               {/* Architectural Ambient Progress Fill Line */}
-              <div className="h-1 w-full bg-white/10 overflow-hidden rounded-full">
+              <div className="h-[2px] w-full bg-white/10 overflow-hidden">
                 <div
-                  className="h-full bg-gradient-to-r from-[#FF8C00] via-[#FFA733] to-[#FFD580] transition-all duration-500 ease-out"
+                  className="h-full bg-gradient-to-r from-[#FF8C00] via-[#FFA733] to-[#FFD580] transition-all duration-400 ease-out"
                   style={{ width: `${(activeStep / 5) * 100}%` }}
                 />
               </div>
 
-              {/* 5 Clickable Step Tabs (Smooth Horizontal Track on Mobile, 5-Col Grid on Tablet/Desktop) */}
-              <div className="flex items-center gap-1.5 overflow-x-auto pb-1 sm:pb-0 scrollbar-none sm:grid sm:grid-cols-5 sm:gap-2">
+              {/* 5 Clickable Step Tabs (Clean, Calming, Highly Legible Typography) */}
+              <div className="flex items-center gap-2 overflow-x-auto pb-1 sm:pb-0 scrollbar-none sm:grid sm:grid-cols-5 sm:gap-2">
                 {STEP_ITEMS.map((item) => {
                   const isActive = activeStep === item.id;
                   const isCompleted = item.id < activeStep;
@@ -366,15 +367,15 @@ export function Calculator({
                       data-testid={`calc-tab-step-${item.id}`}
                       aria-selected={isActive}
                       onClick={() => setActiveStep(item.id)}
-                      className={`flex shrink-0 sm:shrink items-center justify-center gap-1.5 sm:gap-2 py-2 sm:py-3 px-3 sm:px-2.5 text-center transition-all duration-200 cursor-pointer border whitespace-nowrap ${isActive
-                        ? 'bg-white border-white text-[#060606] font-extrabold shadow-[0_4px_20px_rgba(0,0,0,0.4)]'
+                      className={`flex shrink-0 sm:shrink items-center justify-center gap-2 py-2.5 sm:py-3 px-3 sm:px-2 text-center transition-all duration-200 cursor-pointer border whitespace-nowrap ${isActive
+                        ? 'bg-white border-white text-[#060606] font-bold shadow-[0_4px_20px_rgba(0,0,0,0.4)]'
                         : isCompleted
-                          ? 'bg-[#1C0E08]/90 border-white/35 text-white hover:border-white hover:bg-white/10'
-                          : 'bg-[#140A06]/60 border-white/15 text-white/55 hover:border-white/35 hover:text-white'
+                          ? 'bg-white/[0.06] border-white/25 text-white hover:border-[#FFA733] hover:text-white'
+                          : 'bg-transparent border-white/10 text-white/50 hover:border-white/30 hover:text-white'
                         }`}
                     >
                       <span
-                        className={`inline-flex items-center justify-center h-4 w-4 sm:h-5 sm:w-5 text-[9px] sm:text-[10px] font-monument font-extrabold shrink-0 ${isActive
+                        className={`inline-flex items-center justify-center h-4 w-4 sm:h-5 sm:w-5 text-[10px] sm:text-[11px] font-mono font-bold shrink-0 ${isActive
                           ? 'bg-[#060606] text-white'
                           : isCompleted
                             ? 'bg-[#FFA733] text-[#060606]'
@@ -383,7 +384,7 @@ export function Calculator({
                       >
                         {isCompleted ? '✓' : item.num}
                       </span>
-                      <span className="font-monument text-[11px] sm:text-xs font-bold uppercase tracking-wider">
+                      <span className="font-sans text-xs sm:text-[13px] font-semibold tracking-normal">
                         {item.label}
                       </span>
                     </button>
@@ -845,14 +846,14 @@ export function Calculator({
               {/* STEP 05: What Kind of Event? */}
               {activeStep === 5 && (
                 <div key="step-5" className="dcc-step-container space-y-7">
-                  <div>
-                    <span className="font-eyebrow text-xs sm:text-[13.5px] font-bold uppercase tracking-[0.22em] text-[#FFA733]">
+                  <div className="space-y-2">
+                    <span className="font-mono text-xs sm:text-[13px] font-bold tracking-wider text-[#FFA733]">
                       05 / 05 · {STEP_ITEMS[4].label}
                     </span>
-                    <h3 className="mt-2 font-monument text-2xl sm:text-3xl font-extrabold tracking-tight text-white">
+                    <h3 className="font-monument text-2xl sm:text-3xl font-extrabold tracking-tight text-white">
                       {extraCopy.eventStepTitle}
                     </h3>
-                    <p className="mt-2 text-sm sm:text-base text-white/65">
+                    <p className="text-sm sm:text-base leading-relaxed text-white/75 max-w-xl">
                       {extraCopy.eventStepSubtitle}
                     </p>
                   </div>
@@ -871,8 +872,8 @@ export function Calculator({
                           data-active={String(active)}
                           onClick={() => handleSelectEvent(ev)}
                           className={`group flex flex-col justify-between gap-4 p-6 sm:p-7 min-h-[180px] sm:min-h-[200px] text-left transition-all duration-200 cursor-pointer border ${active
-                            ? 'bg-gradient-to-br from-[#2E160C] via-[#1D0C06] to-[#120704] border-[#FFA733] shadow-[0_0_28px_rgba(255,167,51,0.28)] text-white scale-[1.01]'
-                            : 'bg-gradient-to-br from-[#1A0E08]/90 via-[#130A05]/90 to-[#0C0603]/90 border-white/15 text-white hover:border-[#FFA733]/60 hover:bg-[#20110A] hover:scale-[1.008]'
+                            ? 'bg-white/[0.08] border-[#FFA733] shadow-[0_0_24px_rgba(255,167,51,0.22)] text-white'
+                            : 'bg-[#0D0F0E]/80 border-white/15 text-white hover:border-white/30 hover:bg-white/[0.03]'
                             }`}
                         >
                           <div className="space-y-2.5 w-full">

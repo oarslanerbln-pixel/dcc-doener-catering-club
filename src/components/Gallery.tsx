@@ -187,17 +187,17 @@ export function Gallery({ onApplyPreset }: GalleryProps): React.ReactElement {
             <div className="absolute inset-0 bg-radial-gradient from-transparent via-black/30 to-black/70 pointer-events-none" />
           </div>
 
-          {/* Top Tag & Counter Capsule */}
+          {/* Top Tag & Counter Row (Frameless Architectural) */}
           <div className="relative z-10 flex items-center justify-between gap-4">
-            <span className="inline-flex items-center gap-2 px-4 py-1.5 rounded-full bg-black/60 border border-[#FFA733]/40 text-[#FFA733] font-monument text-xs font-bold uppercase tracking-[0.20em] backdrop-blur-md">
-              <span className="h-2 w-2 rounded-full bg-[#FFA733] shadow-[0_0_8px_#FFA733]" />
-              {currentCopy.tag}
-            </span>
+            <div className="flex items-center gap-2.5 text-[#FFA733] font-monument text-xs sm:text-sm font-extrabold uppercase tracking-[0.24em] drop-shadow-md">
+              <span className="h-2 w-2 bg-[#FFA733] shadow-[0_0_8px_#FFA733]" />
+              <span>{currentCopy.tag}</span>
+            </div>
 
             <div
               role="tablist"
               aria-label={t.gallery.title}
-              className="hidden sm:flex items-center gap-2 px-3 py-1.5 rounded-full bg-black/50 border border-white/15 backdrop-blur-md"
+              className="hidden sm:flex items-center gap-2.5"
             >
               {GALLERY_SLIDES.map((slide, idx) => {
                 const active = idx === activeIndex;
@@ -210,10 +210,10 @@ export function Gallery({ onApplyPreset }: GalleryProps): React.ReactElement {
                     aria-selected={active}
                     aria-label={`${t.gallery.dotAriaPrefix} ${idx + 1}`}
                     onClick={() => setActiveIndex(idx)}
-                    className={`h-2 transition-all duration-300 rounded-full cursor-pointer ${
+                    className={`h-1.5 transition-all duration-300 cursor-pointer ${
                       active
                         ? 'w-8 bg-[#FFA733] shadow-[0_0_8px_#FFA733]'
-                        : 'w-2 bg-white/25 hover:bg-white/50'
+                        : 'w-3 bg-white/30 hover:bg-white/60'
                     }`}
                   />
                 );

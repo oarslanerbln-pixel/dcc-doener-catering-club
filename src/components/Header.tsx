@@ -86,7 +86,7 @@ export function Header({
               aria-label={t.header.langSwitcherAria}
               aria-expanded={langOpen}
               onClick={() => setLangOpen((prev) => !prev)}
-              className="inline-flex items-center gap-1.5 px-3 py-1.5 rounded-full bg-white/[0.06] hover:bg-white/[0.14] text-white transition-all duration-200 cursor-pointer font-monument text-xs font-bold uppercase tracking-wider focus:outline-none"
+              className="inline-flex items-center gap-1.5 px-3 py-1.5 bg-white/[0.04] hover:bg-white/[0.10] text-white transition-all duration-200 cursor-pointer font-monument text-xs font-bold uppercase tracking-wider focus:outline-none"
             >
               <span className="text-[#FFA733] font-extrabold">{t.header.langLabels[locale]}</span>
               <ChevronDown
