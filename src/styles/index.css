@@ -171,8 +171,15 @@ body {
     box-shadow 260ms var(--ease-expo-out);
 }
 
+#rechner .dcc-rechner-module {
+  background-color: #FFFFFF;
+  border: 1px solid #EAE2D5;
+  box-shadow: 0 12px 32px -22px rgba(11, 13, 12, 0.14);
+}
+
 #rechner .dcc-calc-tile {
-  background-color: #F1EBE0;
+  background-color: #FAF7F2;
+  border: 1px solid #EAE2D5;
   color: #0B0D0C;
 }
 
@@ -207,7 +214,8 @@ body {
 }
 
 #rechner .dcc-calc-tile:hover {
-  background-color: #E8DFCF;
+  background-color: #F3EDE2;
+  border-color: #D8CCB8;
 }
 
 .dcc-calc-tile:hover::before {
@@ -234,13 +242,16 @@ body {
 #rechner .dcc-calc-tile-active {
   background: linear-gradient(
     120deg,
-    rgba(154, 114, 38, 0.13) 0%,
-    rgba(20, 143, 99, 0.07) 52%,
-    rgba(212, 168, 83, 0.15) 100%
+    rgba(212, 168, 83, 0.14) 0%,
+    rgba(43, 196, 138, 0.06) 55%,
+    rgba(212, 168, 83, 0.12) 100%
   );
-  background-color: #FBF4E4;
+  background-color: #FDF8EC;
+  border: 1px solid #D4A853;
   animation: none;
-  box-shadow: inset 3px 0 0 0 #9A7226;
+  box-shadow:
+    inset 4px 0 0 0 #0F7550,
+    0 10px 24px -18px rgba(154, 114, 38, 0.35);
 }
 
 /* Sharp Architectural Frameless Card with Cursor-Tracking Gold-Emerald Hover Sheen */
@@ -504,6 +515,47 @@ input[type="range"].dcc-slider::-moz-range-thumb {
   );
   background-size: 16px 8px;
   background-repeat: repeat-x;
+}
+
+@keyframes dcc-hero-kenburns {
+  0% {
+    transform: scale(1.02) translate3d(0, 0, 0);
+  }
+  100% {
+    transform: scale(1.09) translate3d(-1.2%, -0.8%, 0);
+  }
+}
+
+.dcc-hero-kenburns {
+  animation: dcc-hero-kenburns 24s ease-in-out infinite alternate;
+  will-change: transform;
+}
+
+@keyframes dcc-marquee-scroll {
+  0% {
+    transform: translate3d(0, 0, 0);
+  }
+  100% {
+    transform: translate3d(-50%, 0, 0);
+  }
+}
+
+.dcc-marquee-track {
+  display: flex;
+  width: max-content;
+  animation: dcc-marquee-scroll 42s linear infinite;
+  will-change: transform;
+}
+
+.dcc-marquee-viewport:hover .dcc-marquee-track {
+  animation-play-state: paused;
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .dcc-hero-kenburns,
+  .dcc-marquee-track {
+    animation: none !important;
+  }
 }
 
 /* IntroSplash Architectural Crest & Optical Light-Sweep Choreography */
