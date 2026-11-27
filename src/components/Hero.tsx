@@ -172,15 +172,11 @@ export function Hero({
           </div>
         )}
 
-        <div className="max-w-4xl space-y-5 sm:space-y-6">
-          <div className="overflow-hidden">
-            <div className="dcc-hero-mask-up inline-flex items-center gap-2.5 sm:gap-3.5 px-4 sm:px-5 py-1.5 sm:py-2 border border-[#E6C986]/35 bg-[#0A0A0A]/70 backdrop-blur-md shadow-[0_4px_30px_rgba(0,0,0,0.5)]">
-              <span className="h-1.5 w-1.5 rounded-full bg-[#E6C986] shadow-[0_0_8px_#E6C986]" />
-              <span className="font-serif italic text-base sm:text-xl md:text-[22px] font-normal text-[#FBF1DE] tracking-[0.05em] leading-none">
-                {t.hero.eyebrow}
-              </span>
-              <span className="h-1.5 w-1.5 rounded-full bg-[#E6C986] shadow-[0_0_8px_#E6C986]" />
-            </div>
+        <div className="max-w-4xl space-y-4 sm:space-y-5">
+          <div className="overflow-hidden pb-1 -mt-2 sm:-mt-4">
+            <p className="dcc-hero-mask-up font-serif italic text-lg sm:text-2xl md:text-[26px] font-normal text-[#F6E5BE] tracking-[0.08em] leading-none drop-shadow-[0_2px_16px_rgba(212,168,83,0.35)]">
+              {t.hero.eyebrow}
+            </p>
           </div>
 
           <div className="overflow-hidden">
