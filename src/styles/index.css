@@ -142,28 +142,31 @@ body {
   animation-delay: 110ms;
 }
 
-/* Calculator (#rechner) Luxury Culinary Ember-Orange Stage */
+/* Calculator (#rechner) Deep Smoky Burnt-Orange & Ember Stage */
 #rechner {
-  --bg-main: #C44100;
-  --bg-card: rgba(18, 10, 6, 0.92);
-  --bg-subtle: rgba(28, 14, 8, 0.95);
+  --bg-main: #8F2C00;
+  --bg-card: rgba(14, 7, 4, 0.94);
+  --bg-subtle: rgba(22, 11, 6, 0.96);
   --text-primary: #FFFFFF;
   --text-secondary: rgba(255, 255, 255, 0.85);
   --text-muted: rgba(255, 255, 255, 0.60);
   --brand-primary: #FFA733;
   --brand-accent: #FFFFFF;
-  --border-main: rgba(255, 255, 255, 0.18);
-  --slider-track: rgba(255, 255, 255, 0.28);
+  --border-main: rgba(255, 255, 255, 0.16);
+  --slider-track: rgba(255, 255, 255, 0.25);
   --slider-thumb: #FFFFFF;
-  --receipt-bg: #120A06;
+  --receipt-bg: #100804;
   --receipt-text: #FFFFFF;
   --receipt-accent: #FFA733;
-  background-color: #B83A00;
+  background-color: #0A0402;
   background-image:
-    radial-gradient(ellipse 95% 45% at 50% 0%, #FF6000 0%, #D44200 35%, #8E2600 70%, #3D0C00 100%),
-    radial-gradient(ellipse 80% 50% at 15% 45%, rgba(255, 120, 20, 0.42) 0%, transparent 70%),
-    radial-gradient(ellipse 80% 50% at 85% 65%, rgba(255, 90, 0, 0.38) 0%, transparent 70%),
-    linear-gradient(180deg, #060606 0%, #A33200 12%, #852600 85%, #060606 100%);
+    /* Deep dark top fade transitioning seamlessly from pure black to rich smoky burnt orange */
+    linear-gradient(180deg, #060606 0%, #150602 8%, #421200 20%, #752200 38%, #9E3200 55%, #752200 74%, #280800 89%, #060606 100%),
+    /* Soft central radial warmth glowing behind the active calculator card */
+    radial-gradient(ellipse 90% 55% at 50% 48%, rgba(255, 90, 10, 0.28) 0%, rgba(180, 50, 0, 0.16) 50%, transparent 85%),
+    /* Atmospheric ambient ember glow spots */
+    radial-gradient(ellipse 70% 45% at 15% 52%, rgba(230, 80, 0, 0.20) 0%, transparent 70%),
+    radial-gradient(ellipse 70% 45% at 85% 62%, rgba(210, 70, 0, 0.18) 0%, transparent 70%);
   color: #FFFFFF;
   position: relative;
   overflow: hidden;

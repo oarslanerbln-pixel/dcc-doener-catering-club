@@ -253,9 +253,9 @@ export function Calculator({
         aria-hidden="true"
         className="pointer-events-none absolute inset-0 overflow-hidden"
       >
-        <div className="absolute -top-32 left-1/2 -translate-x-1/2 w-[850px] h-[450px] bg-gradient-to-b from-[#FFA233]/25 via-[#FF5500]/15 to-transparent rounded-full blur-3xl" />
-        <div className="absolute top-1/4 -left-40 w-[600px] h-[600px] bg-[#FF4500]/20 rounded-full blur-[140px]" />
-        <div className="absolute bottom-16 -right-40 w-[600px] h-[600px] bg-[#FF7700]/22 rounded-full blur-[140px]" />
+        <div className="absolute -top-32 left-1/2 -translate-x-1/2 w-[850px] h-[450px] bg-gradient-to-b from-transparent via-[#802000]/10 to-[#B33800]/15 rounded-full blur-3xl" />
+        <div className="absolute top-1/3 -left-40 w-[550px] h-[550px] bg-[#9E2E00]/15 rounded-full blur-[140px]" />
+        <div className="absolute bottom-16 -right-40 w-[550px] h-[550px] bg-[#7A2200]/15 rounded-full blur-[140px]" />
       </div>
 
       <div className="relative z-10 mx-auto max-w-7xl px-4 sm:px-6 space-y-12">
@@ -275,7 +275,7 @@ export function Calculator({
         {/* Mobile/Tablet Sticky Live Quote Bar */}
         <div
           data-testid="mobile-calculator-sticky-bar"
-          className="min-[960px]:hidden sticky top-[88px] sm:top-[96px] z-20 bg-[#120A06]/95 border border-white/20 px-4 py-3.5 backdrop-blur-xl flex items-center justify-between gap-3 shadow-lg"
+          className="min-[960px]:hidden sticky top-16 sm:top-20 z-20 bg-[#120A06]/95 border border-white/20 px-4 py-3 backdrop-blur-xl flex items-center justify-between gap-3 shadow-lg"
         >
           <div className="min-w-0 flex-1">
             <div className="font-monument text-xs font-bold uppercase tracking-[0.12em] text-white/65 truncate">
@@ -316,8 +316,8 @@ export function Calculator({
                 </span>
               </div>
 
-              {/* 5 Clickable Step Tabs */}
-              <div className="grid grid-cols-5 gap-1.5 sm:gap-2">
+              {/* 5 Clickable Step Tabs (Smooth Horizontal Track on Mobile, 5-Col Grid on Tablet/Desktop) */}
+              <div className="flex items-center gap-1.5 overflow-x-auto pb-1 sm:pb-0 scrollbar-none sm:grid sm:grid-cols-5 sm:gap-2">
                 {STEP_ITEMS.map((item) => {
                   const isActive = activeStep === item.id;
                   const isCompleted = item.id < activeStep;
@@ -328,7 +328,7 @@ export function Calculator({
                       data-testid={`calc-tab-step-${item.id}`}
                       aria-selected={isActive}
                       onClick={() => setActiveStep(item.id)}
-                      className={`flex flex-col sm:flex-row items-center justify-center gap-1 sm:gap-2 py-2.5 sm:py-3 px-1.5 sm:px-2.5 text-center transition-all duration-200 cursor-pointer border ${
+                      className={`flex shrink-0 sm:shrink items-center justify-center gap-1.5 sm:gap-2 py-2 sm:py-3 px-3 sm:px-2.5 text-center transition-all duration-200 cursor-pointer border whitespace-nowrap ${
                         isActive
                           ? 'bg-white border-white text-[#060606] font-extrabold shadow-[0_4px_20px_rgba(0,0,0,0.4)]'
                           : isCompleted
@@ -337,7 +337,7 @@ export function Calculator({
                       }`}
                     >
                       <span
-                        className={`inline-flex items-center justify-center h-4 w-4 sm:h-5 sm:w-5 text-[9px] sm:text-[10px] font-monument font-extrabold ${
+                        className={`inline-flex items-center justify-center h-4 w-4 sm:h-5 sm:w-5 text-[9px] sm:text-[10px] font-monument font-extrabold shrink-0 ${
                           isActive
                             ? 'bg-[#060606] text-white'
                             : isCompleted
@@ -347,7 +347,7 @@ export function Calculator({
                       >
                         {isCompleted ? '✓' : item.num}
                       </span>
-                      <span className="font-monument text-[10px] sm:text-xs font-bold uppercase tracking-wider truncate max-w-full">
+                      <span className="font-monument text-[11px] sm:text-xs font-bold uppercase tracking-wider">
                         {item.label}
                       </span>
                     </button>
@@ -889,24 +889,24 @@ export function Calculator({
               )}
 
               {/* Step Navigation Controls (Zurück / Weiter) */}
-              <div className="flex items-center justify-between gap-3 pt-6 border-t border-white/15">
+              <div className="flex flex-col-reverse sm:flex-row items-stretch sm:items-center justify-between gap-3 pt-6 border-t border-white/15">
                 {activeStep > 1 ? (
                   <button
                     type="button"
                     onClick={() => setActiveStep((prev) => Math.max(1, prev - 1))}
-                    className="inline-flex items-center gap-2 px-5 py-3 bg-[#1C0E08] border border-white/25 font-monument text-xs sm:text-[13px] font-bold uppercase tracking-wider text-white transition-all hover:bg-white hover:text-[#060606] cursor-pointer"
+                    className="inline-flex min-h-[48px] items-center justify-center gap-2 px-5 py-3 bg-[#1C0E08] border border-white/25 font-monument text-xs sm:text-[13px] font-bold uppercase tracking-wider text-white transition-all hover:bg-white hover:text-[#060606] cursor-pointer"
                   >
                     <span>← {extraCopy.btnBack}</span>
                   </button>
                 ) : (
-                  <div />
+                  <div className="hidden sm:block" />
                 )}
 
                 {activeStep < 5 ? (
                   <button
                     type="button"
                     onClick={() => setActiveStep((prev) => Math.min(5, prev + 1))}
-                    className="inline-flex items-center gap-2 px-7 py-3.5 bg-white border border-white font-monument text-xs sm:text-[13px] font-extrabold uppercase tracking-wider text-[#060606] shadow-[0_4px_20px_rgba(255,255,255,0.25)] transition-all hover:bg-white/90 hover:-translate-y-0.5 cursor-pointer ml-auto"
+                    className="inline-flex min-h-[52px] items-center justify-center gap-2 px-7 py-3.5 bg-white border border-white font-monument text-xs sm:text-[13px] font-extrabold uppercase tracking-wider text-[#060606] shadow-[0_4px_20px_rgba(255,255,255,0.25)] transition-all hover:bg-white/90 hover:-translate-y-0.5 cursor-pointer sm:ml-auto"
                   >
                     <span>
                       {extraCopy.btnNext}: {STEP_ITEMS[activeStep].label} →
@@ -916,7 +916,7 @@ export function Calculator({
                   <button
                     type="button"
                     onClick={onOpenModal}
-                    className="inline-flex items-center gap-2 px-7 py-3.5 bg-white border border-white font-monument text-xs sm:text-[13px] font-extrabold uppercase tracking-wider text-[#060606] shadow-[0_4px_20px_rgba(255,255,255,0.25)] transition-all hover:bg-white/90 hover:-translate-y-0.5 cursor-pointer ml-auto"
+                    className="inline-flex min-h-[52px] items-center justify-center gap-2 px-7 py-3.5 bg-white border border-white font-monument text-xs sm:text-[13px] font-extrabold uppercase tracking-wider text-[#060606] shadow-[0_4px_20px_rgba(255,255,255,0.25)] transition-all hover:bg-white/90 hover:-translate-y-0.5 cursor-pointer sm:ml-auto"
                   >
                     <span>{t.receipt.modalCta} →</span>
                   </button>
