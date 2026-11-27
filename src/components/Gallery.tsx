@@ -237,10 +237,10 @@ export function Gallery({ onApplyPreset }: GalleryProps): React.ReactElement {
                     aria-selected={active}
                     aria-label={`${t.gallery.dotAriaPrefix} ${idx + 1}`}
                     onClick={() => setActiveIndex(idx)}
-                    className={`h-2 rounded-full transition-all cursor-pointer ${
+                    className={`h-1.5 transition-all duration-[260ms] cursor-pointer ${
                       active
                         ? 'w-10 bg-[var(--brand-primary)]'
-                        : 'w-2 bg-[var(--border-main)] hover:bg-[var(--text-muted)]'
+                        : 'w-3 bg-white/15 hover:bg-white/35'
                     }`}
                   />
                 );

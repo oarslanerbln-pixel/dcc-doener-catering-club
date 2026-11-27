@@ -201,18 +201,18 @@ export function Calculator({
   return (
     <section
       id="rechner"
-      className="relative border-b border-[var(--border-main)] py-14 sm:py-20 lg:py-24"
+      className="relative border-b border-[#E4DBCC] bg-[#FAF6EF] text-[#0B0D0C] py-14 sm:py-20 lg:py-24"
     >
       <div className="mx-auto max-w-7xl px-4 sm:px-6 space-y-8">
-        {/* Clean Minimalist Header */}
+        {/* Clean Minimalist Light Architectural Header */}
         <div className="max-w-2xl space-y-2.5">
-          <p className="font-mono text-[11px] font-medium uppercase tracking-[0.22em] text-[var(--brand-primary)]">
+          <p className="font-mono text-[11px] font-semibold uppercase tracking-[0.22em] text-[#855F18]">
             {t.calculator.eyebrow}
           </p>
-          <h2 className="font-monument text-2xl sm:text-3xl lg:text-4xl font-semibold tracking-tight text-[var(--text-primary)]">
+          <h2 className="font-monument text-2xl sm:text-3xl lg:text-4xl font-semibold tracking-tight text-[#0B0D0C]">
             {t.calculator.title}
           </h2>
-          <p className="text-sm sm:text-base text-[var(--text-secondary)]">
+          <p className="text-sm sm:text-base text-[#2D3532]">
             {t.calculator.subtitle}
           </p>
         </div>
@@ -220,18 +220,18 @@ export function Calculator({
         {/* Mobile/Tablet Sticky Live Quote Bar */}
         <div
           data-testid="mobile-calculator-sticky-bar"
-          className="min-[960px]:hidden sticky top-[88px] sm:top-[96px] z-20 dcc-rechner-module px-3.5 py-2.5 shadow-[0_12px_30px_-10px_rgba(0,0,0,0.9)] backdrop-blur-xl flex items-center justify-between gap-2.5"
+          className="min-[960px]:hidden sticky top-[88px] sm:top-[96px] z-20 dcc-rechner-module bg-white/95 px-3.5 py-2.5 shadow-[0_12px_28px_-12px_rgba(11,13,12,0.18)] backdrop-blur-xl flex items-center justify-between gap-2.5"
         >
           <div className="min-w-0 flex-1">
-            <div className="font-mono text-[10px] uppercase tracking-wider text-[var(--text-muted)] truncate">
+            <div className="font-mono text-[10px] uppercase tracking-wider text-[#535D58] truncate">
               {result.effectiveGuests} {extraCopy.mobileStickyGuests} ·{' '}
               {t.calculator.steps.spits.items[input.meatId].title}
             </div>
             <div className="flex items-baseline gap-2 truncate">
-              <span className="font-mono tabular-nums text-sm font-bold text-[#F2D58B]">
+              <span className="font-mono tabular-nums text-sm font-bold text-[#855F18]">
                 {formatCurrency(result.subtotalNet, locale)}
               </span>
-              <span className="font-mono tabular-nums text-[11px] text-[var(--text-secondary)] truncate">
+              <span className="font-mono tabular-nums text-[11px] text-[#2D3532] truncate">
                 ({formatCurrency(result.perGuestNet, locale)}{' '}
                 {extraCopy.mobileStickyPerGuest})
               </span>
@@ -240,7 +240,7 @@ export function Calculator({
 
           <a
             href="#rechner-summary"
-            className="inline-flex items-center gap-1 bg-[var(--brand-primary)] px-3.5 py-2 font-mono text-xs font-bold uppercase text-[var(--btn-text)] shrink-0"
+            className="inline-flex items-center gap-1 bg-[#0B0D0C] px-3.5 py-2 font-mono text-xs font-bold uppercase text-[#FAF6EF] transition-colors duration-[260ms] hover:bg-[#9A7226] shrink-0"
           >
             <span>{extraCopy.mobileStickySummaryBtn}</span>
             <ArrowDown className="h-3.5 w-3.5" />
@@ -248,30 +248,30 @@ export function Calculator({
         </div>
 
         <div className="dcc-configurator-grid">
-          {/* Left Column: 4 Sharp Frameless Architectural Modules with Slow Light-Gold Loop */}
+          {/* Left Column: 4 Sharp Frameless Light Architectural Modules */}
           <div className="space-y-6 min-w-0">
             {/* STEP 01: Guests & Volume Discount */}
             <div className="dcc-rechner-module p-5 sm:p-7 space-y-5">
               <div className="flex flex-wrap items-start justify-between gap-3">
                 <div>
-                  <span className="font-mono text-[11px] font-medium uppercase tracking-[0.2em] text-[#F2D58B]">
+                  <span className="font-mono text-[11px] font-semibold uppercase tracking-[0.2em] text-[#855F18]">
                     {extraCopy.stepPrefix} {t.calculator.steps.guests.index}
                   </span>
-                  <h3 className="mt-1 font-monument text-lg sm:text-xl font-bold text-white">
+                  <h3 className="mt-1 font-monument text-lg sm:text-xl font-bold text-[#0B0D0C]">
                     {t.calculator.steps.guests.title}
                   </h3>
-                  <p className="mt-0.5 text-xs sm:text-sm text-[var(--text-secondary)]">
+                  <p className="mt-0.5 text-xs sm:text-sm text-[#2D3532]">
                     {t.calculator.steps.guests.subtitle}
                   </p>
                 </div>
 
-                <div className="bg-white/[0.04] px-3.5 py-2 text-right">
-                  <div className="font-mono text-[10px] uppercase tracking-wider text-[var(--text-muted)]">
+                <div className="bg-[#F1EBE0] px-3.5 py-2 text-right">
+                  <div className="font-mono text-[10px] uppercase tracking-wider text-[#535D58]">
                     {t.calculator.steps.guests.activeDiscountPrefix}
                   </div>
                   <div
                     data-testid="active-discount-badge"
-                    className="font-mono tabular-nums text-sm font-bold text-[#F2D58B]"
+                    className="font-mono tabular-nums text-sm font-bold text-[#0F7550]"
                   >
                     {discountPct > 0
                       ? `-${discountPct} %`
@@ -281,15 +281,15 @@ export function Calculator({
               </div>
 
               {/* Clean Digital Readout + Sharp Tactile Stepper */}
-              <div className="flex flex-col sm:flex-row sm:items-center sm:justify-between gap-3 sm:gap-4 bg-[#070808] p-3.5 sm:p-4">
+              <div className="flex flex-col sm:flex-row sm:items-center sm:justify-between gap-3 sm:gap-4 bg-[#F1EBE0] p-3.5 sm:p-4">
                 <div>
                   <label
                     htmlFor="dcc-guest-input"
-                    className="block text-sm font-semibold text-white"
+                    className="block text-sm font-semibold text-[#0B0D0C]"
                   >
                     {t.calculator.steps.guests.inputLabel}
                   </label>
-                  <span className="font-mono text-[11px] text-[var(--text-muted)]">
+                  <span className="font-mono text-[11px] text-[#535D58]">
                     {t.calculator.steps.guests.minOrderNote}
                   </span>
                 </div>
@@ -300,7 +300,7 @@ export function Calculator({
                     data-testid="guest-minus"
                     aria-label={t.calculator.steps.guests.decreaseAria}
                     onClick={handleStepMinus}
-                    className="inline-flex h-12 w-12 items-center justify-center bg-[#141615] text-base font-bold text-white transition hover:bg-[#D4A853] hover:text-[#050505] cursor-pointer"
+                    className="inline-flex h-12 w-12 items-center justify-center bg-white text-base font-bold text-[#0B0D0C] transition-colors duration-[260ms] hover:bg-[#D4A853] hover:text-[#050505] cursor-pointer"
                   >
                     <Minus className="h-5 w-5" />
                   </button>
@@ -320,7 +320,7 @@ export function Calculator({
                         handleGuestInputCommit();
                       }
                     }}
-                    className="h-12 w-28 bg-[#101211] px-2.5 text-center font-mono tabular-nums text-xl font-bold text-[#F2D58B] focus:bg-[#161918] focus:outline-none"
+                    className="h-12 w-28 bg-white px-2.5 text-center font-mono tabular-nums text-xl font-bold text-[#0B0D0C] transition-colors duration-[260ms] focus:bg-[#FAF6EF] focus:outline-none"
                   />
 
                   <button
@@ -328,7 +328,7 @@ export function Calculator({
                     data-testid="guest-plus"
                     aria-label={t.calculator.steps.guests.increaseAria}
                     onClick={handleStepPlus}
-                    className="inline-flex h-12 w-12 items-center justify-center bg-[#141615] text-base font-bold text-white transition hover:bg-[#D4A853] hover:text-[#050505] cursor-pointer"
+                    className="inline-flex h-12 w-12 items-center justify-center bg-white text-base font-bold text-[#0B0D0C] transition-colors duration-[260ms] hover:bg-[#D4A853] hover:text-[#050505] cursor-pointer"
                   >
                     <Plus className="h-5 w-5" />
                   </button>
@@ -337,7 +337,7 @@ export function Calculator({
 
               {/* Sleek Range Slider */}
               <div className="space-y-2">
-                <div className="h-1 w-full overflow-hidden bg-white/10">
+                <div className="h-1 w-full overflow-hidden bg-[#E4DBCC]">
                   <div
                     className="h-full transition-all duration-200 dcc-gold-emerald-bar"
                     style={{ width: `${capacityProgress}%` }}
@@ -354,7 +354,7 @@ export function Calculator({
                   onChange={handleSliderChange}
                   className="dcc-slider"
                 />
-                <div className="flex items-center justify-between font-mono text-[10px] text-[var(--text-muted)]">
+                <div className="flex items-center justify-between font-mono text-[10px] text-[#535D58]">
                   <span>{extraCopy.tierScaleStart}</span>
                   <span>100 (-5%)</span>
                   <span>250 (-10%)</span>
@@ -364,12 +364,12 @@ export function Calculator({
               </div>
 
               {clampReason === 'below_min' && (
-                <p className="text-xs font-mono text-[var(--brand-accent)]">
+                <p className="text-xs font-mono font-medium text-[#0F7550]">
                   {t.calculator.steps.guests.clampedMinNotice}
                 </p>
               )}
               {clampReason === 'above_max' && (
-                <p className="text-xs font-mono text-[#F2D58B]">
+                <p className="text-xs font-mono font-medium text-[#855F18]">
                   {t.calculator.steps.guests.clampedMaxNotice}
                 </p>
               )}
@@ -389,10 +389,10 @@ export function Calculator({
                     <div
                       key={tier.key}
                       data-active={String(active)}
-                      className={`px-2.5 py-2.5 text-center font-mono text-[11px] transition ${
+                      className={`px-2.5 py-2.5 text-center font-mono text-[11px] transition-colors duration-[260ms] ${
                         active
-                          ? 'dcc-calc-tile-active font-bold text-[#F2D58B]'
-                          : 'bg-[#101211] text-[var(--text-muted)]'
+                          ? 'dcc-calc-tile-active font-bold text-[#0B0D0C]'
+                          : 'bg-[#F1EBE0] text-[#535D58]'
                       }`}
                     >
                       {t.calculator.steps.guests.tiers[tier.key]}
@@ -416,10 +416,10 @@ export function Calculator({
                         onClick={() =>
                           onChangeInput((prev) => ({ ...prev, eventType: ev }))
                         }
-                        className={`min-h-[42px] px-2 sm:px-4 py-2 text-[11px] sm:text-xs font-mono uppercase tracking-wider text-center truncate transition cursor-pointer ${
+                        className={`min-h-[42px] px-2 sm:px-4 py-2 text-[11px] sm:text-xs font-mono uppercase tracking-wider text-center truncate transition-colors duration-[260ms] cursor-pointer ${
                           active
-                            ? 'bg-[var(--brand-primary)] font-bold text-[var(--btn-text)]'
-                            : 'bg-[#121413] font-medium text-[var(--text-secondary)] hover:bg-[#191D1B] hover:text-white'
+                            ? 'bg-[#0B0D0C] font-bold text-white'
+                            : 'bg-[#F1EBE0] font-medium text-[#2D3532] hover:bg-[#E4DBCC] hover:text-[#0B0D0C]'
                         }`}
                       >
                         {t.calculator.steps.guests.eventTypes[ev].label}
@@ -442,10 +442,10 @@ export function Calculator({
                       enterprise800Plus: !prev.enterprise800Plus,
                     }))
                   }
-                  className={`inline-flex w-full sm:w-auto min-h-[42px] items-center justify-center gap-2 px-4 py-2 font-mono text-xs font-semibold uppercase tracking-wider transition cursor-pointer ${
+                  className={`inline-flex w-full sm:w-auto min-h-[42px] items-center justify-center gap-2 px-4 py-2 font-mono text-xs font-semibold uppercase tracking-wider transition-colors duration-[260ms] cursor-pointer ${
                     input.enterprise800Plus
-                      ? 'bg-[var(--brand-primary)] text-[var(--btn-text)]'
-                      : 'bg-[#121413] text-[var(--text-secondary)] hover:bg-[#191D1B] hover:text-white'
+                      ? 'bg-[#0F7550] text-white'
+                      : 'bg-[#F1EBE0] text-[#2D3532] hover:bg-[#E4DBCC] hover:text-[#0B0D0C]'
                   }`}
                 >
                   <Sparkles className="h-3.5 w-3.5" />
@@ -454,7 +454,7 @@ export function Calculator({
               </div>
 
               {input.enterprise800Plus && (
-                <div className="dcc-calc-tile-active p-3 text-xs text-[#F2D58B]">
+                <div className="dcc-calc-tile-active p-3 text-xs font-medium text-[#0B0D0C]">
                   {t.calculator.steps.guests.enterpriseActiveNote}
                 </div>
               )}
@@ -463,13 +463,13 @@ export function Calculator({
             {/* STEP 02: Sharp Frameless Döner Selection Tiles */}
             <div className="dcc-rechner-module p-5 sm:p-7 space-y-4">
               <div>
-                <span className="font-mono text-[11px] font-medium uppercase tracking-[0.2em] text-[#F2D58B]">
+                <span className="font-mono text-[11px] font-semibold uppercase tracking-[0.2em] text-[#855F18]">
                   {extraCopy.stepPrefix} {t.calculator.steps.spits.index}
                 </span>
-                <h3 className="mt-1 font-monument text-lg sm:text-xl font-bold text-white">
+                <h3 className="mt-1 font-monument text-lg sm:text-xl font-bold text-[#0B0D0C]">
                   {t.calculator.steps.spits.title}
                 </h3>
-                <p className="mt-0.5 text-xs sm:text-sm text-[var(--text-secondary)]">
+                <p className="mt-0.5 text-xs sm:text-sm text-[#2D3532]">
                   {t.calculator.steps.spits.subtitle}
                 </p>
               </div>
@@ -477,9 +477,9 @@ export function Calculator({
               {result.duoRequiresMinGuests && (
                 <div
                   data-testid="duo-min-warning"
-                  className="flex items-start gap-2.5 bg-[#1C1410] p-3 text-xs font-medium text-white"
+                  className="flex items-start gap-2.5 bg-[#FDF2EC] p-3 text-xs font-medium text-[#0B0D0C] shadow-[inset_3px_0_0_0_#A13618]"
                 >
-                  <ShieldAlert className="h-4 w-4 shrink-0 text-[var(--brand-accent)] mt-0.5" />
+                  <ShieldAlert className="h-4 w-4 shrink-0 text-[#A13618] mt-0.5" />
                   <span>{t.calculator.steps.spits.duoFloorWarning}</span>
                 </div>
               )}
@@ -509,7 +509,7 @@ export function Calculator({
                         active ? 'dcc-calc-tile-active' : ''
                       }`}
                     >
-                      <div className="w-16 h-16 sm:w-22 sm:h-16 overflow-hidden bg-[#070808] shrink-0">
+                      <div className="w-16 h-16 sm:w-22 sm:h-16 overflow-hidden bg-[#E4DBCC] shrink-0">
                         <SmartPicture
                           src={meat.image}
                           alt={copy.title}
@@ -522,33 +522,33 @@ export function Calculator({
                       <div className="flex-1 min-w-0 flex flex-col gap-2 sm:flex-row sm:items-center sm:justify-between sm:gap-4">
                         <div className="min-w-0 space-y-1">
                           <div className="flex flex-wrap items-center gap-1.5 sm:gap-2">
-                            <h4 className="font-monument text-sm sm:text-base font-bold text-white">
+                            <h4 className="font-monument text-sm sm:text-base font-bold text-[#0B0D0C]">
                               {copy.title}
                             </h4>
-                            <span className="bg-white/[0.06] px-2 py-0.5 font-mono text-[10px] text-[#E6C16E]">
+                            <span className="bg-white px-2 py-0.5 font-mono text-[10px] font-semibold text-[#855F18]">
                               {copy.badge}
                             </span>
                           </div>
-                          <p className="text-xs text-[var(--text-secondary)] line-clamp-2">
+                          <p className="text-xs text-[#2D3532] line-clamp-2">
                             {copy.spec}
                           </p>
                         </div>
 
                         <div className="shrink-0 flex items-center justify-between sm:justify-end gap-3 pt-2 sm:pt-0">
                           <div className="flex items-baseline gap-1.5 sm:block sm:text-right">
-                            <div className="font-mono tabular-nums text-sm sm:text-base font-bold text-[#F2D58B]">
+                            <div className="font-mono tabular-nums text-sm sm:text-base font-bold text-[#855F18]">
                               {formatCurrency(discountedUnit, locale)}
                             </div>
-                            <div className="font-mono text-[10px] text-[var(--text-muted)]">
+                            <div className="font-mono text-[10px] text-[#535D58]">
                               {t.calculator.steps.spits.perGuestSuffix}
                             </div>
                           </div>
 
                           <span
-                            className={`inline-flex h-6 w-6 items-center justify-center transition shrink-0 ${
+                            className={`inline-flex h-6 w-6 items-center justify-center transition-colors duration-[260ms] shrink-0 ${
                               active
-                                ? 'bg-[#F2D58B] text-[#050505]'
-                                : 'bg-white/[0.06] text-transparent'
+                                ? 'bg-[#0F7550] text-white'
+                                : 'bg-[#E4DBCC] text-transparent'
                             }`}
                           >
                             <Check className="h-3.5 w-3.5" />
@@ -564,13 +564,13 @@ export function Calculator({
             {/* STEP 03: Service Setup Architecture */}
             <div className="dcc-rechner-module p-5 sm:p-7 space-y-4">
               <div>
-                <span className="font-mono text-[11px] font-medium uppercase tracking-[0.2em] text-[#F2D58B]">
+                <span className="font-mono text-[11px] font-semibold uppercase tracking-[0.2em] text-[#855F18]">
                   {extraCopy.stepPrefix} {t.calculator.steps.setups.index}
                 </span>
-                <h3 className="mt-1 font-monument text-lg sm:text-xl font-bold text-white">
+                <h3 className="mt-1 font-monument text-lg sm:text-xl font-bold text-[#0B0D0C]">
                   {t.calculator.steps.setups.title}
                 </h3>
-                <p className="mt-0.5 text-xs sm:text-sm text-[var(--text-secondary)]">
+                <p className="mt-0.5 text-xs sm:text-sm text-[#2D3532]">
                   {t.calculator.steps.setups.subtitle}
                 </p>
               </div>
@@ -592,7 +592,7 @@ export function Calculator({
                         active ? 'dcc-calc-tile-active' : ''
                       }`}
                     >
-                      <div className="w-16 h-16 sm:w-22 sm:h-16 overflow-hidden bg-[#070808] shrink-0">
+                      <div className="w-16 h-16 sm:w-22 sm:h-16 overflow-hidden bg-[#E4DBCC] shrink-0">
                         <SmartPicture
                           src={setup.image}
                           alt={copy.title}
@@ -605,33 +605,33 @@ export function Calculator({
                       <div className="flex-1 min-w-0 flex flex-col gap-2 sm:flex-row sm:items-center sm:justify-between sm:gap-4">
                         <div className="min-w-0 space-y-1">
                           <div className="flex flex-wrap items-center gap-1.5 sm:gap-2">
-                            <h4 className="font-monument text-sm sm:text-base font-bold text-white">
+                            <h4 className="font-monument text-sm sm:text-base font-bold text-[#0B0D0C]">
                               {copy.title}
                             </h4>
-                            <span className="bg-white/[0.06] px-2 py-0.5 font-mono text-[10px] text-[#E6C16E]">
+                            <span className="bg-white px-2 py-0.5 font-mono text-[10px] font-semibold text-[#855F18]">
                               {copy.badge}
                             </span>
                           </div>
-                          <p className="text-xs text-[var(--text-secondary)] line-clamp-2">
+                          <p className="text-xs text-[#2D3532] line-clamp-2">
                             {copy.spec}
                           </p>
                         </div>
 
                         <div className="shrink-0 flex items-center justify-between sm:justify-end gap-3 pt-2 sm:pt-0">
                           <div className="flex items-baseline gap-1.5 sm:block sm:text-right">
-                            <div className="font-mono tabular-nums text-sm sm:text-base font-bold text-[#F2D58B]">
+                            <div className="font-mono tabular-nums text-sm sm:text-base font-bold text-[#855F18]">
                               + {formatCurrency(setup.flatFeeNet, locale)}
                             </div>
-                            <div className="font-mono text-[10px] text-[var(--text-muted)]">
+                            <div className="font-mono text-[10px] text-[#535D58]">
                               {t.calculator.steps.setups.flatFeeLabel}
                             </div>
                           </div>
 
                           <span
-                            className={`inline-flex h-6 w-6 items-center justify-center transition shrink-0 ${
+                            className={`inline-flex h-6 w-6 items-center justify-center transition-colors duration-[260ms] shrink-0 ${
                               active
-                                ? 'bg-[#F2D58B] text-[#050505]'
-                                : 'bg-white/[0.06] text-transparent'
+                                ? 'bg-[#0F7550] text-white'
+                                : 'bg-[#E4DBCC] text-transparent'
                             }`}
                           >
                             <Check className="h-3.5 w-3.5" />
@@ -647,13 +647,13 @@ export function Calculator({
             {/* STEP 04: Optional Extras */}
             <div className="dcc-rechner-module p-5 sm:p-7 space-y-4">
               <div>
-                <span className="font-mono text-[11px] font-medium uppercase tracking-[0.2em] text-[#F2D58B]">
+                <span className="font-mono text-[11px] font-semibold uppercase tracking-[0.2em] text-[#855F18]">
                   {extraCopy.stepPrefix} {t.calculator.steps.extras.index}
                 </span>
-                <h3 className="mt-1 font-monument text-lg sm:text-xl font-bold text-white">
+                <h3 className="mt-1 font-monument text-lg sm:text-xl font-bold text-[#0B0D0C]">
                   {t.calculator.steps.extras.title}
                 </h3>
-                <p className="mt-0.5 text-xs sm:text-sm text-[var(--text-secondary)]">
+                <p className="mt-0.5 text-xs sm:text-sm text-[#2D3532]">
                   {t.calculator.steps.extras.subtitle}
                 </p>
               </div>
@@ -678,29 +678,29 @@ export function Calculator({
                     >
                       <div className="flex items-start gap-3 min-w-0">
                         <span
-                          className={`mt-0.5 inline-flex h-6 w-6 shrink-0 items-center justify-center transition ${
+                          className={`mt-0.5 inline-flex h-6 w-6 shrink-0 items-center justify-center transition-colors duration-[260ms] ${
                             active
-                              ? 'bg-[#F2D58B] text-[#050505]'
-                              : 'bg-white/[0.06] text-transparent'
+                              ? 'bg-[#0F7550] text-white'
+                              : 'bg-[#E4DBCC] text-transparent'
                           }`}
                         >
                           <Check className="h-3.5 w-3.5" />
                         </span>
                         <div className="min-w-0">
-                          <div className="font-monument text-sm sm:text-base font-bold text-white">
+                          <div className="font-monument text-sm sm:text-base font-bold text-[#0B0D0C]">
                             {copy.title}
                           </div>
-                          <div className="mt-0.5 text-xs text-[var(--text-secondary)]">
+                          <div className="mt-0.5 text-xs text-[#2D3532]">
                             {copy.spec}
                           </div>
                         </div>
                       </div>
 
                       <div className="text-right shrink-0">
-                        <div className="font-mono tabular-nums text-sm sm:text-base font-bold text-[#F2D58B]">
+                        <div className="font-mono tabular-nums text-sm sm:text-base font-bold text-[#855F18]">
                           + {formatCurrency(extra.pricePerGuest, locale)}
                         </div>
-                        <div className="font-mono text-[10px] text-[var(--text-muted)]">
+                        <div className="font-mono text-[10px] text-[#535D58]">
                           {t.calculator.steps.extras.perGuestSuffix}
                         </div>
                       </div>

@@ -53,11 +53,13 @@ export function LegalModal({
           backgroundColor: 'var(--bg-card)',
           color: 'var(--text-primary)',
         }}
-        className="relative my-auto w-full max-w-2xl rounded-2xl border border-[var(--border-main)] p-6 sm:p-8 shadow-2xl max-h-[90vh] overflow-y-auto"
+        className="relative my-auto w-full max-w-2xl shadow-2xl max-h-[90vh] overflow-y-auto"
       >
+        <div className="h-[2px] w-full dcc-gold-emerald-bar" />
+        <div className="p-6 sm:p-8">
         <div className="flex items-start justify-between gap-4 border-b border-[var(--border-main)] pb-4">
           <div className="space-y-1">
-            <div className="inline-flex items-center gap-1.5 rounded-full bg-[var(--badge-bg)] px-2.5 py-0.5 font-mono text-[11px] font-semibold text-[var(--badge-text)]">
+            <div className="inline-flex items-center gap-1.5 bg-[var(--badge-bg)] px-2.5 py-0.5 font-mono text-[11px] font-semibold text-[var(--badge-text)]">
               <ShieldCheck className="h-3.5 w-3.5" />
               <span>{doc.badge}</span>
             </div>
@@ -73,7 +75,7 @@ export function LegalModal({
             type="button"
             aria-label={`${doc.closeLabel} (Close)`}
             onClick={onClose}
-            className="inline-flex h-9 w-9 shrink-0 items-center justify-center rounded-full border border-[var(--border-main)] bg-[var(--bg-subtle)] text-[var(--text-primary)] transition hover:border-[var(--brand-primary)] cursor-pointer"
+            className="inline-flex h-9 w-9 shrink-0 items-center justify-center bg-[var(--bg-subtle)] text-[var(--text-primary)] transition-colors duration-[260ms] hover:bg-[var(--brand-primary)] hover:text-[var(--btn-text)] cursor-pointer"
           >
             <X className="h-4 w-4" />
           </button>
@@ -101,10 +103,11 @@ export function LegalModal({
           <button
             type="button"
             onClick={onClose}
-            className="rounded-xl bg-[var(--brand-primary)] px-5 py-2.5 text-xs font-semibold uppercase tracking-wider text-[var(--btn-text)] transition hover:bg-[var(--brand-hover)] cursor-pointer"
+            className="bg-[var(--brand-primary)] px-5 py-2.5 text-xs font-semibold uppercase tracking-wider text-[var(--btn-text)] transition-colors duration-[260ms] hover:bg-[var(--brand-hover)] cursor-pointer"
           >
             {doc.closeLabel}
           </button>
+        </div>
         </div>
       </div>
     </div>

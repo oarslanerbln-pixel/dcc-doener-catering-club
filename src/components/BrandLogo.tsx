@@ -29,7 +29,7 @@ export function BrandLogo({
       <img
         src={asset.svg}
         alt={`${BRAND_METADATA.name} (${lockup} ${resolvedColorway})`}
-        width={lockup === 'primary' ? 180 : 56}
+        width={lockup === 'primary' ? 171 : lockup === 'stacked' ? 50 : 44}
         height={44}
         className={imgClassName}
       />

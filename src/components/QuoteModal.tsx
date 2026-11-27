@@ -208,8 +208,10 @@ export function QuoteModal({
           backgroundColor: 'var(--bg-card)',
           color: 'var(--text-primary)',
         }}
-        className="relative my-auto w-full max-w-2xl bg-[#0B0D0C] p-4 sm:p-7 shadow-2xl max-h-[92vh] overflow-y-auto"
+        className="relative my-auto w-full max-w-2xl bg-[#0B0D0C] shadow-2xl max-h-[92vh] overflow-y-auto"
       >
+        <div className="h-[2px] w-full dcc-gold-emerald-bar" />
+        <div className="p-4 sm:p-7">
         {/* Header */}
         <div className="flex items-start justify-between gap-4 border-b border-[var(--border-main)] pb-4">
           <div className="space-y-1">
@@ -218,7 +220,7 @@ export function QuoteModal({
                 {t.quoteModal.eyebrow} · {quoteId}
               </span>
               {isEnterprise && (
-                <span className="inline-flex items-center gap-1 rounded-full bg-[var(--badge-bg)] px-2.5 py-0.5 font-mono text-[11px] font-bold text-[var(--badge-text)]">
+                <span className="inline-flex items-center gap-1 bg-[var(--badge-bg)] px-2.5 py-0.5 font-mono text-[11px] font-bold text-[var(--badge-text)]">
                   <Sparkles className="h-3 w-3" />
                   {t.quoteModal.enterpriseBadge}
                 </span>
@@ -236,7 +238,7 @@ export function QuoteModal({
             type="button"
             aria-label={t.quoteModal.closeAria}
             onClick={onClose}
-            className="inline-flex h-9 w-9 shrink-0 items-center justify-center rounded-full border border-[var(--border-main)] bg-[var(--bg-subtle)] text-[var(--text-primary)] transition hover:border-[var(--brand-primary)] cursor-pointer"
+            className="inline-flex h-9 w-9 shrink-0 items-center justify-center bg-[var(--bg-subtle)] text-[var(--text-primary)] transition-colors duration-[260ms] hover:bg-[var(--brand-primary)] hover:text-[var(--btn-text)] cursor-pointer"
           >
             <X className="h-4 w-4" />
           </button>
@@ -244,7 +246,7 @@ export function QuoteModal({
 
         {/* Synchronized Summary KPIs */}
         <div className="mt-4 grid grid-cols-2 gap-2.5 sm:grid-cols-5">
-          <div className="rounded-xl border border-[var(--border-main)] bg-[var(--bg-subtle)] p-2.5">
+          <div className="bg-[var(--bg-subtle)] p-2.5">
             <div className="font-mono text-[10px] uppercase text-[var(--text-muted)]">
               {t.quoteModal.kpis.guests}
             </div>
@@ -252,7 +254,7 @@ export function QuoteModal({
               {isEnterprise ? '800+' : result.effectiveGuests}
             </div>
           </div>
-          <div className="rounded-xl border border-[var(--border-main)] bg-[var(--bg-subtle)] p-2.5">
+          <div className="bg-[var(--bg-subtle)] p-2.5">
             <div className="font-mono text-[10px] uppercase text-[var(--text-muted)]">
               {t.quoteModal.kpis.perGuestNet}
             </div>
@@ -260,7 +262,7 @@ export function QuoteModal({
               {formatCurrency(result.perGuestNet, locale)}
             </div>
           </div>
-          <div className="rounded-xl border border-[var(--border-main)] bg-[var(--bg-subtle)] p-2.5">
+          <div className="bg-[var(--bg-subtle)] p-2.5">
             <div className="font-mono text-[10px] uppercase text-[var(--text-muted)]">
               {t.quoteModal.kpis.subtotalNet}
             </div>
@@ -268,7 +270,7 @@ export function QuoteModal({
               {formatCurrency(result.subtotalNet, locale)}
             </div>
           </div>
-          <div className="rounded-xl border border-[var(--border-main)] bg-[var(--bg-subtle)] p-2.5">
+          <div className="bg-[var(--bg-subtle)] p-2.5">
             <div className="font-mono text-[10px] uppercase text-[var(--text-muted)]">
               {t.quoteModal.kpis.vat}
             </div>
@@ -276,7 +278,7 @@ export function QuoteModal({
               {formatCurrency(result.vatAmount, locale)}
             </div>
           </div>
-          <div className="col-span-2 sm:col-span-1 rounded-xl border border-[var(--brand-primary)] bg-[var(--badge-bg)] p-2.5">
+          <div className="col-span-2 sm:col-span-1 bg-[var(--badge-bg)] shadow-[inset_3px_0_0_0_var(--brand-primary)] p-2.5">
             <div className="font-mono text-[10px] uppercase text-[var(--badge-text)]">
               {t.quoteModal.kpis.totalGross}
             </div>
@@ -290,7 +292,7 @@ export function QuoteModal({
         {hasErrors && (
           <div
             role="alert"
-            className="mt-4 flex items-center gap-2 rounded-xl border border-[var(--brand-accent)] bg-[var(--badge-bg)] p-3 text-xs font-semibold text-[var(--text-primary)]"
+            className="mt-4 flex items-center gap-2 bg-[var(--badge-bg)] shadow-[inset_3px_0_0_0_var(--brand-accent)] p-3 text-xs font-semibold text-[var(--text-primary)]"
           >
             <AlertCircle className="h-4 w-4 shrink-0 text-[var(--brand-accent)]" />
             <span>{t.quoteModal.errors.formBanner}</span>
@@ -315,7 +317,7 @@ export function QuoteModal({
               placeholder={t.quoteModal.fields.name.placeholder}
               value={contact.name}
               onChange={(e) => handleFieldChange('name', e.target.value)}
-              className="w-full rounded-xl border border-[var(--border-main)] bg-[var(--bg-main)] px-3.5 py-2.5 text-sm text-[var(--text-primary)] focus:border-[var(--brand-primary)] focus:outline-none"
+              className="w-full bg-[var(--bg-main)] px-3.5 py-2.5 text-sm text-[var(--text-primary)] transition-colors duration-[260ms] focus:bg-[var(--bg-subtle)] focus:shadow-[inset_0_-2px_0_0_var(--brand-primary)] focus:outline-none"
             />
             {errors.name && (
               <p
@@ -343,7 +345,7 @@ export function QuoteModal({
               placeholder={t.quoteModal.fields.company.placeholder}
               value={contact.company ?? ''}
               onChange={(e) => handleFieldChange('company', e.target.value)}
-              className="w-full rounded-xl border border-[var(--border-main)] bg-[var(--bg-main)] px-3.5 py-2.5 text-sm text-[var(--text-primary)] focus:border-[var(--brand-primary)] focus:outline-none"
+              className="w-full bg-[var(--bg-main)] px-3.5 py-2.5 text-sm text-[var(--text-primary)] transition-colors duration-[260ms] focus:bg-[var(--bg-subtle)] focus:shadow-[inset_0_-2px_0_0_var(--brand-primary)] focus:outline-none"
             />
           </div>
 
@@ -363,7 +365,7 @@ export function QuoteModal({
               placeholder={t.quoteModal.fields.email.placeholder}
               value={contact.email}
               onChange={(e) => handleFieldChange('email', e.target.value)}
-              className="w-full rounded-xl border border-[var(--border-main)] bg-[var(--bg-main)] px-3.5 py-2.5 text-sm text-[var(--text-primary)] focus:border-[var(--brand-primary)] focus:outline-none"
+              className="w-full bg-[var(--bg-main)] px-3.5 py-2.5 text-sm text-[var(--text-primary)] transition-colors duration-[260ms] focus:bg-[var(--bg-subtle)] focus:shadow-[inset_0_-2px_0_0_var(--brand-primary)] focus:outline-none"
             />
             {errors.email && (
               <p
@@ -391,7 +393,7 @@ export function QuoteModal({
               placeholder={t.quoteModal.fields.phone.placeholder}
               value={contact.phone}
               onChange={(e) => handleFieldChange('phone', e.target.value)}
-              className="w-full rounded-xl border border-[var(--border-main)] bg-[var(--bg-main)] px-3.5 py-2.5 text-sm text-[var(--text-primary)] focus:border-[var(--brand-primary)] focus:outline-none"
+              className="w-full bg-[var(--bg-main)] px-3.5 py-2.5 text-sm text-[var(--text-primary)] transition-colors duration-[260ms] focus:bg-[var(--bg-subtle)] focus:shadow-[inset_0_-2px_0_0_var(--brand-primary)] focus:outline-none"
             />
             {errors.phone && (
               <p
@@ -418,7 +420,7 @@ export function QuoteModal({
               min={getTodayIso()}
               value={contact.eventDate}
               onChange={(e) => handleFieldChange('eventDate', e.target.value)}
-              className="w-full rounded-xl border border-[var(--border-main)] bg-[var(--bg-main)] px-3.5 py-2.5 text-sm text-[var(--text-primary)] focus:border-[var(--brand-primary)] focus:outline-none"
+              className="w-full bg-[var(--bg-main)] px-3.5 py-2.5 text-sm text-[var(--text-primary)] transition-colors duration-[260ms] focus:bg-[var(--bg-subtle)] focus:shadow-[inset_0_-2px_0_0_var(--brand-primary)] focus:outline-none"
             />
             {errors.eventDate && (
               <p
@@ -445,7 +447,7 @@ export function QuoteModal({
               placeholder={t.quoteModal.fields.vatId.placeholder}
               value={contact.vatId ?? ''}
               onChange={(e) => handleFieldChange('vatId', e.target.value)}
-              className="w-full rounded-xl border border-[var(--border-main)] bg-[var(--bg-main)] px-3.5 py-2.5 text-sm text-[var(--text-primary)] focus:border-[var(--brand-primary)] focus:outline-none"
+              className="w-full bg-[var(--bg-main)] px-3.5 py-2.5 text-sm text-[var(--text-primary)] transition-colors duration-[260ms] focus:bg-[var(--bg-subtle)] focus:shadow-[inset_0_-2px_0_0_var(--brand-primary)] focus:outline-none"
             />
             {errors.vatId && (
               <p
@@ -472,7 +474,7 @@ export function QuoteModal({
               placeholder={t.quoteModal.fields.notes.placeholder}
               value={contact.notes ?? ''}
               onChange={(e) => handleFieldChange('notes', e.target.value)}
-              className="w-full rounded-xl border border-[var(--border-main)] bg-[var(--bg-main)] px-3.5 py-2 text-sm text-[var(--text-primary)] focus:border-[var(--brand-primary)] focus:outline-none"
+              className="w-full bg-[var(--bg-main)] px-3.5 py-2 text-sm text-[var(--text-primary)] transition-colors duration-[260ms] focus:bg-[var(--bg-subtle)] focus:shadow-[inset_0_-2px_0_0_var(--brand-primary)] focus:outline-none"
             />
           </div>
         </div>
@@ -483,7 +485,7 @@ export function QuoteModal({
             type="button"
             data-testid="modal-whatsapp"
             onClick={handleWhatsAppSubmit}
-            className="flex-1 min-w-[200px] min-h-[48px] inline-flex items-center justify-center gap-2 bg-[var(--brand-primary)] px-5 py-3.5 text-sm font-bold uppercase tracking-wider text-[var(--btn-text)] transition hover:bg-[#F2D58B] cursor-pointer"
+            className="flex-1 min-w-[200px] min-h-[48px] inline-flex items-center justify-center gap-2 bg-[var(--brand-primary)] px-5 py-3.5 text-sm font-bold uppercase tracking-wider text-[var(--btn-text)] transition-colors duration-[260ms] hover:bg-[#F2D58B] cursor-pointer"
           >
             <MessageCircle className="h-4 w-4" />
             <span>{t.quoteModal.actions.whatsapp}</span>
@@ -493,7 +495,7 @@ export function QuoteModal({
             type="button"
             data-testid="modal-email"
             onClick={handleEmailSubmit}
-            className="min-h-[48px] inline-flex items-center justify-center gap-2 bg-[#142921] px-5 py-3.5 text-sm font-semibold uppercase tracking-wider text-white transition hover:bg-[#1E3D31] cursor-pointer"
+            className="min-h-[48px] inline-flex items-center justify-center gap-2 bg-[#142921] px-5 py-3.5 text-sm font-semibold uppercase tracking-wider text-white transition-colors duration-[260ms] hover:bg-[#1E3D31] cursor-pointer"
           >
             <Mail className="h-4 w-4 text-[#2BC48A]" />
             <span>{EMAIL_ACTION_LABEL[locale]}</span>
@@ -503,7 +505,7 @@ export function QuoteModal({
             type="button"
             data-testid="modal-copy"
             onClick={handleCopyQuote}
-            className="min-h-[48px] inline-flex items-center justify-center gap-2 bg-white/[0.06] px-4 py-3.5 text-sm font-semibold uppercase tracking-wider text-white transition hover:bg-white/[0.12] cursor-pointer"
+            className="min-h-[48px] inline-flex items-center justify-center gap-2 bg-white/[0.06] px-4 py-3.5 text-sm font-semibold uppercase tracking-wider text-white transition-colors duration-[260ms] hover:bg-white/[0.12] cursor-pointer"
           >
             {copied ? (
               <Check className="h-4 w-4 text-[#2BC48A]" />
@@ -519,7 +521,7 @@ export function QuoteModal({
             type="button"
             data-testid="modal-print"
             onClick={handlePrint}
-            className="min-h-[48px] inline-flex items-center justify-center gap-2 bg-white/[0.06] px-4 py-3.5 text-sm font-semibold uppercase tracking-wider text-white transition hover:bg-white/[0.12] cursor-pointer"
+            className="min-h-[48px] inline-flex items-center justify-center gap-2 bg-white/[0.06] px-4 py-3.5 text-sm font-semibold uppercase tracking-wider text-white transition-colors duration-[260ms] hover:bg-white/[0.12] cursor-pointer"
           >
             <Printer className="h-4 w-4" />
             <span>{t.quoteModal.actions.print}</span>
@@ -529,6 +531,7 @@ export function QuoteModal({
         <p className="mt-3 text-[11px] text-[var(--text-muted)]">
           {t.quoteModal.privacyHint}
         </p>
+        </div>
       </div>
     </div>
   );

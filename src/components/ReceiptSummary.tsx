@@ -41,31 +41,32 @@ export function ReceiptSummary({
     <aside
       id="rechner-summary"
       aria-label={t.receipt.title}
-      className="dcc-rechner-module shadow-2xl overflow-hidden"
+      className="dcc-rechner-module bg-white shadow-[0_18px_40px_-20px_rgba(11,13,12,0.16)] overflow-hidden"
       style={{
-        color: 'var(--receipt-text)',
+        backgroundColor: '#FFFFFF',
+        color: '#0B0D0C',
       }}
     >
       <div className="h-[2px] w-full dcc-gold-emerald-bar" />
       <div className="p-5 space-y-3.5">
-        {/* Compact Sharp Architectural Summary Header */}
+        {/* Compact Sharp Light Architectural Summary Header */}
         <div className="flex items-center justify-between gap-3">
           <div className="min-w-0">
-            <div className="font-mono text-[10px] uppercase tracking-[0.2em] text-[#F2D58B]">
+            <div className="font-mono text-[10px] font-semibold uppercase tracking-[0.2em] text-[#855F18]">
               {t.receipt.eyebrow}
             </div>
             <div className="mt-0.5 flex items-center gap-2">
-              <h3 className="font-monument text-lg font-bold tracking-tight text-white truncate">
+              <h3 className="font-monument text-lg font-bold tracking-tight text-[#0B0D0C] truncate">
                 {t.receipt.title}
               </h3>
-              <span className="bg-white/[0.06] px-2 py-0.5 font-mono text-[10px] font-semibold text-[#F2D58B] shrink-0">
+              <span className="bg-[#F1EBE0] px-2 py-0.5 font-mono text-[10px] font-semibold text-[#855F18] shrink-0">
                 {quoteId}
               </span>
             </div>
           </div>
 
           <div className="flex items-center -space-x-2 shrink-0">
-            <div className="h-9 w-9 overflow-hidden bg-[#1D1A16]">
+            <div className="h-9 w-9 overflow-hidden bg-[#F1EBE0]">
               <SmartPicture
                 src={activeMeat.image}
                 alt={t.calculator.steps.spits.items[input.meatId].title}
@@ -74,7 +75,7 @@ export function ReceiptSummary({
                 className="h-full w-full object-cover"
               />
             </div>
-            <div className="h-9 w-9 overflow-hidden bg-[#1D1A16]">
+            <div className="h-9 w-9 overflow-hidden bg-[#F1EBE0]">
               <SmartPicture
                 src={activeSetup.image}
                 alt={t.calculator.steps.setups.items[input.setupId].title}
@@ -90,9 +91,9 @@ export function ReceiptSummary({
         {isEnterprise && (
           <div
             data-testid="receipt-enterprise-banner"
-            className="flex items-start gap-2 dcc-calc-tile-active p-2.5 text-[11px] leading-snug text-white"
+            className="flex items-start gap-2 dcc-calc-tile-active p-2.5 text-[11px] leading-snug text-[#0B0D0C]"
           >
-            <Sparkles className="h-3.5 w-3.5 shrink-0 text-[#F2D58B] mt-0.5" />
+            <Sparkles className="h-3.5 w-3.5 shrink-0 text-[#9A7226] mt-0.5" />
             <span>{t.receipt.enterpriseBanner}</span>
           </div>
         )}
@@ -100,18 +101,18 @@ export function ReceiptSummary({
         {result.duoRequiresMinGuests && (
           <div
             data-testid="receipt-duo-notice"
-            className="flex items-start gap-2 bg-[#1D1410] p-2.5 text-[11px] leading-snug text-white"
+            className="flex items-start gap-2 bg-[#FDF2EC] p-2.5 text-[11px] leading-snug text-[#0B0D0C] shadow-[inset_3px_0_0_0_#A13618]"
           >
-            <ShieldAlert className="h-3.5 w-3.5 shrink-0 text-[#E06440] mt-0.5" />
+            <ShieldAlert className="h-3.5 w-3.5 shrink-0 text-[#A13618] mt-0.5" />
             <span>{t.receipt.duoAppliedNotice}</span>
           </div>
         )}
 
         {/* Compact Line Items */}
-        <div className="space-y-2.5 border-y border-white/10 py-3.5 text-xs sm:text-[13px]">
+        <div className="space-y-2.5 border-y border-[#E4DBCC] py-3.5 text-xs sm:text-[13px]">
           <div className="flex items-center justify-between gap-2">
-            <span className="text-[#C8BFB0]">{t.receipt.guestsLabel}</span>
-            <span className="font-mono tabular-nums font-semibold text-[#F3ECE0]">
+            <span className="text-[#2D3532]">{t.receipt.guestsLabel}</span>
+            <span className="font-mono tabular-nums font-semibold text-[#0B0D0C]">
               {isEnterprise
                 ? `800+ (${result.effectiveGuests})`
                 : result.duoRequiresMinGuests
@@ -121,7 +122,7 @@ export function ReceiptSummary({
                 ? t.calculator.steps.guests.guestUnitSingular
                 : t.calculator.steps.guests.guestUnitPlural}{' '}
               ·{' '}
-              <span className="text-[#E5B06B]">
+              <span className="text-[#0F7550]">
                 {t.calculator.steps.guests.eventTypes[input.eventType].label}
               </span>
             </span>
@@ -129,32 +130,32 @@ export function ReceiptSummary({
 
           <div className="flex items-start justify-between gap-2">
             <div className="min-w-0">
-              <div className="text-[#F3ECE0] font-medium truncate">
+              <div className="text-[#0B0D0C] font-medium truncate">
                 {t.calculator.steps.spits.items[input.meatId].title}
               </div>
-              <div className="font-mono text-[11px] text-[#9A9082]">
+              <div className="font-mono text-[11px] text-[#535D58]">
                 -{discountPct} % ({formatCurrency(result.unitMeatDiscounted, locale)}{' '}
                 {t.calculator.steps.spits.perGuestSuffix})
               </div>
             </div>
-            <span className="font-mono tabular-nums font-semibold shrink-0 text-[#F3ECE0]">
+            <span className="font-mono tabular-nums font-semibold shrink-0 text-[#0B0D0C]">
               {formatCurrency(result.meatTotalNet, locale)}
             </span>
           </div>
 
           <div className="flex items-center justify-between gap-2">
-            <span className="text-[#C8BFB0] truncate">
+            <span className="text-[#2D3532] truncate">
               {t.calculator.steps.setups.items[input.setupId].title}
             </span>
-            <span className="font-mono tabular-nums font-semibold shrink-0 text-[#F3ECE0]">
+            <span className="font-mono tabular-nums font-semibold shrink-0 text-[#0B0D0C]">
               {formatCurrency(result.setupTotalNet, locale)}
             </span>
           </div>
 
           <div className="flex items-start justify-between gap-2">
             <div className="min-w-0">
-              <div className="text-[#C8BFB0]">{t.receipt.extrasLabel}</div>
-              <div className="text-[11px] text-[#9A9082] truncate">
+              <div className="text-[#2D3532]">{t.receipt.extrasLabel}</div>
+              <div className="text-[11px] text-[#535D58] truncate">
                 {activeExtras.length === 0
                   ? t.receipt.extrasNone
                   : activeExtras
@@ -162,7 +163,7 @@ export function ReceiptSummary({
                       .join(' · ')}
               </div>
             </div>
-            <span className="font-mono tabular-nums font-semibold shrink-0 text-[#F3ECE0]">
+            <span className="font-mono tabular-nums font-semibold shrink-0 text-[#0B0D0C]">
               {formatCurrency(result.extrasTotalNet, locale)}
             </span>
           </div>
@@ -171,10 +172,10 @@ export function ReceiptSummary({
         {/* Per-Guest Highlight */}
         <div className="dcc-calc-tile-active p-3.5 flex items-center justify-between gap-2">
           <div>
-            <div className="font-mono text-[10px] uppercase tracking-wider text-[#F2D58B]">
+            <div className="font-mono text-[10px] font-semibold uppercase tracking-wider text-[#855F18]">
               {t.receipt.perGuestNetLabel}
             </div>
-            <div className="text-[11px] text-[#C8BFB0]/80">
+            <div className="text-[11px] text-[#2D3532]">
               {t.receipt.perGuestGrossLabel}:{' '}
               <span className="font-mono tabular-nums">
                 {formatCurrency(result.perGuestGross, locale)}
@@ -183,7 +184,7 @@ export function ReceiptSummary({
           </div>
           <span
             data-testid="summary-per-guest"
-            className="font-mono tabular-nums text-2xl font-bold text-[#F2D58B]"
+            className="font-mono tabular-nums text-2xl font-bold text-[#855F18]"
           >
             {formatCurrency(result.perGuestNet, locale)}
           </span>
@@ -192,30 +193,30 @@ export function ReceiptSummary({
         {/* Net / 19% VAT / Gross Totals */}
         <div className="space-y-1.5 text-xs sm:text-sm">
           <div className="flex items-center justify-between gap-2">
-            <span className="text-[#C8BFB0]">{t.receipt.subtotalNetLabel}</span>
+            <span className="text-[#2D3532]">{t.receipt.subtotalNetLabel}</span>
             <span
               data-testid="summary-net"
-              className="font-mono tabular-nums font-semibold text-white"
+              className="font-mono tabular-nums font-semibold text-[#0B0D0C]"
             >
               {formatCurrency(result.subtotalNet, locale)}
             </span>
           </div>
 
           <div className="flex items-center justify-between gap-2">
-            <span className="text-[#C8BFB0]">{t.receipt.vatLabel}</span>
+            <span className="text-[#2D3532]">{t.receipt.vatLabel}</span>
             <span
               data-testid="summary-vat"
-              className="font-mono tabular-nums font-semibold text-white"
+              className="font-mono tabular-nums font-semibold text-[#0B0D0C]"
             >
               {formatCurrency(result.vatAmount, locale)}
             </span>
           </div>
 
-          <div className="flex items-center justify-between gap-2 border-t border-white/10 pt-2.5 text-sm sm:text-base font-bold">
-            <span className="text-white">{t.receipt.totalGrossLabel}</span>
+          <div className="flex items-center justify-between gap-2 border-t border-[#E4DBCC] pt-2.5 text-sm sm:text-base font-bold">
+            <span className="text-[#0B0D0C]">{t.receipt.totalGrossLabel}</span>
             <span
               data-testid="summary-gross"
-              className="font-mono tabular-nums text-lg sm:text-xl text-[#F2D58B]"
+              className="font-mono tabular-nums text-lg sm:text-xl text-[#0F7550]"
             >
               {formatCurrency(result.totalGross, locale)}
             </span>
@@ -228,7 +229,7 @@ export function ReceiptSummary({
             type="button"
             data-testid="quote-open-modal"
             onClick={onOpenModal}
-            className="w-full min-h-[48px] inline-flex items-center justify-center gap-2 bg-[var(--brand-primary)] px-5 py-3.5 text-sm font-bold uppercase tracking-wider text-[#050505] transition hover:bg-[#F2D58B] cursor-pointer"
+            className="w-full min-h-[48px] inline-flex items-center justify-center gap-2 bg-[#D4A853] px-5 py-3.5 text-sm font-bold uppercase tracking-wider text-[#050505] transition-colors duration-[260ms] hover:bg-[#E6BE6A] cursor-pointer"
           >
             <FileText className="h-4 w-4" />
             <span>{t.receipt.modalCta}</span>
@@ -238,7 +239,7 @@ export function ReceiptSummary({
             type="button"
             data-testid="quote-whatsapp"
             onClick={onDirectWhatsApp}
-            className="w-full min-h-[44px] inline-flex items-center justify-center gap-2 bg-[#112A21] px-5 py-3 text-sm font-semibold uppercase tracking-wider text-white transition hover:bg-[#193E31] cursor-pointer"
+            className="w-full min-h-[44px] inline-flex items-center justify-center gap-2 bg-[#0F3628] px-5 py-3 text-sm font-semibold uppercase tracking-wider text-white transition-colors duration-[260ms] hover:bg-[#148F63] cursor-pointer"
           >
             <MessageCircle className="h-4 w-4 text-[#2BC48A]" />
             <span>{t.receipt.whatsappCta}</span>

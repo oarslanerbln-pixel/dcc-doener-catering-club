@@ -1,5 +1,4 @@
-import React, { useCallback, useEffect, useMemo, useState } from 'react';
-import { BrandKitPortal } from './components/BrandKitPortal';
+import React, { Suspense, lazy, useCallback, useEffect, useMemo, useState } from 'react';
 import { Calculator } from './components/Calculator';
 import { CorporateFaq } from './components/CorporateFaq';
 import { CulinaryShowcase } from './components/CulinaryShowcase';
@@ -9,12 +8,21 @@ import { Gallery, type GalleryPreset } from './components/Gallery';
 import { Header } from './components/Header';
 import { Hero } from './components/Hero';
 import { IntroSplash } from './components/IntroSplash';
-import { LegalModal, type LegalDocId } from './components/LegalModal';
+import type { LegalDocId } from './components/LegalModal';
 import { MobileBottomBar } from './components/MobileBottomBar';
 import { ProductionBento } from './components/ProductionBento';
-import { QuoteModal } from './components/QuoteModal';
 import { RevealSection } from './components/RevealSection';
 import { TrustReferences } from './components/TrustReferences';
+
+const BrandKitPortal = lazy(() =>
+  import('./components/BrandKitPortal').then((m) => ({ default: m.BrandKitPortal }))
+);
+const QuoteModal = lazy(() =>
+  import('./components/QuoteModal').then((m) => ({ default: m.QuoteModal }))
+);
+const LegalModal = lazy(() =>
+  import('./components/LegalModal').then((m) => ({ default: m.LegalModal }))
+);
 import {
   buildQuoteText,
   buildWhatsAppUrl,
@@ -267,12 +275,20 @@ function AppContent(): React.ReactElement {
 
       <main className="flex-1">
         {activeView === 'brand-kit' ? (
-          <BrandKitPortal
-            onBackToCalculator={() => handleSelectView('main', '#rechner')}
-            selectedCandidateId={selectedCandidate?.id ?? null}
-            onSelectCandidate={setSelectedCandidate}
-            onLaunchAnimation={() => setSplashOpen(true)}
-          />
+          <Suspense
+            fallback={
+              <div className="min-h-[60vh] flex items-center justify-center bg-[#060606] text-xs font-mono uppercase tracking-[0.24em] text-[#D4A853]">
+                DCC Brand Kit…
+              </div>
+            }
+          >
+            <BrandKitPortal
+              onBackToCalculator={() => handleSelectView('main', '#rechner')}
+              selectedCandidateId={selectedCandidate?.id ?? null}
+              onSelectCandidate={setSelectedCandidate}
+              onLaunchAnimation={() => setSplashOpen(true)}
+            />
+          </Suspense>
         ) : (
           <>
             <Hero
@@ -338,18 +354,26 @@ function AppContent(): React.ReactElement {
         onDirectWhatsApp={handleDirectWhatsApp}
       />
 
-      <QuoteModal
-        isOpen={quoteModalOpen}
-        quoteId={quoteId}
-        input={calculatorInput}
-        result={calculatorResult}
-        onClose={() => setQuoteModalOpen(false)}
-      />
+      {quoteModalOpen && (
+        <Suspense fallback={null}>
+          <QuoteModal
+            isOpen={quoteModalOpen}
+            quoteId={quoteId}
+            input={calculatorInput}
+            result={calculatorResult}
+            onClose={() => setQuoteModalOpen(false)}
+          />
+        </Suspense>
+      )}
 
-      <LegalModal
-        activeDoc={activeLegalDoc}
-        onClose={() => setActiveLegalDoc(null)}
-      />
+      {activeLegalDoc && (
+        <Suspense fallback={null}>
+          <LegalModal
+            activeDoc={activeLegalDoc}
+            onClose={() => setActiveLegalDoc(null)}
+          />
+        </Suspense>
+      )}
     </div>
   );
 }

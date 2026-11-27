@@ -91,7 +91,7 @@ export function BrandKitPortal({
                 e.preventDefault();
                 onBackToCalculator();
               }}
-              className="inline-flex items-center gap-2 rounded-full border border-[var(--border-main)] bg-[var(--bg-card)] px-4 py-2.5 text-xs font-semibold text-[var(--text-primary)] transition hover:border-[var(--brand-primary)]"
+              className="inline-flex items-center gap-2 bg-[#141716] px-4 py-2.5 text-xs font-semibold text-[var(--text-primary)] transition-colors duration-[260ms] hover:bg-[#1D2320] hover:text-[#F2D58B]"
             >
               <ArrowLeft className="h-4 w-4 text-[var(--brand-primary)]" />
               <span>{t.brandKit.backToCalculator}</span>
@@ -100,7 +100,7 @@ export function BrandKitPortal({
             <button
               type="button"
               onClick={() => window.print()}
-              className="inline-flex items-center gap-2 rounded-full bg-[var(--brand-primary)] px-4 py-2.5 text-xs font-semibold uppercase tracking-wider text-[var(--btn-text)] transition hover:bg-[var(--brand-hover)] cursor-pointer"
+              className="inline-flex items-center gap-2 bg-[var(--brand-primary)] px-4 py-2.5 text-xs font-semibold uppercase tracking-wider text-[var(--btn-text)] transition-colors duration-[260ms] hover:bg-[var(--brand-hover)] cursor-pointer"
             >
               <Printer className="h-4 w-4" />
               <span>{t.brandKit.printButton}</span>
@@ -119,7 +119,7 @@ export function BrandKitPortal({
             </h3>
           </div>
 
-          <div className="rounded-2xl border border-[var(--border-main)] bg-[var(--bg-card)] p-6 sm:p-8 space-y-4">
+          <div className="dcc-lux-card p-6 sm:p-8 space-y-4">
             <div className="font-serif italic text-2xl sm:text-3xl text-[var(--brand-primary)]">
               {t.brandKit.strategy.manifestoTitle}
             </div>
@@ -132,7 +132,7 @@ export function BrandKitPortal({
             {t.brandKit.strategy.pillars.map((pillar, idx) => (
               <div
                 key={idx}
-                className="rounded-2xl border border-[var(--border-main)] bg-[var(--bg-card)] p-5 space-y-2"
+                className="dcc-lux-card p-5 space-y-2"
               >
                 <span className="font-mono text-xs font-semibold uppercase text-[var(--brand-primary)]">
                   {pillar.tag}
@@ -148,7 +148,7 @@ export function BrandKitPortal({
           </div>
 
           <div className="grid grid-cols-1 gap-4 md:grid-cols-2">
-            <div className="rounded-2xl border border-[var(--border-main)] bg-[var(--bg-subtle)] p-5 space-y-2">
+            <div className="dcc-lux-card bg-[var(--bg-subtle)] p-5 space-y-2">
               <div className="font-mono text-xs font-semibold uppercase text-[var(--brand-primary)]">
                 {t.brandKit.strategy.boilerplates.shortLabel}
               </div>
@@ -156,7 +156,7 @@ export function BrandKitPortal({
                 {t.brandKit.strategy.boilerplates.shortText}
               </p>
             </div>
-            <div className="rounded-2xl border border-[var(--border-main)] bg-[var(--bg-subtle)] p-5 space-y-2">
+            <div className="dcc-lux-card bg-[var(--bg-subtle)] p-5 space-y-2">
               <div className="font-mono text-xs font-semibold uppercase text-[var(--brand-primary)]">
                 {t.brandKit.strategy.boilerplates.mediumLabel}
               </div>
@@ -185,7 +185,7 @@ export function BrandKitPortal({
             <div
               role="tablist"
               aria-label={t.brandKit.logos.surfaceLabel}
-              className="flex flex-wrap items-center gap-1.5 rounded-xl border border-[var(--border-main)] bg-[var(--bg-card)] p-1"
+              className="flex flex-wrap items-center gap-1.5 bg-[var(--bg-card)] p-1"
             >
               {(['auto', 'obsidian', 'limestone', 'emerald'] as const).map(
                 (surf) => (
@@ -201,10 +201,10 @@ export function BrandKitPortal({
                         setSurface(surf);
                       }
                     }}
-                    className={`rounded-lg px-2.5 py-1.5 font-mono text-xs transition cursor-pointer select-none ${
+                    className={`px-2.5 py-1.5 font-mono text-xs transition-colors duration-[260ms] cursor-pointer select-none ${
                       surface === surf
                         ? 'bg-[var(--brand-primary)] font-bold text-[var(--btn-text)]'
-                        : 'text-[var(--text-secondary)] hover:text-[var(--text-primary)]'
+                        : 'text-[var(--text-secondary)] hover:bg-[#141716] hover:text-[var(--text-primary)]'
                     }`}
                   >
                     {t.brandKit.logos.surfaces[surf]}
@@ -222,11 +222,11 @@ export function BrandKitPortal({
                 return (
                   <div
                     key={`${lockup}-${colorway}`}
-                    className="flex flex-col justify-between overflow-hidden rounded-2xl border border-[var(--border-main)] bg-[var(--bg-card)]"
+                    className="dcc-lux-card flex flex-col justify-between"
                   >
                     <div
                       style={{ backgroundColor: previewBg }}
-                      className="flex h-36 items-center justify-center p-5 border-b border-[var(--border-main)]"
+                      className="flex h-36 items-center justify-center p-5"
                     >
                       <img
                         src={variant.svg}
@@ -251,23 +251,23 @@ export function BrandKitPortal({
                         <a
                           href={variant.svg}
                           download
-                          className="inline-flex items-center gap-1 rounded-lg border border-[var(--border-main)] bg-[var(--bg-subtle)] px-2.5 py-1 font-mono text-[11px] font-semibold text-[var(--text-primary)] transition hover:border-[var(--brand-primary)]"
+                          className="inline-flex items-center gap-1 bg-[#141716] px-2.5 py-1 font-mono text-[11px] font-semibold text-[var(--text-primary)] transition-colors duration-[260ms] hover:bg-[var(--brand-primary)] hover:text-[var(--btn-text)]"
                         >
-                          <Download className="h-3 w-3 text-[var(--brand-primary)]" />
+                          <Download className="h-3 w-3 text-current" />
                           {t.brandKit.logos.downloadLabels.svg}
                         </a>
                         <a
                           href={variant.png}
                           download
-                          className="inline-flex items-center gap-1 rounded-lg border border-[var(--border-main)] bg-[var(--bg-subtle)] px-2.5 py-1 font-mono text-[11px] font-semibold text-[var(--text-primary)] transition hover:border-[var(--brand-primary)]"
+                          className="inline-flex items-center gap-1 bg-[#141716] px-2.5 py-1 font-mono text-[11px] font-semibold text-[var(--text-primary)] transition-colors duration-[260ms] hover:bg-[var(--brand-primary)] hover:text-[var(--btn-text)]"
                         >
-                          <Download className="h-3 w-3 text-[var(--brand-primary)]" />
+                          <Download className="h-3 w-3 text-current" />
                           {t.brandKit.logos.downloadLabels.png}
                         </a>
                         <a
                           href={variant.png2x}
                           download
-                          className="inline-flex items-center gap-1 rounded-lg border border-[var(--border-main)] bg-[var(--bg-subtle)] px-2.5 py-1 font-mono text-[11px] font-semibold text-[var(--text-primary)] transition hover:border-[var(--brand-primary)]"
+                          className="inline-flex items-center gap-1 bg-[#141716] px-2.5 py-1 font-mono text-[11px] font-semibold text-[var(--text-primary)] transition-colors duration-[260ms] hover:bg-[var(--brand-primary)] hover:text-[var(--btn-text)]"
                         >
                           {t.brandKit.logos.downloadLabels.png2x}
                         </a>
@@ -282,7 +282,7 @@ export function BrandKitPortal({
 
         {/* 03 · Clear-Space & Minimum Sizes + 04 · Do & Don't Rules */}
         <div className="grid grid-cols-1 gap-8 lg:grid-cols-12">
-          <div className="lg:col-span-5 rounded-2xl border border-[var(--border-main)] bg-[var(--bg-card)] p-6 space-y-4">
+          <div className="lg:col-span-5 dcc-lux-card p-6 space-y-4">
             <p className="font-mono text-xs font-semibold uppercase tracking-widest text-[var(--brand-primary)]">
               {t.brandKit.clearSpace.eyebrow}
             </p>
@@ -320,7 +320,7 @@ export function BrandKitPortal({
                     <td className="py-2 pl-2">25 mm</td>
                   </tr>
                   <tr>
-                    <td className="py-2 pr-2 font-semibold">Club Seal</td>
+                    <td className="py-2 pr-2 font-semibold">{t.brandKit.logos.lockupNames.seal}</td>
                     <td className="py-2 px-2">64 px</td>
                     <td className="py-2 pl-2">18 mm</td>
                   </tr>
@@ -354,7 +354,7 @@ export function BrandKitPortal({
                 return (
                   <div
                     key={rule.code}
-                    className="rounded-2xl border border-[var(--border-main)] bg-[var(--bg-card)] p-4 space-y-1.5"
+                    className="dcc-lux-card p-4 space-y-1.5"
                   >
                     <div className="flex items-center gap-2 font-mono text-xs font-bold">
                       {isDo ? (
@@ -406,18 +406,18 @@ export function BrandKitPortal({
                   type="button"
                   data-testid={`copy-token-${swatch.id}`}
                   onClick={() => handleCopyHex(swatch.hex)}
-                  className="flex flex-col justify-between overflow-hidden rounded-2xl border border-[var(--border-main)] bg-[var(--bg-card)] text-left transition hover:border-[var(--brand-primary)] cursor-pointer"
+                  className="dcc-lux-card flex flex-col justify-between text-left cursor-pointer"
                 >
                   <div
                     style={{ backgroundColor: swatch.hex }}
-                    className="h-20 w-full border-b border-[var(--border-main)]"
+                    className="h-20 w-full"
                   />
                   <div className="p-4 space-y-2">
                     <div className="flex items-center justify-between gap-2">
                       <span className="font-monument text-sm font-bold text-[var(--text-primary)]">
                         {swatch.name}
                       </span>
-                      <span className="inline-flex items-center gap-1 rounded-md bg-[var(--badge-bg)] px-2 py-0.5 font-mono text-xs font-bold text-[var(--badge-text)]">
+                      <span className="inline-flex items-center gap-1 bg-[var(--badge-bg)] px-2 py-0.5 font-mono text-xs font-bold text-[var(--badge-text)]">
                         {isCopied ? (
                           <Check className="h-3 w-3" />
                         ) : (
@@ -440,7 +440,7 @@ export function BrandKitPortal({
         </div>
 
         {/* 06 · Typography & Tabular Numerals */}
-        <div className="rounded-2xl border border-[var(--border-main)] bg-[var(--bg-card)] p-6 sm:p-8 space-y-4">
+        <div className="dcc-lux-card p-6 sm:p-8 space-y-4">
           <p className="font-mono text-xs font-semibold uppercase tracking-widest text-[var(--brand-primary)]">
             {t.brandKit.typography.eyebrow}
           </p>
@@ -451,7 +451,7 @@ export function BrandKitPortal({
             {t.brandKit.typography.subtitle}
           </p>
 
-          <div className="rounded-xl border border-[var(--border-main)] bg-[var(--bg-subtle)] p-5 space-y-2">
+          <div className="bg-[var(--bg-subtle)] p-5 space-y-2">
             <div className="font-monument text-xl sm:text-3xl font-bold text-[var(--text-primary)]">
               <span>{t.brandKit.typography.specimenLinePrefix} </span>
               <span className="font-serif italic font-normal text-[var(--brand-primary)]">
@@ -462,7 +462,7 @@ export function BrandKitPortal({
               </span>
             </div>
             <div className="font-mono text-xs text-[var(--text-muted)]">
-              Space Grotesk · Syne · Instrument Serif · JetBrains Mono (
+              Montserrat · Space Grotesk · Instrument Serif · JetBrains Mono (
               {t.brandKit.typography.tabularLabel})
             </div>
           </div>
@@ -486,7 +486,7 @@ export function BrandKitPortal({
             {t.brandKit.applications.plates.map((plate) => (
               <div
                 key={plate.id}
-                className="overflow-hidden rounded-2xl border border-[var(--border-main)] bg-[var(--bg-card)] shadow-lg"
+                className="dcc-lux-card shadow-lg"
               >
                 <div className="aspect-[16/10] w-full overflow-hidden bg-[var(--bg-subtle)]">
                   <img

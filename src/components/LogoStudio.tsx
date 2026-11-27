@@ -270,7 +270,7 @@ export function LogoStudio({
       {/* Header Row */}
       <div className="flex flex-col gap-6 lg:flex-row lg:items-end lg:justify-between">
         <div className="max-w-3xl space-y-3">
-          <div className="inline-flex items-center gap-2 rounded-full border border-[var(--border-main)] bg-[var(--bg-card)] px-3.5 py-1">
+          <div className="inline-flex items-center gap-2 bg-[var(--bg-card)] px-3.5 py-1">
             <Sparkles
               className="h-3.5 w-3.5"
               style={{ color: 'var(--brand-primary)' }}
@@ -293,7 +293,7 @@ export function LogoStudio({
             type="button"
             data-testid="logo-studio-animate-btn"
             onClick={onLaunchAnimation}
-            className="inline-flex items-center gap-2 rounded-full border border-[var(--brand-primary)] bg-[var(--badge-bg)] px-4 py-2.5 text-xs font-semibold text-[var(--badge-text)] transition hover:bg-[var(--brand-primary)] hover:text-[var(--btn-text)] cursor-pointer"
+            className="inline-flex items-center gap-2 bg-[#112A21] px-4 py-2.5 text-xs font-semibold text-white transition-colors duration-[260ms] hover:bg-[var(--brand-primary)] hover:text-[var(--btn-text)] cursor-pointer"
           >
             <Play className="h-3.5 w-3.5" />
             <span>{copy.actions.playAnim}</span>
@@ -302,7 +302,7 @@ export function LogoStudio({
           <button
             type="button"
             onClick={handleCopyShortlist}
-            className="inline-flex items-center gap-1.5 rounded-full border border-[var(--border-main)] bg-[var(--bg-card)] px-4 py-2.5 text-xs font-semibold text-[var(--text-primary)] transition hover:border-[var(--brand-primary)] cursor-pointer"
+            className="inline-flex items-center gap-1.5 bg-[#141716] px-4 py-2.5 text-xs font-semibold text-[var(--text-primary)] transition-colors duration-[260ms] hover:bg-[#1D2320] hover:text-[#F2D58B] cursor-pointer"
           >
             {copiedShortlist ? (
               <Check className="h-3.5 w-3.5 text-[var(--accent-emerald)]" />
@@ -319,7 +319,7 @@ export function LogoStudio({
           <button
             type="button"
             onClick={handleShareWhatsApp}
-            className="inline-flex items-center gap-1.5 rounded-full bg-[var(--brand-primary)] px-4 py-2.5 text-xs font-semibold text-[var(--btn-text)] shadow-md transition hover:bg-[var(--brand-hover)] cursor-pointer"
+            className="inline-flex items-center gap-1.5 bg-[var(--brand-primary)] px-4 py-2.5 text-xs font-semibold text-[var(--btn-text)] shadow-md transition-colors duration-[260ms] hover:bg-[var(--brand-hover)] cursor-pointer"
           >
             <MessageCircle className="h-3.5 w-3.5" />
             <span>{copy.actions.shareWa}</span>
@@ -332,7 +332,7 @@ export function LogoStudio({
         <div
           role="group"
           aria-label={copy.title}
-          className="inline-flex flex-wrap items-center gap-1.5 rounded-2xl border border-[var(--border-main)] bg-[var(--bg-card)] p-1.5"
+          className="inline-flex flex-wrap items-center gap-1.5 bg-[var(--bg-card)] p-1.5"
         >
           {(
             [
@@ -351,10 +351,10 @@ export function LogoStudio({
                 key={tab.id}
                 type="button"
                 onClick={() => setFilter(tab.id)}
-                className={`rounded-xl px-3.5 py-1.5 font-mono text-xs font-semibold transition cursor-pointer ${
+                className={`px-3.5 py-1.5 font-mono text-xs font-semibold transition-colors duration-[260ms] cursor-pointer ${
                   active
                     ? 'bg-[var(--brand-primary)] text-[var(--btn-text)] shadow-sm'
-                    : 'text-[var(--text-secondary)] hover:text-[var(--text-primary)]'
+                    : 'text-[var(--text-secondary)] hover:bg-[#141716] hover:text-[var(--text-primary)]'
                 }`}
               >
                 {tab.label}
@@ -367,7 +367,7 @@ export function LogoStudio({
           <button
             type="button"
             onClick={() => onSelectCandidate(null)}
-            className="inline-flex items-center gap-1.5 rounded-full border border-[var(--brand-accent)] bg-[var(--bg-card)] px-3.5 py-1.5 font-mono text-xs font-semibold text-[var(--brand-accent)] transition hover:bg-[var(--bg-subtle)] cursor-pointer"
+            className="inline-flex items-center gap-1.5 bg-[#112A21] px-3.5 py-1.5 font-mono text-xs font-semibold text-[var(--accent-emerald)] transition-colors duration-[260ms] hover:bg-[#193E31] cursor-pointer"
           >
             <X className="h-3.5 w-3.5" />
             <span>{copy.actions.clearPreview}</span>
@@ -377,7 +377,7 @@ export function LogoStudio({
 
       {/* Candidates Grid */}
       {filteredCandidates.length === 0 ? (
-        <div className="apple-card rounded-3xl p-10 text-center text-sm text-[var(--text-secondary)]">
+        <div className="dcc-lux-card p-10 text-center text-sm text-[var(--text-secondary)]">
           {copy.emptyFavs}
         </div>
       ) : (
@@ -391,9 +391,10 @@ export function LogoStudio({
               <article
                 key={item.id}
                 data-testid={`logo-candidate-${item.number}`}
-                className={`apple-card group flex flex-col overflow-hidden rounded-3xl transition ${
+                data-active={String(isLiveSelected)}
+                className={`dcc-lux-card group flex flex-col ${
                   isLiveSelected
-                    ? 'ring-2 ring-[var(--brand-primary)] border-[var(--brand-primary)]'
+                    ? 'shadow-[inset_0_3px_0_0_var(--brand-primary)]'
                     : ''
                 }`}
               >
@@ -404,7 +405,7 @@ export function LogoStudio({
                     setLightboxId(item.id);
                   }}
                   className={`relative aspect-[16/9] w-full overflow-hidden cursor-pointer ${
-                    isEditorial ? 'bg-[#FAF6EF] p-3 pt-6' : 'bg-[#0B0A09]'
+                    isEditorial ? 'bg-[#FAF6EF] p-3 pt-6' : 'bg-[#060606]'
                   }`}
                 >
                   <img
@@ -418,7 +419,7 @@ export function LogoStudio({
                   />
 
                   <div className="absolute top-2.5 left-2.5 right-2.5 flex items-center justify-between gap-2">
-                    <span className="rounded-full border border-white/15 bg-black/75 px-2.5 py-0.5 font-mono text-[10px] font-bold text-[#E5B06B] backdrop-blur-md">
+                    <span className="bg-black/75 px-2.5 py-0.5 font-mono text-[10px] font-bold text-[#E6BE6A] backdrop-blur-md">
                       #{item.number} · {item.tags[locale]}
                     </span>
 
@@ -430,10 +431,10 @@ export function LogoStudio({
                         e.stopPropagation();
                         toggleFavorite(item.id);
                       }}
-                      className={`inline-flex h-8 w-8 items-center justify-center rounded-full border backdrop-blur-md transition cursor-pointer ${
+                      className={`inline-flex h-8 w-8 items-center justify-center backdrop-blur-md transition-colors duration-[260ms] cursor-pointer ${
                         isFav
-                          ? 'border-[#D49B54] bg-[#D49B54] text-[#0B0A09]'
-                          : 'border-white/20 bg-black/65 text-white hover:border-[#D49B54]'
+                          ? 'bg-[#D4A853] text-[#050505]'
+                          : 'bg-black/75 text-white hover:bg-[#D4A853] hover:text-[#050505]'
                       }`}
                     >
                       <Star
@@ -462,7 +463,7 @@ export function LogoStudio({
                         setMockupTab('plate');
                         setLightboxId(item.id);
                       }}
-                      className="inline-flex items-center justify-center gap-1.5 rounded-xl border border-[var(--border-main)] bg-[var(--bg-subtle)] px-3 py-2 text-xs font-semibold text-[var(--text-primary)] transition hover:border-[var(--brand-primary)] cursor-pointer"
+                      className="inline-flex items-center justify-center gap-1.5 bg-[#141716] px-3 py-2 text-xs font-semibold text-[var(--text-primary)] transition-colors duration-[260ms] hover:bg-[#1D2320] hover:text-[#F2D58B] cursor-pointer"
                     >
                       <Maximize2 className="h-3.5 w-3.5 text-[var(--brand-primary)]" />
                       <span className="truncate">{copy.actions.zoomMockup}</span>
@@ -473,10 +474,10 @@ export function LogoStudio({
                       onClick={() =>
                         onSelectCandidate(isLiveSelected ? null : item)
                       }
-                      className={`inline-flex items-center justify-center gap-1.5 rounded-xl border px-3 py-2 text-xs font-semibold transition cursor-pointer ${
+                      className={`inline-flex items-center justify-center gap-1.5 px-3 py-2 text-xs font-semibold transition-colors duration-[260ms] cursor-pointer ${
                         isLiveSelected
-                          ? 'border-[var(--brand-primary)] bg-[var(--brand-primary)] text-[var(--btn-text)]'
-                          : 'border-[var(--border-main)] bg-[var(--bg-main)] text-[var(--text-secondary)] hover:border-[var(--brand-primary)] hover:text-[var(--text-primary)]'
+                          ? 'bg-[var(--brand-primary)] text-[var(--btn-text)]'
+                          : 'bg-[var(--bg-main)] text-[var(--text-secondary)] hover:bg-[#141716] hover:text-[var(--text-primary)]'
                       }`}
                     >
                       <Eye className="h-3.5 w-3.5 shrink-0" />
@@ -509,12 +510,14 @@ export function LogoStudio({
               backgroundColor: 'var(--bg-card)',
               color: 'var(--text-primary)',
             }}
-            className="relative my-auto w-full max-w-4xl rounded-3xl border border-[var(--border-main)] p-4 sm:p-6 shadow-2xl space-y-4 max-h-[92vh] overflow-y-auto"
+            className="relative my-auto w-full max-w-4xl shadow-2xl max-h-[92vh] overflow-y-auto"
           >
+            <div className="h-[2px] w-full dcc-gold-emerald-bar" />
+            <div className="p-4 sm:p-6 space-y-4">
             {/* Modal Header */}
             <div className="flex flex-wrap items-center justify-between gap-3 border-b border-[var(--border-main)] pb-3">
               <div className="flex items-center gap-3 min-w-0">
-                <span className="rounded-full bg-[var(--badge-bg)] px-3 py-1 font-mono text-xs font-bold text-[var(--badge-text)] shrink-0">
+                <span className="bg-[var(--badge-bg)] px-3 py-1 font-mono text-xs font-bold text-[var(--badge-text)] shrink-0">
                   #{lightboxItem.number} / 11
                 </span>
                 <div className="min-w-0">
@@ -537,7 +540,7 @@ export function LogoStudio({
                       LOGO_CANDIDATES.length;
                     setLightboxId(LOGO_CANDIDATES[prevIdx].id);
                   }}
-                  className="inline-flex h-9 w-9 items-center justify-center rounded-full border border-[var(--border-main)] bg-[var(--bg-subtle)] text-[var(--text-primary)] hover:border-[var(--brand-primary)] cursor-pointer"
+                  className="inline-flex h-9 w-9 items-center justify-center bg-[var(--bg-subtle)] text-[var(--text-primary)] transition-colors duration-[260ms] hover:bg-[var(--brand-primary)] hover:text-[var(--btn-text)] cursor-pointer"
                 >
                   <ChevronLeft className="h-4 w-4" />
                 </button>
@@ -549,7 +552,7 @@ export function LogoStudio({
                       (lightboxIndex + 1) % LOGO_CANDIDATES.length;
                     setLightboxId(LOGO_CANDIDATES[nextIdx].id);
                   }}
-                  className="inline-flex h-9 w-9 items-center justify-center rounded-full border border-[var(--border-main)] bg-[var(--bg-subtle)] text-[var(--text-primary)] hover:border-[var(--brand-primary)] cursor-pointer"
+                  className="inline-flex h-9 w-9 items-center justify-center bg-[var(--bg-subtle)] text-[var(--text-primary)] transition-colors duration-[260ms] hover:bg-[var(--brand-primary)] hover:text-[var(--btn-text)] cursor-pointer"
                 >
                   <ChevronRight className="h-4 w-4" />
                 </button>
@@ -557,7 +560,7 @@ export function LogoStudio({
                   type="button"
                   aria-label={copy.modal.close}
                   onClick={() => setLightboxId(null)}
-                  className="inline-flex h-9 w-9 items-center justify-center rounded-full border border-[var(--border-main)] bg-[var(--bg-subtle)] text-[var(--text-primary)] hover:border-[var(--brand-primary)] cursor-pointer"
+                  className="inline-flex h-9 w-9 items-center justify-center bg-[var(--bg-subtle)] text-[var(--text-primary)] transition-colors duration-[260ms] hover:bg-[var(--brand-primary)] hover:text-[var(--btn-text)] cursor-pointer"
                 >
                   <X className="h-4 w-4" />
                 </button>
@@ -577,10 +580,10 @@ export function LogoStudio({
                   key={tab.id}
                   type="button"
                   onClick={() => setMockupTab(tab.id)}
-                  className={`rounded-full px-3.5 py-1.5 font-mono text-xs font-semibold transition cursor-pointer ${
+                  className={`px-3.5 py-1.5 font-mono text-xs font-semibold transition-colors duration-[260ms] cursor-pointer ${
                     mockupTab === tab.id
                       ? 'bg-[var(--brand-primary)] text-[var(--btn-text)]'
-                      : 'border border-[var(--border-main)] bg-[var(--bg-subtle)] text-[var(--text-secondary)]'
+                      : 'bg-[var(--bg-subtle)] text-[var(--text-secondary)] hover:text-[var(--text-primary)]'
                   }`}
                 >
                   {tab.label}
@@ -590,7 +593,7 @@ export function LogoStudio({
 
             {/* Viewport */}
             {mockupTab === 'plate' && (
-              <div className="overflow-hidden rounded-2xl border border-[var(--border-main)] bg-[#0B0A09]">
+              <div className="overflow-hidden bg-[#060606]">
                 <img
                   src={lightboxItem.image}
                   alt={lightboxItem.titles[locale]}
@@ -600,35 +603,35 @@ export function LogoStudio({
             )}
 
             {mockupTab === 'header' && (
-              <div className="overflow-hidden rounded-2xl border border-[var(--border-main)] bg-[#0B0A09] p-5 space-y-5 text-[#F3ECE0]">
-                <div className="flex items-center justify-between gap-4 rounded-2xl border border-white/10 bg-[#141210] px-4 py-3">
+              <div className="overflow-hidden bg-[#060606] p-5 space-y-5 text-white">
+                <div className="flex items-center justify-between gap-4 bg-[#0D0F0E] px-4 py-3">
                   <div className="flex items-center gap-3">
                     <img
                       src={lightboxItem.image}
                       alt={lightboxItem.titles[locale]}
-                      className="h-11 w-20 rounded-lg object-cover border border-white/15"
+                      className="h-11 w-20 object-cover"
                     />
-                    <span className="font-mono text-xs tracking-wider text-[#D49B54]">
+                    <span className="font-mono text-xs tracking-wider text-[#D4A853]">
                       DCC · CATERING BERLIN
                     </span>
                   </div>
                   <div className="hidden sm:flex items-center gap-4 text-xs text-white/75">
                     <span>Kalkulator</span>
                     <span>Galerie</span>
-                    <span className="rounded-full bg-[#D49B54] px-3 py-1 font-semibold text-[#0B0A09]">
+                    <span className="bg-[#D4A853] px-3 py-1 font-semibold text-[#060606]">
                       Angebot
                     </span>
                   </div>
                 </div>
 
-                <div className="rounded-2xl border border-white/10 bg-gradient-to-br from-[#1D1A16] to-[#0B0A09] p-6 flex flex-col sm:flex-row items-center gap-6">
+                <div className="bg-gradient-to-br from-[#141816] to-[#060606] p-6 flex flex-col sm:flex-row items-center gap-6">
                   <img
                     src={lightboxItem.image}
                     alt={lightboxItem.titles[locale]}
-                    className="w-48 rounded-xl object-cover shadow-lg border border-white/10"
+                    className="w-48 object-cover shadow-lg"
                   />
                   <div className="space-y-2 text-center sm:text-left">
-                    <div className="font-mono text-xs uppercase tracking-widest text-[#D49B54]">
+                    <div className="font-mono text-xs uppercase tracking-widest text-[#D4A853]">
                       LIVE ROTISSERIE · 30–800+ GUESTS
                     </div>
                     <div className="font-monument text-xl font-bold">
@@ -644,15 +647,15 @@ export function LogoStudio({
 
             {mockupTab === 'packaging' && (
               <div className="grid grid-cols-1 sm:grid-cols-2 gap-4">
-                <div className="rounded-2xl border border-[var(--border-main)] bg-[#0B0A09] p-6 text-center space-y-3 text-[#F3ECE0]">
-                  <div className="font-mono text-[10px] uppercase tracking-[0.25em] text-[#D49B54]">
+                <div className="bg-[#060606] p-6 text-center space-y-3 text-white">
+                  <div className="font-mono text-[10px] uppercase tracking-[0.25em] text-[#D4A853]">
                     EXECUTIVE CATERING BOX
                   </div>
-                  <div className="mx-auto max-w-[230px] overflow-hidden rounded-xl border border-[#D49B54]/40 p-2 bg-[#141210]">
+                  <div className="mx-auto max-w-[230px] overflow-hidden p-2 bg-[#0D0F0E]">
                     <img
                       src={lightboxItem.image}
                       alt={lightboxItem.titles[locale]}
-                      className="w-full rounded-lg object-cover"
+                      className="w-full object-cover"
                     />
                   </div>
                   <div className="font-mono text-[11px] text-white/60">
@@ -660,18 +663,18 @@ export function LogoStudio({
                   </div>
                 </div>
 
-                <div className="rounded-2xl border border-[var(--border-main)] bg-[#FAF6EF] p-6 text-center space-y-3 text-[#0B0A09]">
-                  <div className="font-mono text-[10px] uppercase tracking-[0.25em] text-[#7A4710]">
+                <div className="bg-[#FAF6EF] p-6 text-center space-y-3 text-[#060606]">
+                  <div className="font-mono text-[10px] uppercase tracking-[0.25em] text-[#855F18]">
                     VIP EVENT MENU CARD
                   </div>
-                  <div className="mx-auto max-w-[230px] overflow-hidden rounded-xl border border-[#0B0A09]/15 p-2 bg-white shadow-sm">
+                  <div className="mx-auto max-w-[230px] overflow-hidden p-2 bg-white shadow-sm">
                     <img
                       src={lightboxItem.image}
                       alt={lightboxItem.titles[locale]}
-                      className="w-full rounded-lg object-cover"
+                      className="w-full object-cover"
                     />
                   </div>
-                  <div className="font-serif italic text-sm text-[#2D2823]">
+                  <div className="font-serif italic text-sm text-[#2D3532]">
                     Yaprak Döner · Antep Baklava · Mint Ayran
                   </div>
                 </div>
@@ -688,12 +691,12 @@ export function LogoStudio({
                 <button
                   type="button"
                   onClick={() => toggleFavorite(lightboxItem.id)}
-                  className="inline-flex items-center gap-1.5 rounded-full border border-[var(--border-main)] bg-[var(--bg-subtle)] px-4 py-2 text-xs font-semibold cursor-pointer"
+                  className="inline-flex items-center gap-1.5 bg-[var(--bg-subtle)] px-4 py-2 text-xs font-semibold transition-colors duration-[260ms] hover:bg-[#1D2320] cursor-pointer"
                 >
                   <Star
-                    className="h-3.5 w-3.5 text-[#D49B54]"
+                    className="h-3.5 w-3.5 text-[#D4A853]"
                     fill={
-                      favorites.includes(lightboxItem.id) ? '#D49B54' : 'none'
+                      favorites.includes(lightboxItem.id) ? '#D4A853' : 'none'
                     }
                   />
                   <span>
@@ -709,12 +712,13 @@ export function LogoStudio({
                     onSelectCandidate(lightboxItem);
                     setLightboxId(null);
                   }}
-                  className="inline-flex items-center gap-1.5 rounded-full bg-[var(--brand-primary)] px-4 py-2 text-xs font-semibold text-[var(--btn-text)] cursor-pointer"
+                  className="inline-flex items-center gap-1.5 bg-[var(--brand-primary)] px-4 py-2 text-xs font-semibold text-[var(--btn-text)] transition-colors duration-[260ms] hover:bg-[var(--brand-hover)] cursor-pointer"
                 >
                   <Eye className="h-3.5 w-3.5" />
                   <span>{copy.modal.activeOnSite}</span>
                 </button>
               </div>
+            </div>
             </div>
           </div>
         </div>

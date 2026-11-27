@@ -87,20 +87,76 @@ body {
   animation: dcc-gold-emerald-flow 9s ease-in-out infinite;
 }
 
-/* Calculator (#rechner) Distinct Frameless Sharp Surface with Very Slow Light-Gold Loop */
-.dcc-rechner-module {
-  position: relative;
-  border-radius: 0;
-  border: none;
-  background: linear-gradient(
-    125deg,
-    #0B0C0C 0%,
-    #13110D 35%,
-    #0C0E0D 68%,
-    #15120C 100%
-  );
-  background-size: 300% 300%;
-  animation: dcc-soft-gold-loop 16s ease-in-out infinite;
+/* Hero Masked Staggered Entrance (Transform-Only, LCP-Immediate) */
+@keyframes dcc-hero-mask-up {
+  from {
+    transform: translate3d(0, 22px, 0);
+  }
+  to {
+    transform: translate3d(0, 0, 0);
+  }
+}
+
+.dcc-hero-mask-up {
+  animation: dcc-hero-mask-up 560ms var(--ease-expo-out) both;
+}
+
+.dcc-hero-mask-delay-1 {
+  animation-delay: 55ms;
+}
+
+.dcc-hero-mask-delay-2 {
+  animation-delay: 110ms;
+}
+
+/* Calculator (#rechner) Scoped Light Contrast Theme + Sharp Frameless Surfaces */
+#rechner {
+  --bg-main: #FAF6EF;
+  --bg-card: #FFFFFF;
+  --bg-subtle: #F1EBE0;
+  --text-primary: #0B0D0C;
+  --text-secondary: #2D3532;
+  --text-muted: #535D58;
+  --brand-primary: #9A7226;
+  --brand-accent: #148F63;
+  --border-main: rgba(11, 13, 12, 0.11);
+  --slider-track: #DDD4C4;
+  --slider-thumb: #9A7226;
+  --receipt-bg: #FFFFFF;
+  --receipt-text: #0B0D0C;
+  --receipt-accent: #9A7226;
+  background-color: #FAF6EF;
+  color: #0B0D0C;
+}
+
+#rechner .dcc-gold-emerald-bar {
+  background: linear-gradient(90deg, #9A7226 0%, #D4A853 45%, #148F63 100%);
+  background-size: 100% 100%;
+  animation: none;
+}
+
+@layer components {
+  .dcc-rechner-module {
+    position: relative;
+    border-radius: 0;
+    border: none;
+    background: linear-gradient(
+      125deg,
+      #0B0C0C 0%,
+      #13110D 35%,
+      #0C0E0D 68%,
+      #15120C 100%
+    );
+    background-size: 300% 300%;
+    animation: dcc-soft-gold-loop 16s ease-in-out infinite;
+  }
+
+  #rechner .dcc-rechner-module {
+    background: #FFFFFF;
+    background-color: #FFFFFF;
+    animation: none;
+    box-shadow: 0 14px 36px -22px rgba(11, 13, 12, 0.14);
+  }
 }
 
 .dcc-calc-tile {
@@ -110,9 +166,14 @@ body {
   background-color: #101211;
   overflow: hidden;
   transition:
-    background-color 280ms var(--ease-expo-out),
-    transform 280ms var(--ease-expo-out),
-    box-shadow 280ms var(--ease-expo-out);
+    background-color 260ms var(--ease-expo-out),
+    transform 260ms var(--ease-expo-out),
+    box-shadow 260ms var(--ease-expo-out);
+}
+
+#rechner .dcc-calc-tile {
+  background-color: #F1EBE0;
+  color: #0B0D0C;
 }
 
 .dcc-calc-tile::before {
@@ -127,13 +188,26 @@ body {
     transparent 75%
   );
   opacity: 0;
-  transition: opacity 320ms var(--ease-expo-out);
+  transition: opacity 260ms var(--ease-expo-out);
   z-index: 0;
+}
+
+#rechner .dcc-calc-tile::before {
+  background: radial-gradient(
+    420px circle at var(--mx, 50%) var(--my, 50%),
+    rgba(154, 114, 38, 0.11) 0%,
+    rgba(20, 143, 99, 0.07) 45%,
+    transparent 75%
+  );
 }
 
 .dcc-calc-tile:hover {
   background-color: #161816;
   transform: translateY(-1px);
+}
+
+#rechner .dcc-calc-tile:hover {
+  background-color: #E8DFCF;
 }
 
 .dcc-calc-tile:hover::before {
@@ -157,6 +231,18 @@ body {
   box-shadow: inset 3px 0 0 0 #F2D58B;
 }
 
+#rechner .dcc-calc-tile-active {
+  background: linear-gradient(
+    120deg,
+    rgba(154, 114, 38, 0.13) 0%,
+    rgba(20, 143, 99, 0.07) 52%,
+    rgba(212, 168, 83, 0.15) 100%
+  );
+  background-color: #FBF4E4;
+  animation: none;
+  box-shadow: inset 3px 0 0 0 #9A7226;
+}
+
 /* Sharp Architectural Frameless Card with Cursor-Tracking Gold-Emerald Hover Sheen */
 .dcc-lux-card {
   position: relative;
@@ -165,9 +251,9 @@ body {
   border-radius: 0;
   overflow: hidden;
   transition:
-    transform 300ms var(--ease-expo-out),
-    box-shadow 300ms var(--ease-expo-out),
-    background-color 300ms var(--ease-expo-out);
+    transform 260ms var(--ease-expo-out),
+    box-shadow 260ms var(--ease-expo-out),
+    background-color 260ms var(--ease-expo-out);
 }
 
 .dcc-lux-card::before {
@@ -182,8 +268,23 @@ body {
     transparent 72%
   );
   opacity: 0;
-  transition: opacity 340ms var(--ease-expo-out);
+  transition: opacity 260ms var(--ease-expo-out);
   z-index: 0;
+}
+
+.dcc-lux-card::after {
+  content: "";
+  pointer-events: none;
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  height: 2px;
+  background: linear-gradient(90deg, #D4A853 0%, #2BC48A 100%);
+  transform: scaleX(0);
+  transform-origin: left center;
+  transition: transform 260ms var(--ease-expo-out);
+  z-index: 2;
 }
 
 .dcc-lux-card:hover {
@@ -198,6 +299,10 @@ body {
   opacity: 1;
 }
 
+.dcc-lux-card:hover::after {
+  transform: scaleX(1);
+}
+
 .dcc-lux-card > * {
   position: relative;
   z-index: 1;
@@ -205,13 +310,19 @@ body {
 
 /* Minimalist Architectural Surface */
 .apple-card {
+  position: relative;
   background-color: #0B0D0C;
   border: none;
   border-radius: 0;
   box-shadow: 0 12px 32px -18px rgba(0, 0, 0, 0.65);
   transition:
     transform 260ms var(--ease-expo-out),
-    background-color 260ms var(--ease-expo-out);
+    background-color 260ms var(--ease-expo-out),
+    box-shadow 260ms var(--ease-expo-out);
+}
+
+.apple-card:hover {
+  background-color: #111413;
 }
 
 /* Prominent Sharp-Cornered Frameless Architectural Buttons */
@@ -294,9 +405,9 @@ body {
 
   .dcc-sticky-summary {
     position: sticky;
-    top: 6rem;
+    top: 5rem;
     align-self: start;
-    max-height: calc(100vh - 6.5rem);
+    max-height: calc(100vh - 5.75rem);
     overflow-y: auto;
     scrollbar-width: thin;
   }
@@ -316,7 +427,7 @@ body {
   background-color: var(--glass-surface);
   backdrop-filter: blur(24px) saturate(150%);
   -webkit-backdrop-filter: blur(24px) saturate(150%);
-  border: 1px solid var(--glass-border);
+  border: none;
 }
 
 .apple-gradient-text {
@@ -331,13 +442,13 @@ body {
   color: transparent;
 }
 
-/* Custom Range Slider — Sleek 4px Architectural Track */
+/* Custom Range Slider — Sharp 4px Architectural Track & Rectangular Brass Handle */
 input[type="range"].dcc-slider {
   -webkit-appearance: none;
   appearance: none;
   width: 100%;
   height: 4px;
-  border-radius: 9999px;
+  border-radius: 0;
   background: var(--slider-track);
   outline: none;
   cursor: pointer;
@@ -346,31 +457,27 @@ input[type="range"].dcc-slider {
 input[type="range"].dcc-slider::-webkit-slider-thumb {
   -webkit-appearance: none;
   appearance: none;
-  width: 20px;
-  height: 20px;
-  border-radius: 50%;
+  width: 18px;
+  height: 22px;
+  border-radius: 0;
   background: var(--slider-thumb);
-  border: 2.5px solid var(--bg-card);
-  box-shadow:
-    0 3px 10px rgba(0, 0, 0, 0.4),
-    0 0 0 1px var(--brand-primary);
+  border: 2px solid var(--bg-card);
+  box-shadow: 0 3px 10px rgba(11, 13, 12, 0.28);
   cursor: pointer;
   transition: transform 180ms var(--ease-expo-out);
 }
 
 input[type="range"].dcc-slider::-webkit-slider-thumb:hover {
-  transform: scale(1.12);
+  transform: scale(1.1);
 }
 
 input[type="range"].dcc-slider::-moz-range-thumb {
-  width: 20px;
-  height: 20px;
-  border-radius: 50%;
+  width: 18px;
+  height: 22px;
+  border-radius: 0;
   background: var(--slider-thumb);
-  border: 2.5px solid var(--bg-card);
-  box-shadow:
-    0 3px 10px rgba(0, 0, 0, 0.4),
-    0 0 0 1px var(--brand-primary);
+  border: 2px solid var(--bg-card);
+  box-shadow: 0 3px 10px rgba(11, 13, 12, 0.28);
   cursor: pointer;
 }
 
