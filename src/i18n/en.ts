@@ -829,28 +829,29 @@ export const en: TranslationSchema = {
     impressum: {
       id: 'impressum',
       title: 'Imprint / Legal Notice',
-      badge: '§ 5 DDG · BERLIN',
-      updatedAt: 'Updated: 2026',
+      badge: 'UNDER REVISION · BERLIN',
+      updatedAt: 'Status: Currently Under Revision',
       closeLabel: 'Close',
       sections: [
         {
-          heading: 'Service Provider',
+          heading: 'Service Provider & Platform Status',
           paragraphs: [
-            'DCC Döner Catering Club GmbH',
-            'Torstraße 114, 10119 Berlin, Germany',
+            'DCC Döner Catering Club · Berlin',
+            'This website and its digital event calculation systems are currently in active preview and setup mode.',
+            'Corporate entity details, addresses, and commercial registry data are being legally finalized and will be published prior to official commercial operations.',
           ],
         },
         {
-          heading: 'Contact & Corporate Registry',
+          heading: 'Inquiries & Contact',
           paragraphs: [
-            'Phone: +49 30 8145 6789 · Email: concierge@dcc-catering.berlin',
-            'Commercial Register: Amtsgericht Charlottenburg (Berlin) · VAT ID: DE361802026',
+            'For event reservations, inquiries, and custom event calculations, please reach out via the interactive calculator, WhatsApp, or email:',
+            'Email: concierge@dcc-catering.berlin',
           ],
         },
         {
-          heading: 'Quote Estimates',
+          heading: 'Notice on Estimates',
           paragraphs: [
-            'All calculator totals represent transparent non-binding estimates plus 19% statutory German VAT. Binding contracts are formed only upon written confirmation.',
+            'All totals calculated on this site represent non-binding orientation estimates for event planners plus statutory VAT. Binding contracts are formed solely through written confirmation.',
           ],
         },
       ],
@@ -858,26 +859,27 @@ export const en: TranslationSchema = {
     datenschutz: {
       id: 'datenschutz',
       title: 'Privacy Policy (GDPR)',
-      badge: 'ART. 13 GDPR',
-      updatedAt: 'Updated: 2026',
+      badge: 'UNDER REVISION · GDPR',
+      updatedAt: 'Status: Legal Review in Progress',
       closeLabel: 'Close',
       sections: [
         {
-          heading: '1. Zero Third-Party Font or Ad Tracking',
+          heading: '1. Privacy Notice Under Revision',
           paragraphs: [
-            'This website serves all fonts and media locally without external tracking scripts. Your selected interface language is stored solely in your browser localStorage.',
+            'The complete privacy policy in accordance with Art. 13 GDPR is currently being finalized for regular operations.',
+            'This site does not use third-party advertising cookies or font tracking. All media and typefaces are served locally, and language settings are retained solely in local browser storage.',
           ],
         },
         {
-          heading: '2. Event Briefing & WhatsApp Handover',
+          heading: '2. Inquiry Data & WhatsApp Handover',
           paragraphs: [
-            'Contact details entered in the Quote Modal (name, company, email, phone, event date, VAT ID) are processed only when you explicitly click "Send via WhatsApp" or copy/print your briefing. When opening WhatsApp, the privacy policy of WhatsApp Ireland Limited applies.',
+            'Information entered into the calculator or quote modal is processed only upon your explicit action (such as sending via WhatsApp or copying to clipboard). When opening WhatsApp, WhatsApp Ireland Limited policies apply.',
           ],
         },
         {
-          heading: '3. Your GDPR Rights',
+          heading: '3. Your Rights Under GDPR',
           paragraphs: [
-            'You have the right to access, rectify, erase, or restrict processing of your personal data under GDPR at concierge@dcc-catering.berlin.',
+            'You hold full rights to access, rectify, delete, or restrict processing of your inquiry data under GDPR via concierge@dcc-catering.berlin.',
           ],
         },
       ],

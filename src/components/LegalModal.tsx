@@ -81,6 +81,21 @@ export function LegalModal({
           </button>
         </div>
 
+        {/* Baustelle / In Bearbeitung Advisory Notice */}
+        {(activeDoc === 'impressum' || activeDoc === 'datenschutz') && (
+          <div className="mt-4 flex items-start gap-3 rounded-lg border border-[#FFA733]/30 bg-[#FFA733]/10 p-3.5 text-xs text-[#FFA733] font-mono leading-relaxed">
+            <span className="text-base select-none shrink-0">🚧</span>
+            <div>
+              <strong className="font-bold uppercase tracking-wider">
+                Status: In Bearbeitung
+              </strong>
+              <p className="mt-0.5 text-white/80">
+                Diese rechtlichen Angaben befinden sich derzeit in der redaktionellen und juristischen Finalisierung vor dem Regelbetrieb. Voranfragen und Kalkulationen werden bereits entgegengenommen.
+              </p>
+            </div>
+          </div>
+        )}
+
         <div className="mt-5 space-y-5">
           {doc.sections.map((sec, idx) => (
             <div key={idx} className="space-y-1.5">

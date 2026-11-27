@@ -833,28 +833,29 @@ export const de: TranslationSchema = {
     impressum: {
       id: 'impressum',
       title: 'Impressum',
-      badge: '§ 5 DDG · BERLIN',
-      updatedAt: 'Stand: 2026',
+      badge: 'IN BEARBEITUNG · BERLIN',
+      updatedAt: 'Status: In redaktioneller Überarbeitung',
       closeLabel: 'Schließen',
       sections: [
         {
-          heading: 'Diensteanbieter',
+          heading: 'Diensteanbieter & Plattformstatus',
           paragraphs: [
-            'DCC Döner Catering Club GmbH',
-            'Torstraße 114, 10119 Berlin, Deutschland',
+            'DCC Döner Catering Club · Berlin',
+            'Diese Website und das damit verbundene digitale Catering-Angebot befinden sich derzeit in der aktiven Aufbau- und Vorbereitungsphase (Vorschau-Modus).',
+            'Sämtliche gesellschaftsrechtlichen Angaben, Anschriften und Registerdaten werden derzeit juristisch und redaktionell geprüft und rechtzeitig vor dem offiziellen Regelbetrieb veröffentlicht.',
           ],
         },
         {
-          heading: 'Kontakt & Vertretung',
+          heading: 'Voranfragen & Kontakt',
           paragraphs: [
-            'Telefon: +49 30 8145 6789 · E-Mail: concierge@dcc-catering.berlin',
-            'Handelsregister: Amtsgericht Charlottenburg (Berlin) · USt-IdNr.: DE361802026',
+            'Für Voranfragen, Event-Termine und individuelle Kalkulationen erreichen Sie uns direkt über den interaktiven Kalkulator sowie per WhatsApp und E-Mail:',
+            'E-Mail: concierge@dcc-catering.berlin',
           ],
         },
         {
           heading: 'Hinweis zu Richtangeboten',
           paragraphs: [
-            'Alle Preise im Kalkulator verstehen sich als transparente Richtwerte zuzüglich 19 % gesetzlicher MwSt. Verbindliche Verträge entstehen erst durch schriftliche Auftragsbestätigung.',
+            'Alle Preise und Kalkulationen im Rechner verstehen sich als unverbindliche Orientierungswerte für Eventplaner zuzüglich gesetzlicher MwSt. Verbindliche Buchungen und Leistungsvereinbarungen entstehen erst durch eine schriftliche Auftragsbestätigung.',
           ],
         },
       ],
@@ -862,26 +863,27 @@ export const de: TranslationSchema = {
     datenschutz: {
       id: 'datenschutz',
       title: 'Datenschutz (DSGVO)',
-      badge: 'ART. 13 DSGVO',
-      updatedAt: 'Stand: 2026',
+      badge: 'IN BEARBEITUNG · DSGVO',
+      updatedAt: 'Status: In juristischer Prüfung',
       closeLabel: 'Schließen',
       sections: [
         {
-          heading: '1. Verarbeitung ohne Hintergrund-Tracking',
+          heading: '1. Datenschutzhinweise in Überarbeitung',
           paragraphs: [
-            'Diese Website lädt sämtliche Schriften und Medien lokal ohne externe Google-Fonts- oder Werbe-Tracker. Ihre Spracheinstellung wird ausschließlich lokal im Browser (localStorage) gespeichert.',
+            'Die vollständige Datenschutzerklärung nach Art. 13 DSGVO befindet sich derzeit in redaktioneller und juristischer Finalisierung für den Regelbetrieb.',
+            'Diese Plattform verwendet keine externen Tracking-Cookies oder Drittanbieter-Werbenetzwerke. Sämtliche Schriften und Medien werden lokal ausgeliefert; Ihre Spracheinstellung wird ausschließlich lokal im Browser (localStorage) gespeichert.',
           ],
         },
         {
-          heading: '2. Angebots-Briefing & WhatsApp-Übergabe',
+          heading: '2. Datenverarbeitung bei Voranfragen & WhatsApp',
           paragraphs: [
-            'Ihre Eingaben im Anfrageformular (Name, Unternehmen, E-Mail, Telefon, Event-Datum, USt-IdNr.) werden erst dann verarbeitet, wenn Sie aktiv auf „Per WhatsApp anfragen“ klicken oder die Zwischenablage nutzen. Bei Nutzung von WhatsApp gelten ergänzend die Datenschutzhinweise der WhatsApp Ireland Limited.',
+            'Ihre Eingaben im Kalkulator und Anfrageformular werden erst dann verarbeitet, wenn Sie aktiv eine Angebotsübermittlung (z. B. via WhatsApp oder Kopierfunktion) auslösen. Bei Nutzung von WhatsApp gelten ergänzend die Datenschutzbestimmungen der WhatsApp Ireland Limited.',
           ],
         },
         {
           heading: '3. Betroffenenrechte nach DSGVO',
           paragraphs: [
-            'Sie haben jederzeit das Recht auf Auskunft, Berichtigung, Löschung und Einschränkung der Verarbeitung gemäß DSGVO unter concierge@dcc-catering.berlin.',
+            'Sie haben jederzeit das Recht auf Auskunft, Berichtigung, Löschung und Einschränkung der Verarbeitung Ihrer Anfragedaten gemäß DSGVO unter concierge@dcc-catering.berlin.',
           ],
         },
       ],

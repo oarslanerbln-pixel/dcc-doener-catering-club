@@ -10,7 +10,10 @@ const HERO_MARQUEE_COPY = {
   de: {
     shortSubtitle: 'Handgestecktes Yaprak. Live am Spieß. 30–800+ Gäste.',
     servicesBannerLabel: 'DCC Catering Leistungen',
+    constructionTicker: 'SYSTEM IN BEARBEITUNG // BAUSTELLE: VORSCHAU & LIVE-RECHNER AKTIV',
+    constructionSub: 'VORRESERVIERUNGEN & ANFRAGEN FÜR 2026 WERDEN BEREITS ANGENOMMEN',
     services: [
+      '🚧 IN BEARBEITUNG · LIVE-VORSCHAU',
       '100 % Yaprak Rind & Kalb',
       'Manufaktur-Partner: MEVA Döner Berlin',
       'Live-Döner-Station',
@@ -26,7 +29,10 @@ const HERO_MARQUEE_COPY = {
   en: {
     shortSubtitle: 'Hand-Stacked Yaprak. Carved Live. 30–800+ Guests.',
     servicesBannerLabel: 'DCC Catering Services',
+    constructionTicker: 'SYSTEM UNDER CONSTRUCTION // PREVIEW & LIVE CALCULATOR ACTIVE',
+    constructionSub: 'EARLY RESERVATIONS & EVENT INQUIRIES OPEN FOR 2026',
     services: [
+      '🚧 UNDER REVISION · PREVIEW MODE',
       '100% Yaprak Beef & Veal',
       'Production Partner: MEVA Döner Berlin',
       'Live Döner Station',
@@ -42,7 +48,10 @@ const HERO_MARQUEE_COPY = {
   tr: {
     shortSubtitle: 'El Yapımı Yaprak Döner. Canlı Kesim. 30–800+ Misafir.',
     servicesBannerLabel: 'DCC Catering Hizmetleri',
+    constructionTicker: 'SİSTEM HAZIRLIK AŞAMASINDA // ÖN İZLEME & CANLI HESAPLAYICI AKTİF',
+    constructionSub: '2026 ETKİNLİK ÖN REZERVASYONLARI VE TALEPLERİ ALINMAKTADIR',
     services: [
+      '🚧 HAZIRLIK AŞAMASINDA · ÖN İZLEME',
       '%100 Yaprak Dana & Et Döner',
       'Üretim Ortağı: MEVA Döner Berlin',
       'Canlı Döner İstasyonu',
@@ -146,9 +155,51 @@ export function Hero(_props?: Partial<HeroProps>): React.ReactElement {
         heroContainerRef={heroRef}
       />
 
+      {/* High-Impact Baustelle / In Bearbeitung Kinetic Ticker Strip */}
+      <aside
+        aria-label="Status: In Bearbeitung"
+        data-testid="hero-baustelle-ticker"
+        className="relative z-20 -mt-10 sm:-mt-14 mb-4 sm:mb-6 w-full overflow-hidden bg-[#FFA733]/[0.08] border-y border-[#FFA733]/25 backdrop-blur-md py-2 sm:py-2.5"
+      >
+        <div className="dcc-marquee-viewport w-full overflow-hidden">
+          <div className="dcc-baustelle-track">
+            {[0, 1].map((dupIdx) => (
+              <div
+                key={dupIdx}
+                aria-hidden={dupIdx === 1}
+                className="flex shrink-0 items-center whitespace-nowrap"
+              >
+                {[0, 1].map((subIdx) => (
+                  <span
+                    key={`${dupIdx}-${subIdx}`}
+                    className="inline-flex items-center gap-5 sm:gap-8 px-6 sm:px-10 font-mono text-[11px] sm:text-xs font-bold uppercase tracking-[0.24em] text-[#FFA733]"
+                  >
+                    <span className="inline-flex items-center gap-2">
+                      <span className="text-sm select-none">🚧</span>
+                      <span>{marqueeCopy.constructionTicker}</span>
+                    </span>
+                    <span className="h-1.5 w-1.5 rounded-full bg-[#FFA733] shadow-[0_0_8px_#FFA733]" />
+                    <span className="text-[#FBF6EE]">{marqueeCopy.constructionSub}</span>
+                    <span className="h-3 w-[1px] bg-[#FFA733]/30" />
+                  </span>
+                ))}
+              </div>
+            ))}
+          </div>
+        </div>
+      </aside>
+
       {/* Ultra-Clean Minimalist Hero Centerpiece with Spacious Breathing Room */}
-      <div className="relative z-10 my-auto mx-auto w-full max-w-5xl px-4 sm:px-6 flex flex-col items-center text-center space-y-8 sm:space-y-12 py-8 sm:py-14">
+      <div className="relative z-10 my-auto mx-auto w-full max-w-5xl px-4 sm:px-6 flex flex-col items-center text-center space-y-8 sm:space-y-12 py-6 sm:py-10">
         <div className="max-w-4xl space-y-6 sm:space-y-8">
+          {/* Subtle Baustelle / Live-Vorschau Status Chip */}
+          <div className="flex items-center justify-center">
+            <div className="inline-flex items-center gap-2 px-3 py-1 bg-[#FFA733]/10 border border-[#FFA733]/30 text-[#FFA733] font-mono text-[10px] sm:text-[11px] font-bold uppercase tracking-[0.24em] rounded shadow-[0_0_15px_rgba(255,167,51,0.15)]">
+              <span className="h-1.5 w-1.5 rounded-full bg-[#FFA733] animate-pulse shadow-[0_0_8px_#FFA733]" />
+              <span>🚧 IN BEARBEITUNG · LIVE-VORSCHAU</span>
+            </div>
+          </div>
+
           {/* Frameless, architectural, airy Eyebrow (No pill frame) */}
           <div className="overflow-hidden pb-1">
             <p className="dcc-hero-mask-up font-monument text-xs sm:text-sm md:text-[15px] font-bold uppercase tracking-[0.28em] text-[#FFA733] drop-shadow-[0_2px_12px_rgba(255,167,51,0.25)]">

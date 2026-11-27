@@ -758,13 +758,22 @@ input[type="range"].dcc-slider::-moz-range-thumb {
   will-change: transform;
 }
 
-.dcc-marquee-viewport:hover .dcc-marquee-track {
+.dcc-baustelle-track {
+  display: flex;
+  width: max-content;
+  animation: dcc-marquee-scroll 32s linear infinite;
+  will-change: transform;
+}
+
+.dcc-marquee-viewport:hover .dcc-marquee-track,
+.dcc-marquee-viewport:hover .dcc-baustelle-track {
   animation-play-state: paused;
 }
 
 @media (prefers-reduced-motion: reduce) {
   .dcc-hero-kenburns,
-  .dcc-marquee-track {
+  .dcc-marquee-track,
+  .dcc-baustelle-track {
     animation: none !important;
   }
 }

@@ -829,28 +829,29 @@ export const tr: TranslationSchema = {
     impressum: {
       id: 'impressum',
       title: 'Künye (Impressum)',
-      badge: '§ 5 DDG · BERLİN',
-      updatedAt: 'Güncelleme: 2026',
+      badge: 'HAZIRLIK AŞAMASINDA · BERLİN',
+      updatedAt: 'Durum: Güncelleme & Düzenleme Aşamasında',
       closeLabel: 'Kapat',
       sections: [
         {
-          heading: 'Hizmet Sağlayıcı',
+          heading: 'Hizmet Sağlayıcı & Platform Durumu',
           paragraphs: [
-            'DCC Döner Catering Club GmbH',
-            'Torstraße 114, 10119 Berlin, Almanya',
+            'DCC Döner Catering Club · Berlin',
+            'Bu web sitesi ve dijital etkinlik hesaplama altyapısı şu anda aktif hazırlık ve kurulum aşamasındadır (Ön İzleme Modu).',
+            'Şirket tüzel kişilik detayları, açık adres ve ticaret sicil kayıtları resmi lansman öncesi hukuki incelemede olup en kısa sürede güncellenecektir.',
           ],
         },
         {
-          heading: 'İletişim & Ticaret Sicili',
+          heading: 'Ön Talepler & İletişim',
           paragraphs: [
-            'Telefon: +49 30 8145 6789 · E-posta: concierge@dcc-catering.berlin',
-            'Ticaret Sicili: Amtsgericht Charlottenburg (Berlin) · KDV No: DE361802026',
+            'Etkinlik ön rezervasyonları, tarih uygunluğu ve özel menü kalkülasyonları için bize doğrudan interaktif hesaplayıcı, WhatsApp ve e-posta üzerinden ulaşabilirsiniz:',
+            'E-posta: concierge@dcc-catering.berlin',
           ],
         },
         {
           heading: 'Ön Hesaplama Bilgilendirmesi',
           paragraphs: [
-            'Hesaplayıcıdaki tüm tutarlar %19 yasal Alman KDV’si eklenmiş şeffaf ön tekliflerdir. Bağlayıcı sözleşme yalnızca yazılı onay ile kurulur.',
+            'Hesaplayıcıdaki tüm tutarlar organizasyon planlayıcıları için bağlayıcı olmayan şeffaf kılavuz değerlerdir (yasal KDV hariç). Bağlayıcı rezervasyonlar yalnızca yazılı onay ile kesinleşir.',
           ],
         },
       ],
@@ -858,26 +859,27 @@ export const tr: TranslationSchema = {
     datenschutz: {
       id: 'datenschutz',
       title: 'Gizlilik Politikası (GDPR / KVKK)',
-      badge: 'GDPR · KVKK',
-      updatedAt: 'Güncelleme: 2026',
+      badge: 'HAZIRLIK AŞAMASINDA · GDPR',
+      updatedAt: 'Durum: Hukuki İnceleme Aşamasında',
       closeLabel: 'Kapat',
       sections: [
         {
-          heading: '1. Üçüncü Taraf Takibi Yoktur',
+          heading: '1. Gizlilik Metni Hazırlık Aşamasında',
           paragraphs: [
-            'Bu web sitesi tüm yazı tiplerini ve görselleri harici reklam veya font izleyicisi olmadan yerel olarak sunar. Dil tercihiniz yalnızca tarayıcınızdaki localStorage alanında saklanır.',
+            'GDPR Madde 13 ve KVKK uyarınca hazırlanan resmi aydınlatma metnimiz operasyonel süreçler doğrultusunda güncellenmektedir.',
+            'Web sitemizde hiçbir üçüncü taraf reklam veya izleme çerezi kullanılmamaktadır. Tüm font ve medya dosyaları yerel olarak sunulur; dil tercihiniz yalnızca tarayıcınızda (localStorage) tutulur.',
           ],
         },
         {
-          heading: '2. Teklif Formu & WhatsApp Aktarımı',
+          heading: '2. Ön Talep ve WhatsApp Aktarımı',
           paragraphs: [
-            'Teklif penceresine girdiğiniz bilgiler (ad, şirket, e-posta, telefon, etkinlik tarihi, KDV no) yalnızca siz "WhatsApp ile Gönder" veya kopyala/yazdır butonuna tıkladığınızda işlenir. WhatsApp kullanımında WhatsApp Ireland Limited gizlilik politikası geçerlidir.',
+            'Hesaplayıcı ve teklif formuna girdiğiniz bilgiler yalnızca siz "WhatsApp ile Gönder" veya kopyala butonuna tıkladığınızda talebinizin incelenmesi amacıyla aktarılır. WhatsApp kullanımında WhatsApp Ireland Limited gizlilik kuralları geçerlidir.',
           ],
         },
         {
-          heading: '3. GDPR ve KVKK Kapsamındaki Haklarınız',
+          heading: '3. GDPR & KVKK Kapsamındaki Haklarınız',
           paragraphs: [
-            'Kişisel verilerinize erişim, düzeltme, silme ve işlemeyi kısıtlama haklarınızı GDPR ve KVKK uyarınca concierge@dcc-catering.berlin üzerinden kullanabilirsiniz.',
+            'Verilerinize erişim, düzeltme, silme veya işlemeyi kısıtlama haklarınızı dilediğiniz zaman concierge@dcc-catering.berlin adresi üzerinden talep edebilirsiniz.',
           ],
         },
       ],

@@ -1,5 +1,5 @@
 import React from 'react';
-import { MapPin, Phone, Mail } from 'lucide-react';
+import { MapPin, Mail } from 'lucide-react';
 import { BRAND_METADATA } from '../data/catalog';
 import { useLocale } from '../i18n';
 import type { ThemeId } from '../types/brand';
@@ -43,15 +43,10 @@ export function Footer({
             <p className="max-w-md text-sm leading-relaxed text-[var(--text-secondary)]">
               {t.footer.tagline}
             </p>
-            <div className="space-y-1.5 font-mono text-xs text-[var(--text-secondary)]">
-              <div className="flex items-center gap-2">
-                <Phone className="h-3.5 w-3.5 text-[var(--brand-primary)]" />
-                <a
-                  href={BRAND_METADATA.phoneHref}
-                  className="hover:text-[var(--brand-primary)]"
-                >
-                  {BRAND_METADATA.phoneDisplay}
-                </a>
+            <div className="space-y-2 font-mono text-xs text-[var(--text-secondary)]">
+              <div className="inline-flex items-center gap-2 px-2.5 py-1 rounded bg-[#FFA733]/10 border border-[#FFA733]/25 text-[#FFA733] text-[11px] font-bold tracking-wide">
+                <span className="h-1.5 w-1.5 rounded-full bg-[#FFA733] animate-pulse" />
+                <span>🚧 IN BEARBEITUNG · VORANFRAGEN AKTIV</span>
               </div>
               <div className="flex items-center gap-2">
                 <Mail className="h-3.5 w-3.5 text-[var(--brand-primary)]" />
