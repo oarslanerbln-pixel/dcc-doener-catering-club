@@ -100,42 +100,35 @@ body {
   animation: dcc-gold-emerald-flow 7.5s ease-in-out infinite;
 }
 
-/* Hypnotic Rotisserie Fire & Molten Gold Sheen for "Yaprak Döner" Headline */
-@keyframes dcc-ember-flame-flow {
+/* Razor-Sharp Pure Specular Light Sheen for "Yaprak Döner" (Zero Box Artifacts) */
+@keyframes dcc-crisp-gold-sheen {
   0% {
-    background-position: 0% 50%;
-    filter: drop-shadow(0 4px 18px rgba(255, 140, 20, 0.40));
-  }
-  50% {
-    background-position: 100% 50%;
-    filter: drop-shadow(0 0 28px rgba(255, 167, 51, 0.85)) drop-shadow(0 0 54px rgba(255, 80, 0, 0.50));
+    background-position: 0% center;
   }
   100% {
-    background-position: 0% 50%;
-    filter: drop-shadow(0 4px 18px rgba(255, 140, 20, 0.40));
+    background-position: 200% center;
   }
 }
 
 .dcc-hero-gold-white-text,
 .dcc-hero-ember-flame-text {
   background: linear-gradient(
-    115deg,
+    110deg,
     #FFFFFF 0%,
-    #FFF0CC 12%,
-    #FFA733 26%,
-    #FF5100 42%,
-    #FFFFFF 56%,
-    #FFA733 70%,
-    #FF3300 85%,
-    #FFE8B3 100%
+    #FFF2D6 18%,
+    #FFA733 36%,
+    #FFFFFF 50%,
+    #FFA733 66%,
+    #FFF2D6 82%,
+    #FFFFFF 100%
   );
-  background-size: 300% 300%;
+  background-size: 200% 100%;
   -webkit-background-clip: text;
   background-clip: text;
+  -webkit-text-fill-color: transparent;
   color: transparent;
-  animation: dcc-ember-flame-flow 5s ease-in-out infinite;
+  animation: dcc-crisp-gold-sheen 6.5s linear infinite;
   display: inline-block;
-  letter-spacing: -0.015em;
 }
 
 .dcc-gold-emerald-bar {

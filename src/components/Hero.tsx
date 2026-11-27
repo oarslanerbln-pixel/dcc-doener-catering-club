@@ -180,7 +180,7 @@ export function Hero({
           </div>
 
           <div className="overflow-hidden">
-            <h1 className="dcc-hero-mask-up dcc-hero-mask-delay-1 font-monument text-[40px] sm:text-6xl lg:text-[82px] font-extrabold tracking-[-0.03em] leading-[1.03] text-white drop-shadow-[0_8px_32px_rgba(0,0,0,0.55)]">
+            <h1 className="dcc-hero-mask-up dcc-hero-mask-delay-1 font-monument text-[40px] sm:text-6xl lg:text-[82px] font-extrabold tracking-[-0.03em] leading-[1.03] text-white [text-shadow:0_4px_24px_rgba(0,0,0,0.6)]">
               <span>{t.hero.headlinePrefix} </span>
               <span className="dcc-hero-ember-flame-text">
                 {t.hero.headlineAccent}
