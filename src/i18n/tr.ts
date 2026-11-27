@@ -401,8 +401,8 @@ export const tr: TranslationSchema = {
         tag: 'YÜKSEK SERVİS HIZI',
         title: 'Büfe Önünde Uzun Kuyruklar Yok',
         description:
-          'Paralel kesim istasyonları ve ön ısıtmalı taş fırın lojistiği saatte 180 taze porsiyona ulaşır.',
-        checkBadge: '30–800+ Kişi · Dakik Servis',
+          'Paralel kesim istasyonları ve ön ısıtmalı taş fırın lojistiği beklemesiz, kesintisiz taze servis sağlar.',
+        checkBadge: '30–800+ Misafir · Dakik Servis',
       },
     ],
   },
@@ -516,8 +516,8 @@ export const tr: TranslationSchema = {
       {
         code: 'CANLI',
         title: 'Yüksek Hızlı Kesim',
-        detail: 'Çift kesim istasyonu ile beklemesiz akış — saatte 180 porsiyona kadar taze servis.',
-        metric: '180 / Saat',
+        detail: 'Çift kesim istasyonu ile beklemesiz akış — kesintisiz canlı catering servisi.',
+        metric: 'NON-STOP',
       },
       {
         code: 'T+30D',
@@ -533,7 +533,7 @@ export const tr: TranslationSchema = {
     subtitle:
       'Teknoloji zirveleri, otel düğünleri ve yaratıcı ajans festivallerinden gerçek saha notları.',
     metrics: [
-      { value: '180 / Saat', label: 'İstasyon Başı Zirve Hızı' },
+      { value: '30–800+', label: 'Esnek Misafir Kapasitesi' },
       { value: '< 2 Saat', label: 'Resmi Teklif Yanıt Süresi' },
       { value: '%100', label: 'Zamanında Kurulum Oranı' },
     ],

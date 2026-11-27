@@ -1,0 +1,44 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 500 500" width="100%" height="100%">
+  <!-- DCC Candidate 05: The Architectural DIN Hexagon -->
+  <defs>
+    <linearGradient id="hexGrad05" x1="0%" y1="0%" x2="100%" y2="100%">
+      <stop offset="0%" stop-color="#FFFFFF"/>
+      <stop offset="50%" stop-color="#D4A853"/>
+      <stop offset="100%" stop-color="#FF9326"/>
+    </linearGradient>
+  </defs>
+
+  <rect width="500" height="500" fill="#060606"/>
+
+  <g transform="translate(250, 210)">
+    <!-- Outer Precision Hexagon Frame -->
+    <polygon points="0,-150 130,-75 130,75 0,150 -130,75 -130,-75" 
+             fill="none" stroke="rgba(255,255,255,0.18)" stroke-width="2"/>
+
+    <!-- Inner Geometric Hexagon with Beveled Yaprak Facets -->
+    <polygon points="0,-132 114,-66 114,66 0,132 -114,66 -114,-66" 
+             fill="none" stroke="url(#hexGrad05)" stroke-width="2.5"/>
+
+    <!-- 6 Isometric Internal Carving Blades forming the Rotisserie Monolith Core -->
+    <path d="M 0 -115 L 75 -72 L 75 -56 L 0 -99 Z" fill="url(#hexGrad05)"/>
+    <path d="M 0 -85 L 75 -42 L 75 -26 L 0 -69 Z" fill="#FFFFFF"/>
+    <path d="M 0 -55 L 75 -12 L 75 4 L 0 -39 Z" fill="url(#hexGrad05)"/>
+
+    <path d="M 0 -115 L -75 -72 L -75 -56 L 0 -99 Z" fill="#FFFFFF"/>
+    <path d="M 0 -85 L -75 -42 L -75 -26 L 0 -69 Z" fill="url(#hexGrad05)"/>
+    <path d="M 0 -55 L -75 -12 L -75 4 L 0 -39 Z" fill="#FFFFFF"/>
+
+    <!-- Central Vertical Skewer Spear -->
+    <line x1="0" y1="-145" x2="0" y2="145" stroke="#FFA733" stroke-width="3"/>
+    <polygon points="0,-160 -6,-145 6,-145" fill="#FFA733"/>
+    <circle cx="0" cy="155" r="4" fill="#FFA733"/>
+  </g>
+
+  <!-- Typography -->
+  <text x="250" y="420" text-anchor="middle" font-family="'Space Grotesk', 'Montserrat', sans-serif" font-weight="900" font-size="21" letter-spacing="0.32em" fill="#FFFFFF">
+    D C C  B E R L I N
+  </text>
+  <text x="250" y="445" text-anchor="middle" font-family="'Space Grotesk', 'Montserrat', sans-serif" font-weight="600" font-size="8.5" letter-spacing="0.45em" fill="#D4A853">
+    ARCHITECTURAL ROTISSERIE CATERING
+  </text>
+</svg>

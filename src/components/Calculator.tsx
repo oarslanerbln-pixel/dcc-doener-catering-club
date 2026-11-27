@@ -136,11 +136,11 @@ export function Calculator({
   >(undefined);
 
   const STEP_ITEMS = [
-    { id: 1, label: extraCopy.tabEvent, num: '01' },
+    { id: 1, label: extraCopy.tabGuests, num: '01' },
     { id: 2, label: extraCopy.tabMeat, num: '02' },
     { id: 3, label: extraCopy.tabSetup, num: '03' },
     { id: 4, label: extraCopy.tabExtras, num: '04' },
-    { id: 5, label: extraCopy.tabGuests, num: '05' },
+    { id: 5, label: extraCopy.tabEvent, num: '05' },
   ];
 
   useEffect(() => {
@@ -227,9 +227,6 @@ export function Calculator({
 
   const handleSelectEvent = (ev: EventType) => {
     onChangeInput((prev) => ({ ...prev, eventType: ev }));
-    window.setTimeout(() => {
-      setActiveStep(2);
-    }, 240);
   };
 
   const handleSelectMeat = (meatId: MeatId) => {
@@ -399,118 +396,170 @@ export function Calculator({
 
             {/* Active Step Content Card */}
             <div className="bg-[#120A06]/92 border border-white/20 p-5 sm:p-9 backdrop-blur-xl shadow-[0_24px_50px_rgba(0,0,0,0.6)] space-y-8">
-              {/* STEP 01: What Kind of Event? */}
+              {/* STEP 01: Guest Count & Volume Discount Slider */}
               {activeStep === 1 && (
-                <div key="step-1" className="dcc-step-container space-y-7">
-                  <div>
-                    <span className="font-eyebrow text-xs sm:text-[13.5px] font-bold uppercase tracking-[0.22em] text-[#FFA733]">
-                      01 / 05 · {STEP_ITEMS[0].label}
-                    </span>
-                    <h3 className="mt-2 font-monument text-2xl sm:text-3xl font-extrabold tracking-tight text-white">
-                      {extraCopy.eventStepTitle}
-                    </h3>
-                    <p className="mt-2 text-sm sm:text-base text-white/65">
-                      {extraCopy.eventStepSubtitle}
-                    </p>
-                  </div>
-
-                  {/* Tactile 3-Column Event Format Selector + 800+ Enterprise Option */}
-                  <div className="grid grid-cols-1 sm:grid-cols-3 gap-4">
-                    {EVENT_TYPES.map((ev) => {
-                      const active = input.eventType === ev;
-                      const evCopy = t.calculator.steps.guests.eventTypes[ev];
-                      return (
-                        <button
-                          key={ev}
-                          type="button"
-                          data-testid={`event-type-${ev}`}
-                          aria-pressed={active}
-                          data-active={String(active)}
-                          onClick={() => handleSelectEvent(ev)}
-                          className={`group flex flex-col justify-between gap-4 p-6 sm:p-7 min-h-[180px] sm:min-h-[200px] text-left transition-all duration-200 cursor-pointer border ${
-                            active
-                              ? 'bg-gradient-to-br from-[#2E160C] via-[#1D0C06] to-[#120704] border-[#FFA733] shadow-[0_0_28px_rgba(255,167,51,0.28)] text-white scale-[1.01]'
-                              : 'bg-gradient-to-br from-[#1A0E08]/90 via-[#130A05]/90 to-[#0C0603]/90 border-white/15 text-white hover:border-[#FFA733]/60 hover:bg-[#20110A] hover:scale-[1.008]'
-                          }`}
-                        >
-                          <div className="space-y-2.5 w-full">
-                            <div className="flex items-center justify-between gap-2 w-full">
-                              <span className="font-monument text-base sm:text-lg font-extrabold uppercase tracking-[0.06em] text-white">
-                                {evCopy.label}
-                              </span>
-                              <span
-                                className={`inline-flex h-7 w-7 items-center justify-center border shrink-0 transition-colors ${
-                                  active
-                                    ? 'bg-[#FFA733] border-[#FFA733] text-[#060606]'
-                                    : 'border-white/25 text-transparent'
-                                }`}
-                              >
-                                <Check className="h-4 w-4 stroke-[3]" />
-                              </span>
-                            </div>
-                            <p
-                              className={`text-xs sm:text-sm leading-relaxed ${
-                                active ? 'text-[#FBF1DE] font-medium' : 'text-[#D6CEC2]'
-                              }`}
-                            >
-                              {evCopy.hint}
-                            </p>
-                          </div>
-
-                          <div className="pt-3.5 border-t border-white/10 flex items-center justify-between">
-                            <span
-                              className={`font-monument text-[11px] sm:text-xs uppercase tracking-wider font-extrabold transition-colors ${
-                                active
-                                  ? 'text-[#FFA733]'
-                                  : 'text-white/60 group-hover:text-white'
-                              }`}
-                            >
-                              {active ? extraCopy.selectedLabel : extraCopy.clickToSelect}
-                            </span>
-                            <span
-                              className={`text-[10px] font-mono font-bold tracking-widest ${
-                                active ? 'text-[#FFA733]' : 'text-white/35'
-                              }`}
-                            >
-                              {active ? '02 →' : 'KLICK'}
-                            </span>
-                          </div>
-                        </button>
-                      );
-                    })}
-                  </div>
-
-                  <div className="flex flex-col sm:flex-row sm:items-center gap-3 pt-1">
-                    <button
-                      type="button"
-                      data-testid="enterprise-800-plus"
-                      aria-pressed={input.enterprise800Plus}
-                      data-active={String(input.enterprise800Plus)}
-                      onClick={() =>
-                        onChangeInput((prev) => ({
-                          ...prev,
-                          guests: !prev.enterprise800Plus
-                            ? MAX_GUESTS
-                            : prev.guests,
-                          enterprise800Plus: !prev.enterprise800Plus,
-                        }))
-                      }
-                      className={`inline-flex min-h-[48px] w-full sm:w-auto items-center justify-center gap-2.5 px-5 py-3 font-monument text-xs sm:text-[13px] uppercase tracking-[0.12em] transition-all duration-200 cursor-pointer border ${
-                        input.enterprise800Plus
-                          ? 'bg-[#FFA733] border-[#FFA733] font-extrabold text-[#060606]'
-                          : 'bg-transparent border-white/25 font-bold text-white/80 hover:border-white/55 hover:text-white'
-                      }`}
-                    >
-                      <Sparkles className="h-4 w-4" />
-                      <span>{t.calculator.steps.guests.enterpriseToggle}</span>
-                    </button>
-                  </div>
-
-                  {input.enterprise800Plus && (
-                    <div className="border-l-2 border-[#FFA733] bg-white/[0.04] px-5 py-4 text-sm font-medium text-white/85">
-                      {t.calculator.steps.guests.enterpriseActiveNote}
+                <div key="step-1" className="dcc-step-container space-y-8">
+                  <div className="flex flex-wrap items-end justify-between gap-4">
+                    <div>
+                      <span className="font-eyebrow text-xs sm:text-[13.5px] font-bold uppercase tracking-[0.22em] text-[#FFA733]">
+                        01 / 05 · {STEP_ITEMS[0].label}
+                      </span>
+                      <h3 className="mt-2 font-monument text-2xl sm:text-3xl font-extrabold tracking-tight text-white">
+                        {extraCopy.guestsStepTitle}
+                      </h3>
+                      <p className="mt-2 text-sm sm:text-base text-[#D6CEC2]">
+                        {extraCopy.guestsStepSubtitle}
+                      </p>
                     </div>
-                  )}
+
+                    <div className="text-right">
+                      <span className="block font-monument text-xs font-semibold uppercase tracking-[0.16em] text-[#C4BCAB]">
+                        {t.calculator.steps.guests.activeDiscountPrefix}
+                      </span>
+                      <span
+                        data-testid="active-discount-badge"
+                        className="font-monument tabular-nums text-2xl sm:text-3xl font-extrabold text-[#FFA733]"
+                      >
+                        {discountPct > 0
+                          ? `-${discountPct} %`
+                          : t.calculator.steps.guests.noDiscountLabel}
+                      </span>
+                    </div>
+                  </div>
+
+                  {/* Sculpted Guest Readout + Tactile Stepper */}
+                  <div className="bg-[#180D07]/90 border border-white/15 p-5 sm:p-7 space-y-7">
+                    <div className="flex flex-col sm:flex-row sm:items-center sm:justify-between gap-5">
+                      <div className="space-y-1">
+                        <label
+                          htmlFor="dcc-guest-input"
+                          className="block font-monument text-base sm:text-lg font-bold text-white"
+                        >
+                          {t.calculator.steps.guests.inputLabel}
+                        </label>
+                        <span className="text-sm text-[#D6CEC2]">
+                          {t.calculator.steps.guests.minOrderNote}
+                        </span>
+                      </div>
+
+                      <div className="flex items-center justify-between sm:justify-end gap-3.5">
+                        <button
+                          type="button"
+                          data-testid="guest-minus"
+                          aria-label={t.calculator.steps.guests.decreaseAria}
+                          onClick={handleStepMinus}
+                          className="inline-flex h-14 w-14 items-center justify-center bg-transparent border border-white/25 text-white transition-colors duration-200 hover:bg-[#FFA733] hover:border-[#FFA733] hover:text-[#060606] cursor-pointer"
+                        >
+                          <Minus className="h-5 w-5" />
+                        </button>
+
+                        <input
+                          id="dcc-guest-input"
+                          type="number"
+                          data-testid="guest-input"
+                          min={MIN_GUESTS}
+                          max={MAX_GUESTS}
+                          value={rawGuests}
+                          onChange={handleGuestInputChange}
+                          onBlur={handleGuestInputCommit}
+                          onKeyDown={(e) => {
+                            if (e.key === 'Enter') {
+                              e.preventDefault();
+                              handleGuestInputCommit();
+                            }
+                          }}
+                          className="h-14 w-36 bg-transparent border-b-2 border-[#FFA733]/80 px-2 text-center font-monument tabular-nums text-4xl sm:text-5xl font-extrabold text-white transition-colors duration-200 focus:border-white focus:outline-none"
+                        />
+
+                        <button
+                          type="button"
+                          data-testid="guest-plus"
+                          aria-label={t.calculator.steps.guests.increaseAria}
+                          onClick={handleStepPlus}
+                          className="inline-flex h-14 w-14 items-center justify-center bg-transparent border border-white/25 text-white transition-colors duration-200 hover:bg-[#FFA733] hover:border-[#FFA733] hover:text-[#060606] cursor-pointer"
+                        >
+                          <Plus className="h-5 w-5" />
+                        </button>
+                      </div>
+                    </div>
+
+                    {/* Prominent High-Contrast Illuminated Slider Bar + Sculpted Tactile Handle */}
+                    <div className="space-y-4 pt-2">
+                      <div className="relative flex items-center py-3">
+                        {/* Track Background */}
+                        <div className="pointer-events-none absolute inset-x-0 h-[10px] rounded-full bg-white/20 overflow-hidden">
+                          {/* Filled Luminous Progress Bar */}
+                          <div
+                            className="h-full rounded-full transition-all duration-150"
+                            style={{
+                              width: `${capacityProgress}%`,
+                              background:
+                                'linear-gradient(90deg, #FFFFFF 0%, #FFA733 55%, #FF5500 100%)',
+                              boxShadow: '0 0 20px rgba(255, 167, 51, 0.55)',
+                            }}
+                          />
+                        </div>
+                        <input
+                          type="range"
+                          data-testid="guest-slider"
+                          aria-label={t.calculator.steps.guests.sliderAria}
+                          min={MIN_GUESTS}
+                          max={MAX_GUESTS}
+                          step={1}
+                          value={input.guests}
+                          onChange={handleSliderChange}
+                          className="dcc-slider relative z-10"
+                        />
+                      </div>
+
+                      {/* Clean Scale Labels */}
+                      <div className="flex items-center justify-between font-monument text-[11px] sm:text-xs font-bold text-white/60">
+                        <span>{extraCopy.tierScaleStart}</span>
+                        <span>100 (-5%)</span>
+                        <span>250 (-10%)</span>
+                        <span>500+ (-15%)</span>
+                        <span>{extraCopy.tierScaleEnd}</span>
+                      </div>
+                    </div>
+
+                    {/* Volume Discount Tier Strip */}
+                    <div className="grid grid-cols-2 sm:grid-cols-4 gap-3 pt-1">
+                      {(
+                        [
+                          { key: 'tier0', rate: 0 },
+                          { key: 'tier5', rate: 0.05 },
+                          { key: 'tier10', rate: 0.1 },
+                          { key: 'tier15', rate: 0.15 },
+                        ] as const
+                      ).map((tier) => {
+                        const active = result.discountRate === tier.rate;
+                        return (
+                          <div
+                            key={tier.key}
+                            data-active={String(active)}
+                            className={`py-2.5 text-center font-monument text-xs sm:text-[13px] transition-colors duration-200 border-b-2 ${
+                              active
+                                ? 'border-[#FFA733] font-extrabold text-[#FFA733]'
+                                : 'border-white/10 font-semibold text-white/45'
+                            }`}
+                          >
+                            {t.calculator.steps.guests.tiers[tier.key]}
+                          </div>
+                        );
+                      })}
+                    </div>
+
+                    {clampReason === 'below_min' && (
+                      <p className="text-sm font-monument font-semibold text-[#FFA733]">
+                        {t.calculator.steps.guests.clampedMinNotice}
+                      </p>
+                    )}
+                    {clampReason === 'above_max' && (
+                      <p className="text-sm font-monument font-semibold text-[#FFA733]">
+                        {t.calculator.steps.guests.clampedMaxNotice}
+                      </p>
+                    )}
+                  </div>
                 </div>
               )}
 
@@ -809,170 +858,118 @@ export function Calculator({
                 </div>
               )}
 
-              {/* STEP 05: Guest Count & Volume Discount */}
+              {/* STEP 05: What Kind of Event? */}
               {activeStep === 5 && (
-                <div key="step-5" className="dcc-step-container space-y-8">
-                  <div className="flex flex-wrap items-end justify-between gap-4">
-                    <div>
-                      <span className="font-eyebrow text-xs sm:text-[13.5px] font-bold uppercase tracking-[0.22em] text-[#FFA733]">
-                        05 / 05 · {STEP_ITEMS[4].label}
-                      </span>
-                      <h3 className="mt-2 font-monument text-2xl sm:text-3xl font-extrabold tracking-tight text-white">
-                        {extraCopy.guestsStepTitle}
-                      </h3>
-                      <p className="mt-2 text-sm sm:text-base text-[#D6CEC2]">
-                        {extraCopy.guestsStepSubtitle}
-                      </p>
-                    </div>
-
-                    <div className="text-right">
-                      <span className="block font-monument text-xs font-semibold uppercase tracking-[0.16em] text-[#C4BCAB]">
-                        {t.calculator.steps.guests.activeDiscountPrefix}
-                      </span>
-                      <span
-                        data-testid="active-discount-badge"
-                        className="font-monument tabular-nums text-2xl sm:text-3xl font-extrabold text-[#FFA733]"
-                      >
-                        {discountPct > 0
-                          ? `-${discountPct} %`
-                          : t.calculator.steps.guests.noDiscountLabel}
-                      </span>
-                    </div>
+                <div key="step-5" className="dcc-step-container space-y-7">
+                  <div>
+                    <span className="font-eyebrow text-xs sm:text-[13.5px] font-bold uppercase tracking-[0.22em] text-[#FFA733]">
+                      05 / 05 · {STEP_ITEMS[4].label}
+                    </span>
+                    <h3 className="mt-2 font-monument text-2xl sm:text-3xl font-extrabold tracking-tight text-white">
+                      {extraCopy.eventStepTitle}
+                    </h3>
+                    <p className="mt-2 text-sm sm:text-base text-white/65">
+                      {extraCopy.eventStepSubtitle}
+                    </p>
                   </div>
 
-                  {/* Sculpted Guest Readout + Tactile Stepper */}
-                  <div className="bg-[#180D07]/90 border border-white/15 p-5 sm:p-7 space-y-7">
-                    <div className="flex flex-col sm:flex-row sm:items-center sm:justify-between gap-5">
-                      <div className="space-y-1">
-                        <label
-                          htmlFor="dcc-guest-input"
-                          className="block font-monument text-base sm:text-lg font-bold text-white"
-                        >
-                          {t.calculator.steps.guests.inputLabel}
-                        </label>
-                        <span className="text-sm text-[#D6CEC2]">
-                          {t.calculator.steps.guests.minOrderNote}
-                        </span>
-                      </div>
-
-                      <div className="flex items-center justify-between sm:justify-end gap-3.5">
+                  {/* Tactile 3-Column Event Format Selector + 800+ Enterprise Option */}
+                  <div className="grid grid-cols-1 sm:grid-cols-3 gap-4">
+                    {EVENT_TYPES.map((ev) => {
+                      const active = input.eventType === ev;
+                      const evCopy = t.calculator.steps.guests.eventTypes[ev];
+                      return (
                         <button
+                          key={ev}
                           type="button"
-                          data-testid="guest-minus"
-                          aria-label={t.calculator.steps.guests.decreaseAria}
-                          onClick={handleStepMinus}
-                          className="inline-flex h-14 w-14 items-center justify-center bg-transparent border border-white/25 text-white transition-colors duration-200 hover:bg-[#FFA733] hover:border-[#FFA733] hover:text-[#060606] cursor-pointer"
+                          data-testid={`event-type-${ev}`}
+                          aria-pressed={active}
+                          data-active={String(active)}
+                          onClick={() => handleSelectEvent(ev)}
+                          className={`group flex flex-col justify-between gap-4 p-6 sm:p-7 min-h-[180px] sm:min-h-[200px] text-left transition-all duration-200 cursor-pointer border ${
+                            active
+                              ? 'bg-gradient-to-br from-[#2E160C] via-[#1D0C06] to-[#120704] border-[#FFA733] shadow-[0_0_28px_rgba(255,167,51,0.28)] text-white scale-[1.01]'
+                              : 'bg-gradient-to-br from-[#1A0E08]/90 via-[#130A05]/90 to-[#0C0603]/90 border-white/15 text-white hover:border-[#FFA733]/60 hover:bg-[#20110A] hover:scale-[1.008]'
+                          }`}
                         >
-                          <Minus className="h-5 w-5" />
-                        </button>
-
-                        <input
-                          id="dcc-guest-input"
-                          type="number"
-                          data-testid="guest-input"
-                          min={MIN_GUESTS}
-                          max={MAX_GUESTS}
-                          value={rawGuests}
-                          onChange={handleGuestInputChange}
-                          onBlur={handleGuestInputCommit}
-                          onKeyDown={(e) => {
-                            if (e.key === 'Enter') {
-                              e.preventDefault();
-                              handleGuestInputCommit();
-                            }
-                          }}
-                          className="h-14 w-36 bg-transparent border-b-2 border-[#FFA733]/80 px-2 text-center font-monument tabular-nums text-4xl sm:text-5xl font-extrabold text-white transition-colors duration-200 focus:border-white focus:outline-none"
-                        />
-
-                        <button
-                          type="button"
-                          data-testid="guest-plus"
-                          aria-label={t.calculator.steps.guests.increaseAria}
-                          onClick={handleStepPlus}
-                          className="inline-flex h-14 w-14 items-center justify-center bg-transparent border border-white/25 text-white transition-colors duration-200 hover:bg-[#FFA733] hover:border-[#FFA733] hover:text-[#060606] cursor-pointer"
-                        >
-                          <Plus className="h-5 w-5" />
-                        </button>
-                      </div>
-                    </div>
-
-                    {/* Prominent High-Contrast Illuminated Slider Bar + Sculpted Tactile Handle */}
-                    <div className="space-y-4 pt-2">
-                      <div className="relative flex items-center py-3">
-                        {/* Track Background */}
-                        <div className="pointer-events-none absolute inset-x-0 h-[10px] rounded-full bg-white/20 overflow-hidden">
-                          {/* Filled Luminous Progress Bar */}
-                          <div
-                            className="h-full rounded-full transition-all duration-150"
-                            style={{
-                              width: `${capacityProgress}%`,
-                              background:
-                                'linear-gradient(90deg, #FFFFFF 0%, #FFA733 55%, #FF5500 100%)',
-                              boxShadow: '0 0 20px rgba(255, 167, 51, 0.55)',
-                            }}
-                          />
-                        </div>
-                        <input
-                          type="range"
-                          data-testid="guest-slider"
-                          aria-label={t.calculator.steps.guests.sliderAria}
-                          min={MIN_GUESTS}
-                          max={MAX_GUESTS}
-                          step={1}
-                          value={input.guests}
-                          onChange={handleSliderChange}
-                          className="dcc-slider relative z-10"
-                        />
-                      </div>
-
-                      {/* Clean Scale Labels */}
-                      <div className="flex items-center justify-between font-monument text-[11px] sm:text-xs font-bold text-white/60">
-                        <span>{extraCopy.tierScaleStart}</span>
-                        <span>100 (-5%)</span>
-                        <span>250 (-10%)</span>
-                        <span>500+ (-15%)</span>
-                        <span>{extraCopy.tierScaleEnd}</span>
-                      </div>
-                    </div>
-
-                    {/* Volume Discount Tier Strip */}
-                    <div className="grid grid-cols-2 sm:grid-cols-4 gap-3 pt-1">
-                      {(
-                        [
-                          { key: 'tier0', rate: 0 },
-                          { key: 'tier5', rate: 0.05 },
-                          { key: 'tier10', rate: 0.1 },
-                          { key: 'tier15', rate: 0.15 },
-                        ] as const
-                      ).map((tier) => {
-                        const active = result.discountRate === tier.rate;
-                        return (
-                          <div
-                            key={tier.key}
-                            data-active={String(active)}
-                            className={`py-2.5 text-center font-monument text-xs sm:text-[13px] transition-colors duration-200 border-b-2 ${
-                              active
-                                ? 'border-[#FFA733] font-extrabold text-[#FFA733]'
-                                : 'border-white/10 font-semibold text-white/45'
-                            }`}
-                          >
-                            {t.calculator.steps.guests.tiers[tier.key]}
+                          <div className="space-y-2.5 w-full">
+                            <div className="flex items-center justify-between gap-2 w-full">
+                              <span className="font-monument text-base sm:text-lg font-extrabold uppercase tracking-[0.06em] text-white">
+                                {evCopy.label}
+                              </span>
+                              <span
+                                className={`inline-flex h-7 w-7 items-center justify-center border shrink-0 transition-colors ${
+                                  active
+                                    ? 'bg-[#FFA733] border-[#FFA733] text-[#060606]'
+                                    : 'border-white/25 text-transparent'
+                                }`}
+                              >
+                                <Check className="h-4 w-4 stroke-[3]" />
+                              </span>
+                            </div>
+                            <p
+                              className={`text-xs sm:text-sm leading-relaxed ${
+                                active ? 'text-[#FBF1DE] font-medium' : 'text-[#D6CEC2]'
+                              }`}
+                            >
+                              {evCopy.hint}
+                            </p>
                           </div>
-                        );
-                      })}
-                    </div>
 
-                    {clampReason === 'below_min' && (
-                      <p className="text-sm font-monument font-semibold text-[#FFA733]">
-                        {t.calculator.steps.guests.clampedMinNotice}
-                      </p>
-                    )}
-                    {clampReason === 'above_max' && (
-                      <p className="text-sm font-monument font-semibold text-[#FFA733]">
-                        {t.calculator.steps.guests.clampedMaxNotice}
-                      </p>
-                    )}
+                          <div className="pt-3.5 border-t border-white/10 flex items-center justify-between">
+                            <span
+                              className={`font-monument text-[11px] sm:text-xs uppercase tracking-wider font-extrabold transition-colors ${
+                                active
+                                  ? 'text-[#FFA733]'
+                                  : 'text-white/60 group-hover:text-white'
+                              }`}
+                            >
+                              {active ? extraCopy.selectedLabel : extraCopy.clickToSelect}
+                            </span>
+                            <span
+                              className={`text-[10px] font-mono font-bold tracking-widest ${
+                                active ? 'text-[#FFA733]' : 'text-white/35'
+                              }`}
+                            >
+                              {active ? '✓' : 'KLICK'}
+                            </span>
+                          </div>
+                        </button>
+                      );
+                    })}
                   </div>
+
+                  <div className="flex flex-col sm:flex-row sm:items-center gap-3 pt-1">
+                    <button
+                      type="button"
+                      data-testid="enterprise-800-plus"
+                      aria-pressed={input.enterprise800Plus}
+                      data-active={String(input.enterprise800Plus)}
+                      onClick={() =>
+                        onChangeInput((prev) => ({
+                          ...prev,
+                          guests: !prev.enterprise800Plus
+                            ? MAX_GUESTS
+                            : prev.guests,
+                          enterprise800Plus: !prev.enterprise800Plus,
+                        }))
+                      }
+                      className={`inline-flex min-h-[48px] w-full sm:w-auto items-center justify-center gap-2.5 px-5 py-3 font-monument text-xs sm:text-[13px] uppercase tracking-[0.12em] transition-all duration-200 cursor-pointer border ${
+                        input.enterprise800Plus
+                          ? 'bg-[#FFA733] border-[#FFA733] font-extrabold text-[#060606]'
+                          : 'bg-transparent border-white/25 font-bold text-white/80 hover:border-white/55 hover:text-white'
+                      }`}
+                    >
+                      <Sparkles className="h-4 w-4" />
+                      <span>{t.calculator.steps.guests.enterpriseToggle}</span>
+                    </button>
+                  </div>
+
+                  {input.enterprise800Plus && (
+                    <div className="border-l-2 border-[#FFA733] bg-white/[0.04] px-5 py-4 text-sm font-medium text-white/85">
+                      {t.calculator.steps.guests.enterpriseActiveNote}
+                    </div>
+                  )}
                 </div>
               )}
 

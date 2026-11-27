@@ -13,7 +13,7 @@ const CARD_META = {
     image: '/media/setup-trailer.png',
   },
   highspeed: {
-    metric: '180 / H',
+    metric: 'NON-STOP',
     image: '/media/setup-station.png',
   },
 } as const;

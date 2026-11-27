@@ -401,7 +401,7 @@ export const en: TranslationSchema = {
         tag: 'HIGH THROUGHPUT',
         title: 'Zero Bottlenecks at Peak Hours',
         description:
-          'Parallel carving stations and pre-warmed stone-oven bread logistics serve up to 180 fresh portions per hour.',
+          'Parallel carving stations and pre-warmed stone-oven bread logistics deliver continuous fresh portions without queues.',
         checkBadge: '30–800+ Guests · On Time',
       },
     ],
@@ -516,8 +516,8 @@ export const en: TranslationSchema = {
       {
         code: 'LIVE',
         title: 'High-Speed Carving',
-        detail: 'Dual carving stations keep queues moving smoothly — up to 180 portions per hour.',
-        metric: '180 / Hr',
+        detail: 'Dual carving stations keep queues moving smoothly — continuous live catering service.',
+        metric: 'NON-STOP',
       },
       {
         code: 'T+30M',
@@ -533,7 +533,7 @@ export const en: TranslationSchema = {
     subtitle:
       'Selected deployments for tech summits, luxury hotel weddings, and agency festivals.',
     metrics: [
-      { value: '180 / Hr', label: 'Peak Throughput per Station' },
+      { value: '30–800+', label: 'Flexible Guest Capacity' },
       { value: '< 2 Hrs', label: 'Formal Quote Turnaround' },
       { value: '100%', label: 'On-Time Setup Record' },
     ],

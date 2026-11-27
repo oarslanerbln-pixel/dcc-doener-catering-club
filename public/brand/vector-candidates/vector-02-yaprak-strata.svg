@@ -1,0 +1,51 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 500 500" width="100%" height="100%">
+  <!-- DCC Candidate 02: Yaprak Strata Precision Seal -->
+  <defs>
+    <linearGradient id="goldGrad02" x1="0%" y1="0%" x2="100%" y2="100%">
+      <stop offset="0%" stop-color="#FCE5B8"/>
+      <stop offset="50%" stop-color="#D4A853"/>
+      <stop offset="100%" stop-color="#A17426"/>
+    </linearGradient>
+  </defs>
+
+  <rect width="500" height="500" fill="#060606"/>
+
+  <g transform="translate(250, 220)">
+    <!-- Precision Outer Circular Hairline Dial -->
+    <circle r="160" fill="none" stroke="rgba(255,255,255,0.12)" stroke-width="1.5"/>
+    <circle r="148" fill="none" stroke="url(#goldGrad02)" stroke-width="1.5" stroke-dasharray="2 6"/>
+
+    <!-- 7 Mathematical Yaprak Layers forming Rotisserie Inverted Cone -->
+    <!-- Layer 1 (Top / Crown) -->
+    <path d="M -88 -90 L 88 -90 L 80 -74 L -80 -74 Z" fill="url(#goldGrad02)"/>
+    <!-- Layer 2 -->
+    <path d="M -82 -66 L 82 -66 L 74 -50 L -74 -50 Z" fill="#FFFFFF"/>
+    <!-- Layer 3 -->
+    <path d="M -75 -42 L 75 -42 L 67 -26 L -67 -26 Z" fill="url(#goldGrad02)"/>
+    <!-- Layer 4 (Center Spine) -->
+    <path d="M -68 -18 L 68 -18 L 60 -2 L -60 -2 Z" fill="#FFFFFF"/>
+    <!-- Layer 5 -->
+    <path d="M -58 6 L 58 6 L 50 22 L -50 22 Z" fill="url(#goldGrad02)"/>
+    <!-- Layer 6 -->
+    <path d="M -46 30 L 46 30 L 38 46 L -38 46 Z" fill="#FFFFFF"/>
+    <!-- Layer 7 (Base Apex) -->
+    <path d="M -32 54 L 32 54 L 20 74 L -20 74 Z" fill="url(#goldGrad02)"/>
+
+    <!-- Vertical Axis Pin Needle -->
+    <line x1="0" y1="-110" x2="0" y2="94" stroke="#FFA733" stroke-width="2.5"/>
+    <polygon points="0,-122 -5,-110 5,-110" fill="#FFA733"/>
+    <circle cx="0" cy="100" r="3.5" fill="#FFA733"/>
+
+    <!-- Cardinal Sub-ticks -->
+    <line x1="-148" y1="0" x2="-138" y2="0" stroke="url(#goldGrad02)" stroke-width="2"/>
+    <line x1="138" y1="0" x2="148" y2="0" stroke="url(#goldGrad02)" stroke-width="2"/>
+  </g>
+
+  <!-- Typography -->
+  <text x="250" y="425" text-anchor="middle" font-family="'Space Grotesk', 'Montserrat', sans-serif" font-weight="900" font-size="20" letter-spacing="0.3em" fill="#FFFFFF">
+    DÖNER CATERING CLUB
+  </text>
+  <text x="250" y="450" text-anchor="middle" font-family="'Space Grotesk', 'Montserrat', sans-serif" font-weight="700" font-size="9" letter-spacing="0.45em" fill="#D4A853">
+    HAUTE GASTRONOMIE · BERLIN
+  </text>
+</svg>

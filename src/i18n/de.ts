@@ -405,7 +405,7 @@ export const de: TranslationSchema = {
         tag: 'HOHER DURCHSATZ',
         title: 'Keine langen Schlangen vor dem Buffet',
         description:
-          'Parallele Schnittstationen und vorwärmende Steinofen-Logistik liefern bis zu 180 frische Portionen pro Stunde.',
+          'Parallele Schnittstationen und vorwärmende Steinofen-Logistik liefern kontinuierliche frische Portionen ohne Schlangen.',
         checkBadge: '30–800+ Gäste · On-Time',
       },
     ],
@@ -520,8 +520,8 @@ export const de: TranslationSchema = {
       {
         code: 'LIVE',
         title: 'High-Speed Carving',
-        detail: 'Doppel-Station oder Trailer-Ausgabe ohne Schlangen — bis zu 180 frische Portionen pro Stunde.',
-        metric: '180 / Std.',
+        detail: 'Doppel-Station oder Trailer-Ausgabe ohne Schlangen — kontinuierlicher Live-Service für Ihr Event.',
+        metric: 'NON-STOP',
       },
       {
         code: 'T+30M',
@@ -537,7 +537,7 @@ export const de: TranslationSchema = {
     subtitle:
       'Ausgewählte Einsätze bei Tech-Konferenzen, Boutique-Hotels und privaten Galas.',
     metrics: [
-      { value: '180 / Std.', label: 'Spitzen-Durchsatz pro Station' },
+      { value: '30–800+', label: 'Gäste-Kapazität flexibel' },
       { value: '< 2 Std.', label: 'Verbindliche Angebots-Antwort' },
       { value: '100 %', label: 'Pünktliche Einsatz-Quote' },
     ],

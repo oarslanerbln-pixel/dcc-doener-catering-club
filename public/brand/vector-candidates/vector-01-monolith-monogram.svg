@@ -1,0 +1,66 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 500 500" width="100%" height="100%">
+  <!-- DCC Candidate 01: Architectural Monolith Monogram -->
+  <defs>
+    <linearGradient id="goldLinear01" x1="0%" y1="0%" x2="100%" y2="100%">
+      <stop offset="0%" stop-color="#FCE5B8"/>
+      <stop offset="50%" stop-color="#D4A853"/>
+      <stop offset="100%" stop-color="#9E7324"/>
+    </linearGradient>
+  </defs>
+
+  <rect width="500" height="500" fill="#060606"/>
+
+  <g transform="translate(60, 70)">
+    <!-- Main Architectural D Spine & Bowl -->
+    <path d="M 40 40 
+             L 150 40 
+             C 230 40, 270 85, 270 180 
+             C 270 275, 230 320, 150 320 
+             L 40 320 
+             Z 
+             M 88 88 
+             L 142 88 
+             C 192 88, 222 118, 222 180 
+             C 222 242, 192 272, 142 272 
+             L 88 272 
+             Z" 
+          fill="url(#goldLinear01)" />
+
+    <!-- First Architectural C Cut Inside -->
+    <path d="M 290 80 
+             C 255 52, 210 40, 160 40 
+             L 160 88 
+             C 195 88, 225 98, 248 120 
+             L 290 80 
+             Z 
+             M 290 280 
+             L 248 240 
+             C 225 262, 195 272, 160 272 
+             L 160 320 
+             C 210 320, 255 308, 290 280 
+             Z" 
+          fill="#FFFFFF" />
+
+    <!-- Second Architectural Nested C Outer Contour -->
+    <path d="M 335 115 
+             L 298 152 
+             C 310 160, 318 170, 318 180 
+             C 318 190, 310 200, 298 208 
+             L 335 245 
+             C 360 225, 370 202, 370 180 
+             C 370 158, 360 135, 335 115 
+             Z" 
+          fill="url(#goldLinear01)" />
+
+    <!-- Razor Spindle Vertical Clearance Axis -->
+    <line x1="160" y1="10" x2="160" y2="350" stroke="#FFA733" stroke-width="3" stroke-dasharray="16 8"/>
+
+    <!-- Typographic Baseline Lockup -->
+    <text x="190" y="395" text-anchor="middle" font-family="'Space Grotesk', 'Montserrat', sans-serif" font-weight="900" font-size="22" letter-spacing="0.32em" fill="#FFFFFF">
+      D C C
+    </text>
+    <text x="190" y="420" text-anchor="middle" font-family="'Space Grotesk', 'Montserrat', sans-serif" font-weight="700" font-size="9" letter-spacing="0.45em" fill="#A89F91">
+      BERLIN · LIVE CATERING
+    </text>
+  </g>
+</svg>

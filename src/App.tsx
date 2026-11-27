@@ -81,15 +81,15 @@ function AppContent(): React.ReactElement {
 
   const [quoteId] = useState<string>(() => generateQuoteId());
   const [calculatorInput, setCalculatorInput] = useState<CalculatorInput>({
-    guests: 120,
-    meatId: 'scheiben',
-    setupId: 'station',
+    guests: 30,
+    meatId: 'chicken',
+    setupId: 'buffet',
     extras: {
-      bread_salad: true,
-      drinks: true,
+      bread_salad: false,
+      drinks: false,
       dessert: false,
     },
-    eventType: 'corporate',
+    eventType: 'private',
     enterprise800Plus: false,
   });
 

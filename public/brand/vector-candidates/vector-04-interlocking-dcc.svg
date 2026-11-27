@@ -1,0 +1,71 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 500 500" width="100%" height="100%">
+  <!-- DCC Candidate 04: Haute Ligature Interlocking DCC -->
+  <defs>
+    <linearGradient id="goldHaut04" x1="0%" y1="0%" x2="100%" y2="100%">
+      <stop offset="0%" stop-color="#FDF0D5"/>
+      <stop offset="50%" stop-color="#D4A853"/>
+      <stop offset="100%" stop-color="#9C7122"/>
+    </linearGradient>
+  </defs>
+
+  <rect width="500" height="500" fill="#060606"/>
+
+  <g transform="translate(100, 110)">
+    <!-- Letter 'D': Left Stem & Broad Circular Bowl -->
+    <path d="M 30 30 
+             L 130 30 
+             C 210 30, 240 70, 240 140 
+             C 240 210, 210 250, 130 250 
+             L 30 250 
+             Z 
+             M 62 62 
+             L 124 62 
+             C 178 62, 206 90, 206 140 
+             C 206 190, 178 218, 124 218 
+             L 62 218 
+             Z" 
+          fill="url(#goldHaut04)"/>
+
+    <!-- Interlocking First 'C': Woven through the D loop -->
+    <path d="M 230 75 
+             C 205 45, 170 30, 125 30 
+             L 125 62 
+             C 158 62, 184 74, 204 98 
+             L 230 75 
+             Z 
+             M 230 205 
+             L 204 182 
+             C 184 206, 158 218, 125 218 
+             L 125 250 
+             C 170 250, 205 235, 230 205 
+             Z" 
+          fill="#FFFFFF"/>
+
+    <!-- Second 'C': Offset & Nested with Precise Clearance -->
+    <path d="M 285 70 
+             C 255 42, 215 30, 170 30 
+             L 170 60 
+             C 205 60, 235 70, 258 92 
+             L 285 70 
+             Z 
+             M 285 210 
+             L 258 188 
+             C 235 210, 205 220, 170 220 
+             L 170 250 
+             C 215 250, 255 238, 285 210 
+             Z" 
+          fill="url(#goldHaut04)"/>
+
+    <!-- Monogram Underline Ribbon -->
+    <line x1="30" y1="285" x2="285" y2="285" stroke="url(#goldHaut04)" stroke-width="2"/>
+    <circle cx="157" cy="285" r="4" fill="#FFFFFF"/>
+  </g>
+
+  <!-- Typography -->
+  <text x="250" y="430" text-anchor="middle" font-family="'Space Grotesk', 'Montserrat', sans-serif" font-weight="900" font-size="20" letter-spacing="0.32em" fill="#FFFFFF">
+    DÖNER CATERING CLUB
+  </text>
+  <text x="250" y="454" text-anchor="middle" font-family="'Space Grotesk', 'Montserrat', sans-serif" font-weight="600" font-size="9" letter-spacing="0.45em" fill="#A89F91">
+    PRIVATE EVENTS · EST. BERLIN
+  </text>
+</svg>

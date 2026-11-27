@@ -1,4 +1,5 @@
-import React from 'react';
+import React, { useState } from 'react';
+import { ChevronDown } from 'lucide-react';
 import { SUPPORTED_LOCALES, useLocale } from '../i18n';
 import type { ThemeId } from '../types/brand';
 import { BrandLogo } from './BrandLogo';
@@ -18,6 +19,7 @@ export function Header({
   onSelectView,
 }: HeaderProps): React.ReactElement {
   const { locale, setLocale, t } = useLocale();
+  const [langOpen, setLangOpen] = useState<boolean>(false);
 
   const handleAnchorClick = (
     e: React.MouseEvent<HTMLAnchorElement>,
@@ -91,31 +93,62 @@ export function Header({
         </nav>
 
         <div className="flex items-center gap-3 sm:gap-4 shrink-0">
+          {/* Frameless Hover & Click Luxury Language Dropdown */}
           <div
-            role="group"
-            aria-label={t.header.langSwitcherAria}
-            className="inline-flex items-center bg-[#0D0E0E] border border-white/20 p-1"
+            className="relative"
+            onMouseEnter={() => setLangOpen(true)}
+            onMouseLeave={() => setLangOpen(false)}
           >
-            {SUPPORTED_LOCALES.map((lang) => {
-              const active = locale === lang;
-              return (
-                <button
-                  key={lang}
-                  type="button"
-                  data-testid={`lang-${lang}`}
-                  aria-pressed={active}
-                  data-active={String(active)}
-                  onClick={() => setLocale(lang)}
-                  className={`px-3 sm:px-3.5 py-1.5 font-mono text-xs sm:text-[13px] font-bold uppercase transition cursor-pointer ${
-                    active
-                      ? 'bg-white text-[#060606] shadow-sm'
-                      : 'text-white/60 hover:text-white hover:bg-white/10'
-                  }`}
-                >
-                  {t.header.langLabels[lang]}
-                </button>
-              );
-            })}
+            <button
+              type="button"
+              aria-label={t.header.langSwitcherAria}
+              aria-expanded={langOpen}
+              onClick={() => setLangOpen((prev) => !prev)}
+              className="inline-flex items-center gap-1.5 px-3 py-1.5 rounded-full bg-white/[0.06] hover:bg-white/[0.14] text-white transition-all duration-200 cursor-pointer font-monument text-xs font-bold uppercase tracking-wider focus:outline-none"
+            >
+              <span className="text-[#FFA733] font-extrabold">{t.header.langLabels[locale]}</span>
+              <ChevronDown
+                className={`h-3 w-3 text-white/70 transition-transform duration-200 ${
+                  langOpen ? 'rotate-180 text-white' : ''
+                }`}
+              />
+            </button>
+
+            {/* Soft-cornered backdrop-blurred flyout menu */}
+            <div
+              role="group"
+              aria-label={t.header.langSwitcherAria}
+              className={`absolute right-0 top-full mt-2 min-w-[100px] p-1.5 rounded-2xl bg-[#140804]/96 backdrop-blur-2xl border border-white/15 shadow-[0_18px_40px_rgba(0,0,0,0.85)] flex flex-col gap-1 transition-all duration-200 z-50 ${
+                langOpen
+                  ? 'opacity-100 translate-y-0 pointer-events-auto'
+                  : 'opacity-0 -translate-y-1 pointer-events-none'
+              }`}
+            >
+              {SUPPORTED_LOCALES.map((lang) => {
+                const active = locale === lang;
+                return (
+                  <button
+                    key={lang}
+                    type="button"
+                    data-testid={`lang-${lang}`}
+                    aria-pressed={active}
+                    data-active={String(active)}
+                    onClick={() => {
+                      setLocale(lang);
+                      setLangOpen(false);
+                    }}
+                    className={`flex items-center justify-between w-full px-3 py-2 rounded-xl font-monument text-xs font-bold uppercase tracking-wider transition-all duration-150 cursor-pointer ${
+                      active
+                        ? 'bg-gradient-to-r from-[#FF8C00] to-[#FFA733] text-[#060606] font-extrabold shadow-sm'
+                        : 'text-white/70 hover:text-white hover:bg-white/10'
+                    }`}
+                  >
+                    <span>{t.header.langLabels[lang]}</span>
+                    {active && <span className="text-[10px] font-black">✓</span>}
+                  </button>
+                );
+              })}
+            </div>
           </div>
 
           <a

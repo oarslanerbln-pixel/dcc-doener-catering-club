@@ -1,0 +1,64 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 500 500" width="100%" height="100%">
+  <!-- DCC Candidate 08: The Berlin Atelier Roundel (Blind Emboss / Luxury Seal) -->
+  <defs>
+    <linearGradient id="sealGold08" x1="0%" y1="0%" x2="100%" y2="100%">
+      <stop offset="0%" stop-color="#FFF2D6"/>
+      <stop offset="50%" stop-color="#D4A853"/>
+      <stop offset="100%" stop-color="#8F6218"/>
+    </linearGradient>
+
+    <!-- Circular Path for Curved Text -->
+    <path id="textCircleTop" d="M 70 250 A 180 180 0 1 1 430 250"/>
+    <path id="textCircleBottom" d="M 430 250 A 180 180 0 1 1 70 250"/>
+  </defs>
+
+  <rect width="500" height="500" fill="#060606"/>
+
+  <g transform="translate(0, 0)">
+    <!-- Outer Precision Concentric Rings -->
+    <circle cx="250" cy="250" r="220" fill="none" stroke="rgba(255,255,255,0.12)" stroke-width="1.5"/>
+    <circle cx="250" cy="250" r="210" fill="none" stroke="url(#sealGold08)" stroke-width="2"/>
+    <circle cx="250" cy="250" r="148" fill="none" stroke="rgba(255,255,255,0.15)" stroke-width="1.5"/>
+    <circle cx="250" cy="250" r="140" fill="none" stroke="url(#sealGold08)" stroke-width="1.5" stroke-dasharray="2 6"/>
+
+    <!-- Curved Circular Typography on Ring -->
+    <text font-family="'Space Grotesk', 'Montserrat', sans-serif" font-weight="900" font-size="14.5" letter-spacing="0.32em" fill="#FFFFFF">
+      <textPath href="#textCircleTop" startOffset="50%" text-anchor="middle">
+        DÖNER CATERING CLUB
+      </textPath>
+    </text>
+
+    <text font-family="'Space Grotesk', 'Montserrat', sans-serif" font-weight="800" font-size="11.5" letter-spacing="0.4em" fill="#D4A853">
+      <textPath href="#textCircleBottom" startOffset="50%" text-anchor="middle">
+        BERLIN · 100% YAPRAK · EST. 2024
+      </textPath>
+    </text>
+
+    <!-- Cardinal Diamond Accents -->
+    <polygon points="62,250 67,246 72,250 67,254" fill="url(#sealGold08)"/>
+    <polygon points="428,250 433,246 438,250 433,254" fill="url(#sealGold08)"/>
+
+    <!-- Inner Core: Elegant Monogram DCC with Minimalist Rotisserie Vertical Pin -->
+    <g transform="translate(250, 250)">
+      <!-- Central Monogram -->
+      <text x="0" y="14" text-anchor="middle" font-family="'Montserrat', 'Space Grotesk', sans-serif" font-weight="900" font-size="44" letter-spacing="0.18em" fill="url(#sealGold08)">
+        DCC
+      </text>
+
+      <!-- Center Hairline Axis through the middle -->
+      <line x1="0" y1="-85" x2="0" y2="-25" stroke="#FFFFFF" stroke-width="2"/>
+      <line x1="0" y1="28" x2="0" y2="85" stroke="#FFFFFF" stroke-width="2"/>
+
+      <polygon points="0,-92 -5,-82 5,-82" fill="url(#sealGold08)"/>
+      <circle cx="0" cy="92" r="3.5" fill="url(#sealGold08)"/>
+
+      <!-- Quality Sub-text -->
+      <text x="0" y="-40" text-anchor="middle" font-family="'Space Grotesk', sans-serif" font-weight="700" font-size="9" letter-spacing="0.3em" fill="#D6CEC2">
+        PREMIUM CATERING
+      </text>
+      <text x="0" y="55" text-anchor="middle" font-family="'Space Grotesk', sans-serif" font-weight="700" font-size="9" letter-spacing="0.3em" fill="#D6CEC2">
+        PRIVATE &amp; CORPORATE
+      </text>
+    </g>
+  </g>
+</svg>
