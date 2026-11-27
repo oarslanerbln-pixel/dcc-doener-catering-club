@@ -109,46 +109,39 @@ body {
   animation-delay: 110ms;
 }
 
-/* Calculator (#rechner) Unified Pure Black Obsidian Theme */
+/* Calculator (#rechner) Ultra-Clean Monochrome Architectural Theme */
 #rechner {
   --bg-main: #060606;
-  --bg-card: #0B0D0C;
-  --bg-subtle: #111413;
+  --bg-card: #0A0B0B;
+  --bg-subtle: #101111;
   --text-primary: #FFFFFF;
-  --text-secondary: rgba(255, 255, 255, 0.72);
-  --text-muted: rgba(255, 255, 255, 0.52);
-  --brand-primary: #D4A853;
-  --brand-accent: #2BC48A;
-  --border-main: rgba(255, 255, 255, 0.08);
-  --slider-track: rgba(255, 255, 255, 0.14);
-  --slider-thumb: #D4A853;
-  --receipt-bg: #0B0D0C;
+  --text-secondary: rgba(255, 255, 255, 0.68);
+  --text-muted: rgba(255, 255, 255, 0.45);
+  --brand-primary: #E6C986;
+  --brand-accent: #FFFFFF;
+  --border-main: rgba(255, 255, 255, 0.09);
+  --slider-track: rgba(255, 255, 255, 0.16);
+  --slider-thumb: #FFFFFF;
+  --receipt-bg: #0A0B0B;
   --receipt-text: #FFFFFF;
-  --receipt-accent: #D4A853;
+  --receipt-accent: #E6C986;
   background-color: #060606;
   color: #FFFFFF;
 }
 
 #rechner .dcc-gold-emerald-bar {
-  background: linear-gradient(90deg, #D4A853 0%, #F2D58B 45%, #2BC48A 100%);
-  background-size: 200% 100%;
-  animation: dcc-soft-gold-loop 12s ease-in-out infinite;
+  background: linear-gradient(90deg, rgba(255, 255, 255, 0.9) 0%, #E6C986 100%);
+  background-size: 100% 100%;
+  animation: none;
 }
 
 @layer components {
   .dcc-rechner-module {
     position: relative;
     border-radius: 0;
-    border: 1px solid rgba(255, 255, 255, 0.07);
-    background: linear-gradient(
-      125deg,
-      #0B0D0C 0%,
-      #101210 38%,
-      #0A0C0B 72%,
-      #12110D 100%
-    );
-    background-size: 280% 280%;
-    animation: dcc-soft-gold-loop 18s ease-in-out infinite;
+    border: none;
+    background: transparent;
+    animation: none;
   }
 }
 
@@ -165,14 +158,15 @@ body {
 }
 
 #rechner .dcc-rechner-module {
-  background-color: #0B0D0C;
-  border: 1px solid rgba(255, 255, 255, 0.07);
-  box-shadow: 0 20px 44px -26px rgba(0, 0, 0, 0.85);
+  background-color: transparent;
+  border: none;
+  box-shadow: none;
 }
 
 #rechner .dcc-calc-tile {
-  background-color: #111413;
-  border: 1px solid rgba(255, 255, 255, 0.06);
+  background-color: transparent;
+  border: none;
+  border-bottom: 1px solid rgba(255, 255, 255, 0.08);
   color: #FFFFFF;
 }
 
@@ -183,32 +177,29 @@ body {
   inset: 0;
   background: radial-gradient(
     420px circle at var(--mx, 50%) var(--my, 50%),
-    rgba(245, 224, 168, 0.12) 0%,
-    rgba(43, 196, 138, 0.06) 45%,
-    transparent 75%
+    rgba(255, 255, 255, 0.05) 0%,
+    transparent 70%
   );
   opacity: 0;
-  transition: opacity 260ms var(--ease-expo-out);
+  transition: opacity 240ms var(--ease-expo-out);
   z-index: 0;
 }
 
 #rechner .dcc-calc-tile::before {
   background: radial-gradient(
     420px circle at var(--mx, 50%) var(--my, 50%),
-    rgba(245, 224, 168, 0.12) 0%,
-    rgba(43, 196, 138, 0.07) 45%,
-    transparent 75%
+    rgba(230, 201, 134, 0.06) 0%,
+    transparent 70%
   );
 }
 
 .dcc-calc-tile:hover {
-  background-color: #161816;
-  transform: translateY(-1px);
+  background-color: rgba(255, 255, 255, 0.03);
+  transform: none;
 }
 
 #rechner .dcc-calc-tile:hover {
-  background-color: #161A18;
-  border-color: rgba(255, 255, 255, 0.14);
+  background-color: rgba(255, 255, 255, 0.03);
 }
 
 .dcc-calc-tile:hover::before {
@@ -221,31 +212,17 @@ body {
 }
 
 .dcc-calc-tile-active {
-  background: linear-gradient(
-    120deg,
-    rgba(245, 224, 168, 0.14) 0%,
-    rgba(212, 168, 83, 0.07) 48%,
-    rgba(245, 224, 168, 0.16) 100%
-  );
-  background-size: 280% 280%;
-  animation: dcc-soft-gold-loop 14s ease-in-out infinite;
-  box-shadow: inset 3px 0 0 0 #F2D58B;
+  background: rgba(255, 255, 255, 0.055);
+  box-shadow: inset 2px 0 0 0 #E6C986;
 }
 
 #rechner .dcc-calc-tile-active {
-  background: linear-gradient(
-    120deg,
-    rgba(212, 168, 83, 0.14) 0%,
-    rgba(43, 196, 138, 0.08) 52%,
-    rgba(212, 168, 83, 0.15) 100%
-  );
-  background-size: 260% 260%;
-  background-color: #141715;
-  border: 1px solid rgba(212, 168, 83, 0.42);
-  animation: dcc-soft-gold-loop 14s ease-in-out infinite;
-  box-shadow:
-    inset 3px 0 0 0 #2BC48A,
-    0 12px 28px -16px rgba(0, 0, 0, 0.75);
+  background: rgba(255, 255, 255, 0.055);
+  background-color: rgba(255, 255, 255, 0.055);
+  border: none;
+  border-bottom: 1px solid rgba(230, 201, 134, 0.24);
+  animation: none;
+  box-shadow: inset 2px 0 0 0 #E6C986;
 }
 
 /* Sharp Architectural Frameless Card with Cursor-Tracking Gold-Emerald Hover Sheen */
@@ -537,7 +514,7 @@ input[type="range"].dcc-slider::-moz-range-thumb {
 .dcc-marquee-track {
   display: flex;
   width: max-content;
-  animation: dcc-marquee-scroll 42s linear infinite;
+  animation: dcc-marquee-scroll 95s linear infinite;
   will-change: transform;
 }
 

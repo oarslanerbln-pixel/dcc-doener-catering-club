@@ -67,38 +67,41 @@ float noise(vec2 p) {
   );
 }
 
+// Crisp ridged silk-smoke fbm (5 octaves for fine architectural wisps)
 float fbm(vec2 p) {
   float v = 0.0;
-  float a = 0.5;
+  float a = 0.52;
   mat2 rot = mat2(0.80, 0.60, -0.60, 0.80);
-  for (int i = 0; i < 4; i++) {
+  for (int i = 0; i < 5; i++) {
     v += a * noise(p);
-    p = rot * p * 2.03 + vec2(1.7, 9.2);
-    a *= 0.5;
+    p = rot * p * 2.04 + vec2(1.7, 9.2);
+    a *= 0.49;
   }
   return v;
 }
 
-// Rising volumetric domain-warped smoke field
-float smokeField(vec2 p, float t, vec2 m) {
-  vec2 drift = vec2(m.x * 0.16, -t * 0.22 + m.y * 0.10);
+float silkSmoke(vec2 p, float t, vec2 m) {
+  vec2 drift = vec2(m.x * 0.14, -t * 0.16 + m.y * 0.08);
   vec2 q = vec2(
-    fbm(p + drift + vec2(0.0, 0.0)),
-    fbm(p + drift * 1.15 + vec2(5.2, 1.3))
+    fbm(p + drift),
+    fbm(p + drift * 1.12 + vec2(5.2, 1.3))
   );
   vec2 r = vec2(
-    fbm(p + 2.55 * q + vec2(1.7, 9.2) + vec2(t * 0.07, -t * 0.16)),
-    fbm(p + 2.55 * q + vec2(8.3, 2.8) + vec2(-t * 0.06, -t * 0.14))
+    fbm(p + 2.8 * q + vec2(1.7, 9.2) + vec2(t * 0.05, -t * 0.12)),
+    fbm(p + 2.8 * q + vec2(8.3, 2.8) + vec2(-t * 0.04, -t * 0.11))
   );
-  return fbm(p + 2.05 * r + vec2(0.0, -t * 0.10));
+  float base = fbm(p + 2.1 * r + vec2(0.0, -t * 0.08));
+  // Subtle ridged silk filaments inside the smoke
+  float ridge = 1.0 - abs(base * 2.0 - 1.0);
+  return mix(base, ridge * ridge, 0.36);
 }
 
-// Procedural 3D depth-of-field glowing ember particle layer
-vec3 emberLayer(vec2 uv, float t, vec2 m, float scale, float depth, float speed, float softness) {
+// Pin-sharp + subtle 3D parallax bokeh ember sparks
+vec3 sparkLayer(vec2 uv, float t, vec2 m, float scale, float depth, float speed, float blurAmt) {
   vec2 p = uv * scale;
-  p += m * (0.28 * depth);
+  p += m * (0.24 * depth);
   p.y -= t * speed;
-  p.x += sin(p.y * 0.55 + t * 0.45 + depth * 3.0) * 0.22;
+  p.x += sin(p.y * 0.48 + t * 0.35 + depth * 2.5) * 0.18;
 
   vec2 id = floor(p);
   vec2 gv = fract(p) - 0.5;
@@ -108,29 +111,28 @@ vec3 emberLayer(vec2 uv, float t, vec2 m, float scale, float depth, float speed,
     for (int x = -1; x <= 1; x++) {
       vec2 offs = vec2(float(x), float(y));
       vec2 cell = id + offs;
-      vec2 rnd = hash2(cell + depth * 17.3);
+      vec2 rnd = hash2(cell + depth * 19.7);
 
-      // Keep density refined & organic
-      if (rnd.x < 0.58) continue;
+      // Refined sparse luxury density
+      if (rnd.x < 0.68) continue;
 
-      vec2 pos = offs + (rnd - 0.5) * 0.68;
-      pos.x += sin(t * (0.8 + rnd.y) + rnd.x * 6.283) * 0.12;
-      pos.y += cos(t * (0.6 + rnd.x) + rnd.y * 6.283) * 0.08;
+      vec2 pos = offs + (rnd - 0.5) * 0.72;
+      pos.x += sin(t * (0.65 + rnd.y) + rnd.x * 6.283) * 0.10;
+      pos.y += cos(t * (0.50 + rnd.x) + rnd.y * 6.283) * 0.07;
 
       float d = length(gv - pos);
-      float size = mix(0.022, 0.075, pow(rnd.y, 2.0)) * (0.65 + depth * 0.85);
-      float flicker = 0.68 + 0.32 * sin(t * (2.6 + rnd.x * 3.5) + rnd.y * 12.0);
+      // Pin-sharp fine micro-sparks on far/mid, silky subtle bokeh on near
+      float radius = mix(0.008, 0.032, pow(rnd.y, 2.6)) * (0.55 + depth * 0.75);
+      float twinkle = 0.62 + 0.38 * sin(t * (2.2 + rnd.x * 3.0) + rnd.y * 14.0);
 
-      // Core + soft 3D bokeh halo
-      float core = smoothstep(size * (1.1 + softness), size * 0.12, d);
-      float halo = exp(-d * mix(11.0, 5.2, softness)) * (0.32 + 0.35 * depth);
+      float core = smoothstep(radius * (1.2 + blurAmt * 2.2), radius * 0.08, d);
+      float glow = exp(-d * mix(22.0, 8.5, blurAmt)) * (0.24 + 0.22 * depth);
 
-      // Classy ember palette: champagne gold, burnished amber-ember, subtle emerald accent
-      vec3 emberCore = mix(vec3(1.0, 0.84, 0.52), vec3(0.96, 0.48, 0.20), smoothstep(0.65, 0.95, rnd.y));
-      vec3 emeraldSpark = vec3(0.24, 0.84, 0.60);
-      vec3 col = rnd.x > 0.91 ? mix(emberCore, emeraldSpark, 0.72) : emberCore;
+      vec3 champagne = vec3(1.0, 0.90, 0.68);
+      vec3 burnishedEmber = vec3(0.95, 0.52, 0.22);
+      vec3 col = mix(champagne, burnishedEmber, smoothstep(0.50, 0.96, rnd.y));
 
-      acc += col * (core * 1.15 + halo * 0.48) * flicker;
+      acc += col * (core * 1.25 + glow * 0.42) * twinkle;
     }
   }
   return acc;
@@ -138,71 +140,70 @@ vec3 emberLayer(vec2 uv, float t, vec2 m, float scale, float depth, float speed,
 
 void main() {
   vec2 uv = (gl_FragCoord.xy - 0.5 * u_res) / min(u_res.x, u_res.y);
-  vec2 p = uv * 1.55;
+  vec2 p = uv * 1.45;
   float t = u_time;
 
-  // Dense multi-layered rising smoke + analytical surface normal
-  float f = smokeField(p, t, u_mouse);
-  float eps = 0.018;
-  float fx = smokeField(p + vec2(eps, 0.0), t, u_mouse);
-  float fy = smokeField(p + vec2(0.0, eps), t, u_mouse);
+  // High-definition volumetric silk smoke + crisp normal caustics
+  float f = silkSmoke(p, t, u_mouse);
+  float eps = 0.011;
+  float fx = silkSmoke(p + vec2(eps, 0.0), t, u_mouse);
+  float fy = silkSmoke(p + vec2(0.0, eps), t, u_mouse);
 
-  vec3 n = normalize(vec3((f - fx) * 16.0, (f - fy) * 16.0, 1.0));
-  vec3 viewDir = normalize(vec3(u_mouse * 0.20 - uv * 0.16, 1.0));
-  float fresnel = pow(1.0 - max(dot(n, viewDir), 0.0), 2.6);
+  vec3 n = normalize(vec3((f - fx) * 22.0, (f - fy) * 22.0, 1.0));
+  vec3 lightDir = normalize(vec3(u_mouse.x * 0.45, -0.78, 0.62));
+  vec3 viewDir = normalize(vec3(u_mouse * 0.18 - uv * 0.15, 1.0));
+  vec3 halfVec = normalize(lightDir + viewDir);
 
-  // Luxury Obsidian + Charcoal Ember Bed Palette
+  float spec = pow(max(dot(n, halfVec), 0.0), 18.0);
+  float fresnel = pow(1.0 - max(dot(n, viewDir), 0.0), 3.0);
+
+  // Ultra-refined Obsidian + Architectural Charcoal + Champagne-Ember Palette
   vec3 obsidian = vec3(0.0235, 0.0235, 0.0235);
-  vec3 smokeCharcoal = vec3(0.115, 0.110, 0.105);
-  vec3 deepEmber = vec3(0.46, 0.15, 0.055);
-  vec3 warmAmber = vec3(0.84, 0.48, 0.16);
-  vec3 gold = vec3(0.86, 0.68, 0.34);
-  vec3 champagne = vec3(0.98, 0.88, 0.64);
-  vec3 emerald = vec3(0.169, 0.769, 0.541);
+  vec3 silkDark = vec3(0.095, 0.092, 0.088);
+  vec3 emberDeep = vec3(0.42, 0.14, 0.045);
+  vec3 emberGold = vec3(0.86, 0.62, 0.26);
+  vec3 champagne = vec3(0.98, 0.90, 0.72);
+  vec3 emeraldWhisper = vec3(0.16, 0.72, 0.50);
 
-  // Volumetric smoke density (denser plumes rising from below)
-  float bottomHeat = pow(1.0 - smoothstep(0.0, 0.74, v_uv.y), 1.75);
-  float lowerGlow = pow(1.0 - smoothstep(0.0, 0.46, v_uv.y), 2.2);
-  float smokeBody = smoothstep(0.24, 0.82, f);
-  float smokeRidge = smoothstep(0.48, 0.84, f);
+  // Anamorphic lower heat horizon (classy glowing charcoal bed rising softly)
+  float bottomHeat = pow(1.0 - smoothstep(0.0, 0.68, v_uv.y), 2.1);
+  float horizonBand = exp(-pow((v_uv.y - 0.04) * 5.2, 2.0)) * (0.72 + 0.28 * f);
 
-  // Base smoke illuminated from below by classy charcoal-gold ember glow
-  vec3 col = mix(obsidian, smokeCharcoal, smokeBody * (0.68 + 0.32 * bottomHeat));
+  float smokeMask = smoothstep(0.18, 0.84, f);
+  float wispHighlight = smoothstep(0.54, 0.88, f);
 
-  // Under-lit ember-to-gold gradient radiating up through the smoke
-  vec3 emberGradient = mix(gold, warmAmber, 0.55);
-  emberGradient = mix(emberGradient, deepEmber, lowerGlow * 0.52);
-  col += emberGradient * (smokeBody * bottomHeat * 0.54 + smokeRidge * bottomHeat * 0.34);
+  // Deep velvety smoke base
+  vec3 col = mix(obsidian, silkDark, smokeMask * (0.62 + 0.38 * bottomHeat));
 
-  // Refined lower charcoal ember bed (classy, not garish)
-  float emberPulse = 0.90 + 0.10 * sin(t * 1.15 + f * 4.5);
-  col += mix(deepEmber, warmAmber, smoothstep(0.32, 0.78, f)) * lowerGlow * 0.52 * emberPulse;
+  // Under-lit silk smoke wisps catching golden-ember specular light
+  vec3 heatColor = mix(emberGold, emberDeep, smoothstep(0.28, 0.0, v_uv.y) * 0.58);
+  col += heatColor * (smokeMask * bottomHeat * 0.46 + wispHighlight * bottomHeat * 0.36);
+  col += mix(emberDeep, emberGold, 0.55) * horizonBand * 0.38;
 
-  // Subtle gold/emerald mineral rim light on upper smoke crests
-  float filmMix = clamp(sin(f * 7.2 + t * 0.35) * 0.5 + 0.5, 0.0, 1.0);
-  vec3 upperRim = mix(gold, emerald, filmMix * 0.55);
-  upperRim = mix(upperRim, champagne, fresnel * 0.38);
-  col += upperRim * (fresnel * 0.36 + smokeRidge * 0.14) * (0.45 + 0.55 * v_uv.y);
+  // Fine liquid-silk specular caustics along smoke ridges (champagne + whisper of emerald)
+  vec3 rimTint = mix(champagne, emeraldWhisper, clamp(sin(f * 6.5 + t * 0.25) * 0.5 + 0.5, 0.0, 1.0) * 0.28);
+  col += rimTint * (spec * 0.34 + fresnel * 0.24) * (0.45 + 0.55 * bottomHeat);
 
-  // 3D Depth-of-Field Glowing Ember Particles (Far crisp -> Mid warm -> Near soft bokeh)
-  vec3 pFar = emberLayer(uv, t, u_mouse, 8.5, 0.35, 0.24, 0.08) * 0.55;
-  vec3 pMid = emberLayer(uv + vec2(3.1, 1.7), t, u_mouse, 5.2, 0.75, 0.38, 0.28) * 0.82;
-  vec3 pNear = emberLayer(uv + vec2(7.4, 4.9), t, u_mouse, 2.9, 1.35, 0.56, 0.72) * 0.62;
-  float particleZone = 0.42 + 0.58 * (1.0 - smoothstep(0.15, 0.92, v_uv.y));
-  // Soften particles directly behind the center H1 so headline stays razor-sharp
-  float textSafe = smoothstep(0.14, 0.62, length(uv * vec2(0.85, 1.35)));
-  col += (pFar + pMid + pNear) * particleZone * (0.38 + 0.62 * textSafe);
+  // 3D Depth-of-Field Micro-Sparks (crisp far -> luminous mid -> delicate near bokeh)
+  vec3 sFar = sparkLayer(uv, t, u_mouse, 11.0, 0.30, 0.20, 0.02) * 0.65;
+  vec3 sMid = sparkLayer(uv + vec2(3.7, 1.9), t, u_mouse, 6.8, 0.72, 0.34, 0.16) * 0.88;
+  vec3 sNear = sparkLayer(uv + vec2(8.1, 4.3), t, u_mouse, 3.6, 1.35, 0.50, 0.58) * 0.55;
+  float sparkFadeY = 0.28 + 0.72 * (1.0 - smoothstep(0.18, 0.90, v_uv.y));
+  float textSafe = smoothstep(0.16, 0.64, length(uv * vec2(0.82, 1.35)));
+  col += (sFar + sMid + sNear) * sparkFadeY * (0.32 + 0.68 * textSafe);
 
-  // Restrained center vignette for executive bold white typography readability
+  // Restrained studio center vignette
   float centerDist = length(uv * vec2(0.72, 1.05));
-  float vignette = smoothstep(0.16, 0.92, centerDist);
-  col = mix(obsidian * 0.88, col, 0.50 + 0.50 * vignette);
+  float vignette = smoothstep(0.14, 0.92, centerDist);
+  col = mix(obsidian * 0.90, col, 0.48 + 0.52 * vignette);
 
-  // Smooth top fade into pure black header
-  float topFade = smoothstep(1.0, 0.80, v_uv.y);
-  col *= (0.52 + 0.48 * topFade);
+  // Smooth top fade into pure black header + subtle 35mm film grain dither (eliminates color banding)
+  float topFade = smoothstep(1.0, 0.78, v_uv.y);
+  col *= (0.50 + 0.50 * topFade);
+  float grain = (hash(gl_FragCoord.xy + fract(t) * 100.0) - 0.5) * 0.016;
+  col += grain;
 
-  fragColor = vec4(col, 0.92);
+  fragColor = vec4(col, 0.94);
 }
 `;
 
@@ -336,8 +337,8 @@ export function Hero3DCanvas({
 
     const resize = () => {
       const rect = canvas.getBoundingClientRect();
-      // Smooth liquid obsidian shader needs no supersampling; 0.75x scale cuts GPU load by >44-85%
-      const scale = Math.min(window.devicePixelRatio || 1, 1) * 0.75;
+      // Razor-sharp HD shader resolution capped at 1.25x for crisp silk wisps + 60 FPS
+      const scale = Math.min(window.devicePixelRatio || 1, 1.25);
       width = Math.max(1, Math.round(rect.width * scale));
       height = Math.max(1, Math.round(rect.height * scale));
       if (canvas.width !== width || canvas.height !== height) {
