@@ -180,10 +180,7 @@ export function Hero({
           </div>
 
           <div className="overflow-hidden">
-            <h1
-              style={{ fontFamily: '"Syne", "Montserrat", sans-serif' }}
-              className="dcc-hero-mask-up dcc-hero-mask-delay-1 text-[42px] sm:text-6xl lg:text-[86px] font-extrabold tracking-[-0.04em] leading-[0.98] text-white drop-shadow-[0_8px_32px_rgba(0,0,0,0.55)]"
-            >
+            <h1 className="dcc-hero-mask-up dcc-hero-mask-delay-1 font-monument text-[40px] sm:text-6xl lg:text-[82px] font-extrabold tracking-[-0.03em] leading-[1.03] text-white drop-shadow-[0_8px_32px_rgba(0,0,0,0.55)]">
               <span>{t.hero.headlinePrefix} </span>
               <span className="dcc-gold-emerald-text">
                 {t.hero.headlineAccent}

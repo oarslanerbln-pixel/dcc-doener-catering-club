@@ -47,6 +47,10 @@ const EVENT_TYPES: readonly EventType[] = ['corporate', 'private', 'festival'];
 const CALC_LOCALE_EXTRA = {
   de: {
     stepPrefix: 'SCHRITT',
+    eventStepTitle: 'Was für ein Event planen Sie?',
+    eventStepSubtitle: 'Wählen Sie den Rahmen — wir stimmen Setup, Taktung und Team präzise darauf ab.',
+    guestsStepTitle: 'Gästeanzahl & Mengenrabatt',
+    guestsStepSubtitle: 'Ziehen Sie den Regler auf Ihre Gästezahl — Rabatte bis 15 % greifen automatisch.',
     mobileStickyGuests: 'Gäste',
     mobileStickyPerGuest: '/ Gast netto',
     mobileStickySummaryBtn: 'Beleg',
@@ -55,6 +59,10 @@ const CALC_LOCALE_EXTRA = {
   },
   en: {
     stepPrefix: 'STEP',
+    eventStepTitle: 'What kind of event are you planning?',
+    eventStepSubtitle: 'Select your occasion — we tailor pacing, staging, and carving crew to match.',
+    guestsStepTitle: 'Guest Count & Volume Discount',
+    guestsStepSubtitle: 'Drag the precision slider to your guest count — volume savings up to 15% apply live.',
     mobileStickyGuests: 'Guests',
     mobileStickyPerGuest: '/ guest net',
     mobileStickySummaryBtn: 'Summary',
@@ -63,6 +71,10 @@ const CALC_LOCALE_EXTRA = {
   },
   tr: {
     stepPrefix: 'ADIM',
+    eventStepTitle: 'Nasıl bir etkinlik planlıyorsunuz?',
+    eventStepSubtitle: 'Etkinlik formatını seçin — kurulum, servis temposu ve ekip yapısını buna göre uyarlayalım.',
+    guestsStepTitle: 'Misafir Sayısı & Miktar İndirimi',
+    guestsStepSubtitle: 'Çubuğu kaydırarak kişi sayısını belirleyin — %15’e varan indirim anında uygulanır.',
     mobileStickyGuests: 'Misafir',
     mobileStickyPerGuest: '/ kişi net',
     mobileStickySummaryBtn: 'Özet',
@@ -251,152 +263,27 @@ export function Calculator({
         </div>
 
         <div className="dcc-configurator-grid">
-          {/* Left Column: Spacious Architectural Steps */}
+          {/* Left Column: 5-Step Natural Luxury Booking Flow (Event -> Meat -> Setup -> Extras -> Guests Slider) */}
           <div className="space-y-16 sm:space-y-20 min-w-0">
-            {/* STEP 01: Guests & Event Format */}
-            <div className="dcc-rechner-module border-t border-white/14 pt-10 space-y-8">
-              <div className="flex flex-wrap items-end justify-between gap-4">
-                <div>
-                  <span className="font-monument text-xs font-bold uppercase tracking-[0.24em] text-[#E6C986]">
-                    {extraCopy.stepPrefix} {t.calculator.steps.guests.index}
-                  </span>
-                  <h3 className="mt-2 font-monument text-2xl sm:text-3xl font-extrabold tracking-tight text-white">
-                    {t.calculator.steps.guests.title}
-                  </h3>
-                </div>
-
-                {/* Clean Discount Readout */}
-                <div className="text-right">
-                  <span className="block font-monument text-xs font-semibold uppercase tracking-[0.16em] text-white/45">
-                    {t.calculator.steps.guests.activeDiscountPrefix}
-                  </span>
-                  <span
-                    data-testid="active-discount-badge"
-                    className="font-monument tabular-nums text-xl sm:text-2xl font-extrabold text-[#E6C986]"
-                  >
-                    {discountPct > 0
-                      ? `-${discountPct} %`
-                      : t.calculator.steps.guests.noDiscountLabel}
-                  </span>
-                </div>
-              </div>
-
-              {/* Generous Guest Counter + Precision Stepper */}
-              <div className="flex flex-col sm:flex-row sm:items-center sm:justify-between gap-5 py-2">
-                <div className="space-y-1">
-                  <label
-                    htmlFor="dcc-guest-input"
-                    className="block font-monument text-base sm:text-lg font-bold text-white"
-                  >
-                    {t.calculator.steps.guests.inputLabel}
-                  </label>
-                  <span className="text-sm text-white/50">
-                    {t.calculator.steps.guests.minOrderNote}
-                  </span>
-                </div>
-
-                <div className="flex items-center gap-3.5">
-                  <button
-                    type="button"
-                    data-testid="guest-minus"
-                    aria-label={t.calculator.steps.guests.decreaseAria}
-                    onClick={handleStepMinus}
-                    className="inline-flex h-14 w-14 items-center justify-center bg-transparent border border-white/25 text-white transition-colors duration-200 hover:bg-white hover:border-white hover:text-[#060606] cursor-pointer"
-                  >
-                    <Minus className="h-5 w-5" />
-                  </button>
-
-                  <input
-                    id="dcc-guest-input"
-                    type="number"
-                    data-testid="guest-input"
-                    min={MIN_GUESTS}
-                    max={MAX_GUESTS}
-                    value={rawGuests}
-                    onChange={handleGuestInputChange}
-                    onBlur={handleGuestInputCommit}
-                    onKeyDown={(e) => {
-                      if (e.key === 'Enter') {
-                        e.preventDefault();
-                        handleGuestInputCommit();
-                      }
-                    }}
-                    className="h-14 w-36 bg-transparent border-b-2 border-white/30 px-2 text-center font-monument tabular-nums text-4xl sm:text-5xl font-extrabold text-white transition-colors duration-200 focus:border-[#E6C986] focus:outline-none"
-                  />
-
-                  <button
-                    type="button"
-                    data-testid="guest-plus"
-                    aria-label={t.calculator.steps.guests.increaseAria}
-                    onClick={handleStepPlus}
-                    className="inline-flex h-14 w-14 items-center justify-center bg-transparent border border-white/25 text-white transition-colors duration-200 hover:bg-white hover:border-white hover:text-[#060606] cursor-pointer"
-                  >
-                    <Plus className="h-5 w-5" />
-                  </button>
-                </div>
-              </div>
-
-              {/* Precision Range Slider + Spacious Tier Strip */}
-              <div className="space-y-4">
-                <div className="h-[3px] w-full overflow-hidden bg-white/12">
-                  <div
-                    className="h-full transition-all duration-200 dcc-gold-emerald-bar"
-                    style={{ width: `${capacityProgress}%` }}
-                  />
-                </div>
-                <input
-                  type="range"
-                  data-testid="guest-slider"
-                  aria-label={t.calculator.steps.guests.sliderAria}
-                  min={MIN_GUESTS}
-                  max={MAX_GUESTS}
-                  step={1}
-                  value={input.guests}
-                  onChange={handleSliderChange}
-                  className="dcc-slider"
-                />
-                <div className="grid grid-cols-2 sm:grid-cols-4 gap-3 pt-1">
-                  {(
-                    [
-                      { key: 'tier0', rate: 0 },
-                      { key: 'tier5', rate: 0.05 },
-                      { key: 'tier10', rate: 0.1 },
-                      { key: 'tier15', rate: 0.15 },
-                    ] as const
-                  ).map((tier) => {
-                    const active = result.discountRate === tier.rate;
-                    return (
-                      <div
-                        key={tier.key}
-                        data-active={String(active)}
-                        className={`py-2.5 text-center font-monument text-xs sm:text-[13px] transition-colors duration-200 border-b-2 ${
-                          active
-                            ? 'border-[#E6C986] font-extrabold text-[#E6C986]'
-                            : 'border-white/10 font-semibold text-white/45'
-                        }`}
-                      >
-                        {t.calculator.steps.guests.tiers[tier.key]}
-                      </div>
-                    );
-                  })}
-                </div>
-              </div>
-
-              {clampReason === 'below_min' && (
-                <p className="text-sm font-monument font-semibold text-[#E6C986]">
-                  {t.calculator.steps.guests.clampedMinNotice}
+            {/* STEP 01: What Kind of Event? */}
+            <div className="dcc-rechner-module border-t border-white/14 pt-10 space-y-6">
+              <div>
+                <span className="font-monument text-xs font-bold uppercase tracking-[0.24em] text-[#E6C986]">
+                  {extraCopy.stepPrefix} 01
+                </span>
+                <h3 className="mt-2 font-monument text-2xl sm:text-3xl font-extrabold tracking-tight text-white">
+                  {extraCopy.eventStepTitle}
+                </h3>
+                <p className="mt-2 text-sm sm:text-base text-white/55">
+                  {extraCopy.eventStepSubtitle}
                 </p>
-              )}
-              {clampReason === 'above_max' && (
-                <p className="text-sm font-monument font-semibold text-[#E6C986]">
-                  {t.calculator.steps.guests.clampedMaxNotice}
-                </p>
-              )}
+              </div>
 
-              {/* Spacious Monochrome Event Format & 800+ Bar */}
-              <div className="flex flex-wrap items-center gap-3 pt-2">
+              {/* Tactile 3-Column Event Format Selector + 800+ Enterprise Option */}
+              <div className="grid grid-cols-1 sm:grid-cols-3 gap-3.5">
                 {EVENT_TYPES.map((ev) => {
                   const active = input.eventType === ev;
+                  const evCopy = t.calculator.steps.guests.eventTypes[ev];
                   return (
                     <button
                       key={ev}
@@ -407,17 +294,39 @@ export function Calculator({
                       onClick={() =>
                         onChangeInput((prev) => ({ ...prev, eventType: ev }))
                       }
-                      className={`min-h-[48px] px-5 py-3 font-monument text-xs sm:text-[13px] uppercase tracking-[0.12em] transition-all duration-200 cursor-pointer border ${
+                      className={`group flex flex-col justify-between gap-3 p-5 sm:p-6 text-left transition-all duration-200 cursor-pointer border ${
                         active
-                          ? 'bg-white border-white font-extrabold text-[#060606]'
-                          : 'bg-transparent border-white/20 font-bold text-white/75 hover:border-white/55 hover:text-white'
+                          ? 'bg-white border-white text-[#060606]'
+                          : 'bg-[#0A0B0B] border-white/15 text-white hover:border-white/45 hover:bg-white/[0.04]'
                       }`}
                     >
-                      {t.calculator.steps.guests.eventTypes[ev].label}
+                      <div className="flex items-center justify-between gap-2 w-full">
+                        <span className="font-monument text-sm sm:text-base font-extrabold uppercase tracking-[0.06em]">
+                          {evCopy.label}
+                        </span>
+                        <span
+                          className={`inline-flex h-6 w-6 items-center justify-center border shrink-0 transition-colors ${
+                            active
+                              ? 'bg-[#060606] border-[#060606] text-white'
+                              : 'border-white/25 text-transparent'
+                          }`}
+                        >
+                          <Check className="h-3.5 w-3.5 stroke-[3]" />
+                        </span>
+                      </div>
+                      <span
+                        className={`text-xs sm:text-[13px] leading-snug ${
+                          active ? 'text-[#060606]/75 font-medium' : 'text-white/50'
+                        }`}
+                      >
+                        {evCopy.hint}
+                      </span>
                     </button>
                   );
                 })}
+              </div>
 
+              <div className="flex flex-col sm:flex-row sm:items-center gap-3 pt-1">
                 <button
                   type="button"
                   data-testid="enterprise-800-plus"
@@ -432,7 +341,7 @@ export function Calculator({
                       enterprise800Plus: !prev.enterprise800Plus,
                     }))
                   }
-                  className={`inline-flex min-h-[48px] items-center justify-center gap-2 px-5 py-3 font-monument text-xs sm:text-[13px] uppercase tracking-[0.12em] transition-all duration-200 cursor-pointer border ${
+                  className={`inline-flex min-h-[48px] w-full sm:w-auto items-center justify-center gap-2.5 px-5 py-3 font-monument text-xs sm:text-[13px] uppercase tracking-[0.12em] transition-all duration-200 cursor-pointer border ${
                     input.enterprise800Plus
                       ? 'bg-[#E6C986] border-[#E6C986] font-extrabold text-[#060606]'
                       : 'bg-transparent border-white/20 font-bold text-white/75 hover:border-white/55 hover:text-white'
@@ -454,7 +363,7 @@ export function Calculator({
             <div className="dcc-rechner-module border-t border-white/14 pt-10 space-y-6">
               <div>
                 <span className="font-monument text-xs font-bold uppercase tracking-[0.24em] text-[#E6C986]">
-                  {extraCopy.stepPrefix} {t.calculator.steps.spits.index}
+                  {extraCopy.stepPrefix} 02
                 </span>
                 <h3 className="mt-2 font-monument text-2xl sm:text-3xl font-extrabold tracking-tight text-white">
                   {t.calculator.steps.spits.title}
@@ -492,11 +401,11 @@ export function Calculator({
                       aria-pressed={active}
                       data-active={String(active)}
                       onClick={() => handleSelectMeat(meat.id)}
-                      className={`dcc-calc-tile w-full flex items-start sm:items-center gap-4 sm:gap-6 px-4 sm:px-6 py-6 sm:py-7 text-left cursor-pointer ${
+                      className={`dcc-calc-tile w-full flex items-start sm:items-center gap-4 sm:gap-6 px-3.5 sm:px-6 py-5 sm:py-7 text-left cursor-pointer ${
                         active ? 'dcc-calc-tile-active' : ''
                       }`}
                     >
-                      <div className="w-24 h-20 sm:w-32 sm:h-24 overflow-hidden bg-white/5 shrink-0">
+                      <div className="w-20 h-20 sm:w-32 sm:h-24 overflow-hidden bg-white/5 shrink-0">
                         <SmartPicture
                           src={meat.image}
                           alt={copy.title}
@@ -513,19 +422,19 @@ export function Calculator({
                               {copy.title}
                             </h4>
                             <span
-                              className={`font-monument text-xs font-bold uppercase tracking-[0.12em] ${
+                              className={`font-monument text-[11px] sm:text-xs font-bold uppercase tracking-[0.12em] ${
                                 active ? 'text-[#E6C986]' : 'text-white/45'
                               }`}
                             >
                               {copy.badge}
                             </span>
                           </div>
-                          <p className="text-sm leading-relaxed text-white/60 line-clamp-2">
+                          <p className="text-xs sm:text-sm leading-relaxed text-white/60 line-clamp-2">
                             {copy.spec}
                           </p>
                         </div>
 
-                        <div className="shrink-0 flex items-center justify-between sm:justify-end gap-5">
+                        <div className="shrink-0 flex items-center justify-between sm:justify-end gap-4 sm:gap-5">
                           <div className="flex items-baseline gap-2 sm:block sm:text-right">
                             <div
                               className={`font-monument tabular-nums text-lg sm:text-2xl font-extrabold ${
@@ -560,7 +469,7 @@ export function Calculator({
             <div className="dcc-rechner-module border-t border-white/14 pt-10 space-y-6">
               <div>
                 <span className="font-monument text-xs font-bold uppercase tracking-[0.24em] text-[#E6C986]">
-                  {extraCopy.stepPrefix} {t.calculator.steps.setups.index}
+                  {extraCopy.stepPrefix} 03
                 </span>
                 <h3 className="mt-2 font-monument text-2xl sm:text-3xl font-extrabold tracking-tight text-white">
                   {t.calculator.steps.setups.title}
@@ -580,11 +489,11 @@ export function Calculator({
                       aria-pressed={active}
                       data-active={String(active)}
                       onClick={() => handleSelectSetup(setup.id)}
-                      className={`dcc-calc-tile w-full flex items-start sm:items-center gap-4 sm:gap-6 px-4 sm:px-6 py-6 sm:py-7 text-left cursor-pointer ${
+                      className={`dcc-calc-tile w-full flex items-start sm:items-center gap-4 sm:gap-6 px-3.5 sm:px-6 py-5 sm:py-7 text-left cursor-pointer ${
                         active ? 'dcc-calc-tile-active' : ''
                       }`}
                     >
-                      <div className="w-24 h-20 sm:w-32 sm:h-24 overflow-hidden bg-white/5 shrink-0">
+                      <div className="w-20 h-20 sm:w-32 sm:h-24 overflow-hidden bg-white/5 shrink-0">
                         <SmartPicture
                           src={setup.image}
                           alt={copy.title}
@@ -601,19 +510,19 @@ export function Calculator({
                               {copy.title}
                             </h4>
                             <span
-                              className={`font-monument text-xs font-bold uppercase tracking-[0.12em] ${
+                              className={`font-monument text-[11px] sm:text-xs font-bold uppercase tracking-[0.12em] ${
                                 active ? 'text-[#E6C986]' : 'text-white/45'
                               }`}
                             >
                               {copy.badge}
                             </span>
                           </div>
-                          <p className="text-sm leading-relaxed text-white/60 line-clamp-2">
+                          <p className="text-xs sm:text-sm leading-relaxed text-white/60 line-clamp-2">
                             {copy.spec}
                           </p>
                         </div>
 
-                        <div className="shrink-0 flex items-center justify-between sm:justify-end gap-5">
+                        <div className="shrink-0 flex items-center justify-between sm:justify-end gap-4 sm:gap-5">
                           <div className="flex items-baseline gap-2 sm:block sm:text-right">
                             <div
                               className={`font-monument tabular-nums text-lg sm:text-2xl font-extrabold ${
@@ -648,7 +557,7 @@ export function Calculator({
             <div className="dcc-rechner-module border-t border-white/14 pt-10 space-y-6">
               <div>
                 <span className="font-monument text-xs font-bold uppercase tracking-[0.24em] text-[#E6C986]">
-                  {extraCopy.stepPrefix} {t.calculator.steps.extras.index}
+                  {extraCopy.stepPrefix} 04
                 </span>
                 <h3 className="mt-2 font-monument text-2xl sm:text-3xl font-extrabold tracking-tight text-white">
                   {t.calculator.steps.extras.title}
@@ -669,11 +578,11 @@ export function Calculator({
                       aria-checked={active}
                       data-active={String(active)}
                       onClick={() => handleToggleExtra(extra.id)}
-                      className={`dcc-calc-tile w-full flex items-center justify-between gap-5 px-4 sm:px-6 py-6 text-left cursor-pointer ${
+                      className={`dcc-calc-tile w-full flex items-center justify-between gap-4 sm:gap-5 px-3.5 sm:px-6 py-5 sm:py-6 text-left cursor-pointer ${
                         active ? 'dcc-calc-tile-active' : ''
                       }`}
                     >
-                      <div className="flex items-start sm:items-center gap-4 min-w-0">
+                      <div className="flex items-start sm:items-center gap-3.5 sm:gap-4 min-w-0">
                         <span
                           className={`mt-0.5 sm:mt-0 inline-flex h-7 w-7 shrink-0 items-center justify-center border transition-colors duration-200 ${
                             active
@@ -687,7 +596,7 @@ export function Calculator({
                           <div className="font-monument text-base sm:text-xl font-extrabold tracking-tight text-white">
                             {copy.title}
                           </div>
-                          <div className="text-sm leading-relaxed text-white/60">
+                          <div className="text-xs sm:text-sm leading-relaxed text-white/60">
                             {copy.spec}
                           </div>
                         </div>
@@ -708,6 +617,171 @@ export function Calculator({
                     </button>
                   );
                 })}
+              </div>
+            </div>
+
+            {/* STEP 05 (Final Finale): Prominent Tactile Guest Count Slider & Volume Discount */}
+            <div className="dcc-rechner-module border-t border-white/14 pt-10 space-y-8">
+              <div className="flex flex-wrap items-end justify-between gap-4">
+                <div>
+                  <span className="font-monument text-xs font-bold uppercase tracking-[0.24em] text-[#E6C986]">
+                    {extraCopy.stepPrefix} 05
+                  </span>
+                  <h3 className="mt-2 font-monument text-2xl sm:text-3xl font-extrabold tracking-tight text-white">
+                    {extraCopy.guestsStepTitle}
+                  </h3>
+                  <p className="mt-2 text-sm sm:text-base text-white/55">
+                    {extraCopy.guestsStepSubtitle}
+                  </p>
+                </div>
+
+                <div className="text-right">
+                  <span className="block font-monument text-xs font-semibold uppercase tracking-[0.16em] text-white/45">
+                    {t.calculator.steps.guests.activeDiscountPrefix}
+                  </span>
+                  <span
+                    data-testid="active-discount-badge"
+                    className="font-monument tabular-nums text-2xl sm:text-3xl font-extrabold text-[#E6C986]"
+                  >
+                    {discountPct > 0
+                      ? `-${discountPct} %`
+                      : t.calculator.steps.guests.noDiscountLabel}
+                  </span>
+                </div>
+              </div>
+
+              {/* Sculpted Guest Readout + Tactile Stepper */}
+              <div className="bg-[#0A0B0B] border border-white/12 p-5 sm:p-7 space-y-7">
+                <div className="flex flex-col sm:flex-row sm:items-center sm:justify-between gap-5">
+                  <div className="space-y-1">
+                    <label
+                      htmlFor="dcc-guest-input"
+                      className="block font-monument text-base sm:text-lg font-bold text-white"
+                    >
+                      {t.calculator.steps.guests.inputLabel}
+                    </label>
+                    <span className="text-sm text-white/50">
+                      {t.calculator.steps.guests.minOrderNote}
+                    </span>
+                  </div>
+
+                  <div className="flex items-center justify-between sm:justify-end gap-3.5">
+                    <button
+                      type="button"
+                      data-testid="guest-minus"
+                      aria-label={t.calculator.steps.guests.decreaseAria}
+                      onClick={handleStepMinus}
+                      className="inline-flex h-14 w-14 items-center justify-center bg-transparent border border-white/25 text-white transition-colors duration-200 hover:bg-white hover:border-white hover:text-[#060606] cursor-pointer"
+                    >
+                      <Minus className="h-5 w-5" />
+                    </button>
+
+                    <input
+                      id="dcc-guest-input"
+                      type="number"
+                      data-testid="guest-input"
+                      min={MIN_GUESTS}
+                      max={MAX_GUESTS}
+                      value={rawGuests}
+                      onChange={handleGuestInputChange}
+                      onBlur={handleGuestInputCommit}
+                      onKeyDown={(e) => {
+                        if (e.key === 'Enter') {
+                          e.preventDefault();
+                          handleGuestInputCommit();
+                        }
+                      }}
+                      className="h-14 w-36 bg-transparent border-b-2 border-[#E6C986]/70 px-2 text-center font-monument tabular-nums text-4xl sm:text-5xl font-extrabold text-white transition-colors duration-200 focus:border-white focus:outline-none"
+                    />
+
+                    <button
+                      type="button"
+                      data-testid="guest-plus"
+                      aria-label={t.calculator.steps.guests.increaseAria}
+                      onClick={handleStepPlus}
+                      className="inline-flex h-14 w-14 items-center justify-center bg-transparent border border-white/25 text-white transition-colors duration-200 hover:bg-white hover:border-white hover:text-[#060606] cursor-pointer"
+                    >
+                      <Plus className="h-5 w-5" />
+                    </button>
+                  </div>
+                </div>
+
+                {/* Prominent High-Contrast Illuminated Slider Bar + Sculpted Tactile Handle */}
+                <div className="space-y-4 pt-2">
+                  <div className="relative flex items-center py-3">
+                    {/* Track Background */}
+                    <div className="pointer-events-none absolute inset-x-0 h-[10px] rounded-full bg-white/15 overflow-hidden">
+                      {/* Filled Luminous Progress Bar */}
+                      <div
+                        className="h-full rounded-full transition-all duration-150"
+                        style={{
+                          width: `${capacityProgress}%`,
+                          background:
+                            'linear-gradient(90deg, #FFFFFF 0%, #F2D89B 55%, #D4A853 100%)',
+                          boxShadow: '0 0 18px rgba(230, 201, 134, 0.45)',
+                        }}
+                      />
+                    </div>
+                    <input
+                      type="range"
+                      data-testid="guest-slider"
+                      aria-label={t.calculator.steps.guests.sliderAria}
+                      min={MIN_GUESTS}
+                      max={MAX_GUESTS}
+                      step={1}
+                      value={input.guests}
+                      onChange={handleSliderChange}
+                      className="dcc-slider relative z-10"
+                    />
+                  </div>
+
+                  {/* Clean Scale Labels */}
+                  <div className="flex items-center justify-between font-monument text-[11px] sm:text-xs font-bold text-white/55">
+                    <span>{extraCopy.tierScaleStart}</span>
+                    <span>100 (-5%)</span>
+                    <span>250 (-10%)</span>
+                    <span>500+ (-15%)</span>
+                    <span>{extraCopy.tierScaleEnd}</span>
+                  </div>
+                </div>
+
+                {/* Volume Discount Tier Strip */}
+                <div className="grid grid-cols-2 sm:grid-cols-4 gap-3 pt-1">
+                  {(
+                    [
+                      { key: 'tier0', rate: 0 },
+                      { key: 'tier5', rate: 0.05 },
+                      { key: 'tier10', rate: 0.1 },
+                      { key: 'tier15', rate: 0.15 },
+                    ] as const
+                  ).map((tier) => {
+                    const active = result.discountRate === tier.rate;
+                    return (
+                      <div
+                        key={tier.key}
+                        data-active={String(active)}
+                        className={`py-2.5 text-center font-monument text-xs sm:text-[13px] transition-colors duration-200 border-b-2 ${
+                          active
+                            ? 'border-[#E6C986] font-extrabold text-[#E6C986]'
+                            : 'border-white/10 font-semibold text-white/45'
+                        }`}
+                      >
+                        {t.calculator.steps.guests.tiers[tier.key]}
+                      </div>
+                    );
+                  })}
+                </div>
+
+                {clampReason === 'below_min' && (
+                  <p className="text-sm font-monument font-semibold text-[#E6C986]">
+                    {t.calculator.steps.guests.clampedMinNotice}
+                  </p>
+                )}
+                {clampReason === 'above_max' && (
+                  <p className="text-sm font-monument font-semibold text-[#E6C986]">
+                    {t.calculator.steps.guests.clampedMaxNotice}
+                  </p>
+                )}
               </div>
             </div>
           </div>

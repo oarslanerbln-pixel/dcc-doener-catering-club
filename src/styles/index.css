@@ -424,43 +424,85 @@ body {
   color: transparent;
 }
 
-/* Custom Range Slider — Sharp 4px Architectural Track & Rectangular Brass Handle */
+/* Custom Range Slider — Prominent High-Contrast Luxury Track & Sculpted Tactile Grip Handle */
 input[type="range"].dcc-slider {
   -webkit-appearance: none;
   appearance: none;
   width: 100%;
-  height: 4px;
-  border-radius: 0;
-  background: var(--slider-track);
+  height: 10px;
+  border-radius: 9999px;
+  background: transparent;
   outline: none;
   cursor: pointer;
+  margin: 0;
+}
+
+input[type="range"].dcc-slider::-webkit-slider-runnable-track {
+  height: 10px;
+  border-radius: 9999px;
+  background: transparent;
 }
 
 input[type="range"].dcc-slider::-webkit-slider-thumb {
   -webkit-appearance: none;
   appearance: none;
-  width: 18px;
-  height: 22px;
-  border-radius: 0;
-  background: var(--slider-thumb);
-  border: 2px solid var(--bg-card);
-  box-shadow: 0 3px 10px rgba(11, 13, 12, 0.28);
-  cursor: pointer;
-  transition: transform 180ms var(--ease-expo-out);
+  width: 30px;
+  height: 30px;
+  margin-top: -10px;
+  border-radius: 9999px;
+  background: radial-gradient(circle at 38% 35%, #FFFFFF 0%, #F5E6C4 52%, #D4A853 100%);
+  border: 3px solid #060606;
+  box-shadow:
+    0 0 0 2px rgba(230, 201, 134, 0.85),
+    0 6px 20px rgba(0, 0, 0, 0.7),
+    0 0 18px rgba(230, 201, 134, 0.35);
+  cursor: grab;
+  transition: transform 180ms var(--ease-expo-out), box-shadow 180ms var(--ease-expo-out);
 }
 
 input[type="range"].dcc-slider::-webkit-slider-thumb:hover {
-  transform: scale(1.1);
+  transform: scale(1.12);
+  box-shadow:
+    0 0 0 3px #FFFFFF,
+    0 8px 24px rgba(0, 0, 0, 0.8),
+    0 0 24px rgba(230, 201, 134, 0.55);
+}
+
+input[type="range"].dcc-slider:active::-webkit-slider-thumb {
+  cursor: grabbing;
+  transform: scale(1.06);
+}
+
+input[type="range"].dcc-slider::-moz-range-track {
+  height: 10px;
+  border-radius: 9999px;
+  background: transparent;
 }
 
 input[type="range"].dcc-slider::-moz-range-thumb {
-  width: 18px;
-  height: 22px;
-  border-radius: 0;
-  background: var(--slider-thumb);
-  border: 2px solid var(--bg-card);
-  box-shadow: 0 3px 10px rgba(11, 13, 12, 0.28);
-  cursor: pointer;
+  width: 30px;
+  height: 30px;
+  border-radius: 9999px;
+  background: radial-gradient(circle at 38% 35%, #FFFFFF 0%, #F5E6C4 52%, #D4A853 100%);
+  border: 3px solid #060606;
+  box-shadow:
+    0 0 0 2px rgba(230, 201, 134, 0.85),
+    0 6px 20px rgba(0, 0, 0, 0.7),
+    0 0 18px rgba(230, 201, 134, 0.35);
+  cursor: grab;
+  transition: transform 180ms var(--ease-expo-out), box-shadow 180ms var(--ease-expo-out);
+}
+
+@media (max-width: 640px) {
+  input[type="range"].dcc-slider::-webkit-slider-thumb {
+    width: 34px;
+    height: 34px;
+    margin-top: -12px;
+  }
+  input[type="range"].dcc-slider::-moz-range-thumb {
+    width: 34px;
+    height: 34px;
+  }
 }
 
 /* Scalloped Receipt Edges */
