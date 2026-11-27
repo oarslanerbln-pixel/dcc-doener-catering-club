@@ -201,18 +201,21 @@ export function Calculator({
   return (
     <section
       id="rechner"
-      className="relative border-b border-white/10 bg-[#060606] text-white py-20 sm:py-28"
+      className="relative border-b border-white/10 bg-[#060606] text-white py-24 sm:py-32"
     >
-      <div className="mx-auto max-w-7xl px-4 sm:px-6 space-y-12">
-        {/* Ultra-Clean Editorial Header */}
-        <div className="max-w-2xl space-y-3">
-          <p className="font-monument text-[11px] font-bold uppercase tracking-[0.26em] text-[#E6C986]">
+      <div className="mx-auto max-w-7xl px-4 sm:px-6 space-y-14">
+        {/* Monumental Editorial Header */}
+        <div className="max-w-3xl space-y-4">
+          <p className="font-monument text-xs font-bold uppercase tracking-[0.26em] text-[#E6C986]">
             {t.calculator.eyebrow}
           </p>
-          <h2 className="font-monument text-3xl sm:text-4xl lg:text-[44px] font-extrabold tracking-[-0.025em] leading-[1.08] text-white">
+          <h2
+            style={{ fontFamily: '"Syne", "Montserrat", sans-serif' }}
+            className="text-3xl sm:text-5xl lg:text-[56px] font-extrabold tracking-[-0.03em] leading-[1.04] text-white"
+          >
             {t.calculator.title}
           </h2>
-          <p className="text-sm sm:text-base font-normal leading-relaxed text-white/55">
+          <p className="text-base sm:text-lg font-normal leading-relaxed text-white/60">
             {t.calculator.subtitle}
           </p>
         </div>
@@ -220,18 +223,18 @@ export function Calculator({
         {/* Mobile/Tablet Sticky Live Quote Bar */}
         <div
           data-testid="mobile-calculator-sticky-bar"
-          className="min-[960px]:hidden sticky top-[88px] sm:top-[96px] z-20 bg-[#0A0B0B]/95 border border-white/12 px-4 py-3 backdrop-blur-xl flex items-center justify-between gap-3"
+          className="min-[960px]:hidden sticky top-[88px] sm:top-[96px] z-20 bg-[#0A0B0B]/95 border border-white/12 px-4 py-3.5 backdrop-blur-xl flex items-center justify-between gap-3"
         >
           <div className="min-w-0 flex-1">
-            <div className="font-monument text-[10px] font-bold uppercase tracking-[0.14em] text-white/50 truncate">
+            <div className="font-monument text-xs font-bold uppercase tracking-[0.12em] text-white/55 truncate">
               {result.effectiveGuests} {extraCopy.mobileStickyGuests} ·{' '}
               {t.calculator.steps.spits.items[input.meatId].title}
             </div>
             <div className="flex items-baseline gap-2 truncate">
-              <span className="font-monument tabular-nums text-sm font-extrabold text-white">
+              <span className="font-monument tabular-nums text-base font-extrabold text-white">
                 {formatCurrency(result.subtotalNet, locale)}
               </span>
-              <span className="font-monument tabular-nums text-[11px] font-medium text-white/55 truncate">
+              <span className="font-monument tabular-nums text-xs font-medium text-white/60 truncate">
                 ({formatCurrency(result.perGuestNet, locale)}{' '}
                 {extraCopy.mobileStickyPerGuest})
               </span>
@@ -240,36 +243,36 @@ export function Calculator({
 
           <a
             href="#rechner-summary"
-            className="inline-flex items-center gap-1.5 bg-white px-3.5 py-2 font-monument text-[11px] font-extrabold uppercase tracking-[0.12em] text-[#060606] transition-colors duration-200 hover:bg-[#E6C986] shrink-0"
+            className="inline-flex items-center gap-1.5 bg-white px-4 py-2.5 font-monument text-xs font-extrabold uppercase tracking-[0.12em] text-[#060606] transition-colors duration-200 hover:bg-[#E6C986] shrink-0"
           >
             <span>{extraCopy.mobileStickySummaryBtn}</span>
-            <ArrowDown className="h-3.5 w-3.5" />
+            <ArrowDown className="h-4 w-4" />
           </a>
         </div>
 
         <div className="dcc-configurator-grid">
-          {/* Left Column: Zero-Clutter Hairline Architectural Steps */}
-          <div className="space-y-14 min-w-0">
+          {/* Left Column: Spacious Architectural Steps */}
+          <div className="space-y-16 sm:space-y-20 min-w-0">
             {/* STEP 01: Guests & Event Format */}
-            <div className="dcc-rechner-module border-t border-white/12 pt-8 space-y-7">
+            <div className="dcc-rechner-module border-t border-white/14 pt-10 space-y-8">
               <div className="flex flex-wrap items-end justify-between gap-4">
                 <div>
-                  <span className="font-monument text-[11px] font-bold uppercase tracking-[0.24em] text-white/40">
+                  <span className="font-monument text-xs font-bold uppercase tracking-[0.24em] text-[#E6C986]">
                     {extraCopy.stepPrefix} {t.calculator.steps.guests.index}
                   </span>
-                  <h3 className="mt-1.5 font-monument text-xl sm:text-2xl font-extrabold tracking-tight text-white">
+                  <h3 className="mt-2 font-monument text-2xl sm:text-3xl font-extrabold tracking-tight text-white">
                     {t.calculator.steps.guests.title}
                   </h3>
                 </div>
 
-                {/* Minimal Inline Discount Readout */}
+                {/* Clean Discount Readout */}
                 <div className="text-right">
-                  <span className="block font-monument text-[10px] font-semibold uppercase tracking-[0.18em] text-white/40">
+                  <span className="block font-monument text-xs font-semibold uppercase tracking-[0.16em] text-white/45">
                     {t.calculator.steps.guests.activeDiscountPrefix}
                   </span>
                   <span
                     data-testid="active-discount-badge"
-                    className="font-monument tabular-nums text-base font-extrabold text-[#E6C986]"
+                    className="font-monument tabular-nums text-xl sm:text-2xl font-extrabold text-[#E6C986]"
                   >
                     {discountPct > 0
                       ? `-${discountPct} %`
@@ -278,29 +281,29 @@ export function Calculator({
                 </div>
               </div>
 
-              {/* Sculpted Minimalist Guest Counter + Hairline Stepper */}
-              <div className="flex flex-col sm:flex-row sm:items-center sm:justify-between gap-4">
-                <div>
+              {/* Generous Guest Counter + Precision Stepper */}
+              <div className="flex flex-col sm:flex-row sm:items-center sm:justify-between gap-5 py-2">
+                <div className="space-y-1">
                   <label
                     htmlFor="dcc-guest-input"
-                    className="block font-monument text-sm font-bold text-white/85"
+                    className="block font-monument text-base sm:text-lg font-bold text-white"
                   >
                     {t.calculator.steps.guests.inputLabel}
                   </label>
-                  <span className="text-xs text-white/45">
+                  <span className="text-sm text-white/50">
                     {t.calculator.steps.guests.minOrderNote}
                   </span>
                 </div>
 
-                <div className="flex items-center gap-3">
+                <div className="flex items-center gap-3.5">
                   <button
                     type="button"
                     data-testid="guest-minus"
                     aria-label={t.calculator.steps.guests.decreaseAria}
                     onClick={handleStepMinus}
-                    className="inline-flex h-11 w-11 items-center justify-center bg-transparent border border-white/20 text-white transition-colors duration-200 hover:bg-white hover:border-white hover:text-[#060606] cursor-pointer"
+                    className="inline-flex h-14 w-14 items-center justify-center bg-transparent border border-white/25 text-white transition-colors duration-200 hover:bg-white hover:border-white hover:text-[#060606] cursor-pointer"
                   >
-                    <Minus className="h-4 w-4" />
+                    <Minus className="h-5 w-5" />
                   </button>
 
                   <input
@@ -318,7 +321,7 @@ export function Calculator({
                         handleGuestInputCommit();
                       }
                     }}
-                    className="h-11 w-28 bg-transparent border-b border-white/30 px-2 text-center font-monument tabular-nums text-3xl font-extrabold text-white transition-colors duration-200 focus:border-[#E6C986] focus:outline-none"
+                    className="h-14 w-36 bg-transparent border-b-2 border-white/30 px-2 text-center font-monument tabular-nums text-4xl sm:text-5xl font-extrabold text-white transition-colors duration-200 focus:border-[#E6C986] focus:outline-none"
                   />
 
                   <button
@@ -326,16 +329,16 @@ export function Calculator({
                     data-testid="guest-plus"
                     aria-label={t.calculator.steps.guests.increaseAria}
                     onClick={handleStepPlus}
-                    className="inline-flex h-11 w-11 items-center justify-center bg-transparent border border-white/20 text-white transition-colors duration-200 hover:bg-white hover:border-white hover:text-[#060606] cursor-pointer"
+                    className="inline-flex h-14 w-14 items-center justify-center bg-transparent border border-white/25 text-white transition-colors duration-200 hover:bg-white hover:border-white hover:text-[#060606] cursor-pointer"
                   >
-                    <Plus className="h-4 w-4" />
+                    <Plus className="h-5 w-5" />
                   </button>
                 </div>
               </div>
 
-              {/* Ultra-Thin Precision Range Slider */}
-              <div className="space-y-3">
-                <div className="h-[2px] w-full overflow-hidden bg-white/12">
+              {/* Precision Range Slider + Spacious Tier Strip */}
+              <div className="space-y-4">
+                <div className="h-[3px] w-full overflow-hidden bg-white/12">
                   <div
                     className="h-full transition-all duration-200 dcc-gold-emerald-bar"
                     style={{ width: `${capacityProgress}%` }}
@@ -352,8 +355,7 @@ export function Calculator({
                   onChange={handleSliderChange}
                   className="dcc-slider"
                 />
-                {/* Clean Inline Tier Strip (No Cluttered Boxes) */}
-                <div className="grid grid-cols-2 sm:grid-cols-4 gap-2 pt-1">
+                <div className="grid grid-cols-2 sm:grid-cols-4 gap-3 pt-1">
                   {(
                     [
                       { key: 'tier0', rate: 0 },
@@ -367,10 +369,10 @@ export function Calculator({
                       <div
                         key={tier.key}
                         data-active={String(active)}
-                        className={`py-1.5 text-center font-monument text-[11px] transition-colors duration-200 border-b ${
+                        className={`py-2.5 text-center font-monument text-xs sm:text-[13px] transition-colors duration-200 border-b-2 ${
                           active
                             ? 'border-[#E6C986] font-extrabold text-[#E6C986]'
-                            : 'border-white/10 font-medium text-white/35'
+                            : 'border-white/10 font-semibold text-white/45'
                         }`}
                       >
                         {t.calculator.steps.guests.tiers[tier.key]}
@@ -381,18 +383,18 @@ export function Calculator({
               </div>
 
               {clampReason === 'below_min' && (
-                <p className="text-xs font-monument font-semibold text-[#E6C986]">
+                <p className="text-sm font-monument font-semibold text-[#E6C986]">
                   {t.calculator.steps.guests.clampedMinNotice}
                 </p>
               )}
               {clampReason === 'above_max' && (
-                <p className="text-xs font-monument font-semibold text-[#E6C986]">
+                <p className="text-sm font-monument font-semibold text-[#E6C986]">
                   {t.calculator.steps.guests.clampedMaxNotice}
                 </p>
               )}
 
-              {/* Unified Minimalist Monochrome Event Format & 800+ Bar */}
-              <div className="flex flex-wrap items-center gap-2 pt-1">
+              {/* Spacious Monochrome Event Format & 800+ Bar */}
+              <div className="flex flex-wrap items-center gap-3 pt-2">
                 {EVENT_TYPES.map((ev) => {
                   const active = input.eventType === ev;
                   return (
@@ -405,10 +407,10 @@ export function Calculator({
                       onClick={() =>
                         onChangeInput((prev) => ({ ...prev, eventType: ev }))
                       }
-                      className={`min-h-[40px] px-4 py-2 font-monument text-[11px] uppercase tracking-[0.12em] transition-all duration-200 cursor-pointer border ${
+                      className={`min-h-[48px] px-5 py-3 font-monument text-xs sm:text-[13px] uppercase tracking-[0.12em] transition-all duration-200 cursor-pointer border ${
                         active
                           ? 'bg-white border-white font-extrabold text-[#060606]'
-                          : 'bg-transparent border-white/15 font-semibold text-white/65 hover:border-white/45 hover:text-white'
+                          : 'bg-transparent border-white/20 font-bold text-white/75 hover:border-white/55 hover:text-white'
                       }`}
                     >
                       {t.calculator.steps.guests.eventTypes[ev].label}
@@ -430,31 +432,31 @@ export function Calculator({
                       enterprise800Plus: !prev.enterprise800Plus,
                     }))
                   }
-                  className={`inline-flex min-h-[40px] items-center justify-center gap-2 px-4 py-2 font-monument text-[11px] uppercase tracking-[0.12em] transition-all duration-200 cursor-pointer border ${
+                  className={`inline-flex min-h-[48px] items-center justify-center gap-2 px-5 py-3 font-monument text-xs sm:text-[13px] uppercase tracking-[0.12em] transition-all duration-200 cursor-pointer border ${
                     input.enterprise800Plus
                       ? 'bg-[#E6C986] border-[#E6C986] font-extrabold text-[#060606]'
-                      : 'bg-transparent border-white/15 font-semibold text-white/65 hover:border-white/45 hover:text-white'
+                      : 'bg-transparent border-white/20 font-bold text-white/75 hover:border-white/55 hover:text-white'
                   }`}
                 >
-                  <Sparkles className="h-3.5 w-3.5" />
+                  <Sparkles className="h-4 w-4" />
                   <span>{t.calculator.steps.guests.enterpriseToggle}</span>
                 </button>
               </div>
 
               {input.enterprise800Plus && (
-                <div className="border-l-2 border-[#E6C986] bg-white/[0.03] px-4 py-3 text-xs font-medium text-white/80">
+                <div className="border-l-2 border-[#E6C986] bg-white/[0.04] px-5 py-4 text-sm font-medium text-white/85">
                   {t.calculator.steps.guests.enterpriseActiveNote}
                 </div>
               )}
             </div>
 
-            {/* STEP 02: Editorial Hairline Döner Selection */}
-            <div className="dcc-rechner-module border-t border-white/12 pt-8 space-y-5">
+            {/* STEP 02: Spacious Editorial Döner Selection */}
+            <div className="dcc-rechner-module border-t border-white/14 pt-10 space-y-6">
               <div>
-                <span className="font-monument text-[11px] font-bold uppercase tracking-[0.24em] text-white/40">
+                <span className="font-monument text-xs font-bold uppercase tracking-[0.24em] text-[#E6C986]">
                   {extraCopy.stepPrefix} {t.calculator.steps.spits.index}
                 </span>
-                <h3 className="mt-1.5 font-monument text-xl sm:text-2xl font-extrabold tracking-tight text-white">
+                <h3 className="mt-2 font-monument text-2xl sm:text-3xl font-extrabold tracking-tight text-white">
                   {t.calculator.steps.spits.title}
                 </h3>
               </div>
@@ -462,14 +464,14 @@ export function Calculator({
               {result.duoRequiresMinGuests && (
                 <div
                   data-testid="duo-min-warning"
-                  className="flex items-start gap-2.5 border-l-2 border-[#E6C986] bg-white/[0.04] px-4 py-3 text-xs font-medium text-white/85"
+                  className="flex items-start gap-3 border-l-2 border-[#E6C986] bg-white/[0.04] px-5 py-4 text-sm font-medium text-white/85"
                 >
-                  <ShieldAlert className="h-4 w-4 shrink-0 text-[#E6C986] mt-0.5" />
+                  <ShieldAlert className="h-5 w-5 shrink-0 text-[#E6C986] mt-0.5" />
                   <span>{t.calculator.steps.spits.duoFloorWarning}</span>
                 </div>
               )}
 
-              <div className="border-t border-white/[0.08]">
+              <div className="border-t border-white/10">
                 {MEAT_CATALOG.map((meat) => {
                   const copy = t.calculator.steps.spits.items[meat.id];
                   const active = input.meatId === meat.id;
@@ -490,61 +492,61 @@ export function Calculator({
                       aria-pressed={active}
                       data-active={String(active)}
                       onClick={() => handleSelectMeat(meat.id)}
-                      className={`dcc-calc-tile w-full flex items-center gap-4 sm:gap-5 px-3 sm:px-4 py-4 text-left cursor-pointer ${
+                      className={`dcc-calc-tile w-full flex items-start sm:items-center gap-4 sm:gap-6 px-4 sm:px-6 py-6 sm:py-7 text-left cursor-pointer ${
                         active ? 'dcc-calc-tile-active' : ''
                       }`}
                     >
-                      <div className="w-16 h-12 sm:w-20 sm:h-14 overflow-hidden bg-white/5 shrink-0">
+                      <div className="w-24 h-20 sm:w-32 sm:h-24 overflow-hidden bg-white/5 shrink-0">
                         <SmartPicture
                           src={meat.image}
                           alt={copy.title}
-                          width={176}
-                          height={128}
+                          width={256}
+                          height={192}
                           className="h-full w-full object-cover"
                         />
                       </div>
 
-                      <div className="flex-1 min-w-0 flex flex-col gap-1.5 sm:flex-row sm:items-center sm:justify-between sm:gap-4">
-                        <div className="min-w-0">
-                          <div className="flex flex-wrap items-baseline gap-x-2.5 gap-y-0.5">
-                            <h4 className="font-monument text-sm sm:text-base font-bold tracking-tight text-white">
+                      <div className="flex-1 min-w-0 flex flex-col gap-3 sm:flex-row sm:items-center sm:justify-between sm:gap-6">
+                        <div className="min-w-0 space-y-1.5">
+                          <div className="flex flex-wrap items-baseline gap-x-3 gap-y-1">
+                            <h4 className="font-monument text-base sm:text-xl font-extrabold tracking-tight text-white">
                               {copy.title}
                             </h4>
                             <span
-                              className={`font-monument text-[10px] font-bold uppercase tracking-[0.14em] ${
-                                active ? 'text-[#E6C986]' : 'text-white/40'
+                              className={`font-monument text-xs font-bold uppercase tracking-[0.12em] ${
+                                active ? 'text-[#E6C986]' : 'text-white/45'
                               }`}
                             >
                               {copy.badge}
                             </span>
                           </div>
-                          <p className="mt-0.5 text-xs text-white/50 line-clamp-1">
+                          <p className="text-sm leading-relaxed text-white/60 line-clamp-2">
                             {copy.spec}
                           </p>
                         </div>
 
-                        <div className="shrink-0 flex items-center justify-between sm:justify-end gap-4">
-                          <div className="flex items-baseline gap-1.5 sm:block sm:text-right">
+                        <div className="shrink-0 flex items-center justify-between sm:justify-end gap-5">
+                          <div className="flex items-baseline gap-2 sm:block sm:text-right">
                             <div
-                              className={`font-monument tabular-nums text-sm sm:text-base font-extrabold ${
+                              className={`font-monument tabular-nums text-lg sm:text-2xl font-extrabold ${
                                 active ? 'text-[#E6C986]' : 'text-white'
                               }`}
                             >
                               {formatCurrency(discountedUnit, locale)}
                             </div>
-                            <div className="font-monument text-[10px] font-semibold text-white/40">
+                            <div className="font-monument text-xs font-semibold text-white/45">
                               {t.calculator.steps.spits.perGuestSuffix}
                             </div>
                           </div>
 
                           <span
-                            className={`inline-flex h-5 w-5 items-center justify-center border transition-colors duration-200 shrink-0 ${
+                            className={`inline-flex h-7 w-7 items-center justify-center border transition-colors duration-200 shrink-0 ${
                               active
                                 ? 'bg-white border-white text-[#060606]'
-                                : 'border-white/25 text-transparent'
+                                : 'border-white/30 text-transparent'
                             }`}
                           >
-                            <Check className="h-3 w-3 stroke-[3]" />
+                            <Check className="h-4 w-4 stroke-[3]" />
                           </span>
                         </div>
                       </div>
@@ -554,18 +556,18 @@ export function Calculator({
               </div>
             </div>
 
-            {/* STEP 03: Editorial Hairline Service Setup */}
-            <div className="dcc-rechner-module border-t border-white/12 pt-8 space-y-5">
+            {/* STEP 03: Spacious Editorial Service Setup */}
+            <div className="dcc-rechner-module border-t border-white/14 pt-10 space-y-6">
               <div>
-                <span className="font-monument text-[11px] font-bold uppercase tracking-[0.24em] text-white/40">
+                <span className="font-monument text-xs font-bold uppercase tracking-[0.24em] text-[#E6C986]">
                   {extraCopy.stepPrefix} {t.calculator.steps.setups.index}
                 </span>
-                <h3 className="mt-1.5 font-monument text-xl sm:text-2xl font-extrabold tracking-tight text-white">
+                <h3 className="mt-2 font-monument text-2xl sm:text-3xl font-extrabold tracking-tight text-white">
                   {t.calculator.steps.setups.title}
                 </h3>
               </div>
 
-              <div className="border-t border-white/[0.08]">
+              <div className="border-t border-white/10">
                 {SETUP_CATALOG.map((setup) => {
                   const copy = t.calculator.steps.setups.items[setup.id];
                   const active = input.setupId === setup.id;
@@ -578,61 +580,61 @@ export function Calculator({
                       aria-pressed={active}
                       data-active={String(active)}
                       onClick={() => handleSelectSetup(setup.id)}
-                      className={`dcc-calc-tile w-full flex items-center gap-4 sm:gap-5 px-3 sm:px-4 py-4 text-left cursor-pointer ${
+                      className={`dcc-calc-tile w-full flex items-start sm:items-center gap-4 sm:gap-6 px-4 sm:px-6 py-6 sm:py-7 text-left cursor-pointer ${
                         active ? 'dcc-calc-tile-active' : ''
                       }`}
                     >
-                      <div className="w-16 h-12 sm:w-20 sm:h-14 overflow-hidden bg-white/5 shrink-0">
+                      <div className="w-24 h-20 sm:w-32 sm:h-24 overflow-hidden bg-white/5 shrink-0">
                         <SmartPicture
                           src={setup.image}
                           alt={copy.title}
-                          width={176}
-                          height={128}
+                          width={256}
+                          height={192}
                           className="h-full w-full object-cover"
                         />
                       </div>
 
-                      <div className="flex-1 min-w-0 flex flex-col gap-1.5 sm:flex-row sm:items-center sm:justify-between sm:gap-4">
-                        <div className="min-w-0">
-                          <div className="flex flex-wrap items-baseline gap-x-2.5 gap-y-0.5">
-                            <h4 className="font-monument text-sm sm:text-base font-bold tracking-tight text-white">
+                      <div className="flex-1 min-w-0 flex flex-col gap-3 sm:flex-row sm:items-center sm:justify-between sm:gap-6">
+                        <div className="min-w-0 space-y-1.5">
+                          <div className="flex flex-wrap items-baseline gap-x-3 gap-y-1">
+                            <h4 className="font-monument text-base sm:text-xl font-extrabold tracking-tight text-white">
                               {copy.title}
                             </h4>
                             <span
-                              className={`font-monument text-[10px] font-bold uppercase tracking-[0.14em] ${
-                                active ? 'text-[#E6C986]' : 'text-white/40'
+                              className={`font-monument text-xs font-bold uppercase tracking-[0.12em] ${
+                                active ? 'text-[#E6C986]' : 'text-white/45'
                               }`}
                             >
                               {copy.badge}
                             </span>
                           </div>
-                          <p className="mt-0.5 text-xs text-white/50 line-clamp-1">
+                          <p className="text-sm leading-relaxed text-white/60 line-clamp-2">
                             {copy.spec}
                           </p>
                         </div>
 
-                        <div className="shrink-0 flex items-center justify-between sm:justify-end gap-4">
-                          <div className="flex items-baseline gap-1.5 sm:block sm:text-right">
+                        <div className="shrink-0 flex items-center justify-between sm:justify-end gap-5">
+                          <div className="flex items-baseline gap-2 sm:block sm:text-right">
                             <div
-                              className={`font-monument tabular-nums text-sm sm:text-base font-extrabold ${
+                              className={`font-monument tabular-nums text-lg sm:text-2xl font-extrabold ${
                                 active ? 'text-[#E6C986]' : 'text-white'
                               }`}
                             >
                               + {formatCurrency(setup.flatFeeNet, locale)}
                             </div>
-                            <div className="font-monument text-[10px] font-semibold text-white/40">
+                            <div className="font-monument text-xs font-semibold text-white/45">
                               {t.calculator.steps.setups.flatFeeLabel}
                             </div>
                           </div>
 
                           <span
-                            className={`inline-flex h-5 w-5 items-center justify-center border transition-colors duration-200 shrink-0 ${
+                            className={`inline-flex h-7 w-7 items-center justify-center border transition-colors duration-200 shrink-0 ${
                               active
                                 ? 'bg-white border-white text-[#060606]'
-                                : 'border-white/25 text-transparent'
+                                : 'border-white/30 text-transparent'
                             }`}
                           >
-                            <Check className="h-3 w-3 stroke-[3]" />
+                            <Check className="h-4 w-4 stroke-[3]" />
                           </span>
                         </div>
                       </div>
@@ -642,18 +644,18 @@ export function Calculator({
               </div>
             </div>
 
-            {/* STEP 04: Minimal Hairline Extras */}
-            <div className="dcc-rechner-module border-t border-white/12 pt-8 space-y-5">
+            {/* STEP 04: Spacious Editorial Extras */}
+            <div className="dcc-rechner-module border-t border-white/14 pt-10 space-y-6">
               <div>
-                <span className="font-monument text-[11px] font-bold uppercase tracking-[0.24em] text-white/40">
+                <span className="font-monument text-xs font-bold uppercase tracking-[0.24em] text-[#E6C986]">
                   {extraCopy.stepPrefix} {t.calculator.steps.extras.index}
                 </span>
-                <h3 className="mt-1.5 font-monument text-xl sm:text-2xl font-extrabold tracking-tight text-white">
+                <h3 className="mt-2 font-monument text-2xl sm:text-3xl font-extrabold tracking-tight text-white">
                   {t.calculator.steps.extras.title}
                 </h3>
               </div>
 
-              <div className="border-t border-white/[0.08]">
+              <div className="border-t border-white/10">
                 {EXTRAS_CATALOG.map((extra) => {
                   const copy = t.calculator.steps.extras.items[extra.id];
                   const active = Boolean(input.extras[extra.id]);
@@ -667,25 +669,25 @@ export function Calculator({
                       aria-checked={active}
                       data-active={String(active)}
                       onClick={() => handleToggleExtra(extra.id)}
-                      className={`dcc-calc-tile w-full flex items-center justify-between gap-4 px-3 sm:px-4 py-4 text-left cursor-pointer ${
+                      className={`dcc-calc-tile w-full flex items-center justify-between gap-5 px-4 sm:px-6 py-6 text-left cursor-pointer ${
                         active ? 'dcc-calc-tile-active' : ''
                       }`}
                     >
-                      <div className="flex items-center gap-3.5 min-w-0">
+                      <div className="flex items-start sm:items-center gap-4 min-w-0">
                         <span
-                          className={`inline-flex h-5 w-5 shrink-0 items-center justify-center border transition-colors duration-200 ${
+                          className={`mt-0.5 sm:mt-0 inline-flex h-7 w-7 shrink-0 items-center justify-center border transition-colors duration-200 ${
                             active
                               ? 'bg-white border-white text-[#060606]'
-                              : 'border-white/25 text-transparent'
+                              : 'border-white/30 text-transparent'
                           }`}
                         >
-                          <Check className="h-3 w-3 stroke-[3]" />
+                          <Check className="h-4 w-4 stroke-[3]" />
                         </span>
-                        <div className="min-w-0">
-                          <div className="font-monument text-sm sm:text-base font-bold tracking-tight text-white">
+                        <div className="min-w-0 space-y-1">
+                          <div className="font-monument text-base sm:text-xl font-extrabold tracking-tight text-white">
                             {copy.title}
                           </div>
-                          <div className="mt-0.5 text-xs text-white/50 line-clamp-1">
+                          <div className="text-sm leading-relaxed text-white/60">
                             {copy.spec}
                           </div>
                         </div>
@@ -693,13 +695,13 @@ export function Calculator({
 
                       <div className="text-right shrink-0">
                         <div
-                          className={`font-monument tabular-nums text-sm sm:text-base font-extrabold ${
+                          className={`font-monument tabular-nums text-lg sm:text-2xl font-extrabold ${
                             active ? 'text-[#E6C986]' : 'text-white'
                           }`}
                         >
                           + {formatCurrency(extra.pricePerGuest, locale)}
                         </div>
-                        <div className="font-monument text-[10px] font-semibold text-white/40">
+                        <div className="font-monument text-xs font-semibold text-white/45">
                           {t.calculator.steps.extras.perGuestSuffix}
                         </div>
                       </div>

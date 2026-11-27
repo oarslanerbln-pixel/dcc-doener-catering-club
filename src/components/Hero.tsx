@@ -9,6 +9,7 @@ import { SmartPicture } from './SmartPicture';
 
 const HERO_MARQUEE_COPY = {
   de: {
+    shortSubtitle: 'Handgestecktes Yaprak. Live am Spieß. 30–800+ Gäste.',
     servicesBannerLabel: 'DCC Catering Leistungen',
     services: [
       '100 % Yaprak Rind & Kalb',
@@ -23,6 +24,7 @@ const HERO_MARQUEE_COPY = {
     ],
   },
   en: {
+    shortSubtitle: 'Hand-Stacked Yaprak. Carved Live. 30–800+ Guests.',
     servicesBannerLabel: 'DCC Catering Services',
     services: [
       '100% Yaprak Beef & Veal',
@@ -37,6 +39,7 @@ const HERO_MARQUEE_COPY = {
     ],
   },
   tr: {
+    shortSubtitle: 'El Yapımı Yaprak Döner. Canlı Kesim. 30–800+ Misafir.',
     servicesBannerLabel: 'DCC Catering Hizmetleri',
     services: [
       '%100 Yaprak Dana & Et Döner',
@@ -87,45 +90,19 @@ export function Hero({
     return () => window.clearInterval(timer);
   }, []);
 
-  const handleHeroPointerMove = (e: React.PointerEvent<HTMLElement>) => {
-    if (
-      typeof window !== 'undefined' &&
-      window.matchMedia?.('(pointer: coarse)').matches
-    ) {
-      return;
-    }
-    const rect = e.currentTarget.getBoundingClientRect();
-    pointerTargetRef.current = {
-      nx: ((e.clientX - rect.left) / rect.width - 0.5) * 2,
-      ny: ((e.clientY - rect.top) / rect.height - 0.5) * 2,
-    };
-  };
-
-  const handleHeroPointerLeave = () => {
-    pointerTargetRef.current = { nx: 0, ny: 0 };
-  };
-
   return (
     <section
       ref={heroRef}
       id="hero"
       data-bg-style="obsidian-shader"
-      onPointerMove={handleHeroPointerMove}
-      onPointerLeave={handleHeroPointerLeave}
       className="relative min-h-[78vh] sm:min-h-[86vh] flex flex-col justify-between overflow-hidden bg-[#060606] pt-20 sm:pt-28 pb-0"
     >
-      {/* Clean Cinematic Full-Bleed Photo Crossfade (Live-Station <-> Event-Trailer) */}
+      {/* Clean Static-Camera Full-Bleed Photo Crossfade (Zero Mouse Jitter) */}
       <div
         aria-hidden="true"
         className="pointer-events-none absolute inset-0 overflow-hidden"
       >
-        <div
-          className="relative h-full w-full will-change-transform"
-          style={{
-            transform:
-              'scale(1.02) translate3d(calc(var(--hero-mx, 0) * -8px), calc(var(--hero-my, 0) * -5px), 0)',
-          }}
-        >
+        <div className="relative h-full w-full">
           {HERO_STAGES.map((stage, idx) => {
             const isActive = idx === activeSlideIdx;
             const altLabel =
@@ -133,8 +110,8 @@ export function Hero({
             return (
               <div
                 key={stage.id}
-                className={`absolute inset-0 h-full w-full transition-opacity duration-[2200ms] ease-in-out ${
-                  isActive ? 'opacity-[0.26]' : 'opacity-0'
+                className={`absolute inset-0 h-full w-full transition-opacity duration-[2600ms] ease-in-out ${
+                  isActive ? 'opacity-[0.22]' : 'opacity-0'
                 }`}
               >
                 <div className="h-full w-full dcc-hero-kenburns">
@@ -203,7 +180,10 @@ export function Hero({
           </div>
 
           <div className="overflow-hidden">
-            <h1 className="dcc-hero-mask-up dcc-hero-mask-delay-1 font-monument text-[38px] sm:text-6xl lg:text-[80px] font-extrabold tracking-[-0.03em] leading-[1.04] text-white drop-shadow-[0_6px_28px_rgba(0,0,0,0.45)]">
+            <h1
+              style={{ fontFamily: '"Syne", "Montserrat", sans-serif' }}
+              className="dcc-hero-mask-up dcc-hero-mask-delay-1 text-[42px] sm:text-6xl lg:text-[86px] font-extrabold tracking-[-0.04em] leading-[0.98] text-white drop-shadow-[0_8px_32px_rgba(0,0,0,0.55)]"
+            >
               <span>{t.hero.headlinePrefix} </span>
               <span className="dcc-gold-emerald-text">
                 {t.hero.headlineAccent}
@@ -213,8 +193,8 @@ export function Hero({
           </div>
 
           <div className="overflow-hidden">
-            <p className="dcc-hero-mask-up dcc-hero-mask-delay-2 mx-auto max-w-2xl font-sans text-sm sm:text-lg font-medium leading-relaxed text-white/85">
-              {t.hero.subtitle}
+            <p className="dcc-hero-mask-up dcc-hero-mask-delay-2 mx-auto max-w-xl font-monument text-xs sm:text-base font-bold uppercase tracking-[0.16em] text-white/80">
+              {marqueeCopy.shortSubtitle}
             </p>
           </div>
 

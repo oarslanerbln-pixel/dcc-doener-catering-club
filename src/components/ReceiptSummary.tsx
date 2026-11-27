@@ -47,34 +47,34 @@ export function ReceiptSummary({
         color: '#FFFFFF',
       }}
     >
-      <div className="p-6 space-y-5">
-        {/* Ultra-Clean Monochrome Architectural Summary Header */}
+      <div className="p-6 sm:p-7 space-y-5">
+        {/* Commanding Monochrome Summary Header */}
         <div className="flex items-center justify-between gap-3">
           <div className="min-w-0">
-            <div className="font-monument text-[10px] font-bold uppercase tracking-[0.22em] text-white/45">
+            <div className="font-monument text-[11px] font-bold uppercase tracking-[0.2em] text-white/50">
               {t.receipt.eyebrow} · {quoteId}
             </div>
-            <h3 className="mt-1 font-monument text-xl font-extrabold tracking-tight text-white truncate">
+            <h3 className="mt-1 font-monument text-2xl font-extrabold tracking-tight text-white truncate">
               {t.receipt.title}
             </h3>
           </div>
 
           <div className="flex items-center -space-x-2 shrink-0">
-            <div className="h-9 w-9 overflow-hidden bg-white/5 ring-2 ring-[#0A0B0B]">
+            <div className="h-11 w-11 overflow-hidden bg-white/5 ring-2 ring-[#0A0B0B]">
               <SmartPicture
                 src={activeMeat.image}
                 alt={t.calculator.steps.spits.items[input.meatId].title}
-                width={72}
-                height={72}
+                width={88}
+                height={88}
                 className="h-full w-full object-cover"
               />
             </div>
-            <div className="h-9 w-9 overflow-hidden bg-white/5 ring-2 ring-[#0A0B0B]">
+            <div className="h-11 w-11 overflow-hidden bg-white/5 ring-2 ring-[#0A0B0B]">
               <SmartPicture
                 src={activeSetup.image}
                 alt={t.calculator.steps.setups.items[input.setupId].title}
-                width={72}
-                height={72}
+                width={88}
+                height={88}
                 className="h-full w-full object-cover"
               />
             </div>
@@ -85,9 +85,9 @@ export function ReceiptSummary({
         {isEnterprise && (
           <div
             data-testid="receipt-enterprise-banner"
-            className="flex items-start gap-2 border-l-2 border-[#E6C986] bg-white/[0.04] px-3 py-2.5 text-[11px] font-medium leading-snug text-white/85"
+            className="flex items-start gap-2.5 border-l-2 border-[#E6C986] bg-white/[0.04] px-3.5 py-3 text-xs font-medium leading-snug text-white/85"
           >
-            <Sparkles className="h-3.5 w-3.5 shrink-0 text-[#E6C986] mt-0.5" />
+            <Sparkles className="h-4 w-4 shrink-0 text-[#E6C986] mt-0.5" />
             <span>{t.receipt.enterpriseBanner}</span>
           </div>
         )}
@@ -95,17 +95,17 @@ export function ReceiptSummary({
         {result.duoRequiresMinGuests && (
           <div
             data-testid="receipt-duo-notice"
-            className="flex items-start gap-2 border-l-2 border-[#E6C986] bg-white/[0.04] px-3 py-2.5 text-[11px] font-medium leading-snug text-white/85"
+            className="flex items-start gap-2.5 border-l-2 border-[#E6C986] bg-white/[0.04] px-3.5 py-3 text-xs font-medium leading-snug text-white/85"
           >
-            <ShieldAlert className="h-3.5 w-3.5 shrink-0 text-[#E6C986] mt-0.5" />
+            <ShieldAlert className="h-4 w-4 shrink-0 text-[#E6C986] mt-0.5" />
             <span>{t.receipt.duoAppliedNotice}</span>
           </div>
         )}
 
-        {/* Clean Hairline Breakdown */}
-        <div className="space-y-3 border-y border-white/10 py-4 text-xs sm:text-[13px]">
+        {/* Spacious Hairline Breakdown */}
+        <div className="space-y-3.5 border-y border-white/12 py-4.5 text-sm">
           <div className="flex items-center justify-between gap-2">
-            <span className="text-white/50">{t.receipt.guestsLabel}</span>
+            <span className="text-white/55">{t.receipt.guestsLabel}</span>
             <span className="font-monument tabular-nums font-bold text-white">
               {isEnterprise
                 ? `800+ (${result.effectiveGuests})`
@@ -116,7 +116,7 @@ export function ReceiptSummary({
                 ? t.calculator.steps.guests.guestUnitSingular
                 : t.calculator.steps.guests.guestUnitPlural}{' '}
               ·{' '}
-              <span className="text-white/65 font-semibold">
+              <span className="text-white/70 font-semibold">
                 {t.calculator.steps.guests.eventTypes[input.eventType].label}
               </span>
             </span>
@@ -124,10 +124,10 @@ export function ReceiptSummary({
 
           <div className="flex items-start justify-between gap-2">
             <div className="min-w-0">
-              <div className="font-monument text-white font-semibold truncate">
+              <div className="font-monument text-white font-bold truncate">
                 {t.calculator.steps.spits.items[input.meatId].title}
               </div>
-              <div className="text-[11px] text-white/45">
+              <div className="text-xs text-white/50">
                 -{discountPct} % ({formatCurrency(result.unitMeatDiscounted, locale)}{' '}
                 {t.calculator.steps.spits.perGuestSuffix})
               </div>
@@ -138,7 +138,7 @@ export function ReceiptSummary({
           </div>
 
           <div className="flex items-center justify-between gap-2">
-            <span className="text-white/50 truncate">
+            <span className="text-white/55 truncate">
               {t.calculator.steps.setups.items[input.setupId].title}
             </span>
             <span className="font-monument tabular-nums font-bold shrink-0 text-white">
@@ -148,8 +148,8 @@ export function ReceiptSummary({
 
           <div className="flex items-start justify-between gap-2">
             <div className="min-w-0">
-              <div className="text-white/50">{t.receipt.extrasLabel}</div>
-              <div className="text-[11px] text-white/40 truncate">
+              <div className="text-white/55">{t.receipt.extrasLabel}</div>
+              <div className="text-xs text-white/45 truncate">
                 {activeExtras.length === 0
                   ? t.receipt.extrasNone
                   : activeExtras
@@ -163,69 +163,69 @@ export function ReceiptSummary({
           </div>
         </div>
 
-        {/* Minimalist Per-Guest Highlight */}
+        {/* Commanding Per-Guest Highlight */}
         <div className="flex items-baseline justify-between gap-2 py-1">
           <div>
-            <div className="font-monument text-[10px] font-bold uppercase tracking-[0.18em] text-[#E6C986]">
+            <div className="font-monument text-xs font-bold uppercase tracking-[0.16em] text-[#E6C986]">
               {t.receipt.perGuestNetLabel}
             </div>
-            <div className="text-[11px] text-white/45">
+            <div className="text-xs text-white/50">
               {t.receipt.perGuestGrossLabel}:{' '}
-              <span className="font-monument tabular-nums font-semibold text-white/70">
+              <span className="font-monument tabular-nums font-semibold text-white/75">
                 {formatCurrency(result.perGuestGross, locale)}
               </span>
             </div>
           </div>
           <span
             data-testid="summary-per-guest"
-            className="font-monument tabular-nums text-2xl font-extrabold text-[#E6C986]"
+            className="font-monument tabular-nums text-3xl font-extrabold text-[#E6C986]"
           >
             {formatCurrency(result.perGuestNet, locale)}
           </span>
         </div>
 
         {/* Net / 19% VAT / Gross Totals */}
-        <div className="space-y-2 border-t border-white/10 pt-4 text-xs sm:text-sm">
+        <div className="space-y-2.5 border-t border-white/12 pt-4 text-sm">
           <div className="flex items-center justify-between gap-2">
-            <span className="text-white/50">{t.receipt.subtotalNetLabel}</span>
+            <span className="text-white/55">{t.receipt.subtotalNetLabel}</span>
             <span
               data-testid="summary-net"
-              className="font-monument tabular-nums font-semibold text-white/85"
+              className="font-monument tabular-nums font-bold text-white/90"
             >
               {formatCurrency(result.subtotalNet, locale)}
             </span>
           </div>
 
           <div className="flex items-center justify-between gap-2">
-            <span className="text-white/50">{t.receipt.vatLabel}</span>
+            <span className="text-white/55">{t.receipt.vatLabel}</span>
             <span
               data-testid="summary-vat"
-              className="font-monument tabular-nums font-semibold text-white/85"
+              className="font-monument tabular-nums font-bold text-white/90"
             >
               {formatCurrency(result.vatAmount, locale)}
             </span>
           </div>
 
-          <div className="flex items-baseline justify-between gap-2 border-t border-white/10 pt-3">
-            <span className="font-monument text-sm font-bold uppercase tracking-[0.08em] text-white">
+          <div className="flex items-baseline justify-between gap-2 border-t border-white/12 pt-3.5">
+            <span className="font-monument text-base font-extrabold uppercase tracking-[0.08em] text-white">
               {t.receipt.totalGrossLabel}
             </span>
             <span
               data-testid="summary-gross"
-              className="font-monument tabular-nums text-xl sm:text-2xl font-extrabold text-white"
+              className="font-monument tabular-nums text-2xl sm:text-3xl font-extrabold text-white"
             >
               {formatCurrency(result.totalGross, locale)}
             </span>
           </div>
         </div>
 
-        {/* Pure Monochrome Architectural Action Buttons */}
-        <div className="space-y-2.5 pt-1">
+        {/* Commanding Monochrome Action Buttons */}
+        <div className="space-y-3 pt-1">
           <button
             type="button"
             data-testid="quote-open-modal"
             onClick={onOpenModal}
-            className="w-full min-h-[50px] inline-flex items-center justify-center gap-2 bg-white px-5 py-3.5 font-monument text-xs font-extrabold uppercase tracking-[0.14em] text-[#060606] transition-colors duration-200 hover:bg-[#E6C986] cursor-pointer"
+            className="w-full min-h-[54px] inline-flex items-center justify-center gap-2.5 bg-white px-6 py-4 font-monument text-sm font-extrabold uppercase tracking-[0.12em] text-[#060606] transition-colors duration-200 hover:bg-[#E6C986] cursor-pointer"
           >
             <FileText className="h-4 w-4" />
             <span>{t.receipt.modalCta}</span>
@@ -235,7 +235,7 @@ export function ReceiptSummary({
             type="button"
             data-testid="quote-whatsapp"
             onClick={onDirectWhatsApp}
-            className="w-full min-h-[46px] inline-flex items-center justify-center gap-2 bg-[#060606] border border-white/25 px-5 py-3 font-monument text-xs font-bold uppercase tracking-[0.14em] text-white transition-colors duration-200 hover:bg-white hover:border-white hover:text-[#060606] cursor-pointer"
+            className="w-full min-h-[50px] inline-flex items-center justify-center gap-2.5 bg-[#060606] border border-white/25 px-6 py-3.5 font-monument text-sm font-bold uppercase tracking-[0.12em] text-white transition-colors duration-200 hover:bg-white hover:border-white hover:text-[#060606] cursor-pointer"
           >
             <MessageCircle className="h-4 w-4" />
             <span>{t.receipt.whatsappCta}</span>

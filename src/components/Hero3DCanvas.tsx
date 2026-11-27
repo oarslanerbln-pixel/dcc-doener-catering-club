@@ -80,28 +80,28 @@ float fbm(vec2 p) {
   return v;
 }
 
-float silkSmoke(vec2 p, float t, vec2 m) {
-  vec2 drift = vec2(m.x * 0.14, -t * 0.16 + m.y * 0.08);
+// Crisp molten obsidian + volcanic lava fissure fbm (5 octaves)
+float silkSmoke(vec2 p, float t) {
+  vec2 drift = vec2(0.0, -t * 0.12);
   vec2 q = vec2(
     fbm(p + drift),
-    fbm(p + drift * 1.12 + vec2(5.2, 1.3))
+    fbm(p + drift * 1.15 + vec2(5.2, 1.3))
   );
   vec2 r = vec2(
-    fbm(p + 2.8 * q + vec2(1.7, 9.2) + vec2(t * 0.05, -t * 0.12)),
-    fbm(p + 2.8 * q + vec2(8.3, 2.8) + vec2(-t * 0.04, -t * 0.11))
+    fbm(p + 2.85 * q + vec2(1.7, 9.2) + vec2(t * 0.035, -t * 0.09)),
+    fbm(p + 2.85 * q + vec2(8.3, 2.8) + vec2(-t * 0.03, -t * 0.08))
   );
-  float base = fbm(p + 2.1 * r + vec2(0.0, -t * 0.08));
-  // Subtle ridged silk filaments inside the smoke
+  float base = fbm(p + 2.25 * r + vec2(0.0, -t * 0.06));
+  // Sharp molten lava vein ridges
   float ridge = 1.0 - abs(base * 2.0 - 1.0);
-  return mix(base, ridge * ridge, 0.36);
+  return mix(base, ridge * ridge, 0.48);
 }
 
-// Pin-sharp + subtle 3D parallax bokeh ember sparks
-vec3 sparkLayer(vec2 uv, float t, vec2 m, float scale, float depth, float speed, float blurAmt) {
+// Slow, hypnotic 3D parallax ember sparks (static camera, zero mouse jitter)
+vec3 sparkLayer(vec2 uv, float t, float scale, float depth, float speed, float blurAmt) {
   vec2 p = uv * scale;
-  p += m * (0.24 * depth);
   p.y -= t * speed;
-  p.x += sin(p.y * 0.48 + t * 0.35 + depth * 2.5) * 0.18;
+  p.x += sin(p.y * 0.42 + t * 0.22 + depth * 2.5) * 0.14;
 
   vec2 id = floor(p);
   vec2 gv = fract(p) - 0.5;
@@ -113,26 +113,25 @@ vec3 sparkLayer(vec2 uv, float t, vec2 m, float scale, float depth, float speed,
       vec2 cell = id + offs;
       vec2 rnd = hash2(cell + depth * 19.7);
 
-      // Refined sparse luxury density
-      if (rnd.x < 0.68) continue;
+      if (rnd.x < 0.70) continue;
 
       vec2 pos = offs + (rnd - 0.5) * 0.72;
-      pos.x += sin(t * (0.65 + rnd.y) + rnd.x * 6.283) * 0.10;
-      pos.y += cos(t * (0.50 + rnd.x) + rnd.y * 6.283) * 0.07;
+      pos.x += sin(t * (0.40 + rnd.y * 0.5) + rnd.x * 6.283) * 0.08;
+      pos.y += cos(t * (0.32 + rnd.x * 0.5) + rnd.y * 6.283) * 0.06;
 
       float d = length(gv - pos);
-      // Pin-sharp fine micro-sparks on far/mid, silky subtle bokeh on near
-      float radius = mix(0.008, 0.032, pow(rnd.y, 2.6)) * (0.55 + depth * 0.75);
-      float twinkle = 0.62 + 0.38 * sin(t * (2.2 + rnd.x * 3.0) + rnd.y * 14.0);
+      float radius = mix(0.008, 0.030, pow(rnd.y, 2.5)) * (0.55 + depth * 0.75);
+      float twinkle = 0.65 + 0.35 * sin(t * (1.4 + rnd.x * 1.8) + rnd.y * 14.0);
 
       float core = smoothstep(radius * (1.2 + blurAmt * 2.2), radius * 0.08, d);
-      float glow = exp(-d * mix(22.0, 8.5, blurAmt)) * (0.24 + 0.22 * depth);
+      float glow = exp(-d * mix(20.0, 8.0, blurAmt)) * (0.26 + 0.24 * depth);
 
-      vec3 champagne = vec3(1.0, 0.90, 0.68);
-      vec3 burnishedEmber = vec3(0.95, 0.52, 0.22);
-      vec3 col = mix(champagne, burnishedEmber, smoothstep(0.50, 0.96, rnd.y));
+      // Molten crimson-amber -> champagne gold ember sparks
+      vec3 crimsonSpark = vec3(0.95, 0.24, 0.12);
+      vec3 moltenGold = vec3(1.0, 0.76, 0.42);
+      vec3 col = mix(crimsonSpark, moltenGold, smoothstep(0.35, 0.92, rnd.y));
 
-      acc += col * (core * 1.25 + glow * 0.42) * twinkle;
+      acc += col * (core * 1.2 + glow * 0.45) * twinkle;
     }
   }
   return acc;
@@ -140,70 +139,75 @@ vec3 sparkLayer(vec2 uv, float t, vec2 m, float scale, float depth, float speed,
 
 void main() {
   vec2 uv = (gl_FragCoord.xy - 0.5 * u_res) / min(u_res.x, u_res.y);
-  vec2 p = uv * 1.45;
+  vec2 p = uv * 1.38;
   float t = u_time;
 
-  // High-definition volumetric silk smoke + crisp normal caustics
-  float f = silkSmoke(p, t, u_mouse);
+  // High-definition molten obsidian & crimson lava flow
+  float f = silkSmoke(p, t);
   float eps = 0.011;
-  float fx = silkSmoke(p + vec2(eps, 0.0), t, u_mouse);
-  float fy = silkSmoke(p + vec2(0.0, eps), t, u_mouse);
+  float fx = silkSmoke(p + vec2(eps, 0.0), t);
+  float fy = silkSmoke(p + vec2(0.0, eps), t);
 
-  vec3 n = normalize(vec3((f - fx) * 22.0, (f - fy) * 22.0, 1.0));
-  vec3 lightDir = normalize(vec3(u_mouse.x * 0.45, -0.78, 0.62));
-  vec3 viewDir = normalize(vec3(u_mouse * 0.18 - uv * 0.15, 1.0));
+  vec3 n = normalize(vec3((f - fx) * 24.0, (f - fy) * 24.0, 1.0));
+  vec3 lightDir = normalize(vec3(0.12, -0.82, 0.56));
+  vec3 viewDir = normalize(vec3(-uv * 0.14, 1.0));
   vec3 halfVec = normalize(lightDir + viewDir);
 
-  float spec = pow(max(dot(n, halfVec), 0.0), 18.0);
-  float fresnel = pow(1.0 - max(dot(n, viewDir), 0.0), 3.0);
+  float spec = pow(max(dot(n, halfVec), 0.0), 20.0);
+  float fresnel = pow(1.0 - max(dot(n, viewDir), 0.0), 2.8);
 
-  // Ultra-refined Obsidian + Architectural Charcoal + Champagne-Ember Palette
-  vec3 obsidian = vec3(0.0235, 0.0235, 0.0235);
-  vec3 silkDark = vec3(0.095, 0.092, 0.088);
-  vec3 emberDeep = vec3(0.42, 0.14, 0.045);
-  vec3 emberGold = vec3(0.86, 0.62, 0.26);
-  vec3 champagne = vec3(0.98, 0.90, 0.72);
-  vec3 emeraldWhisper = vec3(0.16, 0.72, 0.50);
+  // Luxury Volcanic Obsidian & Deep Crimson Lava Palette
+  vec3 obsidian = vec3(0.0235, 0.0215, 0.0225);
+  vec3 basaltDark = vec3(0.095, 0.048, 0.048);
+  vec3 deepCrimson = vec3(0.42, 0.045, 0.055);
+  vec3 moltenLava = vec3(0.76, 0.13, 0.075);
+  vec3 emberOrange = vec3(0.94, 0.38, 0.12);
+  vec3 moltenGold = vec3(1.0, 0.78, 0.46);
 
-  // Anamorphic lower heat horizon (classy glowing charcoal bed rising softly)
-  float bottomHeat = pow(1.0 - smoothstep(0.0, 0.68, v_uv.y), 2.1);
-  float horizonBand = exp(-pow((v_uv.y - 0.04) * 5.2, 2.0)) * (0.72 + 0.28 * f);
+  // Rising volcanic heat from bottom + molten vein fissures
+  float bottomHeat = pow(1.0 - smoothstep(0.0, 0.78, v_uv.y), 1.85);
+  float horizonGlow = exp(-pow((v_uv.y - 0.03) * 4.6, 2.0)) * (0.72 + 0.28 * f);
 
-  float smokeMask = smoothstep(0.18, 0.84, f);
-  float wispHighlight = smoothstep(0.54, 0.88, f);
+  float crustMask = smoothstep(0.18, 0.82, f);
+  float lavaVein = smoothstep(0.56, 0.88, f);
+  float hotCore = smoothstep(0.72, 0.94, f);
 
-  // Deep velvety smoke base
-  vec3 col = mix(obsidian, silkDark, smokeMask * (0.62 + 0.38 * bottomHeat));
+  // Dark volcanic basalt base
+  vec3 col = mix(obsidian, basaltDark, crustMask * (0.58 + 0.42 * bottomHeat));
 
-  // Under-lit silk smoke wisps catching golden-ember specular light
-  vec3 heatColor = mix(emberGold, emberDeep, smoothstep(0.28, 0.0, v_uv.y) * 0.58);
-  col += heatColor * (smokeMask * bottomHeat * 0.46 + wispHighlight * bottomHeat * 0.36);
-  col += mix(emberDeep, emberGold, 0.55) * horizonBand * 0.38;
+  // Glowing deep crimson-ruby magma veins pulsing slowly beneath obsidian crust
+  float pulse = 0.88 + 0.12 * sin(t * 0.75 + f * 4.2);
+  vec3 magma = mix(deepCrimson, moltenLava, smoothstep(0.42, 0.78, f));
+  magma = mix(magma, emberOrange, hotCore * 0.72);
+  magma = mix(magma, moltenGold, pow(hotCore, 2.2) * 0.58);
 
-  // Fine liquid-silk specular caustics along smoke ridges (champagne + whisper of emerald)
-  vec3 rimTint = mix(champagne, emeraldWhisper, clamp(sin(f * 6.5 + t * 0.25) * 0.5 + 0.5, 0.0, 1.0) * 0.28);
-  col += rimTint * (spec * 0.34 + fresnel * 0.24) * (0.45 + 0.55 * bottomHeat);
+  col += magma * (lavaVein * (0.42 + 0.72 * bottomHeat) + crustMask * bottomHeat * 0.34) * pulse;
+  col += mix(deepCrimson, moltenLava, 0.55) * horizonGlow * 0.42 * pulse;
 
-  // 3D Depth-of-Field Micro-Sparks (crisp far -> luminous mid -> delicate near bokeh)
-  vec3 sFar = sparkLayer(uv, t, u_mouse, 11.0, 0.30, 0.20, 0.02) * 0.65;
-  vec3 sMid = sparkLayer(uv + vec2(3.7, 1.9), t, u_mouse, 6.8, 0.72, 0.34, 0.16) * 0.88;
-  vec3 sNear = sparkLayer(uv + vec2(8.1, 4.3), t, u_mouse, 3.6, 1.35, 0.50, 0.58) * 0.55;
-  float sparkFadeY = 0.28 + 0.72 * (1.0 - smoothstep(0.18, 0.90, v_uv.y));
+  // Fine specular crimson-gold rim along molten ridges
+  vec3 rimColor = mix(moltenLava, moltenGold, fresnel * 0.52);
+  col += rimColor * (spec * 0.36 + fresnel * 0.22) * (0.42 + 0.58 * bottomHeat);
+
+  // Slow 3D Depth-of-Field Crimson-Gold Sparks
+  vec3 sFar = sparkLayer(uv, t, 10.5, 0.30, 0.14, 0.02) * 0.58;
+  vec3 sMid = sparkLayer(uv + vec2(3.7, 1.9), t, 6.4, 0.72, 0.22, 0.18) * 0.82;
+  vec3 sNear = sparkLayer(uv + vec2(8.1, 4.3), t, 3.5, 1.35, 0.32, 0.62) * 0.52;
+  float sparkFadeY = 0.30 + 0.70 * (1.0 - smoothstep(0.16, 0.90, v_uv.y));
   float textSafe = smoothstep(0.16, 0.64, length(uv * vec2(0.82, 1.35)));
-  col += (sFar + sMid + sNear) * sparkFadeY * (0.32 + 0.68 * textSafe);
+  col += (sFar + sMid + sNear) * sparkFadeY * (0.30 + 0.70 * textSafe);
 
-  // Restrained studio center vignette
+  // Restrained studio center vignette so bold white typography pops cleanly
   float centerDist = length(uv * vec2(0.72, 1.05));
   float vignette = smoothstep(0.14, 0.92, centerDist);
-  col = mix(obsidian * 0.90, col, 0.48 + 0.52 * vignette);
+  col = mix(obsidian * 0.88, col, 0.46 + 0.54 * vignette);
 
-  // Smooth top fade into pure black header + subtle 35mm film grain dither (eliminates color banding)
+  // Smooth top fade into pure black header + subtle 35mm film grain dither
   float topFade = smoothstep(1.0, 0.78, v_uv.y);
   col *= (0.50 + 0.50 * topFade);
-  float grain = (hash(gl_FragCoord.xy + fract(t) * 100.0) - 0.5) * 0.016;
+  float grain = (hash(gl_FragCoord.xy + fract(t) * 100.0) - 0.5) * 0.015;
   col += grain;
 
-  fragColor = vec4(col, 0.94);
+  fragColor = vec4(col, 0.95);
 }
 `;
 
@@ -411,7 +415,8 @@ export function Hero3DCanvas({
       }
       const dt = lastTs ? Math.min((ts - lastTs) / 1000, 0.05) : 1 / 60;
       lastTs = ts;
-      time += dt * 0.84;
+      // Very slow, hypnotic molten lava drift
+      time += dt * 0.26;
       draw();
       rafId = window.requestAnimationFrame(loop);
     };
