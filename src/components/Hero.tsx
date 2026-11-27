@@ -168,30 +168,47 @@ export function Hero(_props?: Partial<HeroProps>): React.ReactElement {
             </h1>
           </div>
 
-          {/* Translucent Animated Smooth Glass CTA Buttons */}
+          {/* Distinct, High-Craft Editorial CTA Buttons */}
           <div className="flex flex-col sm:flex-row items-stretch sm:items-center justify-center gap-4 sm:gap-5 pt-4 sm:pt-6">
             <a
               href="#rechner"
-              className="dcc-hero-glass-primary group inline-flex min-h-[54px] w-full sm:w-auto sm:min-w-[250px] items-center justify-center gap-3 px-8 py-3.5 font-monument text-xs sm:text-[13px] font-bold uppercase tracking-[0.14em] text-white cursor-pointer"
+              className="dcc-hero-btn-primary group inline-flex min-h-[56px] w-full sm:w-auto sm:min-w-[260px] items-center justify-center gap-3.5 px-8 py-4 font-monument text-xs sm:text-[13px] font-black uppercase tracking-[0.16em] text-white cursor-pointer"
             >
               <span>{t.hero.primaryCta}</span>
-              <ArrowRight className="h-4 w-4 text-[#FFA733] transition-transform duration-300 group-hover:translate-x-1" />
+              <span className="inline-flex h-6 w-6 items-center justify-center bg-[#FFA733] text-[#060606] transition-transform duration-300 group-hover:translate-x-1">
+                <ArrowRight className="h-3.5 w-3.5 stroke-[3]" />
+              </span>
             </a>
 
             <a
               href="#galerie"
-              className="dcc-hero-glass-secondary group inline-flex min-h-[54px] w-full sm:w-auto sm:min-w-[220px] items-center justify-center gap-2.5 px-7 py-3.5 font-monument text-xs sm:text-[13px] font-bold uppercase tracking-[0.14em] text-white/90 hover:text-white cursor-pointer"
+              className="dcc-hero-btn-secondary group inline-flex min-h-[56px] w-full sm:w-auto sm:min-w-[230px] items-center justify-center gap-2.5 px-8 py-4 font-monument text-xs sm:text-[13px] font-extrabold uppercase tracking-[0.16em] text-[#F4E2B6] hover:text-white cursor-pointer"
             >
+              <span className="text-[#FFA733] text-sm group-hover:rotate-45 transition-transform duration-300">✦</span>
               <span>{t.hero.secondaryCta}</span>
             </a>
           </div>
 
-          {/* Subtle B2B Fleischmanufaktur Partner Citation */}
-          <div className="pt-2 flex flex-wrap items-center justify-center gap-2 text-xs font-mono text-white/60 tracking-wider">
-            <span className="text-white/40">Fleischmanufaktur:</span>
-            <span className="font-bold text-white tracking-widest uppercase">MEVA DÖNER BERLIN</span>
-            <span className="text-[#FFA733]">·</span>
-            <span className="text-[#FFA733] font-semibold">100 % Halal & IFS-Standard</span>
+          {/* Refined B2B Fleischmanufaktur Partner Provenance Hallmark */}
+          <div className="pt-3 flex items-center justify-center">
+            <div className="inline-flex flex-wrap items-center justify-center gap-2.5 sm:gap-3.5 px-4 sm:px-6 py-2.5 border-y border-white/10 bg-black/40 backdrop-blur-md">
+              <img
+                src="/brand/meva-doner-logo-tight.png"
+                alt="Meva Döner Berlin"
+                className="h-5 sm:h-6 w-auto object-contain brightness-125 contrast-125"
+              />
+              <span className="h-3.5 w-[1px] bg-white/20" />
+              <span className="font-mono text-[10px] sm:text-[11px] uppercase tracking-[0.24em] text-white/50">
+                Fleischmanufaktur:
+              </span>
+              <span className="font-monument text-xs sm:text-[13.5px] font-black tracking-[0.20em] text-white uppercase drop-shadow-[0_2px_8px_rgba(255,255,255,0.25)]">
+                MEVA DÖNER <span className="font-serif italic font-normal text-sm sm:text-base text-[#FFA733] tracking-wide capitalize">Berlin</span>
+              </span>
+              <span className="h-1.5 w-1.5 bg-[#FFA733] shadow-[0_0_6px_#FFA733]" />
+              <span className="font-mono text-[10px] sm:text-[11px] tracking-widest text-[#FFA733] font-bold">
+                100 % HALAL · IFS
+              </span>
+            </div>
           </div>
         </div>
       </div>

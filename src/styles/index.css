@@ -384,6 +384,72 @@ body {
   transform: translateY(-2px);
 }
 
+/* Haute Editorial Hero Buttons: Distinct Character, Fire Ingot vs Brushed Glass */
+.dcc-hero-btn-primary {
+  position: relative;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  background: linear-gradient(180deg, #1C1008 0%, #0A0502 100%);
+  border: 1px solid #FFA733;
+  box-shadow: 
+    0 4px 20px rgba(0, 0, 0, 0.8),
+    0 0 28px rgba(255, 167, 51, 0.28),
+    inset 0 1px 0 rgba(255, 220, 160, 0.45),
+    inset 0 -1px 0 rgba(0, 0, 0, 0.7);
+  transition: all 300ms cubic-bezier(0.16, 1, 0.3, 1);
+  overflow: hidden;
+}
+
+.dcc-hero-btn-primary::before {
+  content: '';
+  position: absolute;
+  top: 0;
+  left: -100%;
+  width: 100%;
+  height: 100%;
+  background: linear-gradient(90deg, transparent, rgba(255, 255, 255, 0.22), transparent);
+  transition: transform 600ms ease;
+  pointer-events: none;
+}
+
+.dcc-hero-btn-primary:hover {
+  background: linear-gradient(180deg, #26150A 0%, #100603 100%);
+  border-color: #FFC066;
+  box-shadow: 
+    0 12px 36px rgba(0, 0, 0, 0.95),
+    0 0 42px rgba(255, 167, 51, 0.55),
+    inset 0 1px 0 rgba(255, 255, 255, 0.65);
+  transform: translateY(-2px);
+}
+
+.dcc-hero-btn-primary:hover::before {
+  transform: translateX(200%);
+}
+
+.dcc-hero-btn-secondary {
+  position: relative;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  background: rgba(255, 255, 255, 0.04);
+  backdrop-filter: blur(20px);
+  -webkit-backdrop-filter: blur(20px);
+  border: 1px solid rgba(255, 255, 255, 0.22);
+  box-shadow: 0 4px 20px rgba(0, 0, 0, 0.5);
+  transition: all 300ms cubic-bezier(0.16, 1, 0.3, 1);
+  overflow: hidden;
+}
+
+.dcc-hero-btn-secondary:hover {
+  background: rgba(255, 255, 255, 0.12);
+  border-color: rgba(255, 255, 255, 0.65);
+  box-shadow: 
+    0 10px 30px rgba(0, 0, 0, 0.75),
+    inset 0 1px 0 rgba(255, 255, 255, 0.4);
+  transform: translateY(-2px);
+}
+
 /* Sharp Architectural Frameless Card with Cursor-Tracking Gold-Emerald Hover Sheen */
 .dcc-lux-card {
   position: relative;
@@ -836,6 +902,28 @@ input[type="range"].dcc-slider::-moz-range-thumb {
 .dcc-anim-progress {
   transform-origin: left center;
   animation: dcc-progress-fill 2.5s cubic-bezier(0.22, 1, 0.36, 1) forwards;
+}
+
+@keyframes dcc-hero-zoom {
+  from {
+    opacity: 0;
+    transform: scale(0.94);
+  }
+  to {
+    opacity: 1;
+    transform: scale(1);
+  }
+}
+
+@keyframes dcc-fade-in {
+  from {
+    opacity: 0;
+    transform: translateY(12px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
 }
 
 /* Print Overrides */
