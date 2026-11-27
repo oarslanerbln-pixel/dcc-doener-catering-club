@@ -295,6 +295,22 @@ body {
     inset 0 1px 0 rgba(255, 255, 255, 0.15);
 }
 
+/* Smooth Step Wizard Slide & Fade Entrance */
+@keyframes dcc-step-enter {
+  from {
+    opacity: 0;
+    transform: translate3d(0, 16px, 0);
+  }
+  to {
+    opacity: 1;
+    transform: translate3d(0, 0, 0);
+  }
+}
+
+.dcc-step-container {
+  animation: dcc-step-enter 300ms var(--ease-expo-out);
+}
+
 /* Sharp Architectural Frameless Card with Cursor-Tracking Gold-Emerald Hover Sheen */
 .dcc-lux-card {
   position: relative;

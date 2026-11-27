@@ -64,6 +64,10 @@ const CALC_LOCALE_EXTRA = {
     btnNext: 'Weiter',
     btnBack: 'Zurück',
     stepOf: 'von',
+    clickToSelect: 'Klicken zum Auswählen →',
+    selectedLabel: 'Ausgewählt ✓',
+    clickToAdvanceHint: 'Option wählen — automatische Weiterleitung',
+    finalStepHint: 'Kalkulation live bereit',
   },
   en: {
     stepPrefix: 'STEP',
@@ -84,6 +88,10 @@ const CALC_LOCALE_EXTRA = {
     btnNext: 'Next',
     btnBack: 'Back',
     stepOf: 'of',
+    clickToSelect: 'Click to select →',
+    selectedLabel: 'Selected ✓',
+    clickToAdvanceHint: 'Select an option to auto-advance',
+    finalStepHint: 'Calculation live ready',
   },
   tr: {
     stepPrefix: 'ADIM',
@@ -104,6 +112,10 @@ const CALC_LOCALE_EXTRA = {
     btnNext: 'İleri',
     btnBack: 'Geri',
     stepOf: '/',
+    clickToSelect: 'Seçmek için tıkla →',
+    selectedLabel: 'Seçildi ✓',
+    clickToAdvanceHint: 'Seçim yapın — animasyonla devam etsin',
+    finalStepHint: 'Canlı hesaplama hazır',
   },
 } as const;
 
@@ -213,12 +225,25 @@ export function Calculator({
     setRawGuests(String(next));
   };
 
+  const handleSelectEvent = (ev: EventType) => {
+    onChangeInput((prev) => ({ ...prev, eventType: ev }));
+    window.setTimeout(() => {
+      setActiveStep(2);
+    }, 240);
+  };
+
   const handleSelectMeat = (meatId: MeatId) => {
     onChangeInput((prev) => ({ ...prev, meatId }));
+    window.setTimeout(() => {
+      setActiveStep(3);
+    }, 240);
   };
 
   const handleSelectSetup = (setupId: SetupId) => {
     onChangeInput((prev) => ({ ...prev, setupId }));
+    window.setTimeout(() => {
+      setActiveStep(4);
+    }, 240);
   };
 
   const handleToggleExtra = (extraId: ExtraId) => {
@@ -305,15 +330,31 @@ export function Calculator({
         <div className="dcc-configurator-grid">
           {/* Left Column: Interactive Step-by-Step Wizard (Event -> Meat -> Setup -> Extras -> Guests Slider) */}
           <div className="space-y-6 min-w-0">
-            {/* Interactive 5-Step Stepper Tabs Header */}
-            <div className="bg-[#120A06]/92 border border-white/20 p-3 sm:p-4 backdrop-blur-xl shadow-lg space-y-3">
-              <div className="flex items-center justify-between text-xs font-eyebrow uppercase tracking-wider text-white/75 px-1">
-                <span className="font-bold text-[#FFA733] text-xs sm:text-[13px]">
-                  {extraCopy.stepPrefix} {activeStep} {extraCopy.stepOf} 5
-                </span>
-                <span className="font-extrabold text-white text-xs sm:text-[13px]">
-                  {STEP_ITEMS[activeStep - 1].label}
-                </span>
+            {/* Architectural Step Wizard Status & Progress */}
+            <div className="bg-[#120A06]/95 border border-white/20 p-3.5 sm:p-5 backdrop-blur-xl shadow-lg space-y-3.5">
+              <div className="flex flex-col sm:flex-row sm:items-center justify-between gap-2 px-1">
+                <div className="flex items-center gap-3">
+                  <span className="inline-flex items-center justify-center px-2.5 py-1 bg-[#FFA733]/15 border border-[#FFA733]/40 text-[#FFA733] font-monument text-xs sm:text-[13px] font-extrabold tracking-wider">
+                    0{activeStep} / 05
+                  </span>
+                  <span className="font-monument text-sm sm:text-base font-extrabold uppercase tracking-wide text-white">
+                    {STEP_ITEMS[activeStep - 1].label}
+                  </span>
+                </div>
+                <div className="flex items-center gap-2 text-xs font-medium text-[#D6CEC2]">
+                  <span className="inline-block h-1.5 w-1.5 rounded-full bg-[#FFA733] animate-pulse" />
+                  <span>
+                    {activeStep < 4 ? extraCopy.clickToAdvanceHint : extraCopy.finalStepHint}
+                  </span>
+                </div>
+              </div>
+
+              {/* Architectural Ambient Progress Fill Line */}
+              <div className="h-1 w-full bg-white/10 overflow-hidden rounded-full">
+                <div
+                  className="h-full bg-gradient-to-r from-[#FF8C00] via-[#FFA733] to-[#FFD580] transition-all duration-500 ease-out"
+                  style={{ width: `${(activeStep / 5) * 100}%` }}
+                />
               </div>
 
               {/* 5 Clickable Step Tabs (Smooth Horizontal Track on Mobile, 5-Col Grid on Tablet/Desktop) */}
@@ -360,10 +401,10 @@ export function Calculator({
             <div className="bg-[#120A06]/92 border border-white/20 p-5 sm:p-9 backdrop-blur-xl shadow-[0_24px_50px_rgba(0,0,0,0.6)] space-y-8">
               {/* STEP 01: What Kind of Event? */}
               {activeStep === 1 && (
-                <div className="space-y-6">
+                <div key="step-1" className="dcc-step-container space-y-7">
                   <div>
                     <span className="font-eyebrow text-xs sm:text-[13.5px] font-bold uppercase tracking-[0.22em] text-[#FFA733]">
-                      {extraCopy.stepPrefix} 01
+                      01 / 05 · {STEP_ITEMS[0].label}
                     </span>
                     <h3 className="mt-2 font-monument text-2xl sm:text-3xl font-extrabold tracking-tight text-white">
                       {extraCopy.eventStepTitle}
@@ -374,7 +415,7 @@ export function Calculator({
                   </div>
 
                   {/* Tactile 3-Column Event Format Selector + 800+ Enterprise Option */}
-                  <div className="grid grid-cols-1 sm:grid-cols-3 gap-3.5">
+                  <div className="grid grid-cols-1 sm:grid-cols-3 gap-4">
                     {EVENT_TYPES.map((ev) => {
                       const active = input.eventType === ev;
                       const evCopy = t.calculator.steps.guests.eventTypes[ev];
@@ -385,36 +426,55 @@ export function Calculator({
                           data-testid={`event-type-${ev}`}
                           aria-pressed={active}
                           data-active={String(active)}
-                          onClick={() =>
-                            onChangeInput((prev) => ({ ...prev, eventType: ev }))
-                          }
-                          className={`group flex flex-col justify-between gap-3 p-5 sm:p-6 text-left transition-all duration-200 cursor-pointer border ${
+                          onClick={() => handleSelectEvent(ev)}
+                          className={`group flex flex-col justify-between gap-4 p-6 sm:p-7 min-h-[180px] sm:min-h-[200px] text-left transition-all duration-200 cursor-pointer border ${
                             active
-                              ? 'bg-gradient-to-br from-[#2E160C] via-[#1D0C06] to-[#120704] border-[#FFA733] shadow-[0_0_24px_rgba(255,167,51,0.22)] text-white'
-                              : 'bg-gradient-to-br from-[#1A0E08]/90 via-[#130A05]/90 to-[#0C0603]/90 border-white/15 text-white hover:border-[#FFA733]/50 hover:bg-[#20110A]'
+                              ? 'bg-gradient-to-br from-[#2E160C] via-[#1D0C06] to-[#120704] border-[#FFA733] shadow-[0_0_28px_rgba(255,167,51,0.28)] text-white scale-[1.01]'
+                              : 'bg-gradient-to-br from-[#1A0E08]/90 via-[#130A05]/90 to-[#0C0603]/90 border-white/15 text-white hover:border-[#FFA733]/60 hover:bg-[#20110A] hover:scale-[1.008]'
                           }`}
                         >
-                          <div className="flex items-center justify-between gap-2 w-full">
-                            <span className="font-monument text-sm sm:text-base font-extrabold uppercase tracking-[0.06em] text-white">
-                              {evCopy.label}
-                            </span>
-                            <span
-                              className={`inline-flex h-6 w-6 items-center justify-center border shrink-0 transition-colors ${
-                                active
-                                  ? 'bg-[#FFA733] border-[#FFA733] text-[#060606]'
-                                  : 'border-white/25 text-transparent'
+                          <div className="space-y-2.5 w-full">
+                            <div className="flex items-center justify-between gap-2 w-full">
+                              <span className="font-monument text-base sm:text-lg font-extrabold uppercase tracking-[0.06em] text-white">
+                                {evCopy.label}
+                              </span>
+                              <span
+                                className={`inline-flex h-7 w-7 items-center justify-center border shrink-0 transition-colors ${
+                                  active
+                                    ? 'bg-[#FFA733] border-[#FFA733] text-[#060606]'
+                                    : 'border-white/25 text-transparent'
+                                }`}
+                              >
+                                <Check className="h-4 w-4 stroke-[3]" />
+                              </span>
+                            </div>
+                            <p
+                              className={`text-xs sm:text-sm leading-relaxed ${
+                                active ? 'text-[#FBF1DE] font-medium' : 'text-[#D6CEC2]'
                               }`}
                             >
-                              <Check className="h-3.5 w-3.5 stroke-[3]" />
+                              {evCopy.hint}
+                            </p>
+                          </div>
+
+                          <div className="pt-3.5 border-t border-white/10 flex items-center justify-between">
+                            <span
+                              className={`font-monument text-[11px] sm:text-xs uppercase tracking-wider font-extrabold transition-colors ${
+                                active
+                                  ? 'text-[#FFA733]'
+                                  : 'text-white/60 group-hover:text-white'
+                              }`}
+                            >
+                              {active ? extraCopy.selectedLabel : extraCopy.clickToSelect}
+                            </span>
+                            <span
+                              className={`text-[10px] font-mono font-bold tracking-widest ${
+                                active ? 'text-[#FFA733]' : 'text-white/35'
+                              }`}
+                            >
+                              {active ? '02 →' : 'KLICK'}
                             </span>
                           </div>
-                          <span
-                            className={`text-xs sm:text-[13px] leading-snug ${
-                              active ? 'text-[#FBF1DE] font-medium' : 'text-[#D6CEC2]'
-                            }`}
-                          >
-                            {evCopy.hint}
-                          </span>
                         </button>
                       );
                     })}
@@ -456,10 +516,10 @@ export function Calculator({
 
               {/* STEP 02: Döner Selection */}
               {activeStep === 2 && (
-                <div className="space-y-6">
+                <div key="step-2" className="dcc-step-container space-y-7">
                   <div>
                     <span className="font-eyebrow text-xs sm:text-[13.5px] font-bold uppercase tracking-[0.22em] text-[#FFA733]">
-                      {extraCopy.stepPrefix} 02
+                      02 / 05 · {STEP_ITEMS[1].label}
                     </span>
                     <h3 className="mt-2 font-monument text-2xl sm:text-3xl font-extrabold tracking-tight text-white">
                       {t.calculator.steps.spits.title}
@@ -476,7 +536,7 @@ export function Calculator({
                     </div>
                   )}
 
-                  <div className="border-t border-white/10">
+                  <div className="space-y-4">
                     {MEAT_CATALOG.map((meat) => {
                       const copy = t.calculator.steps.spits.items[meat.id];
                       const active = input.meatId === meat.id;
@@ -497,24 +557,26 @@ export function Calculator({
                           aria-pressed={active}
                           data-active={String(active)}
                           onClick={() => handleSelectMeat(meat.id)}
-                          className={`dcc-calc-tile w-full flex items-start sm:items-center gap-4 sm:gap-6 px-3.5 sm:px-6 py-5 sm:py-7 text-left cursor-pointer ${
-                            active ? 'dcc-calc-tile-active' : ''
+                          className={`dcc-calc-tile w-full flex items-start sm:items-center gap-4 sm:gap-6 px-4 sm:px-7 py-5 sm:py-7 text-left cursor-pointer transition-all duration-200 border ${
+                            active
+                              ? 'bg-gradient-to-br from-[#2E160C] via-[#1D0C06] to-[#120704] border-[#FFA733] shadow-[0_0_28px_rgba(255,167,51,0.22)]'
+                              : 'bg-gradient-to-br from-[#1A0E08]/85 via-[#130A05]/85 to-[#0C0603]/85 border-white/15 hover:border-[#FFA733]/50 hover:bg-[#20110A]'
                           }`}
                         >
-                          <div className="w-20 h-20 sm:w-32 sm:h-24 overflow-hidden bg-white/5 shrink-0 border border-white/20 shadow-sm">
+                          <div className="w-24 h-24 sm:w-36 sm:h-28 overflow-hidden bg-white/5 shrink-0 border border-white/20 shadow-md">
                             <SmartPicture
                               src={meat.image}
                               alt={copy.title}
-                              width={256}
-                              height={192}
+                              width={288}
+                              height={224}
                               className="h-full w-full object-cover transition-transform duration-500 group-hover:scale-105"
                             />
                           </div>
 
                           <div className="flex-1 min-w-0 flex flex-col gap-3 sm:flex-row sm:items-center sm:justify-between sm:gap-6">
-                            <div className="min-w-0 space-y-1.5">
+                            <div className="min-w-0 space-y-2">
                               <div className="flex flex-wrap items-baseline gap-x-3 gap-y-1">
-                                <h4 className="font-monument text-base sm:text-xl font-extrabold tracking-tight text-white">
+                                <h4 className="font-monument text-lg sm:text-2xl font-extrabold tracking-tight text-white">
                                   {copy.title}
                                 </h4>
                                 <span
@@ -528,12 +590,23 @@ export function Calculator({
                               <p className="text-xs sm:text-sm leading-relaxed text-[#D6CEC2] line-clamp-2">
                                 {copy.spec}
                               </p>
+                              <div className="flex items-center gap-2 pt-0.5">
+                                <span
+                                  className={`font-monument text-[11px] sm:text-xs uppercase tracking-wider font-extrabold ${
+                                    active
+                                      ? 'text-[#FFA733]'
+                                      : 'text-white/55 group-hover:text-white'
+                                  }`}
+                                >
+                                  {active ? extraCopy.selectedLabel : extraCopy.clickToSelect}
+                                </span>
+                              </div>
                             </div>
 
                             <div className="shrink-0 flex items-center justify-between sm:justify-end gap-4 sm:gap-5">
                               <div className="flex items-baseline gap-2 sm:block sm:text-right">
                                 <div
-                                  className={`font-monument tabular-nums text-lg sm:text-2xl font-extrabold ${
+                                  className={`font-monument tabular-nums text-xl sm:text-3xl font-extrabold ${
                                     active ? 'text-[#FFA733]' : 'text-white'
                                   }`}
                                 >
@@ -545,7 +618,7 @@ export function Calculator({
                               </div>
 
                               <span
-                                className={`inline-flex h-7 w-7 items-center justify-center border transition-colors duration-200 shrink-0 ${
+                                className={`inline-flex h-8 w-8 items-center justify-center border transition-colors duration-200 shrink-0 ${
                                   active
                                     ? 'bg-[#FFA733] border-[#FFA733] text-[#060606]'
                                     : 'border-white/30 text-transparent'
@@ -564,17 +637,17 @@ export function Calculator({
 
               {/* STEP 03: Service Setup */}
               {activeStep === 3 && (
-                <div className="space-y-6">
+                <div key="step-3" className="dcc-step-container space-y-7">
                   <div>
                     <span className="font-eyebrow text-xs sm:text-[13.5px] font-bold uppercase tracking-[0.22em] text-[#FFA733]">
-                      {extraCopy.stepPrefix} 03
+                      03 / 05 · {STEP_ITEMS[2].label}
                     </span>
                     <h3 className="mt-2 font-monument text-2xl sm:text-3xl font-extrabold tracking-tight text-white">
                       {t.calculator.steps.setups.title}
                     </h3>
                   </div>
 
-                  <div className="border-t border-white/10">
+                  <div className="space-y-4">
                     {SETUP_CATALOG.map((setup) => {
                       const copy = t.calculator.steps.setups.items[setup.id];
                       const active = input.setupId === setup.id;
@@ -587,24 +660,26 @@ export function Calculator({
                           aria-pressed={active}
                           data-active={String(active)}
                           onClick={() => handleSelectSetup(setup.id)}
-                          className={`dcc-calc-tile w-full flex items-start sm:items-center gap-4 sm:gap-6 px-3.5 sm:px-6 py-5 sm:py-7 text-left cursor-pointer ${
-                            active ? 'dcc-calc-tile-active' : ''
+                          className={`dcc-calc-tile w-full flex items-start sm:items-center gap-4 sm:gap-6 px-4 sm:px-7 py-5 sm:py-7 text-left cursor-pointer transition-all duration-200 border ${
+                            active
+                              ? 'bg-gradient-to-br from-[#2E160C] via-[#1D0C06] to-[#120704] border-[#FFA733] shadow-[0_0_28px_rgba(255,167,51,0.22)]'
+                              : 'bg-gradient-to-br from-[#1A0E08]/85 via-[#130A05]/85 to-[#0C0603]/85 border-white/15 hover:border-[#FFA733]/50 hover:bg-[#20110A]'
                           }`}
                         >
-                          <div className="w-20 h-20 sm:w-32 sm:h-24 overflow-hidden bg-white/5 shrink-0 border border-white/20 shadow-sm">
+                          <div className="w-24 h-24 sm:w-36 sm:h-28 overflow-hidden bg-white/5 shrink-0 border border-white/20 shadow-md">
                             <SmartPicture
                               src={setup.image}
                               alt={copy.title}
-                              width={256}
-                              height={192}
+                              width={288}
+                              height={224}
                               className="h-full w-full object-cover transition-transform duration-500 group-hover:scale-105"
                             />
                           </div>
 
                           <div className="flex-1 min-w-0 flex flex-col gap-3 sm:flex-row sm:items-center sm:justify-between sm:gap-6">
-                            <div className="min-w-0 space-y-1.5">
+                            <div className="min-w-0 space-y-2">
                               <div className="flex flex-wrap items-baseline gap-x-3 gap-y-1">
-                                <h4 className="font-monument text-base sm:text-xl font-extrabold tracking-tight text-white">
+                                <h4 className="font-monument text-lg sm:text-2xl font-extrabold tracking-tight text-white">
                                   {copy.title}
                                 </h4>
                                 <span
@@ -618,12 +693,23 @@ export function Calculator({
                               <p className="text-xs sm:text-sm leading-relaxed text-[#D6CEC2] line-clamp-2">
                                 {copy.spec}
                               </p>
+                              <div className="flex items-center gap-2 pt-0.5">
+                                <span
+                                  className={`font-monument text-[11px] sm:text-xs uppercase tracking-wider font-extrabold ${
+                                    active
+                                      ? 'text-[#FFA733]'
+                                      : 'text-white/55 group-hover:text-white'
+                                  }`}
+                                >
+                                  {active ? extraCopy.selectedLabel : extraCopy.clickToSelect}
+                                </span>
+                              </div>
                             </div>
 
                             <div className="shrink-0 flex items-center justify-between sm:justify-end gap-4 sm:gap-5">
                               <div className="flex items-baseline gap-2 sm:block sm:text-right">
                                 <div
-                                  className={`font-monument tabular-nums text-lg sm:text-2xl font-extrabold ${
+                                  className={`font-monument tabular-nums text-xl sm:text-3xl font-extrabold ${
                                     active ? 'text-[#FFA733]' : 'text-white'
                                   }`}
                                 >
@@ -635,7 +721,7 @@ export function Calculator({
                               </div>
 
                               <span
-                                className={`inline-flex h-7 w-7 items-center justify-center border transition-colors duration-200 shrink-0 ${
+                                className={`inline-flex h-8 w-8 items-center justify-center border transition-colors duration-200 shrink-0 ${
                                   active
                                     ? 'bg-[#FFA733] border-[#FFA733] text-[#060606]'
                                     : 'border-white/30 text-transparent'
@@ -654,17 +740,17 @@ export function Calculator({
 
               {/* STEP 04: Extras */}
               {activeStep === 4 && (
-                <div className="space-y-6">
+                <div key="step-4" className="dcc-step-container space-y-7">
                   <div>
                     <span className="font-eyebrow text-xs sm:text-[13.5px] font-bold uppercase tracking-[0.22em] text-[#FFA733]">
-                      {extraCopy.stepPrefix} 04
+                      04 / 05 · {STEP_ITEMS[3].label}
                     </span>
                     <h3 className="mt-2 font-monument text-2xl sm:text-3xl font-extrabold tracking-tight text-white">
                       {t.calculator.steps.extras.title}
                     </h3>
                   </div>
 
-                  <div className="border-t border-white/10">
+                  <div className="space-y-3.5">
                     {EXTRAS_CATALOG.map((extra) => {
                       const copy = t.calculator.steps.extras.items[extra.id];
                       const active = Boolean(input.extras[extra.id]);
@@ -678,8 +764,10 @@ export function Calculator({
                           aria-checked={active}
                           data-active={String(active)}
                           onClick={() => handleToggleExtra(extra.id)}
-                          className={`dcc-calc-tile w-full flex items-center justify-between gap-4 sm:gap-5 px-3.5 sm:px-6 py-5 sm:py-6 text-left cursor-pointer ${
-                            active ? 'dcc-calc-tile-active' : ''
+                          className={`dcc-calc-tile w-full flex items-center justify-between gap-4 sm:gap-5 px-4 sm:px-7 py-5 sm:py-6 text-left cursor-pointer transition-all duration-200 border ${
+                            active
+                              ? 'bg-gradient-to-br from-[#2E160C] via-[#1D0C06] to-[#120704] border-[#FFA733] shadow-[0_0_24px_rgba(255,167,51,0.2)]'
+                              : 'bg-gradient-to-br from-[#1A0E08]/85 via-[#130A05]/85 to-[#0C0603]/85 border-white/15 hover:border-[#FFA733]/50 hover:bg-[#20110A]'
                           }`}
                         >
                           <div className="flex items-start sm:items-center gap-3.5 sm:gap-4 min-w-0">
@@ -723,11 +811,11 @@ export function Calculator({
 
               {/* STEP 05: Guest Count & Volume Discount */}
               {activeStep === 5 && (
-                <div className="space-y-8">
+                <div key="step-5" className="dcc-step-container space-y-8">
                   <div className="flex flex-wrap items-end justify-between gap-4">
                     <div>
                       <span className="font-eyebrow text-xs sm:text-[13.5px] font-bold uppercase tracking-[0.22em] text-[#FFA733]">
-                        {extraCopy.stepPrefix} 05
+                        05 / 05 · {STEP_ITEMS[4].label}
                       </span>
                       <h3 className="mt-2 font-monument text-2xl sm:text-3xl font-extrabold tracking-tight text-white">
                         {extraCopy.guestsStepTitle}
