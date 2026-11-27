@@ -99,7 +99,7 @@ export function ProductionBento(): React.ReactElement {
                       </span>
                     </div>
 
-                    <h3 className="font-monument text-lg sm:text-xl font-bold tracking-tight text-white leading-snug">
+                    <h3 className="font-card text-lg sm:text-xl font-bold tracking-tight text-white leading-snug">
                       {card.title}
                     </h3>
 

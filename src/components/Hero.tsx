@@ -189,25 +189,19 @@ export function Hero({
             </h1>
           </div>
 
-          <div className="overflow-hidden">
-            <p className="dcc-hero-mask-up dcc-hero-mask-delay-2 mx-auto max-w-xl font-monument text-xs sm:text-base font-bold uppercase tracking-[0.16em] text-white/80">
-              {marqueeCopy.shortSubtitle}
-            </p>
-          </div>
-
-          {/* Pure Black + Crisp White Minimalist Buttons */}
-          <div className="flex flex-col sm:flex-row items-stretch sm:items-center justify-center gap-3.5 pt-4">
+          {/* Translucent Animated Smooth Glass CTA Buttons */}
+          <div className="flex flex-col sm:flex-row items-stretch sm:items-center justify-center gap-4 pt-3">
             <a
               href="#rechner"
-              className="inline-flex min-h-[52px] w-full sm:w-auto sm:min-w-[248px] items-center justify-center gap-2.5 bg-[#0A0A0A] border border-white/85 px-7 py-3.5 font-monument text-xs sm:text-[13px] font-bold uppercase tracking-[0.12em] text-white shadow-[0_14px_34px_-12px_rgba(0,0,0,0.75)] transition-all duration-[220ms] hover:bg-white hover:text-[#060606] hover:-translate-y-0.5 cursor-pointer"
+              className="dcc-hero-glass-primary group inline-flex min-h-[54px] w-full sm:w-auto sm:min-w-[250px] items-center justify-center gap-3 px-8 py-3.5 font-monument text-xs sm:text-[13px] font-bold uppercase tracking-[0.14em] text-white cursor-pointer"
             >
               <span>{t.hero.primaryCta}</span>
-              <ArrowRight className="h-4 w-4" />
+              <ArrowRight className="h-4 w-4 text-[#FFA733] transition-transform duration-300 group-hover:translate-x-1" />
             </a>
 
             <a
               href="#galerie"
-              className="inline-flex min-h-[52px] w-full sm:w-auto sm:min-w-[228px] items-center justify-center gap-2 bg-[#0A0A0A]/85 border border-white/35 px-7 py-3.5 font-monument text-xs sm:text-[13px] font-bold uppercase tracking-[0.12em] text-white backdrop-blur-md transition-all duration-[220ms] hover:bg-white hover:border-white hover:text-[#060606] hover:-translate-y-0.5 cursor-pointer"
+              className="dcc-hero-glass-secondary group inline-flex min-h-[54px] w-full sm:w-auto sm:min-w-[220px] items-center justify-center gap-2.5 px-7 py-3.5 font-monument text-xs sm:text-[13px] font-bold uppercase tracking-[0.14em] text-white/90 hover:text-white cursor-pointer"
             >
               <span>{t.hero.secondaryCta}</span>
             </a>

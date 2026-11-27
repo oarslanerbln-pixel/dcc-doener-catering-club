@@ -67,6 +67,7 @@
 :root {
   --font-sans: 'Montserrat', 'Space Grotesk', ui-sans-serif, system-ui, sans-serif;
   --font-monument: 'Montserrat', ui-sans-serif, system-ui, sans-serif;
+  --font-card: 'Space Grotesk', 'Montserrat', ui-sans-serif, system-ui, sans-serif;
   --font-eyebrow: 'Space Grotesk', -apple-system, sans-serif;
   --font-serif: 'Instrument Serif', Georgia, serif;
   --font-mono: 'Space Grotesk', 'Montserrat', ui-sans-serif, system-ui, sans-serif;
@@ -74,6 +75,11 @@
 
 .font-sans {
   font-family: var(--font-sans);
+}
+
+.font-card {
+  font-family: var(--font-card);
+  letter-spacing: -0.015em;
 }
 
 .font-eyebrow {

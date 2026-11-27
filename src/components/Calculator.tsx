@@ -625,7 +625,7 @@ export function Calculator({
                           <div className="flex-1 min-w-0 flex flex-col gap-3 sm:flex-row sm:items-center sm:justify-between sm:gap-6">
                             <div className="min-w-0 space-y-2">
                               <div className="flex flex-wrap items-baseline gap-x-3 gap-y-1">
-                                <h4 className="font-monument text-lg sm:text-2xl font-extrabold tracking-tight text-white">
+                                <h4 className="font-card text-lg sm:text-2xl font-bold tracking-tight text-white">
                                   {copy.title}
                                 </h4>
                                 <span
@@ -728,7 +728,7 @@ export function Calculator({
                           <div className="flex-1 min-w-0 flex flex-col gap-3 sm:flex-row sm:items-center sm:justify-between sm:gap-6">
                             <div className="min-w-0 space-y-2">
                               <div className="flex flex-wrap items-baseline gap-x-3 gap-y-1">
-                                <h4 className="font-monument text-lg sm:text-2xl font-extrabold tracking-tight text-white">
+                                <h4 className="font-card text-lg sm:text-2xl font-bold tracking-tight text-white">
                                   {copy.title}
                                 </h4>
                                 <span
@@ -830,7 +830,7 @@ export function Calculator({
                               <Check className="h-4 w-4 stroke-[3]" />
                             </span>
                             <div className="min-w-0 space-y-1">
-                              <div className="font-monument text-base sm:text-xl font-extrabold tracking-tight text-white">
+                              <div className="font-card text-base sm:text-xl font-bold tracking-tight text-white">
                                 {copy.title}
                               </div>
                               <div className="text-xs sm:text-sm leading-relaxed text-[#D6CEC2]">
@@ -894,7 +894,7 @@ export function Calculator({
                         >
                           <div className="space-y-2.5 w-full">
                             <div className="flex items-center justify-between gap-2 w-full">
-                              <span className="font-monument text-base sm:text-lg font-extrabold uppercase tracking-[0.06em] text-white">
+                              <span className="font-card text-base sm:text-lg font-bold uppercase tracking-[0.04em] text-white">
                                 {evCopy.label}
                               </span>
                               <span
