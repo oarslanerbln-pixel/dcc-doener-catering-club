@@ -37,26 +37,31 @@ export function TrustReferences(): React.ReactElement {
           </div>
         </div>
 
-        <div className="grid grid-cols-1 gap-4 md:grid-cols-3">
+        <div className="grid grid-cols-1 gap-5 md:grid-cols-3">
           {t.references.items.map((item, idx) => (
             <article
               key={idx}
-              className="dcc-lux-card p-6 flex flex-col justify-between space-y-5"
+              className="dcc-lux-card p-6 sm:p-7 flex flex-col justify-between space-y-6 border border-white/10 hover:border-[#FFA733]/60 transition-all duration-300"
             >
-              <div className="space-y-3">
-                <span className="font-eyebrow text-xs sm:text-[13px] font-bold uppercase tracking-[0.16em] text-[#E6C986]">
-                  {item.tag}
-                </span>
-                <p className="font-sans text-base sm:text-lg font-medium leading-snug text-white">
-                  “{item.quote}”
+              <div className="space-y-4">
+                <div className="flex items-center justify-between">
+                  <span className="font-eyebrow text-xs sm:text-[13px] font-bold uppercase tracking-[0.16em] text-[#E6C986]">
+                    {item.tag}
+                  </span>
+                  <span className="font-serif italic text-2xl text-[#E6C986]/40 select-none">
+                    “
+                  </span>
+                </div>
+                <p className="font-serif italic text-lg sm:text-[21px] font-normal leading-relaxed text-[#FBF1DE]">
+                  „{item.quote}“
                 </p>
               </div>
 
-              <div className="border-t border-[var(--border-main)] pt-3.5 space-y-0.5">
-                <div className="text-xs font-semibold text-[var(--text-primary)]">
+              <div className="border-t border-white/10 pt-4 space-y-1">
+                <div className="font-monument text-sm font-bold text-white">
                   {item.author}
                 </div>
-                <div className="font-mono text-[11px] text-[var(--text-muted)]">
+                <div className="font-mono text-xs text-[#A89F91]">
                   {item.meta}
                 </div>
               </div>

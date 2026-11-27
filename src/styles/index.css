@@ -207,11 +207,16 @@ body {
 }
 
 #rechner .dcc-calc-tile {
-  background-color: rgba(22, 12, 7, 0.75);
-  border: none;
-  border-bottom: 1px solid rgba(255, 255, 255, 0.12);
+  background: linear-gradient(135deg, rgba(26, 14, 8, 0.90) 0%, rgba(16, 8, 4, 0.92) 100%);
+  border: 1px solid rgba(255, 255, 255, 0.14);
   color: #FFFFFF;
-  backdrop-filter: blur(12px);
+  backdrop-filter: blur(14px);
+  margin-bottom: 0.85rem;
+  transition:
+    border-color 220ms var(--ease-expo-out),
+    background 220ms var(--ease-expo-out),
+    transform 220ms var(--ease-expo-out),
+    box-shadow 220ms var(--ease-expo-out);
 }
 
 .dcc-calc-tile::before {
@@ -243,7 +248,9 @@ body {
 }
 
 #rechner .dcc-calc-tile:hover {
-  background-color: rgba(255, 255, 255, 0.08);
+  background: linear-gradient(135deg, rgba(34, 18, 10, 0.95) 0%, rgba(22, 11, 6, 0.95) 100%);
+  border-color: rgba(255, 167, 51, 0.50);
+  transform: translateY(-1px);
 }
 
 .dcc-calc-tile:hover::before {
@@ -261,12 +268,12 @@ body {
 }
 
 #rechner .dcc-calc-tile-active {
-  background: rgba(255, 255, 255, 0.14);
-  background-color: rgba(255, 255, 255, 0.14);
-  border: none;
-  border-bottom: 1px solid rgba(255, 167, 51, 0.35);
+  background: linear-gradient(135deg, rgba(48, 22, 11, 0.98) 0%, rgba(28, 12, 6, 0.98) 100%);
+  border: 1px solid #FFA733;
   animation: none;
-  box-shadow: inset 3px 0 0 0 #FFA733;
+  box-shadow:
+    0 0 28px rgba(255, 167, 51, 0.20),
+    inset 0 1px 0 rgba(255, 255, 255, 0.15);
 }
 
 /* Sharp Architectural Frameless Card with Cursor-Tracking Gold-Emerald Hover Sheen */

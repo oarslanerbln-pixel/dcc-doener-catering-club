@@ -390,18 +390,18 @@ export function Calculator({
                           }
                           className={`group flex flex-col justify-between gap-3 p-5 sm:p-6 text-left transition-all duration-200 cursor-pointer border ${
                             active
-                              ? 'bg-white border-white text-[#060606]'
-                              : 'bg-[#1A0E08]/80 border-white/15 text-white hover:border-white/45 hover:bg-white/[0.04]'
+                              ? 'bg-gradient-to-br from-[#2E160C] via-[#1D0C06] to-[#120704] border-[#FFA733] shadow-[0_0_24px_rgba(255,167,51,0.22)] text-white'
+                              : 'bg-gradient-to-br from-[#1A0E08]/90 via-[#130A05]/90 to-[#0C0603]/90 border-white/15 text-white hover:border-[#FFA733]/50 hover:bg-[#20110A]'
                           }`}
                         >
                           <div className="flex items-center justify-between gap-2 w-full">
-                            <span className="font-monument text-sm sm:text-base font-extrabold uppercase tracking-[0.06em]">
+                            <span className="font-monument text-sm sm:text-base font-extrabold uppercase tracking-[0.06em] text-white">
                               {evCopy.label}
                             </span>
                             <span
                               className={`inline-flex h-6 w-6 items-center justify-center border shrink-0 transition-colors ${
                                 active
-                                  ? 'bg-[#060606] border-[#060606] text-white'
+                                  ? 'bg-[#FFA733] border-[#FFA733] text-[#060606]'
                                   : 'border-white/25 text-transparent'
                               }`}
                             >
@@ -410,7 +410,7 @@ export function Calculator({
                           </div>
                           <span
                             className={`text-xs sm:text-[13px] leading-snug ${
-                              active ? 'text-[#060606]/75 font-medium' : 'text-white/50'
+                              active ? 'text-[#FBF1DE] font-medium' : 'text-[#D6CEC2]'
                             }`}
                           >
                             {evCopy.hint}
@@ -501,13 +501,13 @@ export function Calculator({
                             active ? 'dcc-calc-tile-active' : ''
                           }`}
                         >
-                          <div className="w-20 h-20 sm:w-32 sm:h-24 overflow-hidden bg-white/5 shrink-0">
+                          <div className="w-20 h-20 sm:w-32 sm:h-24 overflow-hidden bg-white/5 shrink-0 border border-white/20 shadow-sm">
                             <SmartPicture
                               src={meat.image}
                               alt={copy.title}
                               width={256}
                               height={192}
-                              className="h-full w-full object-cover"
+                              className="h-full w-full object-cover transition-transform duration-500 group-hover:scale-105"
                             />
                           </div>
 
@@ -519,13 +519,13 @@ export function Calculator({
                                 </h4>
                                 <span
                                   className={`font-eyebrow text-xs sm:text-[13px] font-bold uppercase tracking-[0.14em] ${
-                                    active ? 'text-[#FFA733]' : 'text-white/45'
+                                    active ? 'text-[#FFA733]' : 'text-[#E6C986]/80'
                                   }`}
                                 >
                                   {copy.badge}
                                 </span>
                               </div>
-                              <p className="text-xs sm:text-sm leading-relaxed text-white/60 line-clamp-2">
+                              <p className="text-xs sm:text-sm leading-relaxed text-[#D6CEC2] line-clamp-2">
                                 {copy.spec}
                               </p>
                             </div>
@@ -539,7 +539,7 @@ export function Calculator({
                                 >
                                   {formatCurrency(discountedUnit, locale)}
                                 </div>
-                                <div className="font-monument text-xs font-semibold text-white/45">
+                                <div className="font-monument text-xs font-semibold text-[#C4BCAB]">
                                   {t.calculator.steps.spits.perGuestSuffix}
                                 </div>
                               </div>
@@ -547,7 +547,7 @@ export function Calculator({
                               <span
                                 className={`inline-flex h-7 w-7 items-center justify-center border transition-colors duration-200 shrink-0 ${
                                   active
-                                    ? 'bg-white border-white text-[#060606]'
+                                    ? 'bg-[#FFA733] border-[#FFA733] text-[#060606]'
                                     : 'border-white/30 text-transparent'
                                 }`}
                               >
@@ -591,13 +591,13 @@ export function Calculator({
                             active ? 'dcc-calc-tile-active' : ''
                           }`}
                         >
-                          <div className="w-20 h-20 sm:w-32 sm:h-24 overflow-hidden bg-white/5 shrink-0">
+                          <div className="w-20 h-20 sm:w-32 sm:h-24 overflow-hidden bg-white/5 shrink-0 border border-white/20 shadow-sm">
                             <SmartPicture
                               src={setup.image}
                               alt={copy.title}
                               width={256}
                               height={192}
-                              className="h-full w-full object-cover"
+                              className="h-full w-full object-cover transition-transform duration-500 group-hover:scale-105"
                             />
                           </div>
 
@@ -609,13 +609,13 @@ export function Calculator({
                                 </h4>
                                 <span
                                   className={`font-eyebrow text-xs sm:text-[13px] font-bold uppercase tracking-[0.14em] ${
-                                    active ? 'text-[#FFA733]' : 'text-white/45'
+                                    active ? 'text-[#FFA733]' : 'text-[#E6C986]/80'
                                   }`}
                                 >
                                   {copy.badge}
                                 </span>
                               </div>
-                              <p className="text-xs sm:text-sm leading-relaxed text-white/60 line-clamp-2">
+                              <p className="text-xs sm:text-sm leading-relaxed text-[#D6CEC2] line-clamp-2">
                                 {copy.spec}
                               </p>
                             </div>
@@ -629,7 +629,7 @@ export function Calculator({
                                 >
                                   + {formatCurrency(setup.flatFeeNet, locale)}
                                 </div>
-                                <div className="font-monument text-xs font-semibold text-white/45">
+                                <div className="font-monument text-xs font-semibold text-[#C4BCAB]">
                                   {t.calculator.steps.setups.flatFeeLabel}
                                 </div>
                               </div>
@@ -637,7 +637,7 @@ export function Calculator({
                               <span
                                 className={`inline-flex h-7 w-7 items-center justify-center border transition-colors duration-200 shrink-0 ${
                                   active
-                                    ? 'bg-white border-white text-[#060606]'
+                                    ? 'bg-[#FFA733] border-[#FFA733] text-[#060606]'
                                     : 'border-white/30 text-transparent'
                                 }`}
                               >
@@ -686,7 +686,7 @@ export function Calculator({
                             <span
                               className={`mt-0.5 sm:mt-0 inline-flex h-7 w-7 shrink-0 items-center justify-center border transition-colors duration-200 ${
                                 active
-                                  ? 'bg-white border-white text-[#060606]'
+                                  ? 'bg-[#FFA733] border-[#FFA733] text-[#060606]'
                                   : 'border-white/30 text-transparent'
                               }`}
                             >
@@ -696,7 +696,7 @@ export function Calculator({
                               <div className="font-monument text-base sm:text-xl font-extrabold tracking-tight text-white">
                                 {copy.title}
                               </div>
-                              <div className="text-xs sm:text-sm leading-relaxed text-white/60">
+                              <div className="text-xs sm:text-sm leading-relaxed text-[#D6CEC2]">
                                 {copy.spec}
                               </div>
                             </div>
@@ -710,7 +710,7 @@ export function Calculator({
                             >
                               + {formatCurrency(extra.pricePerGuest, locale)}
                             </div>
-                            <div className="font-monument text-xs font-semibold text-white/45">
+                            <div className="font-monument text-xs font-semibold text-[#C4BCAB]">
                               {t.calculator.steps.extras.perGuestSuffix}
                             </div>
                           </div>
@@ -732,13 +732,13 @@ export function Calculator({
                       <h3 className="mt-2 font-monument text-2xl sm:text-3xl font-extrabold tracking-tight text-white">
                         {extraCopy.guestsStepTitle}
                       </h3>
-                      <p className="mt-2 text-sm sm:text-base text-white/65">
+                      <p className="mt-2 text-sm sm:text-base text-[#D6CEC2]">
                         {extraCopy.guestsStepSubtitle}
                       </p>
                     </div>
 
                     <div className="text-right">
-                      <span className="block font-monument text-xs font-semibold uppercase tracking-[0.16em] text-white/50">
+                      <span className="block font-monument text-xs font-semibold uppercase tracking-[0.16em] text-[#C4BCAB]">
                         {t.calculator.steps.guests.activeDiscountPrefix}
                       </span>
                       <span
@@ -762,7 +762,7 @@ export function Calculator({
                         >
                           {t.calculator.steps.guests.inputLabel}
                         </label>
-                        <span className="text-sm text-white/55">
+                        <span className="text-sm text-[#D6CEC2]">
                           {t.calculator.steps.guests.minOrderNote}
                         </span>
                       </div>
@@ -773,7 +773,7 @@ export function Calculator({
                           data-testid="guest-minus"
                           aria-label={t.calculator.steps.guests.decreaseAria}
                           onClick={handleStepMinus}
-                          className="inline-flex h-14 w-14 items-center justify-center bg-transparent border border-white/25 text-white transition-colors duration-200 hover:bg-white hover:border-white hover:text-[#060606] cursor-pointer"
+                          className="inline-flex h-14 w-14 items-center justify-center bg-transparent border border-white/25 text-white transition-colors duration-200 hover:bg-[#FFA733] hover:border-[#FFA733] hover:text-[#060606] cursor-pointer"
                         >
                           <Minus className="h-5 w-5" />
                         </button>
@@ -801,7 +801,7 @@ export function Calculator({
                           data-testid="guest-plus"
                           aria-label={t.calculator.steps.guests.increaseAria}
                           onClick={handleStepPlus}
-                          className="inline-flex h-14 w-14 items-center justify-center bg-transparent border border-white/25 text-white transition-colors duration-200 hover:bg-white hover:border-white hover:text-[#060606] cursor-pointer"
+                          className="inline-flex h-14 w-14 items-center justify-center bg-transparent border border-white/25 text-white transition-colors duration-200 hover:bg-[#FFA733] hover:border-[#FFA733] hover:text-[#060606] cursor-pointer"
                         >
                           <Plus className="h-5 w-5" />
                         </button>

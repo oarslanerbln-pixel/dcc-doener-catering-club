@@ -51,7 +51,7 @@ export function ReceiptSummary({
         {/* Commanding Monochrome Summary Header */}
         <div className="flex items-center justify-between gap-3">
           <div className="min-w-0">
-            <div className="font-eyebrow text-xs sm:text-[13px] font-bold uppercase tracking-[0.18em] text-white/60">
+            <div className="font-eyebrow text-xs sm:text-[13px] font-bold uppercase tracking-[0.18em] text-[#E6C986]">
               {t.receipt.eyebrow} · {quoteId}
             </div>
             <h3 className="mt-1 font-monument text-2xl font-extrabold tracking-tight text-white truncate">
@@ -105,7 +105,7 @@ export function ReceiptSummary({
         {/* Spacious Hairline Breakdown */}
         <div className="space-y-3.5 border-y border-white/12 py-4.5 text-sm">
           <div className="flex items-center justify-between gap-2">
-            <span className="text-white/55">{t.receipt.guestsLabel}</span>
+            <span className="text-[#D6CEC2]">{t.receipt.guestsLabel}</span>
             <span className="font-monument tabular-nums font-bold text-white">
               {isEnterprise
                 ? `800+ (${result.effectiveGuests})`
@@ -116,7 +116,7 @@ export function ReceiptSummary({
                 ? t.calculator.steps.guests.guestUnitSingular
                 : t.calculator.steps.guests.guestUnitPlural}{' '}
               ·{' '}
-              <span className="text-white/70 font-semibold">
+              <span className="text-[#E6C986] font-semibold">
                 {t.calculator.steps.guests.eventTypes[input.eventType].label}
               </span>
             </span>
@@ -127,7 +127,7 @@ export function ReceiptSummary({
               <div className="font-monument text-white font-bold truncate">
                 {t.calculator.steps.spits.items[input.meatId].title}
               </div>
-              <div className="text-xs text-white/50">
+              <div className="text-xs text-[#C4BCAB]">
                 -{discountPct} % ({formatCurrency(result.unitMeatDiscounted, locale)}{' '}
                 {t.calculator.steps.spits.perGuestSuffix})
               </div>
@@ -138,7 +138,7 @@ export function ReceiptSummary({
           </div>
 
           <div className="flex items-center justify-between gap-2">
-            <span className="text-white/55 truncate">
+            <span className="text-[#D6CEC2] truncate">
               {t.calculator.steps.setups.items[input.setupId].title}
             </span>
             <span className="font-monument tabular-nums font-bold shrink-0 text-white">
@@ -148,8 +148,8 @@ export function ReceiptSummary({
 
           <div className="flex items-start justify-between gap-2">
             <div className="min-w-0">
-              <div className="text-white/55">{t.receipt.extrasLabel}</div>
-              <div className="text-xs text-white/45 truncate">
+              <div className="text-[#D6CEC2]">{t.receipt.extrasLabel}</div>
+              <div className="text-xs text-[#C4BCAB] truncate">
                 {activeExtras.length === 0
                   ? t.receipt.extrasNone
                   : activeExtras
