@@ -142,28 +142,35 @@ body {
   animation-delay: 110ms;
 }
 
-/* Calculator (#rechner) Ultra-Clean Monochrome Architectural Theme */
+/* Calculator (#rechner) Luxury Culinary Ember-Orange Stage */
 #rechner {
-  --bg-main: #060606;
-  --bg-card: #0A0B0B;
-  --bg-subtle: #101111;
+  --bg-main: #C44100;
+  --bg-card: rgba(18, 10, 6, 0.92);
+  --bg-subtle: rgba(28, 14, 8, 0.95);
   --text-primary: #FFFFFF;
-  --text-secondary: rgba(255, 255, 255, 0.68);
-  --text-muted: rgba(255, 255, 255, 0.45);
-  --brand-primary: #E6C986;
+  --text-secondary: rgba(255, 255, 255, 0.85);
+  --text-muted: rgba(255, 255, 255, 0.60);
+  --brand-primary: #FFA733;
   --brand-accent: #FFFFFF;
-  --border-main: rgba(255, 255, 255, 0.09);
-  --slider-track: rgba(255, 255, 255, 0.16);
+  --border-main: rgba(255, 255, 255, 0.18);
+  --slider-track: rgba(255, 255, 255, 0.28);
   --slider-thumb: #FFFFFF;
-  --receipt-bg: #0A0B0B;
+  --receipt-bg: #120A06;
   --receipt-text: #FFFFFF;
-  --receipt-accent: #E6C986;
-  background-color: #060606;
+  --receipt-accent: #FFA733;
+  background-color: #B83A00;
+  background-image:
+    radial-gradient(ellipse 95% 45% at 50% 0%, #FF6000 0%, #D44200 35%, #8E2600 70%, #3D0C00 100%),
+    radial-gradient(ellipse 80% 50% at 15% 45%, rgba(255, 120, 20, 0.42) 0%, transparent 70%),
+    radial-gradient(ellipse 80% 50% at 85% 65%, rgba(255, 90, 0, 0.38) 0%, transparent 70%),
+    linear-gradient(180deg, #060606 0%, #A33200 12%, #852600 85%, #060606 100%);
   color: #FFFFFF;
+  position: relative;
+  overflow: hidden;
 }
 
 #rechner .dcc-gold-emerald-bar {
-  background: linear-gradient(90deg, rgba(255, 255, 255, 0.9) 0%, #E6C986 100%);
+  background: linear-gradient(90deg, rgba(255, 255, 255, 0.9) 0%, #FFA733 100%);
   background-size: 100% 100%;
   animation: none;
 }
@@ -197,10 +204,11 @@ body {
 }
 
 #rechner .dcc-calc-tile {
-  background-color: transparent;
+  background-color: rgba(22, 12, 7, 0.75);
   border: none;
-  border-bottom: 1px solid rgba(255, 255, 255, 0.08);
+  border-bottom: 1px solid rgba(255, 255, 255, 0.12);
   color: #FFFFFF;
+  backdrop-filter: blur(12px);
 }
 
 .dcc-calc-tile::before {
@@ -221,7 +229,7 @@ body {
 #rechner .dcc-calc-tile::before {
   background: radial-gradient(
     420px circle at var(--mx, 50%) var(--my, 50%),
-    rgba(230, 201, 134, 0.06) 0%,
+    rgba(255, 167, 51, 0.12) 0%,
     transparent 70%
   );
 }
@@ -232,7 +240,7 @@ body {
 }
 
 #rechner .dcc-calc-tile:hover {
-  background-color: rgba(255, 255, 255, 0.03);
+  background-color: rgba(255, 255, 255, 0.08);
 }
 
 .dcc-calc-tile:hover::before {
@@ -250,12 +258,12 @@ body {
 }
 
 #rechner .dcc-calc-tile-active {
-  background: rgba(255, 255, 255, 0.055);
-  background-color: rgba(255, 255, 255, 0.055);
+  background: rgba(255, 255, 255, 0.14);
+  background-color: rgba(255, 255, 255, 0.14);
   border: none;
-  border-bottom: 1px solid rgba(230, 201, 134, 0.24);
+  border-bottom: 1px solid rgba(255, 167, 51, 0.35);
   animation: none;
-  box-shadow: inset 2px 0 0 0 #E6C986;
+  box-shadow: inset 3px 0 0 0 #FFA733;
 }
 
 /* Sharp Architectural Frameless Card with Cursor-Tracking Gold-Emerald Hover Sheen */

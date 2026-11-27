@@ -41,9 +41,9 @@ export function ReceiptSummary({
     <aside
       id="rechner-summary"
       aria-label={t.receipt.title}
-      className="border border-white/12 bg-[#0A0B0B] overflow-hidden"
+      className="border border-white/20 bg-[#120A06]/95 backdrop-blur-2xl shadow-[0_24px_50px_rgba(0,0,0,0.6)] overflow-hidden"
       style={{
-        backgroundColor: '#0A0B0B',
+        backgroundColor: '#120A06',
         color: '#FFFFFF',
       }}
     >
