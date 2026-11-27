@@ -38,8 +38,8 @@ export const en: TranslationSchema = {
   },
   hero: {
     eyebrow: 'BERLIN · 100% YAPRAK · 30–800+ GUESTS',
-    headlinePrefix: 'Exclusive',
-    headlineAccent: 'Live Rotisserie',
+    headlinePrefix: 'Live',
+    headlineAccent: 'Yaprak Döner',
     headlineSuffix: 'Catering.',
     subtitle:
       'Hand-stacked Yaprak layers, open-ember sear, and Berlin precision — carved live off the spit for corporate summits, weddings, and private receptions from 30 guests.',

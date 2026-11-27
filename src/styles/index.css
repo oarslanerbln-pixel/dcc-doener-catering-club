@@ -39,6 +39,25 @@ body {
   width: 100%;
 }
 
+/* Smooth Flowing Burnt-Orange / Ember Pulsing Glow for DCC Header Logo */
+@keyframes dcc-logo-ember-glow {
+  0%, 100% {
+    filter: drop-shadow(0 0 2px rgba(255, 167, 51, 0.25));
+  }
+  50% {
+    filter: drop-shadow(0 0 16px rgba(255, 167, 51, 0.85)) drop-shadow(0 0 30px rgba(255, 119, 0, 0.50));
+  }
+}
+
+.dcc-logo-ember-glow {
+  animation: dcc-logo-ember-glow 4.2s ease-in-out infinite;
+  transition: transform 220ms var(--ease-expo-out);
+}
+
+.dcc-logo-ember-glow:hover {
+  transform: scale(1.02);
+}
+
 /* Continuous Flowing Gold <-> Emerald Title & Accent Gradient Animation */
 @keyframes dcc-gold-emerald-flow {
   0% {
@@ -142,8 +161,10 @@ body {
   animation-delay: 110ms;
 }
 
-/* Calculator (#rechner) Deep Smoky Burnt-Orange & Ember Stage */
-#rechner {
+/* Deep Smoky Burnt-Orange & Ember Stage for Rechner, Bento, and References */
+#rechner,
+#produktion,
+#referenzen {
   --bg-main: #8F2C00;
   --bg-card: rgba(14, 7, 4, 0.94);
   --bg-subtle: rgba(22, 11, 6, 0.96);

@@ -1,7 +1,7 @@
 import React, { Suspense, lazy, useCallback, useEffect, useMemo, useState } from 'react';
 import { Calculator } from './components/Calculator';
 import { CorporateFaq } from './components/CorporateFaq';
-import { CulinaryShowcase } from './components/CulinaryShowcase';
+
 import { EventTimeline } from './components/EventTimeline';
 import { Footer } from './components/Footer';
 import { Gallery, type GalleryPreset } from './components/Gallery';
@@ -307,20 +307,7 @@ function AppContent(): React.ReactElement {
               onOpenModal={handleOpenQuoteModal}
               onDirectWhatsApp={handleDirectWhatsApp}
             />
-            <RevealSection>
-              <CulinaryShowcase
-                extras={calculatorInput.extras}
-                onToggleExtra={(extraId) =>
-                  setCalculatorInput((prev) => ({
-                    ...prev,
-                    extras: {
-                      ...prev.extras,
-                      [extraId]: !prev.extras[extraId],
-                    },
-                  }))
-                }
-              />
-            </RevealSection>
+
             <RevealSection>
               <Gallery onApplyPreset={handleApplyGalleryPreset} />
             </RevealSection>

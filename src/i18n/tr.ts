@@ -38,8 +38,8 @@ export const tr: TranslationSchema = {
   },
   hero: {
     eyebrow: 'BERLİN · %100 YAPRAK · 30–800+ MİSAFİR',
-    headlinePrefix: 'Seçkin',
-    headlineAccent: 'Canlı Yaprak Döner',
+    headlinePrefix: 'Canlı',
+    headlineAccent: 'Yaprak Döner',
     headlineSuffix: 'Catering.',
     subtitle:
       'El işçiliğiyle dizilmiş yaprak et katmanları, köz dengesi ve kusursuz servis — 30 kişiden başlayan kurumsal davetler, düğünler ve büyük organizasyonlar için ocak başından canlı döner kesimi.',

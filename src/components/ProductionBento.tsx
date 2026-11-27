@@ -24,9 +24,19 @@ export function ProductionBento(): React.ReactElement {
   return (
     <section
       id="produktion"
-      className="relative border-b border-[var(--border-main)] py-14 sm:py-20 lg:py-24"
+      className="relative border-y border-white/15 text-white py-18 sm:py-24 lg:py-28 overflow-hidden"
     >
-      <div className="mx-auto max-w-7xl px-4 sm:px-6 space-y-10">
+      {/* Aesthetic Culinary Ember & Flame Warmth Atmosphere */}
+      <div
+        aria-hidden="true"
+        className="pointer-events-none absolute inset-0 overflow-hidden"
+      >
+        <div className="absolute -top-32 left-1/2 -translate-x-1/2 w-[850px] h-[450px] bg-gradient-to-b from-transparent via-[#802000]/10 to-[#B33800]/15 rounded-full blur-3xl" />
+        <div className="absolute top-1/3 -left-40 w-[550px] h-[550px] bg-[#9E2E00]/15 rounded-full blur-[140px]" />
+        <div className="absolute bottom-16 -right-40 w-[550px] h-[550px] bg-[#7A2200]/15 rounded-full blur-[140px]" />
+      </div>
+
+      <div className="relative z-10 mx-auto max-w-7xl px-4 sm:px-6 space-y-10">
         <div className="max-w-2xl space-y-2.5">
           <p className="font-eyebrow text-xs sm:text-[13.5px] font-bold uppercase tracking-[0.20em] text-[#E6C986]">
             {t.bento.eyebrow}

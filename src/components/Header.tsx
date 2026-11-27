@@ -1,5 +1,4 @@
 import React from 'react';
-import { Play } from 'lucide-react';
 import { SUPPORTED_LOCALES, useLocale } from '../i18n';
 import type { ThemeId } from '../types/brand';
 import { BrandLogo } from './BrandLogo';
@@ -17,8 +16,6 @@ export function Header({
   theme,
   activeView,
   onSelectView,
-  onOpenLegal,
-  onReplayIntro,
 }: HeaderProps): React.ReactElement {
   const { locale, setLocale, t } = useLocale();
 
@@ -26,11 +23,6 @@ export function Header({
     e: React.MouseEvent<HTMLAnchorElement>,
     hash: string
   ) => {
-    if (hash === '#brand-kit') {
-      e.preventDefault();
-      onSelectView('brand-kit', '#brand-kit');
-      return;
-    }
     if (activeView !== 'main') {
       e.preventDefault();
       onSelectView('main', hash);
@@ -42,61 +34,11 @@ export function Header({
       className="sticky top-0 z-30 w-full border-b border-[var(--border-main)]/75 backdrop-blur-2xl"
       style={{ backgroundColor: 'var(--navbar-bg)' }}
     >
-      {/* Ultra-minimalist hairline legal compliance bar (Impressumspflicht) */}
-      <div className="border-b border-[var(--border-main)]/40">
-        <div className="mx-auto flex h-7 max-w-7xl items-center justify-between gap-2 px-3 sm:px-6 font-mono text-[9px] sm:text-[10px] tracking-normal sm:tracking-wider text-[var(--text-muted)]">
-          <span className="hidden md:inline truncate uppercase">DCC · {t.header.brandSubtitle}</span>
-          <div className="flex items-center gap-2 sm:gap-3 whitespace-nowrap">
-            <a
-              href="#impressum"
-              onClick={(e) => {
-                e.preventDefault();
-                onOpenLegal?.('impressum');
-              }}
-              className="transition hover:text-[var(--brand-primary)]"
-            >
-              {t.footer.impressumLink}
-            </a>
-            <a
-              href="#datenschutz"
-              onClick={(e) => {
-                e.preventDefault();
-                onOpenLegal?.('datenschutz');
-              }}
-              className="transition hover:text-[var(--brand-primary)]"
-            >
-              {t.footer.datenschutzLink}
-            </a>
-            <a
-              href="#ifs"
-              onClick={(e) => {
-                e.preventDefault();
-                onOpenLegal?.('ifs');
-              }}
-              className="transition hover:text-[var(--brand-primary)]"
-            >
-              {t.footer.ifsLink}
-            </a>
-          </div>
-          {onReplayIntro && (
-            <button
-              type="button"
-              onClick={onReplayIntro}
-              title={t.themeSwitcher.replayIntro}
-              className="inline-flex items-center gap-1 font-mono text-[9px] sm:text-[10px] uppercase tracking-wider text-[var(--brand-primary)] hover:text-white transition cursor-pointer shrink-0"
-            >
-              <Play className="h-2.5 w-2.5 fill-current" />
-              <span>INTRO</span>
-            </button>
-          )}
-        </div>
-      </div>
-
       <div className="mx-auto flex h-16 sm:h-20 max-w-7xl items-center justify-between gap-3 sm:gap-6 px-4 sm:px-8">
         <a
           href="#hero"
           onClick={(e) => handleAnchorClick(e, '#hero')}
-          className="flex items-center gap-2 focus:outline-none shrink-0"
+          className="dcc-logo-ember-glow flex items-center gap-2 focus:outline-none shrink-0"
           aria-label="DCC Döner Catering Club"
         >
           <BrandLogo
@@ -117,13 +59,7 @@ export function Header({
           >
             {t.header.nav.calculator}
           </a>
-          <a
-            href="#kulinarik"
-            onClick={(e) => handleAnchorClick(e, '#kulinarik')}
-            className="transition hover:text-white"
-          >
-            {t.header.nav.culinary}
-          </a>
+
           <a
             href="#galerie"
             onClick={(e) => handleAnchorClick(e, '#galerie')}
@@ -151,17 +87,6 @@ export function Header({
             className="transition hover:text-white"
           >
             {t.header.nav.faq}
-          </a>
-          <a
-            href="#brand-kit"
-            onClick={(e) => handleAnchorClick(e, '#brand-kit')}
-            className={`font-mono text-xs uppercase tracking-wider transition ${
-              activeView === 'brand-kit'
-                ? 'text-white font-bold'
-                : 'text-white/40 hover:text-white'
-            }`}
-          >
-            {t.header.nav.brandKit}
           </a>
         </nav>
 

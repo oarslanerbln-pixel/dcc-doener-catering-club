@@ -38,8 +38,8 @@ export const de: TranslationSchema = {
   },
   hero: {
     eyebrow: 'BERLIN · 100 % YAPRAK · 30–800+ GÄSTE',
-    headlinePrefix: 'Exklusives',
-    headlineAccent: 'Live-Döner',
+    headlinePrefix: 'Live',
+    headlineAccent: 'Yaprak Döner',
     headlineSuffix: 'Catering.',
     subtitle:
       'Handgesteckte Yaprak-Schichten, offene Glut und Berliner Präzision — frisch am Spieß geschnitten für Corporate Events, Hochzeiten und große Empfänge ab 30 Gästen.',

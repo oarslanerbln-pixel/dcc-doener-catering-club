@@ -234,15 +234,13 @@ export function Hero({
                     key={`${dupIdx}-${idx}`}
                     className="inline-flex items-center whitespace-nowrap"
                   >
-                    <span className="font-monument text-xs sm:text-sm md:text-base font-extrabold uppercase tracking-[0.22em] text-white px-6 sm:px-9">
+                    <span className="font-monument text-xs sm:text-[13.5px] md:text-[15px] font-extrabold uppercase tracking-[0.24em] text-[#FBF6EE] px-7 sm:px-10">
                       {service}
                     </span>
                     <span
                       aria-hidden="true"
-                      className="text-xs sm:text-sm text-[#D4A853] drop-shadow-[0_0_8px_rgba(212,168,83,0.55)]"
-                    >
-                      ◆
-                    </span>
+                      className="h-3.5 w-[1px] bg-white/20 select-none shrink-0"
+                    />
                   </span>
                 ))}
               </div>
