@@ -916,7 +916,7 @@ export const de: TranslationSchema = {
   },
   footer: {
     tagline:
-      'Ember-Cut Architectural Hospitality — Berliner Live-Döner-Catering für Corporate Events, Hochzeiten und exklusive Empfänge.',
+      'Berliner Live-Döner-Catering für Corporate Events, Hochzeiten und exklusive Empfänge.',
     citiesLabel: 'Einsatzgebiet (max. 300 km um Berlin)',
     cities: [
       'Berlin & Umland',

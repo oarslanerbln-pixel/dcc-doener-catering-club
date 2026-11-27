@@ -912,7 +912,7 @@ export const tr: TranslationSchema = {
   },
   footer: {
     tagline:
-      'Ember-Cut Architectural Hospitality — Kurumsal zirveler, düğünler ve özel davetler için Berlin canlı döner cateringi.',
+      'Kurumsal zirveler, düğünler ve özel davetler için Berlin canlı döner cateringi.',
     citiesLabel: 'Hizmet Alanı (Berlin Çevresi · Maks. 300 km)',
     cities: [
       'Berlin & Çevresi',

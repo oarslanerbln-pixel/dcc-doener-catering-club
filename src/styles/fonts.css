@@ -69,7 +69,7 @@
   --font-monument: 'Montserrat', ui-sans-serif, system-ui, sans-serif;
   --font-eyebrow: 'Space Grotesk', -apple-system, sans-serif;
   --font-serif: 'Instrument Serif', Georgia, serif;
-  --font-mono: 'JetBrains Mono', ui-monospace, SFMono-Regular, monospace;
+  --font-mono: 'Space Grotesk', 'Montserrat', ui-sans-serif, system-ui, sans-serif;
 }
 
 .font-sans {

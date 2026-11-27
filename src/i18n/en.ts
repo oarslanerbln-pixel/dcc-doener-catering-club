@@ -912,7 +912,7 @@ export const en: TranslationSchema = {
   },
   footer: {
     tagline:
-      'Ember-Cut Architectural Hospitality — Berlin live rotisserie catering for corporate summits, weddings, and private receptions.',
+      'Berlin live rotisserie catering for corporate summits, weddings, and private receptions.',
     citiesLabel: 'Service Area (max. 300 km around Berlin)',
     cities: [
       'Berlin & Surroundings',

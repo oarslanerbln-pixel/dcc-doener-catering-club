@@ -80,10 +80,10 @@ export function ProductionBento(): React.ReactElement {
 
                   {/* Panel Architectural Index & Live Metric Plate */}
                   <div className="absolute top-4 inset-x-4 flex items-center justify-between">
-                    <span className="font-mono text-[11px] font-bold tracking-widest text-white/70 bg-black/60 backdrop-blur-md px-2.5 py-1 border border-white/15">
+                    <span className="font-sans text-[11px] font-bold tracking-widest text-white/70 bg-black/60 backdrop-blur-md px-2.5 py-1 border border-white/15">
                       [{panelNum}]
                     </span>
-                    <span className="font-mono tabular-nums text-xs font-bold uppercase tracking-wider text-[#FBF1DE] bg-black/75 backdrop-blur-md px-3 py-1 border border-[#E6C986]/40 shadow-[0_2px_12px_rgba(0,0,0,0.5)]">
+                    <span className="font-sans tabular-nums text-xs font-bold uppercase tracking-wider text-[#FBF1DE] bg-black/75 backdrop-blur-md px-3 py-1 border border-[#E6C986]/40 shadow-[0_2px_12px_rgba(0,0,0,0.5)]">
                       {meta.metric}
                     </span>
                   </div>
@@ -109,11 +109,11 @@ export function ProductionBento(): React.ReactElement {
                   </div>
 
                   <div className="pt-3.5 border-t border-white/10 flex items-center justify-between">
-                    <span className="inline-flex items-center gap-1.5 font-mono text-xs font-medium text-[#E6C986]">
+                    <span className="inline-flex items-center gap-1.5 font-sans text-xs font-semibold text-[#E6C986]">
                       <ShieldCheck className="h-4 w-4" />
                       {card.checkBadge}
                     </span>
-                    <span className="font-mono text-[10px] uppercase tracking-wider text-white/40">
+                    <span className="font-sans text-[10px] uppercase tracking-wider text-white/40">
                       BERLIN · B2B
                     </span>
                   </div>
