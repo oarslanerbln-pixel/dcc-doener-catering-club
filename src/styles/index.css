@@ -100,37 +100,42 @@ body {
   animation: dcc-gold-emerald-flow 7.5s ease-in-out infinite;
 }
 
-/* Dynamic Smooth Liquid Gold <-> Pure White Sheen Animation for Hero Live-Döner Headline */
-@keyframes dcc-gold-white-flow {
+/* Hypnotic Rotisserie Fire & Molten Gold Sheen for "Yaprak Döner" Headline */
+@keyframes dcc-ember-flame-flow {
   0% {
     background-position: 0% 50%;
+    filter: drop-shadow(0 4px 18px rgba(255, 140, 20, 0.40));
   }
   50% {
     background-position: 100% 50%;
+    filter: drop-shadow(0 0 28px rgba(255, 167, 51, 0.85)) drop-shadow(0 0 54px rgba(255, 80, 0, 0.50));
   }
   100% {
     background-position: 0% 50%;
+    filter: drop-shadow(0 4px 18px rgba(255, 140, 20, 0.40));
   }
 }
 
-.dcc-hero-gold-white-text {
+.dcc-hero-gold-white-text,
+.dcc-hero-ember-flame-text {
   background: linear-gradient(
     115deg,
     #FFFFFF 0%,
-    #F8EBC6 18%,
-    #D4A853 36%,
-    #FFFFFF 52%,
-    #E6C26D 68%,
-    #FFFDF9 82%,
-    #D4A853 100%
+    #FFF0CC 12%,
+    #FFA733 26%,
+    #FF5100 42%,
+    #FFFFFF 56%,
+    #FFA733 70%,
+    #FF3300 85%,
+    #FFE8B3 100%
   );
-  background-size: 280% 280%;
+  background-size: 300% 300%;
   -webkit-background-clip: text;
   background-clip: text;
   color: transparent;
-  animation: dcc-gold-white-flow 4.8s cubic-bezier(0.4, 0, 0.2, 1) infinite;
+  animation: dcc-ember-flame-flow 5s ease-in-out infinite;
   display: inline-block;
-  filter: drop-shadow(0 2px 20px rgba(212, 168, 83, 0.32));
+  letter-spacing: -0.015em;
 }
 
 .dcc-gold-emerald-bar {
