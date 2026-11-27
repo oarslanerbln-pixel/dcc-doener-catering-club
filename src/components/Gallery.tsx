@@ -140,11 +140,10 @@ export function Gallery({ onApplyPreset }: GalleryProps): React.ReactElement {
                 type="button"
                 data-testid={`gallery-scenario-${slide.id}`}
                 onClick={() => setActiveIndex(idx)}
-                className={`group relative flex items-center gap-3 p-3 text-left rounded-xl transition-all duration-300 cursor-pointer overflow-hidden border ${
-                  active
-                    ? 'border-[#FFA733] bg-white/[0.08] shadow-[0_0_24px_rgba(255,167,51,0.20)]'
-                    : 'border-white/10 bg-[#0D0F0E]/80 hover:border-white/25 hover:bg-white/[0.04]'
-                }`}
+                className={`group relative flex items-center gap-3 p-3 text-left rounded-xl transition-all duration-300 cursor-pointer overflow-hidden border ${active
+                  ? 'border-[#FFA733] bg-white/[0.08] shadow-[0_0_24px_rgba(255,167,51,0.20)]'
+                  : 'border-white/10 bg-[#0D0F0E]/80 hover:border-white/25 hover:bg-white/[0.04]'
+                  }`}
               >
                 <div className="h-12 w-16 overflow-hidden rounded-lg shrink-0 border border-white/10">
                   <SmartPicture
@@ -156,9 +155,8 @@ export function Gallery({ onApplyPreset }: GalleryProps): React.ReactElement {
                   />
                 </div>
                 <div className="min-w-0 flex-1">
-                  <div className={`font-monument text-[11px] font-bold uppercase tracking-wider truncate ${
-                    active ? 'text-[#FFA733]' : 'text-white/60'
-                  }`}>
+                  <div className={`font-monument text-[11px] font-bold uppercase tracking-wider truncate ${active ? 'text-[#FFA733]' : 'text-white/60'
+                    }`}>
                     {copy.tag}
                   </div>
                   <div className="font-monument text-xs font-bold text-white truncate">
@@ -187,17 +185,17 @@ export function Gallery({ onApplyPreset }: GalleryProps): React.ReactElement {
             <div className="absolute inset-0 bg-radial-gradient from-transparent via-black/30 to-black/70 pointer-events-none" />
           </div>
 
-          {/* Top Tag & Counter Row (Frameless Architectural) */}
+          {/* Top Tag & Slide Indicators - Architectural & Frameless */}
           <div className="relative z-10 flex items-center justify-between gap-4">
-            <div className="flex items-center gap-2.5 text-[#FFA733] font-monument text-xs sm:text-sm font-extrabold uppercase tracking-[0.24em] drop-shadow-md">
-              <span className="h-2 w-2 bg-[#FFA733] shadow-[0_0_8px_#FFA733]" />
-              <span>{currentCopy.tag}</span>
-            </div>
+            <span className="inline-flex items-center gap-2.5 font-monument text-xs sm:text-[13px] font-bold uppercase tracking-[0.24em] text-[#FFA733] [text-shadow:0_2px_12px_rgba(0,0,0,0.9)]">
+              <span className="h-1.5 w-1.5 bg-[#FFA733] shadow-[0_0_8px_#FFA733]" />
+              {currentCopy.tag}
+            </span>
 
             <div
               role="tablist"
               aria-label={t.gallery.title}
-              className="hidden sm:flex items-center gap-2.5"
+              className="hidden sm:flex items-center gap-2 px-3 py-1.5 bg-black/40 border border-white/10 backdrop-blur-md rounded-lg"
             >
               {GALLERY_SLIDES.map((slide, idx) => {
                 const active = idx === activeIndex;
@@ -210,11 +208,10 @@ export function Gallery({ onApplyPreset }: GalleryProps): React.ReactElement {
                     aria-selected={active}
                     aria-label={`${t.gallery.dotAriaPrefix} ${idx + 1}`}
                     onClick={() => setActiveIndex(idx)}
-                    className={`h-1.5 transition-all duration-300 cursor-pointer ${
-                      active
-                        ? 'w-8 bg-[#FFA733] shadow-[0_0_8px_#FFA733]'
-                        : 'w-3 bg-white/30 hover:bg-white/60'
-                    }`}
+                    className={`h-1.5 transition-all duration-300 rounded-sm cursor-pointer ${active
+                      ? 'w-7 bg-[#FFA733] shadow-[0_0_8px_#FFA733]'
+                      : 'w-2 bg-white/25 hover:bg-white/50'
+                      }`}
                   />
                 );
               })}

@@ -426,75 +426,80 @@ export function Calculator({
                     </div>
                   </div>
 
-                  {/* Sculpted Guest Readout + Tactile Stepper */}
-                  <div className="bg-[#180D07]/90 border border-white/15 p-5 sm:p-7 space-y-7">
-                    <div className="flex flex-col sm:flex-row sm:items-center sm:justify-between gap-5">
-                      <div className="space-y-1">
+                  {/* Modern Sleek Guest Readout + Elegant Circular Controls (No Square Boxes) */}
+                  <div className="bg-white/[0.02] border border-white/10 p-6 sm:p-8 space-y-8 backdrop-blur-md">
+                    <div className="flex flex-col sm:flex-row sm:items-center sm:justify-between gap-6">
+                      <div className="space-y-1.5">
                         <label
                           htmlFor="dcc-guest-input"
-                          className="block font-monument text-base sm:text-lg font-bold text-white"
+                          className="block font-mono text-xs uppercase tracking-[0.20em] text-white/50"
                         >
                           {t.calculator.steps.guests.inputLabel}
                         </label>
-                        <span className="text-sm text-[#D6CEC2]">
+                        <div className="flex items-baseline gap-3">
+                          <input
+                            id="dcc-guest-input"
+                            type="number"
+                            data-testid="guest-input"
+                            min={MIN_GUESTS}
+                            max={MAX_GUESTS}
+                            value={rawGuests}
+                            onChange={handleGuestInputChange}
+                            onBlur={handleGuestInputCommit}
+                            onKeyDown={(e) => {
+                              if (e.key === 'Enter') {
+                                e.preventDefault();
+                                handleGuestInputCommit();
+                              }
+                            }}
+                            className="w-32 sm:w-40 bg-transparent text-left font-monument tabular-nums text-5xl sm:text-6xl font-black text-white focus:outline-none border-b border-white/20 focus:border-[#FFA733] transition-colors"
+                          />
+                          <span className="font-monument text-lg sm:text-xl font-bold text-white/60">
+                            {extraCopy.mobileStickyGuests}
+                          </span>
+                        </div>
+                        <span className="block text-xs text-white/45">
                           {t.calculator.steps.guests.minOrderNote}
                         </span>
                       </div>
 
-                      <div className="flex items-center justify-between sm:justify-end gap-3.5">
+                      {/* Understated Circular Tactile Stepper Buttons (Apple / Tesla Style) */}
+                      <div className="flex items-center gap-3 self-start sm:self-auto">
                         <button
                           type="button"
                           data-testid="guest-minus"
                           aria-label={t.calculator.steps.guests.decreaseAria}
                           onClick={handleStepMinus}
-                          className="inline-flex h-14 w-14 items-center justify-center bg-transparent border border-white/25 text-white transition-colors duration-200 hover:bg-[#FFA733] hover:border-[#FFA733] hover:text-[#060606] cursor-pointer"
+                          className="h-12 w-12 rounded-full border border-white/20 bg-white/[0.04] text-white hover:bg-white hover:text-[#060606] hover:border-white transition-all duration-200 flex items-center justify-center cursor-pointer shadow-sm active:scale-95"
                         >
                           <Minus className="h-5 w-5" />
                         </button>
-
-                        <input
-                          id="dcc-guest-input"
-                          type="number"
-                          data-testid="guest-input"
-                          min={MIN_GUESTS}
-                          max={MAX_GUESTS}
-                          value={rawGuests}
-                          onChange={handleGuestInputChange}
-                          onBlur={handleGuestInputCommit}
-                          onKeyDown={(e) => {
-                            if (e.key === 'Enter') {
-                              e.preventDefault();
-                              handleGuestInputCommit();
-                            }
-                          }}
-                          className="h-14 w-36 bg-transparent border-b-2 border-[#FFA733]/80 px-2 text-center font-monument tabular-nums text-4xl sm:text-5xl font-extrabold text-white transition-colors duration-200 focus:border-white focus:outline-none"
-                        />
 
                         <button
                           type="button"
                           data-testid="guest-plus"
                           aria-label={t.calculator.steps.guests.increaseAria}
                           onClick={handleStepPlus}
-                          className="inline-flex h-14 w-14 items-center justify-center bg-transparent border border-white/25 text-white transition-colors duration-200 hover:bg-[#FFA733] hover:border-[#FFA733] hover:text-[#060606] cursor-pointer"
+                          className="h-12 w-12 rounded-full border border-white/20 bg-white/[0.04] text-white hover:bg-white hover:text-[#060606] hover:border-white transition-all duration-200 flex items-center justify-center cursor-pointer shadow-sm active:scale-95"
                         >
                           <Plus className="h-5 w-5" />
                         </button>
                       </div>
                     </div>
 
-                    {/* Prominent High-Contrast Illuminated Slider Bar + Sculpted Tactile Handle */}
-                    <div className="space-y-4 pt-2">
-                      <div className="relative flex items-center py-3">
+                    {/* Illuminated Precision Slider Bar */}
+                    <div className="space-y-4 pt-1">
+                      <div className="relative flex items-center py-2">
                         {/* Track Background */}
-                        <div className="pointer-events-none absolute inset-x-0 h-[10px] rounded-full bg-white/20 overflow-hidden">
+                        <div className="pointer-events-none absolute inset-x-0 h-[8px] rounded-full bg-white/15 overflow-hidden">
                           {/* Filled Luminous Progress Bar */}
                           <div
                             className="h-full rounded-full transition-all duration-150"
                             style={{
                               width: `${capacityProgress}%`,
                               background:
-                                'linear-gradient(90deg, #FFFFFF 0%, #FFA733 55%, #FF5500 100%)',
-                              boxShadow: '0 0 20px rgba(255, 167, 51, 0.55)',
+                                'linear-gradient(90deg, #FFFFFF 0%, #FFA733 60%, #FF6600 100%)',
+                              boxShadow: '0 0 16px rgba(255, 167, 51, 0.45)',
                             }}
                           />
                         </div>
@@ -512,7 +517,7 @@ export function Calculator({
                       </div>
 
                       {/* Clean Scale Labels */}
-                      <div className="flex items-center justify-between font-monument text-[11px] sm:text-xs font-bold text-white/60">
+                      <div className="flex items-center justify-between font-mono text-[11px] sm:text-xs text-white/50 tracking-wider">
                         <span>{extraCopy.tierScaleStart}</span>
                         <span>100 (-5%)</span>
                         <span>250 (-10%)</span>
@@ -521,8 +526,8 @@ export function Calculator({
                       </div>
                     </div>
 
-                    {/* Volume Discount Tier Strip */}
-                    <div className="grid grid-cols-2 sm:grid-cols-4 gap-3 pt-1">
+                    {/* Streamlined Volume Discount Tier Track */}
+                    <div className="grid grid-cols-2 sm:grid-cols-4 gap-2 pt-2 border-t border-white/10">
                       {(
                         [
                           { key: 'tier0', rate: 0 },
@@ -536,12 +541,14 @@ export function Calculator({
                           <div
                             key={tier.key}
                             data-active={String(active)}
-                            className={`py-2.5 text-center font-monument text-xs sm:text-[13px] transition-colors duration-200 border-b-2 ${active
-                              ? 'border-[#FFA733] font-extrabold text-[#FFA733]'
-                              : 'border-white/10 font-semibold text-white/45'
+                            className={`py-2 px-3 text-center transition-all duration-200 border-b-2 ${active
+                              ? 'border-[#FFA733] font-bold text-[#FFA733] bg-[#FFA733]/10'
+                              : 'border-transparent text-white/40 font-medium'
                               }`}
                           >
-                            {t.calculator.steps.guests.tiers[tier.key]}
+                            <span className="font-sans text-xs tracking-wide">
+                              {t.calculator.steps.guests.tiers[tier.key]}
+                            </span>
                           </div>
                         );
                       })}
